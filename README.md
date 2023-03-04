@@ -1,2 +1,0 @@
-# prof
- Ejercicios profesor
