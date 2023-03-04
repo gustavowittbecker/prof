@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+
+<!--
+Ejer01HtmlBasico.html
+Armar una página con las siguientes caracteristicas:
+Etiqueta meta en encabezado que garantice que cualquier navegador lea caracteres acentuados.
+Que contenga elementos separados por líneas horizontales <hr />:
+Etiquetas para títulos en tres tamaños diferentes
+Etiqueta para título centrada
+Retornos de carro compatibles con xhtml
+Texto con varios espacios en blanco en el medio
+Parrafo justificado de varias líneas explicando diferencia entre html y xhtml
+Imagenes compatibles xhtml con diferentes tamaños pero la misma referncia.
+Links a otra página en la misma ventana
+Link a otra página en una nueva ventana
+Texto con etiquetas de font, negrita e itálica
+Un marqui con atributos de velocidad, ancho, alto, color de background y dirección.
+-->
+
+<head>
+
+<!--El título es usado por los buscadores para indexar un sitio-->
+<title>Html elementos básicos (ejer01HtmlBasico.html)</title>
+
+<!-- Las etiquetas meta son usadas entre otras cosas para enviar equivalentes a los encabezados de respuesta http (son solo equivalentes pues como ya sabemos los headers verdaderos ya han sido enviados con anterioridad al documento html). Cuando por ejemplo el atributo http-equiv toma valor Content-Type se esta especificando un equivalente al http header Content-Type en un response http.
+Hay que tener en cuenta que el navegador tomará prioridad por los headers enviados por el servidor http que por los http-equiv escritos en las etiquetas meta del HEAD del documento html -->
+
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<!--Otras etiquetas meta son usados para mejorar nuestra posicion en los motores de busqueda,
+Aunque actualmente la mayoría de estos indexan sobre el contenido--> 
+
+<meta name="description" content="Esta es una descripcipon de la pagina que algunos crawlers utilizan" />
+<meta name="keywords" content="Natación, Deporte, Salud" />
+
+</head>
+
+<body>
+<hr />
+<h1>Etiquetas para títulos</h1>
+<h2>Etiquetas para títulos</h2>
+<h3>Etiquetas para títulos</h3>
+
+<hr />
+<center><h2>Etiquetas para centrado</h2></center>
+
+<!--Comentarios-->
+Despues de este texto una linea horizontal
+<hr />
+
+Después de este texto un retorno de carro br
+<br />
+
+
+Luego de este texto 5 espacios en blanco &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;Otro texto
+
+<p align="justify">Esto es un párrafo completo de más de una línea que de alguna manera podrá ser centrado, 
+alineado a la izquierda o a la derecha o quizá justificado o sangrado. El Html es un lenguaje de
+descripción de Hipertexto sin estructura consistente. Actualmente está definido el xhtml que provee
+esa consistencia obligando a todas las etiquetas a cerrarse y mantenerse anidadas. Además
+los atributos deben ser sin excepción pares nombre-valor.</p>
+
+<hr />
+
+Luego de este texto una imagen:
+
+<img src="greco.gif" />
+<br />
+
+<hr />
+Luego de esta imagen una imagen achicada (Ojo que si es grande se pierde mucho tiempo en la descarga):
+<img height=100 src="greco.gif" />
+
+<hr />
+
+<br /><a href="./ejer01OtraPaginaEnMismaVentana.html">Link a otra página en misma ventana</a>
+<br/><a href="./ejer01OtraPaginaEnNuevaVentana.html" target="_blank"  title="Click aqui para ..">Link a otra página en nueva ventana</a>
+
+<hr />
+
+<font color="red" size="+4" >
+<b>
+<i>
+Texto entre etiquetas de font, negrita e itálica. Esto ha sido reemplazado por los estilos
+</i>
+</b>
+</font>
+
+<hr />
+
+<!--Agregar un ancla en este lugar-->
+<h1 id="RefAncla">Ancla a este punto</h1>
+
+Luego de este texto un banner que va rotando dentro de una etiqueta marquee y tiene
+atributos como width, height, direction, bgcolor, y scrolldelay.
+
+<MARQUEE width=200 height="300" bgcolor="blue"  
+DIRECTION="up" scrolldelay="1000" >
+<br/><br/>El scrolldelay corresponde al número de milisegundos de espera entra saltos. En este caso en 
+particular es de 1 segundo.
+<img height=100 src="greco.gif" />
+</marquee>
+
+</body>
+</html>

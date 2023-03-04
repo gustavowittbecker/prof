@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" /> 
+
+<title>Caja flexible</title>
+
+<meta name="description" content="?" />
+<meta name="keywords" content="?,?,?,?" />
+<meta name="author" content="" />
+
+<style>
+
+* {
+	margin:0; /*Este es el secreto para que usando altos del 100% no aparezcan las barras de scrolling*/
+	padding:0;
+	box-sizing: border-box;
+}
+
+/*El siguiente estilo permite que todas las imagenes se autoescalen de acuerdo al dispositivo*/
+
+img {
+	/*width:400px; /*Imagenes fijas en tamaño*/
+    max-width: 100%; /*Ancho libre permitiendo al navegador calcularla en base o otros paramentros sin sobrepasar en ancho el tamaño de la caja*/
+    max-height: 100%;  
+	margin:1%;/*Para que cuando en dispositivos moviles se apilen, no se peguen unas con otras*/
+	/*height: auto;*/
+}
+
+html, body {
+	width:100%;
+	height:100%;
+}
+
+body {
+	}
+
+div#contenedor { /*Caja flexible o flexbox*/
+	margin:auto;
+	background-color: lightyellow;
+	width:90%;
+	height:100%; /*ocupara el 100% del body salvo que el contenido supere esta dimensión*/
+	overflow:auto;
+	display: flex; /*Permite flexibilizar el contenido reubicando y redimensionando espacios entre elementos dentro del mismo en forma automática. 
+					Marca el limite entre el modelo de bloque util para definir una maqueta y el modelo flexible
+					 para el interior de los contenedores finales */
+	flex-direction:row;		/*Siempre flex trabaja sobre un eje que puede ser horizontal de izq. a derecha.
+							u horizontal de derecha a izq. o
+							vertical de arriba a abajo o vertical de abajo a arriba*/
+	/*justify-content:center; /*Permite centrar al medio en x el contenido*/
+	justify-content:space-around; /*igual que el anterior pero creando espacios entre elementos de manera repartida*/
+	align-items: center; /*Permite centrar al medio en el eje ortogonal y sin deformar las imagenes*/
+	flex-wrap: wrap; /*Permite reubicar las cajas cuando el medio no las puede contener por su tamaño (Responsividad)*/
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div id="contenedor">
+	<img src="./flor.jpg" /> 
+	<img src="./flor.jpg" /> 
+	<img src="./flor.jpg" /> 
+
+</div>
+
+</div>
+</body>
+</html>

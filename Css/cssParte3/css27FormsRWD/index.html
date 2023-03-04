@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<!---->
+<html lang="es">
+<head>
+
+<title>css27 Forms RWD</title>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<!--
+Conceptos básicos
+Hay tres características técnicas que deben tomarse en cuenta como el eje de un diseño web con capacidad de adaptación:
+
+
+1) Un diseño de página flexible, basado en cuadrícula, que utilice tamaños relativos respecto a los padres.
+2) Una diseño de pagina con solo HTML y CSS
+3) Cuando un diseño obliga al usuario a escalar su navegador o a scrolear horizontalmente, este no es adaptivo o responsive.
+4) Consultas de medio CSS
+
+-->
+
+
+<style>
+/*En este ejercicio no me preocupo por el alto de los objetos, porque al no ser un home-page todo crecerá dinamicamente hacia abajo*/
+
+* {
+	padding:0%;
+	margin:0;
+	box-sizing: border-box;
+}
+
+
+html, body {  /*Esto significa tanto el documento como el body ..*/
+	font-family: Roboto Slab;
+	font-size:24px;
+	width:100%;
+	height:100%;
+}
+
+form {
+	height:80%;
+	width:100%;
+	background-color: silver;
+	overflow:auto;
+}
+
+
+
+header {
+	/*El margen en cero me da seguridad de que no existan espacios intermedios con otros objetos.*/
+	/*padding:1%;*/
+	background-color:#0D757D;
+	text-align:center;
+	width:100%;
+	height:10%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; 
+}
+
+footer {
+	background-color:#0D757D;
+	width:100%;
+	height:10%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	align-items: center; /*alinear al centro en el eje y*/
+}
+
+h1 {
+	font-size:1.3em;
+}
+
+
+label {
+	display:block; /*Llevar el ancho del elemento al 100% del tamaño del contenedor padre*/
+}
+
+
+.boton {
+	margin:auto;
+	width:40%;
+	height:80%;
+	background-color:#AAAAAA;
+	cursor:pointer;
+}
+
+
+div#cuerpoForm {
+	display:block;
+	height:85%;
+	width:100%;
+}
+
+
+
+div#controlForm {
+	display:block;
+	height:15%;
+	width:100%;
+
+	background-color:#666666;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; 	
+}
+
+div#controlForm input {
+	font-size: 1.2em;
+}
+
+.entrada {  /*Se corresponde con cada elemento cuadricular del cuerpo del formulario. Contendrá el label y el input*/
+	text-align:left;
+	height:160px;
+	background-color:silver;
+	float:left;
+	font-size:1em;
+	border-style:solid;
+	border-color:gray;
+	border-width:1px;
+	padding:1%;
+}
+
+
+
+
+/*Además de los selectores de evento existen las Consultas de medios - media query*/
+@media (min-width:1280px){ /*Para dispositivos grandes, mayores a 900 pixeles de ancho*/
+	.entrada {
+		width:20%;
+	}
+}
+
+
+
+
+@media (min-width:800px) and (max-width:1280px){ /*Si el dispositivo tiene un ancho mayor a A y menor que B, entonces .. */
+	.entrada {
+		width:25%;
+	}
+}
+
+@media (min-width:600px) and (max-width:800px){
+	.entrada {
+		width:33.3%;
+	}
+}
+
+
+@media (min-width:500px) and (max-width:600px){
+	.entrada {
+		width:50%;
+	}
+}
+
+@media (max-width:500px){ /*Para dispositivos pequeños menores a 400px*/
+	.entrada {
+		width:100%;
+	}
+}
+
+
+
+</style>
+</head>
+
+
+<body>
+
+
+<header>
+<h1>Formulario</h1>
+</header>
+
+
+
+<form action="./respuestaFormulario.html" target="_blank" method="get">
+
+<div id="cuerpoForm">
+
+<div class="entrada">
+		<label for="apellido" >1 Apellido:</label>
+		<input type="text" id="apellido" name="apellido"  title="Ingrese aqui nombres completos" />
+</div>
+
+<div class="entrada"> 
+		<label for="nombres" >2 Nombres:</label>
+		<input type="text" id="nombres" name="nombres"  title="Ingrese aqui nombres completos" />
+</div>
+
+
+<div class="entrada">
+	<label for="clave">3 Contraseña:</label>
+	<input type="password" id="clave" name="clave" />
+</div>
+
+
+
+<div class="entrada">
+	<label  for="cdes" >4 Campo deshabilitado:</label>
+	<input type="text" disabled="disabled" title="No envia dato" id="cdes" name="campodeshabilitado" value="valor deshabilitado" />
+</div>
+
+
+
+<div class="entrada">
+	<label for="fecha" >5 Fecha y Hora</label>
+	<input type="date" name="fecha" id="fecha" />
+</div>
+
+
+
+<div class="entrada"> 
+		<label for="dni" >6 DNI:</label>
+		<input type="text" id="dni" name="nombres"  title="Ingrese aqui su numero de documento" />
+</div>
+
+
+<div class="entrada">
+	<h4>7 Actividades extracurriculares</h4>
+	<label for="musica" >Musica: </label>
+	<input type="checkbox" id="musica" name="musica" value="aceptado" />
+
+	<label for="pintura" >Pintura artistica: </label>
+	<input type="checkbox" id="pintura" name="pintura" value="aceptado" />
+
+	<label for="musica" >Deportes: </label>
+	<input type="checkbox" id="deportes" name="musica" value="aceptado" />
+
+	<label for="pintura" >Teatro: </label>
+	<input type="checkbox" id="teatro" name="teatro" value="aceptado" >
+</div>
+
+<div class="entrada">
+	<p>8 Sexo:</p>
+	<label for="masculino" >Masculino: </label><input type="radio" id="masculino" name="sexo" value="masc" checked="checked" >
+	<label for="femenino" >Femenino: </label> <input type="radio" id="femenino" name="sexo" value="fem" >
+</div>
+
+<div class="entrada">
+	<h2> 9 Vacío </h2>
+</div>
+
+
+<div class="entrada">
+	<label for="estudios" >10 Estudios cursados</label>
+	<select id="estudios" name="Estudios">
+	<option value="pri" selected="selected" >Primarios</option>
+	<option value="sec">Secundarios</option>
+	<option value="ter">Terciarios</option>
+	<option value="uni">Universitarios</option>
+	<option value="pos">Postgrado</option>
+	</select>
+</div>
+
+<div class="entrada">
+	<label for="area" >11 Area de desempeño</label>
+	<select id="area" name="area">
+	<option value="adm" selected="selected" >Administración</option>
+	<option value="log">Logística</option>
+	<option value="depMP">Depósito de materia prima</option>
+	<option value="depPT">Depósito de poducto terminado</option>
+	<option value="pro">Produccion</option>
+	<option value="lab">Laboratorio</option>
+	<option value="ven">Ventas</option>
+	<option value="proveedores">Atención a proveedores</option>
+	</select>
+</div>
+
+
+<div class="entrada">
+	<label for="turno" >12 Turno</label>
+	<select id="turno" name="turno">
+	<option value="mañana" selected="selected" >Mañana</option>
+	<option value="tarde">Tarde</option>
+	<option value="noche">Noche</option>
+	</select>
+</div>
+
+<div class="entrada">
+	<label for="conduce" >13 Conduce</label>
+	<input type="radio" value="si" name="conduce" checked >SI</option>
+	<input type="radio" value="no" name="conduce">No</option>
+</div>
+
+
+
+
+</div> <!--cierra cuerpoForm-->
+
+
+<div id="controlForm">
+<input class="boton" type="submit" value="Enviar" />
+<input class="boton" type="reset"  value="Reset" />
+</div>
+
+</form>
+
+<footer>
+<h1>Pie de formulario</h1>
+</footer>
+
+ 
+</body>
+</html>

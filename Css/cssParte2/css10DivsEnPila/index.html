@@ -1,0 +1,153 @@
+<!Doctype html>
+
+<html>
+<head>
+
+<TITLE>css10divsEnPila</TITLE>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+<style>
+
+
+
+* {
+	/*Lo siguiente es basico para que por defalult ningun bloque deje espacios
+	ni hacia adentro ni hacia afuera y asegurar ademas el box-sizing para todos los elementos*/
+	padding:0; /*Hacia adentro*/
+	margin:0; /*Hacia afuera*/
+	box-sizing: border-box; /*Fija el tamaño del bloque*/
+	font-size: 16px; 
+}
+
+h1 {
+	font-size:2em; 
+}
+
+
+div.caja {    /*comun para todas las cajas*/
+	/*Todas las cajas estarán centradas en el ancho de la pantalla*/
+	/*no usamos margin: auto porque queremos que el margen inferior tenga un valor determinado*/
+	margin-left: auto;
+	margin-right:auto;
+	margin-bottom:20px; 
+	height:200px; /*Todas las cajas tendran un alto fijo*/
+	width:40%; /*Todas las cajas tendran un ancho fijp relativo al contenedor padre*/
+	border-style: solid;
+	border-width: 1px; 
+	border-color:#333333;	/*Todas las cajas tendran un borde de 1px*/
+	-moz-border-radius: 10px;
+	border-radius: 10px; /*todas las cajas tendran un radio*/
+}
+
+
+
+div#contenedor {
+	margin:auto; /*Para el centrado*/
+	width:80%;/*El % indica es siempre respecto al elemento padre*/
+	background-color:lightseagreen;
+}
+
+
+img {
+	/*Una forma de que todas las imagenes mantengan su relacion de aspecto
+	ocupen el 100% en ancho del espacio disponible o
+	y el 100% de su alto disponible.
+	Observar que la imagen crece hasta*/
+	max-width:100%; 
+	max-height:100%;
+	}
+
+
+/*Estilos particulares. Todos los contenedores tendran un ancho del 40% respecto al padre. Pero ademas un alto fijo en px
+Por lo tanto para tamaños pequeños del view port estos contenedores tendrean mas altura que ancho (portrait) y para tamaños
+grandes de viewport tendran mas ancho que alto (landscape).
+La imagen entonces ocupara o todo su alto o todo su ancho.*/
+
+div#div1 { /*div1 Para trabajar con tamaños de texto*/
+	box-shadow:  16px 8px 2px rgba(0,0,0,0.3); /* offset-x | offset-y | blur-radius| color */
+	padding: 1%; /*permite dejar un espacio entre las letras y el borde*/
+	overflow:auto;
+	text-align:center;
+}
+
+
+@media (max-width: 600px) {
+	div#div1 {
+		background-color:lightblue;
+	}
+}
+@media (min-width: 600px) and (max-width:1280px) { 
+	div#div1 {
+		background-color: lightyellow;
+	}
+}
+@media (min-width: 1280px) { 
+	div#div1 {
+		background-color: lightgrey;
+	}
+}
+
+
+
+
+
+div#div2 {		/*Para trabajar con títulos cortos en proporción a la caja --> usar la unidad de medida vw para el font*/
+	background: radial-gradient(orange,white,pink);
+	text-align: center;
+}
+
+
+div#div3 {   /*Imagenes ocupando el 100% en ancho a 100% en alto*/
+	background: linear-gradient(45deg,orange,white, pink);
+	text-align: center;
+}
+
+div#div4 { /*fondo con gradiente obliquo*/
+	background: linear-gradient(-45deg,orange, white, pink);
+	box-shadow:  16px 8px 2px rgba(0,0,0,0.3); 
+	padding: 1vw;
+	text-align:left;
+}
+
+div#div5 {		/*fondo con gradiente obliquo*/
+	background: linear-gradient(45deg,orange, white, pink);
+	text-align: left;
+}
+
+
+
+
+</style>
+</head>
+
+<body>
+
+<div id="contenedor">
+	<h1>Cajas en pila</h1>
+
+	<div id="div1" class="caja" title="identificativo div1"> 
+		<p>Fondo gris para tamaño de view port mayores a 1080</p>
+		<p>Fondo amarillo claro para tamaño de view port entre 600 y 1080</p>
+		<p>Fondo celeste para tamaño de view port menor a 600</p>
+	</div>
+
+	<div id="div2" class="caja" title="div2">
+		Gradiente radial como fondo.
+	</div>
+
+	<div id="div3" class="caja" title="div3">
+		<img src="./volcan.jpg" />
+	</div>
+
+	<div id="div4" class="caja" title="div4">
+		Nodo de Texto en div4 alineado a la izquierda y con padding
+	</div>
+
+	<div id="div5" class="caja" title="div5">
+		Nodo de Texto en div5 alineado a la izquierda y sin padding
+	</div>
+
+
+</div>
+</body>
+</html>

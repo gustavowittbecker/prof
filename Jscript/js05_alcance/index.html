@@ -1,0 +1,70 @@
+<!DOCTYPE HTML >
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" />
+<title>JS04_alcance.html</title>
+<!-- crear funcion que inicialice una variable global desde teclado (prompt) -->
+<!-- Crear una función que visualice la variable global solo si esta fue inicializada-->
+
+</head>
+<body>
+
+<button id="ivg_incorrecta" style="width:30%;margin:10px" title="Inicializa variable glogal desde adentro de una función con declaración var ">
+Inicialización incorrecta
+</button>
+
+<button id="ivg_correcta" style="width:30%;margin:10px" title="Inicializa variable glogal desde adentro de una función sin declaración var">
+Inicialización correcta
+</button>
+
+<button id="mvg" style="width:30%;margin:10px">Muestra variable global</button>
+
+
+<script>
+
+var variableGlobal; /* la variable global es declarada por fuera de todo procedimiento*/
+alert("El valor de variableGlobal es: "+ variableGlobal);
+alert("El tipo de variableGlobal es: "+ typeof variableGlobal);
+//El tipo será undefined aunque ya haya sido declarada.
+//Al no haber sido asignada por algun valor es undefined.
+
+/*Eventos*/
+
+document.getElementById("ivg_correcta").onclick= function() {
+	variableGlobal = prompt("Ingrese valor para la variable global: ");
+	alert("El valor de variableGlobal es: " + variableGlobal);
+	alert("El tipo de variableGlobal es: " + typeof variableGlobal);
+}
+
+/*La siguiente forma es la incorrecta ya que dentro de este procedimiento anonimo se usa la declaración var
+lo cual hace que la variable tenga alcance solo local */
+document.getElementById("ivg_incorrecta").onclick= function() {
+	var variableGlobal = prompt("Ingrese valor para la variable global: ");
+	alert("El valor de la variable local ingresada es: " + variableGlobal);
+	alert("El tipo de la variable local ingresada es: " + typeof variableGlobal);
+}
+
+/*El siguiente evento llama a una función (muestra variable global) que solo muestra el valor de la variable pasada como argumento.*/
+document.getElementById("mvg").onclick= function() {
+if (variableGlobal!==undefined) {
+	alert("valor de la variableGlobal: " + variableGlobal);
+	alert("tipo de la variableGlobal: " + typeof variableGlobal);
+}
+else {
+	alert("La variable global no ha sido asignada");
+}
+}
+
+/*
+CONCLUSION: 
+Declarar variables de uso global fuera de cualquier funcion.
+Dentro de una función inclusive de las anonimas usadas para handler de evento, las variables globales
+ ¡se usan! (no se declaran)
+*/
+
+</script>
+
+</body>
+</html>

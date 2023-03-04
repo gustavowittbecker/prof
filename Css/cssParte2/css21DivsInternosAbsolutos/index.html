@@ -1,0 +1,154 @@
+<!doctype html>
+
+<!-- Adaptabilidad : Muy buena (Responsive) -->
+<html >
+<head>
+<title>css13DivsInternosAbsolutosPorcentuales</title>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+
+<style>
+
+body {
+	font-size:16px;
+}
+
+* {
+	margin:0;
+	box-sizing: border-box;
+	padding:0;
+	margin:0;
+}	
+
+h1 {
+	font-size: 1.5em;
+}
+
+h2 {
+	font-size: 1.4em;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+
+h4 {
+	font-size: 1.2em;
+}
+
+html, body {
+	padding:0;
+	box-sizing:border-box;
+	/*height:100vh;
+	width:100vw;*/
+	overflow-x: hidden;
+}
+
+img {
+	/*Fijar ancho maximo y alto maximo  de todas las imagenes del documento para que puedan escalar de forma 
+	completa y manteniendo su relación de aspecto */
+	max-width:100%;
+	max-height:100%;
+}
+
+div#contenedorExterno {
+	position:relative;/*Fundamental para que todos los absolutos queden adentro de este externo:*/
+	margin:auto;
+	/*Para que funcione el direccionamiento absoluto dentro del contenedor es necesario 
+	que este tenga height y width:*/
+	width:90vw;
+	height:90vw;
+
+	background-color:lightblue;
+	z-index: 1; /*queda por debajo del 2*/
+
+}
+
+div#contenedorInterno1 {
+	position:absolute; /*Se posiciona en forma absoluta respecto a su contenedor*/
+	background-color:#00FFAA; 
+	opacity:0.9; 
+	filter:alpha(opacity=90);
+	font-size:1em;
+	top:10%; 
+	left:10%; 
+	height:30%; 
+	width:30%;
+	overflow:auto;
+	z-index: 2; /*queda por encima del 1*/
+}
+
+div#contenedorInterno2 {
+	position:absolute; /*Se posiciona en forma absoluta respecto a su contenedor*/
+	background-color:#AAFFAA; 
+	top:50%; 
+	left:50%; 
+	width:40%; 
+	height:40%; 
+	overflow:auto;
+	transform: rotateZ(10deg);
+	z-index: 3; /*queda por encima del 2*/
+}
+
+div#contenedorInterno3 {
+	position:absolute; /*Se posiciona en forma absoluta respecto a su contenedor*/
+	background-color:#AAAAAA;
+	width:45%; 
+	height:40%;
+	top:50%; 
+	left:50%; 
+	transform: translate(-50%, -50%);/*para resultar en este caso centrado*/
+	overflow:auto;
+	opacity:0.6; 
+	filter:alpha(opacity=90);
+	z-index: 4; /*queda por encima del 3*/
+}
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+<!--
+Los divs absolutos se pueden anidar sin problema. Los relativos solo se usan como primer contenedor y no 
+se pueden anidar.
+Las distancias se pueden medir tanto en pixeles como en % si es que se quiere hacer
+ independiente a la resolucion de la pantalla del navegador cliente.
+-->
+
+
+<div id="contenedorExterno">
+
+<h3>Estructura de posicionamiento absoluto pero adaptable al medio de presentación.</h3>
+<div id="contenedorInterno1" >
+	<h1>Contenedor interno 1.</h1>
+	ad fasd asd asdf asdf asdf asd fasd fasd fasd fasd fa
+	adf asdf adsf asdf asd fasdf asdf asdf 
+</div>
+
+<div id="contenedorInterno2">
+	<h2>Contenedor interno 2</h2>
+	<img src="./imagen.jpg" />
+	<img src="./imagen.jpg" />
+	<img src="./imagen.jpg" />
+	<img src="./imagen.jpg" />
+</div> 
+
+
+<div id="contenedorInterno3">
+	<h3>Contenedor interno3.</h3>
+	ad fasd asd asdf asdf asdf asd fasd fasd fasd fasd fa
+	adf asdf adsf asdf asd fasdf asdf asdf 
+
+</div> 
+
+
+</div>	<!--cierra el contenedorExterno -->
+
+</body>
+</html> 

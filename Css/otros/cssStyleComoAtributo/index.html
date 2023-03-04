@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<HEAD>
+
+<TITLE>css01StyleComoAtributo.html</TITLE>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+</HEAD>
+<!--Los estilos ya no son TAGS sino parámetros globales de un atributo STYLE
+    aplicable a diversos TAGS-->
+<BODY>
+ 
+
+<p>
+	Parrafo sin estilo. Un parrafo siempre ocupa todo el ancho de la ventana si no se 
+	le especifica un parametro width. 
+
+</p>
+ 
+    
+<P STYLE="
+	text-align:center;
+	font-size:28px;
+	font-weight:bold;
+	color:lightgray;
+	font-style:italic;
+	background-color:blue;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:thick;
+	border-color:red;">
+	Primer párrafo con estilo. Párrafo formateado con un atributo style aplicado a un párrafo. 
+	Este párrafo no tiene definido ni alto ni ancho, por lo que también se extenderá al 100% de la ventana
+	del navegador.
+	La alineación al centro esta dada por el text-align.
+</p>
+
+
+
+<P STYLE="
+	width:600px;
+	height:600px;
+	text-align:center;
+	font-size:28px;
+	font-weight:bold;
+	color:lightgray;
+	font-style:italic;
+	background-color:blue;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:15px;
+	border-color:red;">
+Segundo Párrafo con estilo. 
+Texto formateado con un atributo style aplicado a un párrafo.
+En este caso el estilo define un alto de 600px y un ancho  de 600px.
+Al fijar un ancho en pixeles se pierde el diseño adaptivo o responsive design.
+El diseño adaptivo es concretamente definir estilos adaptables a cualquier resolución de pantalla.
+La alineación al centro esta dada por el text-align.
+</p>
+
+
+
+
+<P STYLE="
+	width:50%;
+	text-align:center;
+	font-size:28px;
+	font-weight:bold;
+	color:lightgray;
+	font-style:italic;
+	background-color:blue;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:15px;
+	border-color:red;
+	">
+Tercer Párrafo con estilo. 
+Texto formateado con un atributo style aplicado a un párrafo.
+En este caso el estilo define un ancho en porciento.
+</p>
+
+
+
+
+<P>
+Cuarto Párrafo con estilo <span STYLE="
+	width:50%;
+	text-align:center;
+	font-size:28px;
+	font-weight:bold;
+	color:lightgray;
+	font-style:italic;
+	background-color:blue;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:15px;
+	border-color:red;
+	">en solo un grupo de elementos</span> en su interior 
+Texto formateado con un atributo style aplicado a solo una parte de un párrafo.
+</p>
+
+
+
+
+
+
+
+</BODY>
+</HTML>

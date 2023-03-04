@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<Head>
+<TITLE>Formulario en Ventana Modal</TITLE>
+
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" /> 
+
+<style>
+
+/*General*/
+
+	* {
+		margin:0;
+		box-sizing: border-box;
+	}
+
+	html, body {
+		height:100%;
+		width:100%;
+		font-size: 1vw;
+	}
+
+
+/*Contenedor*/
+	div#contenedor {
+	width:100%;
+	height:100%;
+	background-color:lightblue;
+	overflow: auto;
+	}
+
+	div#contenedor button {
+	background-color:#AAAAAA;
+	color:white;
+	padding:15px;
+	cursor:pointer;
+	border-radius:5px;
+	margin:10px;
+	box-sizing: border-box;
+	}
+
+	div#contenedor button:hover {
+		background-color: #CCCCCC;
+	}
+
+
+	/*Comportamiento Modal*/
+
+	div.contenedorActivo {
+	opacity:1;
+	/*permite activar todos los elementos sensibles a eventos:*/
+	pointer-events: auto;
+	}
+
+	div.contenedorPasivo {
+	opacity:0.3;
+	/*permite desactivar todos los elementos sensibles a eventos:*/
+	pointer-events: none;
+	}
+
+
+
+
+	/*Ventana Modal*/
+
+	div#ventanaModal {
+		position:fixed;
+		left:33%;
+		top:33%;
+		width:50%;
+		height:50%;
+		background-color:yellow;
+		color:black;
+		z-index:1;
+		overflow:hidden;
+	}
+
+
+
+
+	div#encabezadoModal {
+		width:100%;
+		height:10%;
+		background-color: #AAAAAA;
+		overflow:hidden;
+		/*Este estilo no puede tener un display:flex porque debe llevar adentro una estructura definida.
+		no debe ser un "che navegador: acomodalo vos";*/
+	}
+
+	div#encabezadoModal h4 {
+		font-size: 1.5vw;
+		display:inline-flex;/*para que no quiera ocupar todo el ancho de su espacio y no deje afuera*/
+		margin:1%; /*para separar la letra de los bordes*/
+	}
+
+	div#btCruz {
+		color:red;
+		width:5%;
+		height:100%;
+		background-color: #BBBBBB;
+		float:right;
+		cursor:pointer;
+		display: inline-flex; /*Permite flexibilizar el contenido*/
+		justify-content: center; /*Permite centrar al medio en x el contenido*/
+		align-items: center; /*Permite centrar al medio en y el contenido*/
+	}
+
+
+
+	div#btCruz:hover {
+		background-color:gray;
+	}
+
+	div#contenidoModal {
+		background-color: lightgray;
+		width:100%;
+		height:90%;
+		padding: 1%;
+	}
+
+
+
+	/*Comportamiento Modal*/
+	div.ventanaModalApagado {
+		visibility:hidden;
+	}
+
+	div.ventanaModalPrendido {
+		visibility:visible;
+	}
+
+
+
+
+
+	/* Impresion */
+	/*
+	div#ventanaModal div#btImpresion {
+	font-size: 2em;
+	margin:1%;
+	width:15%;
+	padding:2%;
+	box-sizing: border-box;
+	text-align:center;
+	cursor:pointer;
+	float:right;
+	color:black;
+	background-color:lightgray;
+	}
+
+	div#btImpresion:hover {
+		background-color:gray;
+		color:white;
+	}
+	*/
+
+/*Formulario*/
+div.contenedorForm {
+	margin:auto;
+	height:100%;
+	width:100%;
+	font-size:1.5vw;
+	background-color: gray;
+}
+
+
+div.contenedorForm header {
+	background-color:lightgray;
+	width:100%;
+	height:10%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; /*Permite centrar al medio en y el contenido*/
+}
+
+div.contenedorForm footer {
+	background-color:lightgray;
+	width:100%;
+	height:10%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; /*Permite centrar al medio en y el contenido*/
+}
+
+
+
+div.contenedorForm form {
+	padding:1%;
+	width:100%;
+	height: 80%;
+	background-color:beige;
+}
+
+
+div.contenedorForm ul {
+	list-style: none;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	clear:both;
+}
+
+div.contenedorForm li {
+	width:50%;/*El ancho de cada input es para formar 2 columnas*/
+	height:30%;
+	float:left;
+}
+
+@media(max-width:600px) {
+	div.contenedorForm li {
+		width:100%; /*El ancho de cada input es para formar 1 columna*/
+	
+	}
+}
+
+div.contenedorForm label {
+
+	display:block;
+	width:80%;
+	height:50%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	/*justify-content: center; Permite centrar al medio en x el contenido*/
+	align-items: center; 
+	font-size: 1.5vw;
+}
+
+div.contenedorForm input {
+	display:block;
+	width:80%;
+	height:40%;
+	font-size: 1.5vw;
+}
+
+div.contenedorForm select {
+	display:block;
+	width:80%;
+	height:40%;
+	font-size: 1.5vw;
+}
+
+
+option.elementoOptionSelect {
+	background-color:beige;
+}
+
+
+
+
+div.botonesControlFormulario {
+	//display:block;
+	width:100%;
+	height:100%;
+	display: inline-flex; /*Permite hacia afuera mantener dentro de la linea y por dentro flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; 
+}
+
+
+
+</style>
+
+
+
+<!--<script src="../jquery.js"></script>-->
+<!--Otra forma de enlazar-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+
+<script id="codigoModal">
+
+/*Eventos*/	
+
+	$(document).ready(function() { 	//version jQuery
+		$('#contenedor').attr("class","contenedorActivo");
+		$('#ventanaModal').attr("class","ventanaModalApagado");
+		objJson=JSON.parse(textoFamilias); //no declarar con var para que tenga alcance global
+		//alert(textoFamilias);
+		alert("Ancho de ventana: "+jQuery(window).width());
+		creaOpcionesFamilias();
+	});
+
+
+
+	$(document).ready(function() {
+		$("#btModal").click(function() {
+			document.getElementById('contenedor').className="contenedorPasivo";/*className porque estamos en jscript*/
+			document.getElementById('ventanaModal').className="ventanaModalPrendido";
+		}); 
+	});
+
+
+	$(document).ready(function() {
+		$("#btCruz").click(function() {
+			document.getElementById('contenedor').className="contenedorActivo";
+			document.getElementById('ventanaModal').className="ventanaModalApagado";
+		}); 
+	});
+
+
+
+	$(document).ready(function() {
+		$("#btEnviar").click(function() {
+			if(confirm("Esta seguro de enviar?")) {
+				document.getElementById("miForm").submit();
+			}
+		});
+	});
+
+
+/*Impresion*/
+/*
+	document.getElementById("btImpresion").onclick = function() {
+	var objPaper=document.getElementById('contenidoModal');
+	var ventimp=window.open(' ','popimpr');
+	ventimp.document.write(objPaper.innerHTML);
+	ventimp.print();
+	ventimp.close();
+	}
+*/
+
+</script>
+
+
+<script src="../familias.json" type="text/javascript"></script>
+
+<script id="codigoFormulario" type="text/javascript">
+
+
+
+
+/*Funciones*/
+
+function creaOpcionesFamilias() { //como argumento le paso el nombre del atributo de ListaDeObjetos que me interesa
+//alert(textoFamilias);
+objJson.familias.forEach(function(argValor,argIndice) {
+		var objOpcion= document.createElement("option");
+		objOpcion.setAttribute("className","elementoOption");
+		objOpcion.setAttribute("value",argValor.descripcionFamilia);
+		objOpcion.innerHTML = argValor.descripcionFamilia;
+		document.getElementById("formArticulosEntFamilia").appendChild(objOpcion);	
+	}); //cierra funcion anonima, cierra arg de forEach
+
+} //cierra funcion
+
+
+</script>
+
+</head>
+
+
+
+
+
+
+<body>
+<div id="contenedor">
+	<h1>Esto es el div contenedor</h1>
+
+
+	<button id="btModal" > 
+	Abre DIV modal
+	</button>
+
+	<h2>Ayudas para el ejercicio</h2>
+
+	<p>El div contenedor debera ser desactivado cuando se active la ventana modal</p>
+	<p>Desactivar el contenedor podría ser darle transparencia y deshabilitar todos sus botones.</p>
+
+	<p>Desactivado: </p>
+	<p>pointer-events: none</p>
+	<p>opacity:0.3</p>
+
+	<p>Activado:</p>
+	<p>pointer-events: auto</p>
+	<p>opacity:1</p>
+
+
+</div> <!--Cierra contenedor-->
+
+
+<!--Ventana Modal Debe estar fuera del contenedor-->
+<div id="ventanaModal"  >
+
+	<div id="encabezadoModal" >
+		<h4>Encabezado modal</h4>
+		<div id="btCruz">X</div>
+	</div>
+
+	<!--
+	<div  id="btImpresion">
+	Imprimir
+	</div>
+	-->
+
+	<div id="contenidoModal" >
+
+
+	<div class="contenedorForm">
+		<header>
+			<h4>Formulario para ALTA - Maestro de Artículos</h4>
+		</header>
+
+		<form  id="formArticulos" action="./respuesta.html" method="get">
+			<ul>
+				<li>
+				<label>codArt: </label>
+				<input id="formArticulosEntCodArt" name="formArticulosEntCodArt" required />
+				</li>
+				<li>
+				<label>Familia de artículo: </label>
+				<select id="formArticulosEntFamilia" name="formArticulosEntFamilia" required></select> 
+				</li>
+				<li>
+				<label>Descripción: </label>
+				<input id="formArticulosEntDescripcion" name="formArticulosEntDescripcion" required />
+				</li>
+				<li>
+				<label>Fecha Alta:</label>
+				<input type="date" id="formArticulosEntfechaAlta" name="formArticulosEntfechaAlta"  required />
+				</li>
+				<li>
+				<label>Saldo stock: </label>
+				<input type="number" min=0 id="formArticulosEntSaldoStock" name="formArticulosEntSaldoStock" value="0" required />
+				</li>
+				<li>
+				<div class="botonesControlFormulario">
+				<input type="submit" value="ENVIAR" />
+				</div>
+				</li>
+			</ul>
+
+		</form>
+
+	<footer><h4>Pie del formulario</h4></footer>
+
+</div><!-- cierra contenedor del formulario-->
+
+	</div> <!--Cierra contenido modal-->
+
+</div> <!--Cierra ventana modal-->
+
+
+</body>
+</html>
+
+

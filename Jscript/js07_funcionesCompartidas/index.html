@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+
+
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+<title>JS07_argumentos.html</title>
+<style>
+
+* {
+	padding:1%;
+	box-sizing:border-box;
+	margin:0;
+}
+
+html, body {
+	width:100%;
+	height:100%;
+}
+
+div#calculadora {
+	/*text-align: center;*/
+	background-color: #DDDDDD;
+	margin:auto;
+	width:50%;
+	height:50%;
+	/*
+	display: flex; /*Permite flexibilizar el contenido
+	justify-content: center;
+	*/
+}
+
+
+input#resultado {
+	margin:auto;
+	display:block;
+	width:90%;
+	height:10%;
+	text-align:right;
+	overflow:hidden;
+}
+
+
+div.botoneraNumeros {
+	margin:auto;
+	background-color: lightblue;
+	display:block;
+	width:90%;
+	height:50%;
+	overflow:hidden;
+}
+
+
+div.botoneraOperaciones {
+	margin:auto;
+	background-color: lightyellow;
+	display:block;
+	width:90%;
+	height:40%;
+	overflow:hidden;
+	text-align: center;
+}
+
+
+
+button.operacion {
+	margin:auto;
+	width:40%;
+	height:40%;
+}
+
+button.numero {
+	width:90%;
+	height:90%;
+	overflow:hidden;
+}
+
+
+table {
+	width:100%;
+	height:90%;
+}
+
+tr {
+	width:100%;
+	height:33%;
+}
+
+td {
+	/*background-color: blue;*/
+	width:33%;
+	/*No dar altura al td*/
+}
+
+
+
+
+</style>
+
+<script >
+var acumulador=0;
+
+function inserta(arg) {
+	objResultado.value = objResultado.value+arg;
+}
+
+function borraDisplay() {
+	objResultado.value="";
+	objResultado.focus();
+}
+
+function sumaAcumulador() {
+	acumulador = acumulador + parseInt(objResultado.value);
+	objResultado.value="";
+	objResultado.focus();
+}
+
+function borraAcumulador() {
+	acumulador = 0;
+	objResultado.focus();
+}
+
+function muestraAcumulador() {
+	alert(acumulador);
+	objResultado.value="";
+	objResultado.focus();	
+}
+
+</script>
+
+</head>
+
+<body>
+<div id="calculadora">
+
+<input id="resultado" type="text" />
+
+<div class="botoneraNumeros">
+	<table>
+		<tr>
+			<td><button id="b1" class="numero">1</button></td>
+			<td><button id="b2" class="numero">2</button></td>
+			<td><button id="b3" class="numero">3</button></td>
+		</tr>
+			<tr>
+			<td><button id="b4" class="numero">4</button></td>
+			<td><button id="b5" class="numero">5</button></td>
+			<td><button id="b6" class="numero">6</button></td>
+		</tr>
+			<tr>
+			<td><button id="b7" class="numero">7</button></td>
+			<td><button id="b8" class="numero">8</button></td>
+			<td><button id="b9" class="numero">9</button></td>
+		</tr>
+	</table>
+
+
+
+</div> <!--cierra botoneraNumeros-->
+
+<div class="botoneraOperaciones">
+ <button id="sumaAcumulador" class="operacion">+</button>
+ <button id="muestraAcumulador" class="operacion">Muestra Acumulador</button>
+ <button id="borraAcumulador" class="operacion">Borra Acumulador</button>
+ <button id="borraDisplay" class="operacion">Borra display</button>
+</div> <!-- cierra botoneraOperaciones -->
+
+</div><!--cierra calculadora-->
+
+
+</body>
+
+<script>
+/*Recordar que todo este siguiente codigo va al final antes de cerrar el documento*/
+var objResultado = document.getElementById("resultado"); //Para no tener que escribir muchas veces document.getElementById
+
+/*Eventos*/
+document.getElementById("b1").onclick=function() {inserta('1')} //Esto no es mas ni menos que una funcion dentro de otra
+document.getElementById("b2").onclick=function() {inserta('2')}
+document.getElementById("b3").onclick=function() {inserta('3')}
+document.getElementById("b4").onclick=function() {inserta('4')}
+document.getElementById("b5").onclick=function() {inserta('5')}
+document.getElementById("b6").onclick=function() {inserta('6')}
+document.getElementById("b7").onclick=function() {inserta('7')}
+document.getElementById("b8").onclick=function() {inserta('8')}
+document.getElementById("b9").onclick=function() {inserta('9')}
+
+document.getElementById("borraDisplay").onclick=function() {borraDisplay();}
+document.getElementById("sumaAcumulador").onclick=function() {sumaAcumulador();}
+document.getElementById("borraAcumulador").onclick=function() {borraAcumulador();}
+document.getElementById("muestraAcumulador").onclick=function() {muestraAcumulador()}
+
+</script>
+</html>

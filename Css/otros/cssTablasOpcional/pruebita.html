@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!---->
+<!--Escribir una pagina donde se defina en el header los estilos válidos para una tabla completa
+ y luego aplique dicho estilo en el body.
+Un estilo especial para un determinado tipo de celda debera también ser definido
+-->
+
+<HTML>
+<HEAD>
+<TITLE>css05tablas.html</TITLE>
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" />
+
+<style type="text/css">
+	div#contenedor {
+		margin:auto;
+		width:90%;
+		background-color: lightblue;
+		padding:1%;
+		box-sizing: border-box;
+	}
+	table  {
+			border-collapse: collapse;
+		}
+
+	td.cuadrante {
+		border-style:solid;
+		width:200px;
+		height:200px;
+	}
+</style> 
+</HEAD>
+
+<body>
+
+	<div id="contenedor">
+
+		<table>
+			<tr>
+				<td id="supizq" class="cuadrante"></td>
+				<td id="supder" class="cuadrante"></td>
+			</tr>
+			<tr>
+				<td id="infizq" class="cuadrante"></td>
+				<td id="infder" class="cuadrante"></td>
+			</tr>
+		</table>
+
+	</div>
+</body>

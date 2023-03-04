@@ -1,0 +1,113 @@
+﻿<!doctype html>
+<html lang="es">
+<head>
+
+<TITLE>css17Forms</TITLE>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<style>
+form.abm {
+	margin:auto;
+	background-color:aquamarine;
+	width:80%;
+	padding:30px;
+	box-sizing:border-box;
+	border-radius:9px;
+	font-size:12px;
+}
+
+
+
+form.abm h2 { /*todos los h2 incluidos en el formulario de clase.abm*/
+	border-style: solid;
+	border-width: 1px;
+	border-color: #EEEEEE;
+	color: navy;
+	background-color: #DDDDDD;
+	font-size: 3em;
+	border-radius: 9px;
+	padding: 5px;
+	box-sizing: border-box;
+}
+
+form.abm ul { /*todos los ul incluidos en el formulario de clase.abm*/
+    list-style-type:none;
+}
+
+
+form.abm li {
+	clear:both; /*Produce que en cada linea se haga una limpieza de floats*/
+}
+
+
+
+form.abm label { 
+    color: #555555;
+    float: left; 
+    font-size: 1em;
+    font-weight: bold;
+    box-sizing:border-box;
+    padding: 3px;
+    width: 120px;
+   /*Al darle un ancho al label y hecerlo flotar a la izquierda hace que el input que esta al lado 
+   quede perfectamente alineado.*/
+}
+	
+	
+form.abm input {
+	float:left;
+	width:220px;
+	padding:5px;
+	box-sizing:border-box;
+}
+
+form.abm textarea {
+	float:left;
+	height:500px;
+	width:220px;
+	padding:5px;
+	box-sizing:border-box;
+}
+
+form.abm input:focus {
+	width:240px;
+}
+
+form.abm textarea:focus {
+	width:240px;
+}
+input#submit {
+	float:right;
+}
+
+</style>
+
+</head>
+<body>
+
+<form class="abm" action="./respuestaFormulario.html" method="get">
+     <h2>Contáctanos.</h2>
+	<ul>
+		<li>
+		<label for="nombre">Nombre:</label>
+           	<input type="text"  id="nombre" name="nombre" placeholder="Johan Ricardo" required />
+       	</li>
+       	<li>
+           	<label for="email">Email:</label>
+           	<input type="email" id="email" name="email"  placeholder="johan@empresa.com" required />
+       	</li>
+       	<li>
+		<label for="website">Sitio Web:</label>
+           	<input type="url" id="website" name="website" placeholder="http://tutosytips.com" required />
+       	</li>
+       	<li>
+           	<label for="mensaje">Mensaje:</label>
+          	 <textarea id="mensaje" name="mensaje" cols="40" rows="6" required ></textarea>
+       	</li>
+        <li>
+        <input id="submit" name="submit" type="submit" value="enviar" />
+    	</li>
+    </ul>
+</form>
+</body>
+</html>

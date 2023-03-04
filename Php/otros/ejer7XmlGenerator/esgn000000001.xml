@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<documento>
+
+<id>
+000000001		<!--Esta etiqueta tiene un nodo de texto que corresponde a un entero de 9 posiciones que irá sumando de a uno-->
+</id>
+<tipoDeRecurso>
+archivo			<!--Esta etiqueta tiene nodo de texto parametrizable-->
+</tipoDeRecurso>
+<categoriaRecurso>	<!--Esta etiqueta tiene nodo de texto parametrizable-->
+pdf
+</categoriaRecurso>
+<titulo>
+Titulo de esta publicación Titulo de esta publicación Titulo de esta publicación 
+</titulo>
+<nombreDocumento>
+esgn000000001.pdf
+</nombreDocumento>
+<path>
+/agendaDeActividadesDeCapacitacion/archivos/biblioteca/pdf/
+</path>
+<url>
+/agendaDeActividadesDeCapacitacion/archivos/biblioteca/pdf/esgn000000001.pdf > <!--Corresponde a concatenacion de path + nombreDeArchivo-->
+</url>
+<subSeccion>
+agendaDeActividadesDeCapacitacion	<!--Esta etiqueta tiene nodo de texto parametrizable-->
+</subSeccion>
+<autor>
+Emilio Ortiz Torres
+</autor>
+<curador>
+</curador>
+<fechaDeCreacion>
+25/01/2015
+</fechaDeCreacion>
+<fuente>
+</fuente>
+<lugarFuente>
+</lugarFuente>
+<abstract>
+</abstract>
+<categoriaContenido>			<!--podria ser parametrizable-->
+</categoriaContenido>			<!--podria ser parametrizable-->
+<categoriaPublicacion>
+</categoriaPublicacion>
+<comentarioDeAdministracion>
+</comentarioDeAdministracion>
+
+</documento>

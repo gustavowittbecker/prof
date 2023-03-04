@@ -1,0 +1,239 @@
+<!Doctype html>
+<html lang="es">
+
+<head>
+<title>Tabla RWD para datos</title>
+<style>
+
+/*Todas las etiquetas*/
+* {margin:0;padding:0; border: 0 none; }
+* {box-sizing: border-box;}
+
+html, body {
+  height:100%;
+  width:100%;
+}
+
+/*En particular*/
+html{
+  background:#0D757D;
+  font-size: 14px;
+  color: #e6eff0;
+  font-family: Roboto Slab;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  background-color: #15BFCC;
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,1);
+}
+
+thead {
+  display: block; /*todos los elementos que contendrá se renderizaran en este grupo de lineas */
+  background-color: #FF7361;
+  text-align: center;
+
+
+}
+
+tbody { /*todos los elementos que contendrá se renderizaran en este grupo de lineas */
+  display: block;
+  height:200px; /*alto fijo y contenido scrolleable*/
+  overflow-Y: scroll;
+  color: #000;
+}
+
+
+tr {
+  display: block; /*todos los elementos que contendrá se renderizaran en esta linea */
+  overflow: hidden;
+  height:50px;
+}
+
+
+tbody tr:nth-child(odd) {
+  background: rgba(0,0,0,.2);
+}
+
+
+th, td {
+  float:left; /*todos flotan respetando sus anchos pero dentro de los limites el contenedor
+                que debera presentarse como display:block;*/
+}
+
+
+
+th {
+  border-right: 1px solid rgba(0,0,0,.2);
+  height:100%;
+  font-weight: normal;
+  font-variant: small-caps;
+  box-sizing:border-box;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+
+td {
+  padding: .5em ;
+}
+
+/*Etiquetas que contienen el atributo tal*/
+[campo-dato='Id'] {
+  width: 5%;
+}
+
+[campo-dato='Nick'] {
+  width: 10%;
+}
+
+[campo-dato='Mail'] {
+  width: 30%;
+}
+
+[campo-dato='Web'] {
+  width: 30%;
+  color:blue;
+}
+
+[campo-dato='Twitter'] {
+  width: 15%;
+}
+
+[campo-dato='Skype'] {
+  width: 10%;
+}
+
+/*Clase especial*/
+.letraBlancaForzada {
+	color:white;
+}
+
+
+
+/*Media Query*/
+@media (max-width:1200px){ /*menores a 1200 pixeles*/
+  [campo-dato='Skype'] {
+    display:none;
+  }
+}
+
+
+@media (max-width:1000px){ /*Para menores a 900 pixeles*/
+  [campo-dato='Twitter'] {
+    display:none;
+  }
+}
+
+@media (max-width:800px){
+  [campo-dato='Web'] {
+     display:none;
+  }
+}
+
+
+@media (max-width:600px){
+  [campo-dato='Mail'] {
+    display:none;
+  }
+}
+
+@media (max-width:400px){
+  [campo-dato='Nick'] {
+    display:none;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<h1>Rwd (Resposnsive Web Design) TABLE: Thead fijo & Tbody scroleable</h1>
+<table>
+ <thead>
+   <tr>
+      <th campo-dato='Id'>Id</th>
+   		<th campo-dato='Nick'>Nick</th>
+   		<th campo-dato='Mail'>Mail</th>
+   		<th campo-dato='Web' class="letraBlancaForzada">Web</th>
+   		<th campo-dato='Twitter'>Twitter</th>
+      <th campo-dato='Skype'>Skype</th>
+    </tr>
+ </thead>
+
+ <tbody>
+   <tr>
+      <td campo-dato='Id'>1</td>
+   		<td campo-dato='Nick'>Fu</td>
+   		<td campo-dato='Mail'>fulano@gmail.com</td>
+   		<td campo-dato='Web'>http://fulano.ar</td>
+   		<td campo-dato='Twitter'>@fulano</td>
+      <td campo-dato='Skype'>fulano@gmail.com</td>
+
+   </tr>
+   <tr>
+        <td campo-dato='Id'>2</td>
+        <td campo-dato='Nick'>Menga</td>
+        <td campo-dato='Mail'>mengano@mail.com</td>
+        <td campo-dato='Web'>http://mengano.com</td>
+        <td campo-dato='Twitter'>@Mengano</td>
+        <td campo-dato='Skype'>mengano@gmail.com</td>
+    </tr>
+    <tr>
+        <td campo-dato='Id'>3</td>
+        <td campo-dato='Nick'>Zulti</td>
+        <td campo-dato='Mail'>zultano@gmail.com</td>
+        <td campo-dato='Web'>http://zutano.org</td>
+        <td campo-dato='Twitter'>@zultano</td>
+        <td campo-dato='Skype'>zultano@gmail.com</td>
+    </tr>
+    <tr>
+        <td campo-dato='Id'>4</td>
+        <td campo-dato='Nick'>lu</td>
+        <td campo-dato='Mail'>luis@mail.ar</td>
+        <td campo-dato='Web'>http://luis.music</td>
+        <td campo-dato='Twitter'>@luis</td>
+        <td campo-dato='Skype'>luis@gmail.com</td>
+    </tr>
+    <tr>
+        <td campo-dato='Id'>5</td>
+        <td campo-dato='Nick'>Pepe</td>
+        <td campo-dato='Mail'>jose@gmail.com</td>
+        <td campo-dato='Web'>http://jose.com.ar</td>
+        <td campo-dato='Twitter'>@jose</td>
+        <td campo-dato='Skype'>jose@gmail.com</td>
+        
+    </tr>
+    <tr>
+        <td campo-dato='Id'>6</td>
+        <td campo-dato='Nick'>Gato</td>
+        <td campo-dato='Mail'>eduardo@mail.com</td>
+        <td campo-dato='Web'>http://gato.com</td>
+        <td campo-dato='Twitter'>@gato</td>
+        <td campo-dato='Skype'>eduardo@gmail.com</td>
+    </tr>
+
+    <tr>
+        <td campo-dato='Id'>7</td>
+        <td campo-dato='Nick'>Dulce</td>
+        <td campo-dato='Mail'>lilia@mail.com</td>
+        <td campo-dato='Web'>http://lili</td>
+        <td campo-dato='Twitter'>@lili</td>
+        <td campo-dato='Skype'>lilia@gmail.com</td>
+    </tr>
+ 
+
+
+ </tbody>
+</table>
+
+</body>
+
+</html>

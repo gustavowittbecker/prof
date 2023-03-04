@@ -1,0 +1,51 @@
+﻿<!DOCTYPE HTML>
+<!-- DOM -->
+
+<!--Escribir un script que defina y utilice tres procedimientos
+Un procedimiento debe mostrar el valor de un input, el otro debe sumar en 1 el valor del cuadro de texto y
+el otro debe elevarlo al cuadrado-->
+<!--tip: En mozilla solo funcionan las referencias cuando se identifican con el id y no con el name-->
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+<title>JS06_operaciones_sobre_input.html</title>
+
+</head>
+
+<body>
+<h3>Introducir un valor en el cuadro de texto y luego pulsar el boton para ejecutar el procedimiento correspondiente</h3>
+<input type="text" id="x">
+<button id="mvalor">Muestra valor</button>
+<button id="suma1">Suma 1</button>
+<button id ="cuadrado">x**2</button>
+<button id ="x2">Multiplica * 2</button>
+<button id ="2**x">2**x</button>
+
+
+<script>
+/*Eventos (los eventos van al final para que ya esten cargados todos los elementos de la página*/
+
+document.getElementById("mvalor").onclick= function() { 
+	alert(document.getElementById("x").value); 
+}
+document.getElementById("suma1").onclick= function() {
+	document.getElementById("x").value=parseInt(document.getElementById("x").value)+1;
+}
+
+document.getElementById("x2").onclick= function() { 
+	document.getElementById("x").value=parseInt(document.getElementById('x').value)*2;
+}
+
+document.getElementById("cuadrado").onclick= function() { 
+	document.getElementById("x").value=parseInt(document.getElementById('x').value)*parseInt(document.getElementById('x').value);
+}
+
+document.getElementById("2**x").onclick= function() { 
+	document.getElementById("x").value=2**parseInt(document.getElementById("x").value);
+}
+</script>
+
+
+</body>
+</html>

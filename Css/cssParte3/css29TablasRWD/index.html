@@ -1,0 +1,348 @@
+<!Doctype html>
+<html lang="es">
+
+<head>
+<title>Tabla RWD para datos</title>
+
+<style>
+
+/*Todas las etiquetas*/
+* {
+  margin:0;
+  padding:0;
+  border:none;  
+  box-sizing: border-box;
+}
+
+
+html, body {
+  height:100%;
+  width:100%;
+  font-size: 1.5vw;
+}
+
+
+/*En particular*/
+html{
+  background:#0D757D;
+  color: #222222;
+  font-family: Roboto Slab;
+}
+
+header {
+  height:10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  height:10%;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 1.1em;
+}
+
+table {
+  display: block;
+  width: 100%;
+  height:80%;
+  border-collapse: collapse;
+  border: 1px solid rgba(0,0,0,1);
+}
+
+thead {
+  display: block; /*todos los elementos que contendrá se renderizaran en este grupo de lineas */
+  background-color: #FF7361;
+  text-align: center;
+  height: 10%;
+ overflow-Y: scroll;/*Los encabezados de columna tienen que conincidir con los datos de las columnas, entonces
+ lo que ocuparía la barra de scrolling del tbody debe ser compensado*/
+}
+
+tbody { /*todo el contenido se renderizara en el ancho del contenedor */
+  display: block;
+  height:90%; /*alto fijo y contenido scrolleable*/
+  overflow-Y: scroll; /*scroll forzado para el cuerpo de la tabla*/
+  color: black;
+}
+
+
+tr {
+  display: block; /*todos los elementos que contendrá se renderizaran en esta linea */
+  overflow: hidden;/*Por las dudas*/
+  height:50px;
+}
+
+
+tbody tr:nth-child(odd) {
+  background: rgba(0,0,0,.2);
+}
+
+
+th, td {
+  float:left; /*todos flotan respetando sus anchos pero dentro de los limites el contenedor
+                que debera presentarse como display:block;*/
+}
+
+
+
+th {
+  border-right: 1px solid rgba(0,0,0,.2);
+  height:100%;
+  font-weight: normal;
+  font-variant: small-caps;
+  box-sizing:border-box;
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+}
+
+
+td {
+  padding: .5em ;
+}
+
+/*Etiquetas que contienen el atributo tal...*/
+[campo-dato='Id'] {
+  width: 5%;
+}
+
+[campo-dato='Nick'] {
+  width: 10%;
+}
+
+[campo-dato='Mail'] {
+  width: 30%;
+}
+
+[campo-dato='Web'] {
+  width: 30%;
+  color:white;
+}
+
+[campo-dato='Twitter'] {
+  width: 15%;
+}
+
+[campo-dato='Skype'] {
+  width: 10%;
+}
+
+/*Clase especial*/
+.letraBlancaForzada {
+	color:white;
+}
+
+
+
+/*Media Query*/
+/*Normalmente los celulares de menos de 800px son pocos pero si es el caso quitare atributos de la tabla*/
+/*Recordar que los moviles tienen tanto o mas resolucion que las pantallas de escritorio porque tambien tienen mayor densidad en ppi o dpi*/
+@media (max-width:800px) { /*menores a 800 pixeles*/
+  [campo-dato='Skype'] {
+    display:none;
+  }
+  * {
+    font-size:16px;
+  }
+}
+
+
+@media (max-width:700px) { /*Para menores a 700 pixeles*/
+  [campo-dato='Twitter'] {
+    display:none;
+  }
+  * {
+    font-size:18px;
+  }
+
+}
+
+/*para los móviles mas pequeños y con menos resolusión:
+Sacamos casi todos los atributos y agrandamos los especios de los que quedan*/
+@media (max-width:600px) {
+  [campo-dato='Web'] {
+     display:none;
+  }
+  * {
+    font-size:20px;
+  }
+  [campo-dato='Nick'] {
+    width: 25%;
+  }
+  [campo-dato='Mail'] {
+    width: 25%;
+  }
+}
+
+
+</style>
+
+</head>
+
+<body>
+  <header title="Thead fijo & Tbody scroleable">
+    <h1>Rwd (Resposnsive Web Design) TABLE: </h1>
+  </header>
+  <table>
+    <thead>
+     <tr>
+        <th campo-dato='Id'>Id</th>
+     		<th campo-dato='Nick'>Nick</th>
+     		<th campo-dato='Mail'>Mail</th>
+     		<th campo-dato='Web' class="letraBlancaForzada">Web</th>
+     		<th campo-dato='Twitter'>Twitter</th>
+        <th campo-dato='Skype'>Skype</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        	<td campo-dato='Id'>1</td>
+       		<td campo-dato='Nick'>Fu</td>
+       		<td campo-dato='Mail'>fulano@gmail.com</td>
+       		<td campo-dato='Web'>http://fulano.ar</td>
+       		<td campo-dato='Twitter'>@fulano</td>
+          <td campo-dato='Skype'>fulano@gmail.com</td>
+      </tr>
+
+      <tr>
+            <td campo-dato='Id'>2</td>
+            <td campo-dato='Nick'>Menga</td>
+            <td campo-dato='Mail'>mengano@mail.com</td>
+            <td campo-dato='Web'>http://mengano.com</td>
+            <td campo-dato='Twitter'>@Mengano</td>
+            <td campo-dato='Skype'>mengano@gmail.com</td>
+      </tr>
+      <tr>
+            <td campo-dato='Id'>3</td>
+            <td campo-dato='Nick'>Zulti</td>
+            <td campo-dato='Mail'>zultano@gmail.com</td>
+            <td campo-dato='Web'>http://zutano.org</td>
+            <td campo-dato='Twitter'>@zultano</td>
+            <td campo-dato='Skype'>zultano@gmail.com</td>
+      </tr>
+      <tr>
+            <td campo-dato='Id'>4</td>
+            <td campo-dato='Nick'>lu</td>
+            <td campo-dato='Mail'>luis@mail.ar</td>
+            <td campo-dato='Web'>http://luis.music</td>
+            <td campo-dato='Twitter'>@luis</td>
+            <td campo-dato='Skype'>luis@gmail.com</td>
+      </tr>
+      <tr>
+            <td campo-dato='Id'>5</td>
+            <td campo-dato='Nick'>Pepe</td>
+            <td campo-dato='Mail'>jose@gmail.com</td>
+            <td campo-dato='Web'>http://jose.com.ar</td>
+            <td campo-dato='Twitter'>@jose</td>
+            <td campo-dato='Skype'>jose@gmail.com</td>
+            
+      </tr>
+      <tr>
+            <td campo-dato='Id'>6</td>
+            <td campo-dato='Nick'>Gato</td>
+            <td campo-dato='Mail'>eduardo@mail.com</td>
+            <td campo-dato='Web'>http://gato.com</td>
+            <td campo-dato='Twitter'>@gato</td>
+            <td campo-dato='Skype'>eduardo@gmail.com</td>
+      </tr>
+
+      <tr>
+            <td campo-dato='Id'>7</td>
+            <td campo-dato='Nick'>Dulce</td>
+            <td campo-dato='Mail'>lilia@mail.com</td>
+            <td campo-dato='Web'>http://lili</td>
+            <td campo-dato='Twitter'>@lili</td>
+            <td campo-dato='Skype'>lilia@gmail.com</td>
+      </tr>
+      <tr>
+          <td campo-dato='Id'>8</td>
+          <td campo-dato='Nick'>Fu</td>
+          <td campo-dato='Mail'>fulano@gmail.com</td>
+          <td campo-dato='Web'>http://fulano.ar</td>
+          <td campo-dato='Twitter'>@fulano</td>
+          <td campo-dato='Skype'>fulano@gmail.com</td>
+      </tr>
+
+      <tr>
+            <td campo-dato='Id'>9</td>
+            <td campo-dato='Nick'>Menga</td>
+            <td campo-dato='Mail'>mengano@mail.com</td>
+            <td campo-dato='Web'>http://mengano.com</td>
+            <td campo-dato='Twitter'>@Mengano</td>
+            <td campo-dato='Skype'>mengano@gmail.com</td>
+      </tr>
+      <tr>
+            <td campo-dato='Id'>10</td>
+            <td campo-dato='Nick'>Zulti</td>
+            <td campo-dato='Mail'>zultano@gmail.com</td>
+            <td campo-dato='Web'>http://zutano.org</td>
+            <td campo-dato='Twitter'>@zultano</td>
+            <td campo-dato='Skype'>zultano@gmail.com</td>
+      </tr>
+      <tr>
+            <td campo-dato='Id'>11</td>
+            <td campo-dato='Nick'>lu</td>
+            <td campo-dato='Mail'>luis@mail.ar</td>
+            <td campo-dato='Web'>http://luis.music</td>
+            <td campo-dato='Twitter'>@luis</td>
+            <td campo-dato='Skype'>luis@gmail.com</td>
+      </tr>
+      <tr>
+            <td campo-dato='Id'>12</td>
+            <td campo-dato='Nick'>Pepe</td>
+            <td campo-dato='Mail'>jose@gmail.com</td>
+            <td campo-dato='Web'>http://jose.com.ar</td>
+            <td campo-dato='Twitter'>@jose</td>
+            <td campo-dato='Skype'>jose@gmail.com</td>
+            
+      </tr>
+      <tr>
+            <td campo-dato='Id'>13</td>
+            <td campo-dato='Nick'>Gato</td>
+            <td campo-dato='Mail'>eduardo@mail.com</td>
+            <td campo-dato='Web'>http://gato.com</td>
+            <td campo-dato='Twitter'>@gato</td>
+            <td campo-dato='Skype'>eduardo@gmail.com</td>
+      </tr>
+
+      <tr>
+            <td campo-dato='Id'>14</td>
+            <td campo-dato='Nick'>Dulce</td>
+            <td campo-dato='Mail'>lilia@mail.com</td>
+            <td campo-dato='Web'>http://lili</td>
+            <td campo-dato='Twitter'>@lili</td>
+            <td campo-dato='Skype'>lilia@gmail.com</td>
+      </tr>
+
+      <tr>
+        <td campo-dato='Id'>14</td>
+        <td campo-dato='Nick'>Leo</td>
+        <td campo-dato='Mail'>leonardoLaprida@mail.com</td>
+        <td campo-dato='Web'>http://tiendaleo.com.ar</td>
+        <td campo-dato='Twitter'>@leo</td>
+        <td campo-dato='Skype'>leonardoLaprida@gmail.com</td>
+    </tr>
+    </tbody>
+  </table>
+  <footer>
+    Pie
+  </footer>
+</body>
+
+
+<script>
+  function ancho() {
+    alert("Ancho del viewport: "+window.innerWidth);
+  }
+ancho();
+</script>
+</html>

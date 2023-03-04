@@ -1,0 +1,150 @@
+html {
+height:95%; /*fija un alto que ocupe el 95% de la pantalla para que quede lugar para alguna barra de herramientas del navegador*/
+}
+
+body {
+font-family:verdana;font-size:12px;
+height:100%; /*repite el parametro height. Es obligatorio para que funcione*/
+}
+
+#contenedor { /*Contiene todos los objetos del documento*/
+width:80%; /*80 % del ancho de la ventana del navegador*/
+height:100%; /*repite el alto. Obligatorio*/
+margin:auto; /*asi queda centrado*/
+background-color:darkblue;
+}
+
+div.contenido {
+width:100%;
+height:60%;
+background-color:lightblue;
+}
+
+header {
+width:100%;
+height:20%;
+background: linear-gradient(45deg,#366ea1,#55aeff);
+}
+
+footer {
+width:100%;
+height:20%;
+}
+
+
+div.tercio {
+width:33.33%;
+height:100%;
+padding:10px;
+box-sizing:border-box; /*Permite que tanto padding como bordes se contabilizen para adentro*/
+float:left;
+background-color:yellow;
+border-style:solid;
+
+}
+
+
+h1 {
+font-size:2em; /*el doble que la letra basica definida para el body*/
+}
+
+h2 {
+font-size:1.5em; 
+}
+
+h3 {
+font-size:1.2em;
+}
+
+nav {
+margin:0;
+background-color:#EEEEEE;
+width:100%;
+height:10%;/*Para que el alto quede fijo como el header*/
+text-align:left;
+list-style-type: none;
+}
+
+ul {
+width:100%;
+height:100%;
+margin: 0;
+padding: 0;
+list-style-type: none;
+}
+
+li.oreja {
+list-style-type:none;
+border-top-style:solid;
+border-style:none;
+border-top-style:solid;
+border-radius:10px;
+padding:10px;
+float:left;
+height:100%;/*Ocupa el 100 % del alto del nav*/
+width:20%;
+background-color:#555555;
+color:#DDDDDD;
+cursor:pointer;
+box-sizing:border-box; 
+}
+
+li.oreja:hover {
+background-color:#BBBBBB;
+color:#222222;
+}
+
+li.oreja:active {
+background-color:#EEEEEE; /*Del mismo color que la sección para que quede integrada al momento de ser clicleada*/
+color:#666666;
+}
+
+li.orejaElegida {
+list-style-type:none;
+border-top-style:solid;
+border-style:none;
+border-top-style:solid;
+border-radius:10px;
+padding:10px;
+background-color:#EEEEEE;/*Del mismo color que la sección para que quede integrada al momento de ser elegida*/
+color:#666666;
+float:left;
+height:100%;
+width:20%;
+cursor:pointer;
+box-sizing:border-box; 
+}
+
+
+footer {
+font-size: 0.8em;
+color:#555555;
+border-style:solid;
+border-width:1 px;
+border-color:#EEEEEE;
+width:100%;
+height:20%;
+clear:both;
+box-sizing:border-box; /*produce que los bordes y los paddings se proyecten hacia adentro*/
+text-align:center; /*Alineará al centro a todo contenido*/
+}
+
+
+
+div.limpiaFloats {
+clear:both;
+}
+
+section {
+box-sizing:border-box;
+padding:12px;
+height:90%;/*ocupara el 90% de su contenedor que es contenido ya que nav ocupa el 10% restante*/
+background-color:#EEEEEE;
+text-align:center;
+overflow:auto;
+}
+
+li.listaComun {
+margin:10px;
+}
+

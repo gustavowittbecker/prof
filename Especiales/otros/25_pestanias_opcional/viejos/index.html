@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>css38Pestanias.html</title>
+<link rel="stylesheet" href="./estilo.css">
+</head>
+
+<body>
+<div id="contenedor">
+
+<header>
+<div class="tercio">Primer tercio</div>
+<div class="tercio">Segundo tercio</div>
+
+<div class="limpiaFloats"></div>
+</header>
+
+<div class="contenido">
+
+<nav>
+<ul>
+<li id="volver" class="oreja">Volver</li>
+<li id="cucom" class="orejaElegida">CUCOM</li>
+<li id="cuemes" class="oreja">CUEMES</li>
+</ul>
+</nav>
+
+
+<section id="contenidoCucom" >
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+Cucom Cucom Cucom Cucom Cucom Cucom Cucom Cucom v Cucom Cucom
+</section> 
+
+
+
+<section id="contenidoCuemes" >
+cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes 
+cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes 
+cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes 
+cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes 
+cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes 
+cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes 
+cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes cuemes 
+</section> 
+
+
+</div> <!--cierra contenido-->
+
+<footer>
+<div class="tercio">Primer tercio</div>
+<div class="tercio">Segundo tercio</div>
+<div class="tercio">Tercer tercio</div>
+</footer>
+
+</div>
+
+<script>
+
+function contenidoInicial() {
+document.getElementById("contenidoCucom").style.display="none"; //no ocupa lugar
+document.getElementById("contenidoCuemes").style.display="none"; //no ocupa lugar
+document.getElementById("cucom").className="oreja";//La clase oreja se aplica a las pestañas no elegidas
+document.getElementById("cuemes").className="oreja";
+}
+
+window.onload = function() { /*De entrada hacemos visible a cucom*/
+contenidoInicial();
+document.getElementById("contenidoCucom").style.display="block";
+document.getElementById("cucom").className="orejaElegida"; //La clase elegida se aplica a la pestaña elegida
+}
+
+
+document.getElementById("volver").onclick = function() {
+history.back();
+}
+
+document.getElementById("cucom").onclick = function() {
+contenidoInicial();
+document.getElementById("contenidoCucom").style.display="block";
+document.getElementById("cucom").className="orejaElegida";
+}
+
+document.getElementById("cuemes").onclick = function() {
+contenidoInicial();
+document.getElementById("contenidoCuemes").style.display="block";
+document.getElementById("cuemes").className="orejaElegida";
+}
+
+</script>
+ 
+</body>
+</html> 

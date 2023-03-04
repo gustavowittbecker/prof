@@ -1,0 +1,119 @@
+﻿<!doctype html>
+
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" /> 
+<title>JS14_ValidacionConKeyUp.html</title>
+
+<!-- Escribir un script que valide que el numero ingresado en un input
+se encuentre entre 1 y 31. En cada subida de tecla debe validar.
+Hacer lo mismo para el numero de mes (Entre 1 y 12)
+-->
+
+<style>
+
+	* {
+		margin:0;
+		padding:0;
+		box-sizing: border-box;
+	}
+	form {
+		margin:auto;
+		padding:10px;
+		display:block;
+		width:60%;
+		background-color: lightblue;
+	}
+	ul {
+		list-style-type: none
+	}
+
+	li {
+		display:block;
+
+	}
+	label {
+		display:block;
+		width:200px;
+		height:30px;
+	}
+
+	input {
+		display:block;
+		width:200px;
+		height:30px;
+		width
+	}
+
+	div#control {
+		margin:auto;
+		display:block;
+		width:100%;
+		height:100px;
+		display: flex; /*Permite flexibilizar el contenido*/
+		justify-content: center; /*Permite centrar al medio en x el contenido*/
+		align-items: center; /*Permite centrar al medio en y el contenido*/
+	}
+
+	button {
+		width:30%;
+		height:30px;
+	}
+
+</style>
+
+
+</HEAD>
+<BODY>
+<h2>Ejer validación de un INPUT de formulario en el evento de onKeyUp</h2>
+<!--En este ejercicio se pretende validar en el onkeyup antes de la accion de submit-->
+
+<form method="get" action="./respuesta.html">
+<label>Ingrese el día del mes: </label>
+<input type="number" id="diaDelMes" name="diaDelMes" min="1" max="31" required value="">
+
+<label>Ingrese el mes: </label>
+<input type="number" id="mes" name="mes" min="1" max="12" required value="">
+
+<div id="control">
+	<button id="enviar">Enviar</button>
+	<button id="resetear">Reset</button>
+</div>
+
+</form>
+
+
+
+
+<script>
+
+/*Objetos*/
+var objDia=document.getElementById("diaDelMes");
+var objMes=document.getElementById("mes");
+
+
+/*Eventos*/
+/*En este ejercicio esperamos la aparición de una ventana de alerta cada vez que se suelta una tecla. 
+Aplicará en cada entrada*/
+objDia.onkeyup = function() {
+	if (!objDia.checkValidity()) {
+		alert ("El valor debe estar entre 1 y 31");
+		objDia.value="";
+	}
+} 
+
+
+
+objMes.onkeyup = function() {
+	if (objMes.checkValidity() != true) { 
+		alert("Debe ser un valor entre 1 y 12");
+		objMes.value="";
+	}
+ } 
+
+
+</script>
+
+</BODY>
+</HTML>

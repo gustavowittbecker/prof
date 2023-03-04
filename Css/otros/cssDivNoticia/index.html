@@ -1,0 +1,186 @@
+<!Doctype html>
+
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" /> 
+	
+<title>css15DivNoticia</title>
+<style>
+
+h1 {
+margin:2%;
+}
+
+
+
+A:link {text-decoration:none;color:steelBlue;} /*Usar el selector :link cuando el enlace esta en estado normal (nunca visitado)*/
+A:visited {text-decoration:none;color:gold;} 
+A:active {text-decoration:none;color:gold;} /*un enlace se vuelve active cuando hago un click sobre el*/ 
+A:hover {text-decoration:underline;color:goldenrod;} 
+
+
+
+section {
+position:relative; /*Importantisimo para que los divs absolutos dentro de este contenedor se ubiquen realmente dentro.*/
+margin:auto;
+color:white;
+background-color:#AAAAAA;
+width:80%;
+/*height:400px;*/
+border-style:solid;
+border-color:gray;
+}
+
+article { /*Esta clase es para contener toda la noticia*/
+	position:relative;
+	margin:auto;
+	margin-top:2%;
+	margin-bottom:2%;
+	width:90%;
+	background-color:white;
+	border-radius:10px;
+	-moz-border-radius: 10px;
+	color:steelBlue;
+	padding:3%;
+	box-sizing:border-box; 
+}
+
+div.medio {
+width:50%;
+float:left;
+height:100%;
+box-sizing:border-box;
+padding:2%;
+}
+
+
+div.corte{
+clear:both;
+}
+
+div.fecha {
+color:lightseegreen;
+background-color:lightyellow;
+border-radius:10px;
+}
+
+div.imagen {
+padding:10px;
+box-sizing:border-box;
+}
+
+
+div.volantaNoticia {
+font-size:14px;
+background-color: lightblue;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+
+div.cuerpoNoticia {
+font-size:14px;
+background-color: green;
+color:white;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+div.tituloNoticia {
+font-size:18px;
+font-weight:bold;
+margin-bottom:10px;
+background-color: gray;
+color:white;
+}
+</style>
+
+<body>
+
+<section>
+
+<h1>NOTICIAS</h1>
+<article>
+<div class="medio">
+
+<div class="fecha">
+28-Agosto-2015
+</div>
+<div class="imagen">
+<img src="./reunion1.jpg" width="100%"></img>
+</div>
+</div>
+<div class="medio">
+<div class="volantaNoticia">
+Esta es la volanta blabla bla!!!
+</div>
+
+
+<div class="tituloNoticia">
+Titulo de Noticia 1
+</div>
+<div class="cuerpoNoticia">
+dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad 
+dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+<a href="http://www.yahoo.com"> yahoo </a>
+</div>
+
+</div>
+<div class="corte"></div>
+</article>
+
+
+
+
+
+<article>
+<div class="medio">
+
+<div class="fecha">
+28-Agosto-2015
+</div>
+<div class="imagen">
+<img src="./reunion2.jpg" width="100%"></img>
+</div>
+</div>
+<div class="medio">
+<div class="volantaNoticia">
+Esta es la volanta blabla bla de la noticia2!!!
+</div>
+
+
+<div class="tituloNoticia">
+Titulo de Noticia 2
+</div>
+<div class="cuerpoNoticia">
+
+Esto es noticia2 cuerpo
+dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad 
+dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+adsf asdf asdf asdf asdf asdf asdf asd fasd fasdfasd fasdf asdf adfad dfadf adfadf asdf asdf asdf asd fasdf adf asdf asdf asdfasdfasdf asdf 
+<a href="http://www.google.com"> google </a>
+</div>
+
+</div>
+<div class="corte"></div>
+</article>
+
+
+
+
+
+
+
+
+</section> <!--cierra contenedor -->
+
+</body>

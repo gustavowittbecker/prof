@@ -1,0 +1,29 @@
+<?xml version="1.0" standalone="yes" ?>
+<alumnos>
+<alu>
+	<id>000001</id>
+	<apellido>Wittbecker</apellido>
+	<nombre>Gustavo</nombre>
+	<edad>59</edad>
+</alu>
+<alu>
+	<id>000002</id>
+	<apellido>Medina</apellido>
+	<nombre>Mauricio</nombre>
+	<edad>23</edad>
+</alu>
+<alu>
+	<id>000003</id>
+	<apellido>Bravo</apellido>
+	<nombre>Mario</nombre>
+	<edad>35</edad>
+</alu>
+<alu>
+	<id>000004</id>
+	<apellido>martin</apellido>
+	<nombre>gonzalo</nombre>
+	<edad>2000</edad>
+</alu>
+
+
+</alumnos>

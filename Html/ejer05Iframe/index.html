@@ -1,0 +1,43 @@
+﻿<!DOCTYPE HTML>
+<!--ejer05Iframe -->
+<html lang="es" style="height:100%">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>ejer05iframe</title>
+</head>
+<body style="height:100%">
+
+<h1>INDICE</h1>
+
+<ol>
+<li><a href="../ejer01HtmlBasico" target="fcontenido">Html básico</a></li>
+<li><a href="../ejer02Tablas" target="fcontenido">Tabla</a></li>
+<li><a href="../ejer03Formularios" target="fcontenido">Formulario</a></li>
+<li><a href="./http.pdf" target="fcontenido">Archivo pdf</a></li>
+<li><a href="./Wildlife.mp4" target="fcontenido">Archivo de video local</a></li>
+<li><a href="https://www.youtube.com/embed/xv9fSIG5i8A" target="fcontenido">Video de youtube</a></li>
+
+</ol>
+
+<br /><br />
+
+<h1>Iframe para presentar los ejercicios anteriores un pdf y un video streaming de youtube</h1>
+<iframe src="../ejer01HtmlBasico" name="fcontenido"  style="height:50%;width:80%;border:solid" >
+</iframe> 
+
+
+<br /><br /><br /><br />
+
+
+<!--
+En youtube es posible armar todo un iframe adecuado para insertar al video, para luego copiar y pegar en nuestra pagina.
+Cuando el navegador llega a leer este punto de la pagina se genera un nuevo requerimiento http contra youtube para bajar el streaming de video.
+-->
+
+<h1>Iframe recomendado por youtube para insertar un video y visualizarlo en toda su dimensión</h1>
+
+<iframe width="932px" height="524px" src="https://www.youtube.com/embed/xv9fSIG5i8A" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+</body>
+
+</html>

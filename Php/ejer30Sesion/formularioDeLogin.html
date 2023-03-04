@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- HTML Hipertext markup language -->
+<!--Markup validation service: "https://validator.w3.org" by W3C-->
+<html lang="es">
+
+<head>
+
+<title>
+<h2>Ingreso</h2>
+</title>
+
+<style>
+	/*Todas las etiquetas*/
+* {margin:0;padding:0; border: 0 none; }
+* {box-sizing: border-box;overflow:hidden;}
+
+h1 {
+	text-align: center
+}
+
+/*En particular*/
+html {
+  background: #0D757D;
+
+  height:100%;
+}
+
+body {
+	height:100%;
+	font-size: 24px;
+	color: #e6eff0;
+	font-family: Roboto Slab;
+}
+
+
+div#contenedor {
+	margin:auto;
+	width:90%;
+	height:100%;
+	padding:1%;
+}
+
+
+#formIngreso {
+	margin:auto;
+	background-color: lightblue;
+	color:darkblue;
+	width:50%;
+	/*height:50%;*/
+	padding:1%;
+
+}
+
+
+#formIngreso input {
+	font-size:20px;
+	width:50%;
+	height:10%;
+	margin:1%;
+}
+
+#botonEnvio {
+	width:20%;
+	margin:auto;
+	cursor:pointer;
+}
+
+#botonEnvio:hover {
+	background-color:darkgray;
+}
+
+
+
+header {
+	height:10%;
+}
+
+footer {
+	height:10%;
+}
+
+</style>
+
+<script src="../jquery.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#idLogin").focus();
+});
+
+</script>
+
+
+<!--<link href="./miestilo.css" rel="stylesheet" type="text/css">-->
+</head>
+
+<body>
+<div id="contenedor">
+
+<header>
+</header>
+
+
+<form id='formIngreso' action='./ingresoalsistema.php' method='post'>
+
+<h1>Ingreso</h1>
+<p style="font-size:8;font-style: italic;">gwittbecker1 pp</p>
+
+
+<label >login:  </label><br /><input type='text' id='idLogin' name='login'><br />
+<label>clave: </label><br /><input type='password' name='clave'>
+
+<br /><br /><br /><br />
+<input id="botonEnvio" 	style="width:20%;margin:auto" type='submit' value='Ingresar' /> 
+</form>
+
+<footer>
+</footer>
+</div>
+
+</body>
+</html>
+

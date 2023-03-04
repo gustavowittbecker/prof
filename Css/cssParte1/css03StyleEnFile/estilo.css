@@ -1,0 +1,22 @@
+body {
+	font-size: 30px; /*la unidad debe ir pegada al numero*/
+}
+
+h1 {
+	text-align:left;
+	font-size: 1.5em; /*Una vez y medio lo definido para el contenedor padre*/
+	color:darkblue;
+	text-align:center;
+	background-color: aquamarine;
+}
+
+p {
+	text-align:left;
+	font-size: 1em;
+	color:blue;
+	font-style: italic;
+	border-top-style:solid;
+	border-bottom-style:solid;
+	border-width:thin;
+	border-color:blue;
+}

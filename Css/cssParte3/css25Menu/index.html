@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" /> 
+
+<title>Menu</title>
+
+<meta name="description" content="?" />
+<meta name="keywords" content="?,?,?,?" />
+<meta name="author" content="" />
+
+<head>
+<style>
+
+/* menu */
+* {
+	margin:0;
+	padding:0;
+}
+
+#menu ul { /*Cualquier ul que esté dentro de el elemento único "menu":*/
+ list-style:none;
+}
+
+/* items del menu */
+#menu ul li { /*Cualquier li ul que este dentro de un ul que esté dentro del elemento menu...*/
+ background-color:#2e518b;
+ width: 180px;
+ position:relative; /*Como las li pueden contener listas de submenu 
+						por dentro con posicionamiento absoluto es que tengo que usar relative
+						en este contenedor li*/
+float:left; /*Los items del menu principal se acomodan en fila*/
+}
+
+/* enlaces del menu */
+#menu ul a { /*Todo elemento <a> dentro una lista dentro del menu*/
+	display:block; /*Será siempre visible y ocupará todo el ancho del contenedor padre (li)*/
+	color:#fff;
+	text-decoration:none;
+	/* font-weight:400;*/
+	font-size:24px;
+	padding:10px;
+	font-family:"HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-transform:uppercase;
+	letter-spacing:1px;
+}
+
+/* items del menu */
+
+
+/* efecto al pasar el ratón por los items del menu */
+
+#menu ul li:hover {
+ 	background:#5b78a7;
+}
+
+
+
+/* menu desplegable */
+
+#menu ul ul { /*Toda lista dentro de una lista será un submenu*/
+	display:none; /*por default no se muestra ni ocupan lugar*/
+	position:absolute; /*Se posicionan de manera absoluta respecto al li que las contiene*/
+	top:100%; /*Totalmente por debajo del item de menu horizontal*/
+	left:3%; /*Siempre empieza donde empieza el item de menu horizontal*/
+	background:#eee;
+}
+
+/* items del menu desplegable */
+
+#menu ul ul li {
+	float:none; /*Los items de menu desplegable van uno debajo del otro*/
+	width:150px; /*Son mas anchos que los items de menu horizontales*/
+}
+
+/* enlaces de los items del menu desplegable */
+#menu ul ul a {
+	 padding:10px ; /*Para que queden un poco indentados respecto a los items de menu horizontal*/
+}
+
+
+/* items del menu desplegable al pasar el ratón */
+#menu ul li:hover  ul { /*La lista desplegable aparece cuando el li que la contiene tiene el mouse arriba*/
+ 	display:block;
+}
+
+
+</style>
+</head>
+
+<body>
+<!-- start nav -->
+<nav id="menu">
+<!-- start menu -->
+<ul>
+	<li><a href="../../../Html/">HTML</a>
+	 	<!--Empieza desplegable-->
+		<ul>
+	 		<li><a href="../../../Html/ejer02Tablas">TABLAS</a></li>
+	 		<li><a href="../../../Html/ejer03Formularios">FORMS</a></li>
+	 		<li><a href="../../../Html/ejer05Iframe">IFRAMES</a></li>
+	 	</ul>
+	 	<!--Termina desplegable-->
+	</li>
+
+	<li><a href="../../../Css">CSS</a>
+	<ul>
+ 	<li><a href="../../../Css/cssParte1/css01StyleEnHeader">STYLE EN EL HEADER</a></li>
+ 	<li><a href="../../../Css/cssParte1/css02SelectoresDeClase">SELECTORES DE CLASE</a></li>
+ 	<li><a href="../../../Css/cssParte1/css03StyleEnFile">STYLE EN FILE</a></li>
+	</ul>
+	</li> 
+
+	<li><a href="../../../Jscript/">JSCRIPT</a>
+	</li>
+	<li><a href="../../../Epeciales/">ESPECIALES</a>
+	</li>
+	<li><a href="../../../Php/">PHP</a>
+	</li>
+</ul>
+<!-- fin menu -->
+</nav>
+<!-- fin nav -->
+
+</body>

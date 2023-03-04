@@ -1,0 +1,76 @@
+<!Doctype html>
+
+<html>
+<head>
+
+<TITLE>css04FontSize</TITLE>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+<style>
+* {
+	font-size: 12; /*tamaño estandar de letra que se puede visualizar con claridad en dispositivos grandes*/
+}
+
+
+@media (max-width:800px) { /*Dispositivos pequeños letra grande*/
+	p {
+		font-size:3em;
+		background-color:lightblue;
+	}
+	h1 {
+		font-size: 6em;
+		background-color: lightblue;
+		text-align: center;
+	}
+}
+@media (min-width:800px) and (max-width:1280px) { /*Dispositivos medianos letra mediana*/
+	p {
+		font-size:2em;
+		background-color: lightyellow;
+	}
+	h1 {
+		font-size: 4em; 
+		background-color: lightyellow;
+		text-align: center;
+	}
+}
+@media (min-width:1280px) {  /*Dispositivos grandes letra pequeña*/
+	p {
+		font-size:1em;
+		background-color: lightgrey;
+	}
+	h1 {
+		font-size: 2em; 
+		background-color:lightgray;
+		text-align: center;
+	}
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Tamaño de los fonts</h1>
+<p>Los textos marcados con "H1" tendrán dimensión doble a los párrafos comunes. 
+	Corresponderían a títulos.
+</p>
+<p>En el ejercicio se definirá un tamaño de letra default para el body y luego todo será expresado en unidades em (unidad de referencia)</p>
+<p>En este ejercicio se trabajará con control de medio @media() para que el tamaño de letra sea modificado según el tamaño del viewport</p>
+<p>Dispositivos moviles de alta resolución tienen una definición mayor a: 300ppi (Pixels/pulgada);</p>
+<p>Dispositivos moviles de baja resolución tienen una definición menor en el orden de los 100ppi (pixeles/pulgada)</p>
+<p>Dispositivos de pantalla grande tienen una definición en el orden de los 60 (pixeles/pulgada)</p>
+<p>En un movil de alta resolución estaría viendo las letras de 3 a 5 veces  mas chicas que en una pantalla grande si 
+	su tamaño es fijo en pixeles
+</p>
+<p>Por este motivo es que si no uso el control de medio, será más conveniente definir el tamaño de letra considerando 
+	el peor de los casos (los dispositivos de alta resolucion)</p>
+<p>En este ejercicio hago crecer la letra conforme el dispositivo es mas pequeño, siempre suponiendo que estos tienen mayor resolución</p>
+<p>12px (1em) para dispositivos mayores a 1080 px. No olvidar definir el tamaño default en 12px</p>
+<p>24px (2em) para dispositivos mayores a entre 800px y 1080px</p>
+<p>36px (3em) para dispositivos menores a 800 px</p>
+
+
+
+</body>
+</html>

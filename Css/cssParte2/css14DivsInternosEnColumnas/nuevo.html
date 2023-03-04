@@ -1,0 +1,110 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+	
+	<title>css14DivsEncolumnados</title>
+<style>
+/********************************/
+/* CSS auxiliar para el ejemplo */
+/********************************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+  vertical-align: middle;
+}
+/********************************/
+/* Elemento auxiliar para cuando necesitamos mostrar los elementos utilizando floats. Si lo quitamos, veremos como el fondo de la sección de noticias no ocupa todo el alto de sus elementos. */
+.clearboth {
+  clear: both;
+}
+.articles {
+  display: table;
+  padding: 20px;
+  width: 100%;
+  max-width: 800px;
+  background-color: black;
+}
+article {
+  display: table-cell;
+  vertical-align: middle;
+  width: 25%;
+  border: 1px solid white;
+  color: white;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+article .image {
+  width: 100%;
+  height: 150px;
+  background-image: url("http://via.placeholder.com/400x300");
+  background-size: cover;
+  background-position: center center;
+}
+/* Para colocar los títulos alineados verticalmente al centro, necesitamos añadir un <span> dentro del <p> y utilizar el mismo código de display: table; y display: table-cell; además de añadir un alto a los <p>. */
+article p{
+  display: table;
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+}
+article p span {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+@media screen and (max-width: 800px) {
+  .articles{
+    display: block;
+  }
+  article {
+    display: block;
+    float: left;
+    width: 50%;
+  }
+}
+@media screen and (max-width: 400px) {
+  article {
+    float: none;
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="articles">
+    <article>
+      <div class="image"></div>
+      <p><span>Titular noticia 1 ñkjdf kdfjñka dfñkla sdfklña dfklñ adfksd kfkjsf
+          adsfasdf asdfasdfa sdfasdf asdf
+          adsfadsf adsfadsfadf aedsf ads ads adf asdf asdf daf
+          asdf asdf adsf adsf asdf adsf adsf adsf 
+          asdf asdf asdf adsf dasf asdf adsf 
+      </span></p>
+    </article>
+    <article>
+      <div class="image"></div>
+      <p><span>Titular noticia 2</span></p>
+    </article>
+    <article>
+      <div class="image"></div>
+      <p><span>Titular noticia 3 un poco más largo</span></p>
+    </article>
+    <article>
+      <div class="image"></div>
+      <p><span>Titular noticia 4</span></p>
+    </article>
+    <div class="clearboth"></div>
+  </div><!-- .articles -->
+
+
+</body>

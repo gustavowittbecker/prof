@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<!--css43IndiceNavegacionConArreglosYEstilos-->
+<html lang="es">
+
+<head>
+<title>css43IndiceNavegacionConArreglosYEstilos</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<style>
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+	margin:0;
+	background-color:lightyellow;
+}
+
+a {
+	display: block;
+	height:100%;
+	background-color:lightblue;
+	color:blue;
+	text-decoration:none;
+	padding:10px;
+	box-sizing: border-box;
+}
+
+a:link {
+	color:steelBlue;
+	} /*Usar el selector :link cuando el enlace esta en estado normal (nunca visitado)*/
+a:visited {
+	color:steelBlue;
+	} /*Para blanquear los url's visitados hay que borrar del navegador los datos de navegación*/
+a:active {
+	color:steelBlue;
+	} /*un enlace se vuelve active mientras lo estoy clickeando*/ 
+a:hover {
+	background-color: blue;
+	color:white;
+	} /*valido para etiquetas A con "on mouse over"*/
+
+
+div#contenedor {
+width:80%;
+height:80%;
+margin:auto;
+background-color:lightblue;
+}
+
+ul {
+height:100%;
+list-style-type:none;
+margin:0;
+padding:0;
+}
+
+li {
+cursor:pointer;
+text-align:left;
+background-color:lightblue;
+color:black;
+font-size:14px;
+height:100%;
+float:left;
+}
+
+li:hover{
+text-align:left;background-color:blue;color:white;font-size:14px;
+}
+
+div#contenido {
+width:80%;
+height:70%;
+margin:auto;
+background-color:gray;
+box-sizing:border-box;
+}
+
+header {
+width:100%;
+height:10%;
+background-color:#555555;
+box-sizing:border-box;
+padding:1%;
+
+}
+
+footer {
+width:100%;
+height:10%;
+background-color:#555555;
+box-sizing:border-box;
+padding:1%;
+}
+
+
+nav {
+width:100%;
+height:10%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+	Encabezado
+</header>
+
+<nav>
+
+	<ul id="listaDeNavegacion">
+	</ul>
+</nav>
+
+
+<div id="contenido">
+</div>
+
+
+<footer>
+	Pie
+</footer>
+
+
+</body>
+
+
+<script>
+
+
+
+var objListaDeNavegacion = document.getElementById('listaDeNavegacion');
+
+var objSitios=[
+{url:"https://www.yahoo.com",titulo:"Yahoo"},
+{url:"https://www.google.com",titulo:"Google"},
+{url:"https://www.hotmail.com",titulo:"Hotmail"},
+{url:"https://www.ub.edu.ar",titulo:"Ub"},
+{url:"https://www.frh.utn.edu.ar",titulo:"FRH"}
+];
+
+//alert(100/objSitios.length);
+
+
+objSitios.forEach(function(value,index){ 
+
+	var objLi = document.createElement("li");
+	objLi.style.width=100/objSitios.length+"%";
+	objListaDeNavegacion.appendChild(objLi);
+	var objA = document.createElement("a");
+	objA.href = value.url;	
+	objA.innerHTML=value.titulo;
+	objLi.appendChild(objA);
+});
+
+
+
+</script>
+
+
+</html>
+

@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<!---->
+<!--Escribir una pagina donde se defina en el header los estilos válidos para una tabla completa
+ y luego aplique dicho estilo en el body.
+Un estilo especial para un determinado tipo de celda debera también ser definido
+-->
+
+<HTML>
+<HEAD>
+<TITLE>css05tablas.html</TITLE>
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" /> 
+
+<style>
+div#contenedor {
+width:90%;
+padding:1%;
+box-sizing: border-box;
+margin:auto;
+background-color:lightblue;
+overflow-x:auto;
+}
+
+
+h1 {
+text-align:center;
+}
+
+
+table th td {
+border-style:solid;
+background-color: #cccccc;
+border-width:1px; 
+border-color:black;
+border-collapse:collapse; /*Evita las lineas dobles entre celdas contiguas*/
+/* Para que funcionen los overflow en las celdas. 
+Este parametro de estilo va con la etiqueta <colgroup></colgroup>. Donde se definen los anchos de las columnas*/
+}
+
+
+table {
+width:90%; /*La tabla ocupara el 90% contenedor*/
+background-color: #aaaaaa;
+margin:auto; /*Tabla al medio respecto al contenedor*/
+table-layout:fixed;
+}
+
+
+th {
+background:linear-gradient(orange,white, pink);
+}
+
+
+td {
+padding:1%;
+box-sizing:border-box;
+overflow-x:auto;
+text-align:left;
+}
+
+
+
+td.especial1 {
+vertical-align:top;
+background:yellow;
+text-align:center;
+}
+
+
+
+col#columna1 {
+width:20%;
+}
+
+col#columna2{
+width:60%	
+}
+
+col#columna3{
+width:20%	
+}
+
+
+</STYLE>
+
+</HEAD>
+
+<BODY>  
+<div id="contenedor"> 
+<h1> Formato a elementos de una tabla</h1>
+
+<h2>
+	Solo conviene usar una tabla como elemento de maquetación cuando se trata de una matriz precisa.
+	Obviamente una tabla de datos es el caso mas comun.<br />
+	Un calendario, una distribución de recursos el tiempo.<br />
+	Una distribución de recursos en el espacio.
+</h2>
+<table>
+
+<thead>
+<colgroup>
+<col id="columna1" >
+<col id="columna2" >
+<col id="columna3" >
+</colgroup>  
+<th >C1</th><th>C2</th><th>C3</th>
+</thead>		
+
+<tbody>	
+<tr>
+	
+<td class="especial1">
+Columna 1, fila1, con estilo especial1 aplicado. <br />
+Este estilo especial define un vertical-align:top, un background:yellow y un text-align:left <br />
+además de los parametros definidos por default para los elementos td como en este caso los paddings, los bordes y el overflow en x en auto.
+</td>
+	
+<td >Esta columna 2 fila 1, tiene mucho texto para poder fijar
+el alto de la fila y finalmente comparar el formato
+en las columnas 1 y 3. Seguimos..
+<br />df asdf asd fasd
+fas dfasdf asdf asd fasd fasd fasd fasd fasd fasd fasd fasd fasd fa
+asd fasd fasd fasd fasd fasd fasd fasdf asd fasd fasdf asd fasd
+asd fasd fasdf asd fasd fasd fasd fasdf asdf asd f
+dfasdfasdfasdfasd asd fasd fasd fasdf asd fasd fasd fasd fasd fasd f
+asdf asd fasd fasdf asdf asd fasd fasd fasd fasd fasd fasd fasdf
+asd fasd fasd fasd fasd fasd fasd fasd fasd fasd fasd fasdf asdf
+asdf asd fasdf asdf asdf asd fasd fasdfasd fasdf asdf asdf asd fasdf as
+asd fasd fasd fasd fasd fasd fasd fasdf asd fasd fasd fasd fasd asdfa aasdf
+dfasdfasdfasdfasd asd fasd fasd fasdf asd fasd fasd fasd fasd fasd f
+asdf asd fasd fasdf asdf asd fasd fasd fasd fasd fasd fasd fasdf
+asd fasd fasd fasd fasd fasd fasd fasd fasd fasd fasd fasdf asdf
+asdf asd fasdf asdf asdf asd fasd fasdfasd fasdf asdf asdf asd fasdf as
+asd fasd fasd fasd fasd fasd fasd fasdf asd fasd fasd fasd fasd asdfa aasdf
+</td>
+	
+<td >
+texto columna3 fila1, adsfadfdfdfadsfsdfadfsdfdasfasdf. Una palabra larga fuerza la aparición de una barra de scroll horizontal.
+</td>
+	
+</tr>
+
+<tr>
+<td >
+Columna 1 , fila2
+</td>
+	
+<td class="especial1">
+Columna 2, fila2.Nuevamente con estilo especial1 aplicado
+</td>
+	
+<td >
+texto columna 3 fila2. 
+</td>
+	
+</tr>
+	
+<tr>
+	
+<td >
+Columna 1. fila 3
+</td>
+	
+<td class="especial1">Columna2 fila 3. Nuevamente estilo especial1 aplicado. Esta segunda columna tiene mucho texto para poder fijar
+el alto de la fila y finalmente comparar el formato
+en las columnas 1 y 3. Seguimos..
+</td>
+	
+<td >
+texto columna3 fila3
+</td>
+	
+</tr>
+</tbody>
+</table>
+
+</div>
+</body>
+</html>

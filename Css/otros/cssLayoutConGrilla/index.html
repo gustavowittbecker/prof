@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<!-- En este ejercicio pretendemos que nuestra pagina ocupe el total de la ventana tanto en x como en y.
+Los contenidos se agruparan en celdas de 1/5 del total en alto y de 1/5 del total de ancho.
+El header ocupara las 5 celdas en el tope horizontal
+El footer ocupara las 5 celdas en el bottom horizontal
+Las celdas podran unirse en grupos de 2 y de 3 columnas y quedaran definidas en clases de estilo especiales
+Como el alto de cada celta es fijo entonces si el contenido supera esa altura el div pasara automaticamente a scroll en y (overflow-y:auto) 
+-->
+<html>
+<head>
+
+
+<TITLE>css24GrillaPaginaPrincipal</TITLE>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<style>
+
+html, body {
+/*Para que ocupe el alto completo de la pantalla se debe inicializar el height del 100%*/
+text-align:center;
+font-family:verdana;
+font-size:12px;
+height:100%;
+margin:0;
+}
+
+
+#contenedor {
+/*El margin en auto permite centrar el objeto respecto al body*/
+width:80%;
+height:100%;
+margin:auto;
+border-style:solid;
+box-sizing:border-box; 
+}
+
+
+header {
+/*el height en 20% implica directamente el 20% de la altura del padre (contenedor general)*/
+background-color:#FFA500;
+height:20%;
+text-align:left;
+margin:0;
+padding:5%;
+box-sizing:border-box;
+}
+
+footer {
+/*El clear es para eliminar todo resto de float*/
+background-color:#FFA500;
+clear:both;
+height:20%;
+text-align:left;
+padding:5%;
+box-sizing:border-box;
+}
+
+
+h1 {
+/*margin inherit permite heredar el valor del padre para ese atributo.*/
+/*La medida del font 2em significa el doble del tamaño de letra definido al principio*/
+font-size:2em;background-color:lightblue;margin:inherit;
+}
+
+.unQuintoColumna {
+/*El overflow en auto permite generar barra de scrolling solo si el texto supera la altura del elemento.*/
+text-align:left;
+width:20%;
+height:20%;
+background-color:silver;
+float:left;
+overflow-x:hidden;
+overflow-y:auto;
+padding:2%;
+box-sizing:border-box; //por las dudas que quiera ponera padding dentro.
+
+}
+
+
+.dosQuintosColumna {
+text-align:left;
+width:40%;
+height:20%;
+background-color:gold;
+float:left;
+overflow-x:hidden;
+overflow-y:auto;
+padding:2%;
+box-sizing:border-box;
+}
+
+
+.tresQuintosColumna {
+text-align:left;
+width:60%;
+height:20%;
+background-color:beige;
+float:left;
+overflow-x:hidden;
+overflow-y:auto;
+padding:2%;
+box-sizing:border-box;
+}
+
+
+.rompeFloat {
+clear:both;margin:0;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div id="contenedor">
+<!--Dentro de este contenedor los divs que no tienen ancho ocupan todo el ancho-->
+
+<header>
+<!-- Dentro de este contenedor los objetos internos si no tienen ancho ocupan todo el ancho-->
+<!-- Los padding definidos no lo estiran -->
+<h1>Titulo principal de la página1 </h1>
+</header>
+
+
+<div class="unQuintoColumna">
+11 <br /> 
+Un quinto Un quinto dfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+</div>
+
+<div class="unQuintoColumna">
+12
+Un quinto
+</div>
+
+
+<div class="unQuintoColumna"> 
+13
+Un quinto
+</div>
+
+<div class="unQuintoColumna"> 
+14
+Un quinto
+</div>
+
+<div class="unQuintoColumna"> 
+15
+Un quinto
+</div>
+
+<div class="rompeFloat">
+</div>
+
+<div class="unQuintoColumna">
+21
+Un quinto 
+</div>
+
+<div class="unQuintoColumna">
+22
+Un quinto 
+</div>
+
+
+<div class="dosQuintosColumna">
+23 <br />
+dos quintos adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+</div>
+
+<div class="unQuintoColumna">
+24
+Un quinto 
+</div>
+
+<div class="rompeFloat">
+</div>
+
+<div class="unQuintoColumna">
+31
+Un quinto
+</div>
+
+<div class="unQuintoColumna">
+32
+Un quinto
+</div>
+
+
+<div class="tresQuintosColumna">
+33 <br />
+Tres quintos Tres quintos 
+adf adf asdf asdf adsf asdf asdf adsf asdf da fasdf asdf asdf asdf asdf asd fasd fasd fasd fasdf asdf asdf asdf asd f
+adf asdf asdf asdf asdf das asdf asdf asdf asd asdf asdf asdf asdf asd das asdf asdf asdf asdf dasf adsf asd adsf ads
+ dasf asdf das dasf asdf asdf  adfasdf asdf asdf asdf asdf sdaf sdaf asdf dsaf sdaf dasf asdf asdf sdaf asdf asdf asd
+f asd
+f dasf asdf asdf asdf asdff adsf asdf adsf 
+</div>
+
+
+
+
+<footer>
+<h1>Pie de página</h1>
+</footer>
+
+</div> <!--Cierra contenedor-->
+ 
+</body>
+</html> 

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<Head>
+<TITLE>Formulario en Ventana Modal</TITLE>
+
+<meta http-equiv="Content-Type" content="text/html" />
+<meta charset="utf-8" /> 
+
+<style>
+
+/*General*/
+
+	* {
+		margin:0;
+		box-sizing: border-box;
+	}
+
+	html, body {
+		height:100%;
+		width:100%;
+		font-size: 1vw;
+	}
+
+
+
+div.contenedorForm {
+	margin:auto;
+	height:100%;
+	width:100%;
+	font-size:1.5vw;
+}
+
+
+div.contenedorForm header {
+	background-color:lightgray;
+	width:100%;
+	height:10%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; /*Permite centrar al medio en y el contenido*/
+}
+
+div.contenedorForm footer {
+	background-color:lightgray;
+	width:100%;
+	height:10%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; /*Permite centrar al medio en y el contenido*/
+}
+
+
+
+div.contenedorForm form {
+	padding:1%;
+	width:100%;
+	height: 80%;
+	background-color:beige;
+}
+
+
+div.contenedorForm ul {
+	list-style: none;
+	width:100%;
+	height:100%;
+	overflow:auto;
+	clear:both;
+}
+
+div.contenedorForm li {
+	width:50%;/*El ancho de cada input es para formar 2 columnas*/
+	height:30%;
+	float:left;
+}
+
+@media(max-width:600px) {
+	div.contenedorForm li {
+		width:100%; /*El ancho de cada input es para formar 1 columna*/
+	
+	}
+}
+
+div.contenedorForm label {
+
+	display:block;
+	width:80%;
+	height:50%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	/*justify-content: center; Permite centrar al medio en x el contenido*/
+	align-items: center; 
+	font-size: 2vw;
+}
+
+div.contenedorForm input {
+	display:block;
+	width:80%;
+	height:40%;
+	font-size:2vw;
+
+}
+
+div.contenedorForm select {
+	display:block;
+	width:80%;
+	height:40%;
+		font-size:2vw;
+}
+
+
+option.elementoOptionSelect {
+	background-color:beige;
+}
+
+
+
+div.botonesControlFormulario {
+	//display:block;
+	width:100%;
+	height:100%;
+	display: inline-flex; /*Permite hacia afuera mantener dentro de la linea y por dentro flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; 
+}
+
+
+
+</style>
+
+
+<!--<script src="../jquery.js"></script>-->
+<!--Otra forma de enlazar jquery-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<script src="../familias.json" type="text/javascript"></script>
+
+<script>
+
+/*Eventos*/	
+
+
+
+	$(document).ready(function() { 	//version jQuery
+		objJson=JSON.parse(textoFamilias); //no declarar con var para que tenga alcance global
+		creaOpciones();  //crea opciones de formulario
+	});
+
+
+
+	$(document).ready(function() {
+		$("#btEnviar").click(function() {
+			if(confirm("Esta seguro de enviar?")) {
+				document.getElementById("miForm").submit();
+			}
+		});
+	});
+
+
+
+/*Funciones*/
+
+function creaOpciones() { //como argumento le paso el nombre del atributo de ListaDeObjetos que me interesa
+//alert(textoFamilias);
+objJson.familias.forEach(function(argValor,argIndice) {
+		var objOpcion= document.createElement("option");
+		objOpcion.setAttribute("className","elementoOption");
+		objOpcion.setAttribute("value",argValor.descripcionFamilia);
+		objOpcion.innerHTML = argValor.descripcionFamilia;
+		document.getElementById("formArticulosEntFamilia").appendChild(objOpcion);	
+	}); //cierra funcion anonima, cierra arg de forEach
+
+} //cierra funcion
+
+
+</script>
+
+</head>
+
+
+
+
+
+
+<body>
+	<div class="contenedorForm">
+		<header>
+			<h4>Formulario para ALTA - Maestro de Artículos</h4>
+		</header>
+
+		<form  id="formArticulos" action="./respuesta.html" method="get">
+			<ul>
+				<li>
+				<label>codArt: </label>
+				<input id="formArticulosEntCodArt" name="formArticulosEntCodArt" required />
+				</li>
+				<li>
+				<label>Familia de artículo: </label>
+				<select id="formArticulosEntFamilia" name="formArticulosEntFamilia" required></select> 
+				</li>
+				<li>
+				<label>Descripción: </label>
+				<input id="formArticulosEntDescripcion" name="formArticulosEntDescripcion" required />
+				</li>
+				<li>
+				<label>Fecha Alta:</label>
+				<input type="date" id="formArticulosEntfechaAlta" name="formArticulosEntfechaAlta"  required />
+				</li>
+				<li>
+				<label>Saldo stock: </label>
+				<input type="number" min=0 id="formArticulosEntSaldoStock" name="formArticulosEntSaldoStock" value="0" required />
+				</li>
+				<li>
+				<div class="botonesControlFormulario">
+				<input type="submit" value="ENVIAR" />
+				</div>
+				</li>
+			</ul>
+
+		</form>
+
+	<footer><h4>Pie del formulario</h4></footer>
+
+</div><!-- cierra contenedor del formulario-->
+
+
+
+</body>
+</html>
+
+

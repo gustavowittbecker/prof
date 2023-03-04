@@ -1,0 +1,145 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+	
+	<title>css14DivsEncolumnados</title>
+<style>
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-size:24px; /*letra de base para el documento no debería depender del tamaño del dispositivo
+					Se aclara que la separación entre letras depende del navegador pero casi siempre es de -6px o sea que las letras
+					van encimadas en un 50% respecto a su tamaño de font*/
+}
+
+
+img {
+	max-width:100%;
+	max-height:100%;
+	margin:1%;
+	/*La imagen se vera al 100% y se separara
+	de cualquier otro elemento un 1% del tamaño del padre*/
+}
+
+
+div#contenedor {
+	margin:auto;
+	width:90%;
+	background-color:lightyellow;
+}
+
+div.noticia {
+	padding:3%;
+	margin:0.5%;
+	float:left; /*La letra del contenido de la columna debe ser perfectamente visible. 
+				Cuanto mas ancho sea el dispositivo más columnas podrán visualizarse*/
+	width:12em; /*24 letras aprox. sin contar los padding*/
+}
+
+div.nuevaFila {
+	clear:both;
+}
+
+/*Haremos una consulta de medios para ver si es una pantalla o es un un movil o handheld-device*/
+
+@media (orientation:landscape){ 
+	.noticia {
+		background-color: lightblue;
+	}
+}
+
+
+@media (orientation:portrait){ 
+	.noticia {
+		background-color: yellow;
+	}
+}
+
+
+
+
+
+
+</style>
+
+
+</head>
+<body>
+<div id="contenedor">
+<h1>Encolumnado sin tablas</h1>
+
+
+<div class="noticia">
+	Articulo 1 
+	Datos para incluir en esta columna, Datos para incluir en esta columna 
+	Datos para incluir en esta columna 
+	Datos para incluir en esta columna 
+	Datos para incluir en esta columna 
+	La siguiente imagen queda marginada automaticamente y ocupa el maximo ancho posible dentro 
+	de la columna independientemente del ancho real de la foto. Obviamente el tamaño real 
+	debería ser mayor que el maximo posible previsto en el mejor de los casos (monitor de alta resolucion)
+	<img src="./imagen.jpg" />
+</div>
+
+
+
+<div class="noticia">
+	Articulo 2
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos 
+	para incluir en esta columna Datos para incluir en esta columna
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta
+	 columna Datos para incluir en esta columna Datos para incluir en esta columna  
+</div>
+
+<div class="noticia">
+	Articulo 3 
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+</div>
+
+
+
+<div class="noticia">
+	Articulo 4 
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+</div>
+
+<div class="noticia">
+	Articulo 5 
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+</div>
+
+<div class="noticia">
+	Articulo 6 
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+	<img src="./flores.jpg" />
+</div>
+
+
+<div class="noticia">
+	Articulo 7 
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+
+</div>
+
+<div class="noticia">
+	Articulo 8 
+	Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+
+</div>
+
+
+
+<!--IMPORTANTISIMO para que el contenedor general se extienda hacia abajo hasta contener todo!!
+nuevaFila aporta el corte de toda flotación -->
+<div class="nuevaFila"></div> 
+
+
+</div> <!--Cierra contenedor -->
+
+</body>
+</html>

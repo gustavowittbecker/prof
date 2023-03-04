@@ -1,0 +1,9 @@
+Options +SymLinksIfOwnerMatch 
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /prof/Php/ejer70Enrutamiento/index.php?path=$1 [NC,L,QSA]
+#RewriteRule ^(.*)$ /prof/Php/index.php?path=$1 [NC,L,QSA]
+#Banderas: NC sin mayusculas ni minuscular (case unsensitive)
+#Banderas: L = Último (dejará de reescribirse después de esta Reescritura, así que asegúrese de que sea lo último en su lista de reescrituras)
+#Banderas: QSA pasa el query string original (?nombre=gustavo) al index.php   si es que lo hubiere.

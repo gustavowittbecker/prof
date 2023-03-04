@@ -1,0 +1,74 @@
+﻿<!DOCTYPE HTML >
+<!--JS10_ConvertirAMayusculas.html -->
+<HTML>
+<HEAD>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+<title>Converción a mayúscula</title>
+
+<!--Crear un script que transforme el valor de inputs 
+a mayusculas frente al evento de que en ellos se produzca cualquier
+cambio-->
+
+<style>
+div.contenedor {
+background-color:lightblue;
+padding:10px;
+box-sizing:border-box;
+width:800px;
+/*height:200px;*/
+}
+
+ul {
+list-style-type:none;
+}
+
+li {
+ margin:10px;
+}
+
+label {
+display:block;
+width:200px;
+}
+
+input {
+display:block;
+}
+</style>
+
+
+</HEAD>
+
+<BODY>
+
+<div class="contenedor">
+<ul>
+<li>
+<label for="nombre">Ingrese nombre: </label>
+<INPUT type="text" id="nombre" name="nombre">
+</li>
+<li>
+<label for="apellido">Ingrese el apellido: </label>
+<INPUT type="text" id="apellido" name="apellido"> 
+</li>
+</ul>
+</div>
+<script>
+/*Eventos*/
+/*observar que definimos funciones anonimas para cada input*/
+
+document.getElementById("nombre").onchange= function(){
+this.value = this.value.toUpperCase();
+};
+document.getElementById("apellido").onchange= function(){
+this.value = this.value.toUpperCase();
+};
+</script>
+
+
+
+
+</BODY>
+
+</HTML>

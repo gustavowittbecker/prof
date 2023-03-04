@@ -1,0 +1,12 @@
+<?php
+/*
+define("SERVER","10.5.2.20");
+define("USUARIO","grupo30");
+define("PASS","invitado30");
+define("BASE","grupo30");
+*/
+define("SERVER","localhost");
+define("USUARIO","root");
+define("PASS","pAbcar123");
+define("BASE","ejer");
+?>

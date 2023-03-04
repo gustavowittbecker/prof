@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<!--Para cambiar el estilo de un elemento frente a eventos sobre el mismo-->
+<html>
+<head>
+
+<TITLE>css16SelectoresDeEventos </TITLE>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+
+<style>
+
+
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-size:12; /*letra de base para el documento*/
+}
+
+html, body {
+	height:100%;
+}
+
+input {
+	display:block; /*iría a ocupar la siguiente linea*/
+					/*Por default los inputs se ubican a la derecha de un label*/
+	width:150px;
+}
+
+
+img {
+	/*Fijar ancho maximo y alto maximo  de todas las imagenes del documento para que puedan escalar de forma 
+	completa y manteniendo su relación de aspecto */
+	max-width:100%;
+	max-height:100%;
+}
+
+
+div#contenedor {
+	margin:auto;
+	width:90%;
+	height:100%;
+	background-color: lightblue;
+}
+
+
+div.btopcion {
+	width:10%;
+	height:5%;
+	float:left;
+	cursor:pointer;
+	background-color:#AAAAAA;
+	
+}
+
+.btopcion a { /*Todos los "a" que se encuentren adentro de un elemento de la clase btopcion: */
+	display:flex; /*Ocupa todo el ancho de su contenedor (li por ejemplo) y permite alinear su contenido */
+	height:100%; /*El link "a" ocupara absolutamente todo el alto del boton*/
+	text-decoration: none; /*quita a los anchor subrayados y demas*/
+	align-items: center;
+	justify-content: center;
+}
+
+
+.btopcion a:hover { 
+	color:white;	
+	background-color:darkblue;
+}
+
+
+
+
+div.btopcion a:active { /*Elemento "a" en estado de activo*/
+	background-color: yellow;
+}
+
+input:focus {
+	background-color:#11111111;
+}
+
+
+div.contenedorImagen {
+	/*El contenedor de imagen es cuadrado por eso lo determino en px*/
+	width:120px;
+	height:120px;
+	float:left;
+	border-style: solid;
+	border-width:0.5px;
+	transition: width 1s;
+}
+
+div.contenedorImagen:active {
+	/*El contenedor de imagen deja de ser cuadrado para ser libre con ancho fijo y altura variable*/
+	width:50%;
+	height:auto; /*Permite que reacomode su altura al tamaño de la imagen*/
+	border-style:none; /*Le quita el borde que previamente tenía*/
+}
+
+
+div.nuevaFila {
+	margin-bottom:20px; /*Deja un margen hacia afuera para separar el siguiente contenido*/
+	clear:both; /*Limpia flotación*/
+}
+
+
+</style>
+
+</head>
+
+<body>
+
+<div id="contenedor">
+
+
+<div class="btopcion"><a href="./respuesta1.html">Opcion 1.</a></div>
+
+
+<div class="btopcion"><a href="./respuesta2.html">Opcion 2.</a></div>
+
+<div class="btopcion"><a href="./respuesta3.html">Opcion 3.</a></div>
+
+
+
+<div class="nuevaFila"></div>
+
+<br />
+
+<label>Apellido: </label>
+<input type="text" name="apellido" />
+<label>Nombres: </label>
+<input type="text" name="nombres" />
+
+
+
+<div class="nuevaFila"></div>
+
+<h1>Expandir la imagen al 50% del contenedor padre con un click</h1>
+
+<div class="contenedorImagen">
+	<img src="volcan.jpg" />
+</div>
+<div class="contenedorImagen">
+	<img src="tigre.jpg" />
+</div>
+<div class="contenedorImagen">
+	<img src="suiza.jpg" />
+</div>
+
+<div class="contenedorImagen">
+	<img src="flores.jpg" />
+</div>
+
+<div class="nuevaFila"></div>
+
+</div> <!--cierra contenedor-->
+
+</body>
+</html>

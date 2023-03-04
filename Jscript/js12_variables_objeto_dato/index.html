@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+
+<!-- La siguiente etiqueta la pongo al principio para que la consola de errores del navegador la encuentre rápido
+y no me tire errores-->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Variable de tipo objeto de dato</title>
+
+<style>
+
+	* {
+		margin:0;
+	}
+
+	input {
+		display:block;
+	}
+
+	label {
+		display:block;
+	}
+
+table {
+	border-collapse:collapse;border:solid;
+}
+
+td {
+	border:solid;
+}
+
+
+div.contenedor {
+	background-color:lightyellow;
+	margin:2%;
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<h1>Consignas del ejercicio</h1>
+<h2>No usar jquery por ahora</h2>
+<h2>Armar 3 contenedores: (1)Ingreso de datos, (2) Control y (3)Presentación de tabla que aparece y desaparece con botones en el control</h2>
+<h2>Declarar y hacer uso de Objetos de dato (datos de tipo objeto)</h2>
+<h2>Cargar 2 personas en un array por programa</h2>
+<h2>Dejar de usar la función prompt() para el ingreso de datos. Armar un contenedor para el ingreso de datos desde consola
+	 (solo inputs sin formulario)</h2>
+<h2>Dejar de usar document.write() y escribir contenido dentro de un elemento html (puede ser un div de presentación)</h2>
+<h2>Tres botones para llamar a tres funciones. Una para cargar un nuevo objeto de dato PREVIA VALIDACION! por teclado, otra para mostrar 
+	en formato de tabla el array completo de elementos con su longitud y la tercera para ocultar la presentacion.
+<h2>El procedimiento para ocultar el elemento de presentación cambiara el estilo display:none del contenedor de presentacion.</h2>
+
+
+<div id="divIngreso" class="contenedor" >
+	<h2>Persona</h2>
+	<label>Nombre:</label>
+	<input type="text" id="nombreTemporaria" required />
+	<br />
+	<label>Apellido:</label>
+	<input type="text" id="apellidoTemporaria" required />
+	<br />
+	<label>Fecha de Nacimiento:</label>
+	<input type="text" id="fechaNacTemporaria" required />
+	<br />
+
+</div>
+
+
+<div id="control" class="contenedor">
+	<h2 >Control</h2>
+	<button id="btCarga">Crea persona</button>
+	<button id="btLista">Lista personas</button>
+	<button id="btOculta">Oculta presentación</button>
+</div>
+
+<div id="presentacion" class="contenedor">
+	<!--De entrada vacío-->
+</div>
+
+
+</body>
+
+<script>
+
+/*Globales*/
+var objetoPersona = {}; /*Sentencia de declaración de variable de tipo objeto vacia*/
+
+var objetoPersona = {nombre:"Pablo",apellido:"Galdi",fechaNac:"01/07/1956"} /*Asignacion inicial*/
+/*JSON (Java Script Object Notation) Solo es una variable de texto asociada a esta variable objeto de java script*/
+
+
+var arregloPersonas = [objetoPersona]; //defino un array con un elemento. Tomo como elemento el objeto de dato anterior.
+
+/*Se carga el segundo objeto persona al array*/
+arregloPersonas.push({nombre:"Jose",apellido:"Witt",fechaNac:"17/01/1985"});
+
+
+/*Se define un objeto personas como un objeto de un solo atributo que sería el arreglo personas*/
+var objetoPersonas = {personas:arregloPersonas};
+
+
+
+
+function cargaPersona() {
+	//alert("cargando");
+
+	if ((document.getElementById("apellidoTemporaria").checkValidity())&&(document.getElementById("nombreTemporaria").checkValidity())&&(document.getElementById("fechaNacTemporaria").checkValidity())) {
+		var nombreTemporaria = document.getElementById("nombreTemporaria").value;
+		var apellidoTemporaria = document.getElementById("apellidoTemporaria").value;
+		var fechaNacTemporaria = document.getElementById("fechaNacTemporaria").value;
+
+		var objetoPersona = {nombre:nombreTemporaria,apellido:apellidoTemporaria,fechaNac:fechaNacTemporaria};
+		//alert (objetoPersona.apellido);
+
+		objetoPersonas.personas.push(objetoPersona);
+
+		listaPersonas();
+		document.getElementById("nombreTemporaria").focus();
+		
+	}
+	else {
+		alert("Falla en la validación. Asignar variables correctamente!");
+	}
+}
+/*
+function listaPersonas() { //version barriendo el array
+	var texto="<h1> Presentacion</h1>";
+	texto = texto + "<table style=''>";
+
+	arregloPersonas.forEach(function(item, indice) { //El argumento del forEach es una funcion anonima
+		texto = texto + "<tr><td>"+item.nombre+"</td><td>"+item.apellido+"</td><td>"+item.fechaNac+"</td></tr>";
+	});
+	texto = texto + "</table>";
+
+	texto = texto + "<H4>Longitud del arreglo de objetos: " + arregloPersonas.length;
+
+	document.getElementById('presentacion').innerHTML = texto;
+	document.getElementById("presentacion").style.display="block";
+}
+*/
+
+
+function listaPersonas() { //version barriendo el objeto
+	var texto="<h1> Presentacion</h1>";
+	texto = texto + "<table>";
+
+	objetoPersonas.personas.forEach(function(item, indice) { //El argumento del forEach es una funcion anonima
+		texto = texto + "<tr><td>"+item.nombre+"</td><td>"+item.apellido+"</td><td>"+item.fechaNac+"</td></tr>";
+	});
+	texto = texto + "</table>";
+
+	texto = texto + "<H4>Longitud del arreglo de objetos: " + arregloPersonas.length;
+
+	document.getElementById('presentacion').innerHTML = texto;
+	document.getElementById("presentacion").style.display="block"; /*Para hacer aparecer la presentación*/
+}
+
+
+
+
+/*Eventos*/
+
+document.getElementById("btCarga").onclick = function() {
+	cargaPersona();
+}
+
+
+document.getElementById("btLista").onclick = function() {
+
+	listaPersonas(); //Construye la tabla a partir del objeto personas y crea nodo de texto del div de presentación
+	document.getElementById("presentacion").style.display="block";
+}
+
+document.getElementById("btOculta").onclick = function() {
+	document.getElementById("presentacion").style.display="none";
+}
+
+
+</script>
+
+
+</html>

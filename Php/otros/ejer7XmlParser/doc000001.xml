@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<documentos>
+<documento>
+<id>0000001</id>
+<tipoDeRecurso>enlaces</tipoDeRecurso>
+<categoriaRecurso>documentoPdf</categoriaRecurso>
+<url></url>
+<nombreDocumento>doc0000001.pdf</nombreDocumento>
+<path>../agendaDeActividadesDeCapacitacion/</path>
+<subSeccion>Agenda De Actividades De Capacitación</subSeccion>
+<autor>Pedro Picapiedra</autor>
+<curador>Gustavo Wittbecker</curador>
+<fechaDeCreacion>16/09/2015</fechaDeCreacion>
+<fuente></fuente>
+<lugarFuente></lugarFuente>
+<abstract>Texto correspondiente al abstract</abstract>
+<categoriaContenido></categoriaContenido>
+<categoriaPublicacion></categoriaPublicacion>
+<comentarioDeAdministracion>Comentario de la publicación</comentarioDeAdministracion>
+</documento>
+
+<documento>
+<id>0000002</id>
+<tipoDeRecurso>archivo</tipoDeRecurso>
+<categoriaRecurso>documentoPdf</categoriaRecurso>
+<url></url>
+<nombreDocumento>doc0000002.pdf</nombreDocumento>
+<path>../agendaDeActividadesDeCapacitacion/</path>
+<subSeccion>Agenda De Actividades De Capacitación</subSeccion>
+<autor>Gustavo Wittbecker</autor>
+<curador>Gustavo Wittbecker</curador>
+<fechaDeCreacion>16/09/2015</fechaDeCreacion>
+<fuente></fuente>
+<lugarFuente></lugarFuente>
+<abstract>Texto correspondiente al abstract</abstract>
+<categoriaContenido></categoriaContenido>
+<categoriaPublicacion></categoriaPublicacion>
+<comentarioDeAdministracion>Comentario de la publicación</comentarioDeAdministracion>
+</documento>
+
+</documentos>

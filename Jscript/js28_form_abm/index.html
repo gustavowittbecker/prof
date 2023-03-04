@@ -1,0 +1,337 @@
+﻿<!--JS18_FormABM.html-->
+<!--Presenta un formulario con tres campos
+Presenta cuatro botones:alta,baja,modificaciones,reset
+Al cargar la página los inputs no tienen datos y por lo tanto
+los botones deben estar deshabilitados
+Al escribir un solo dato el boton de blanquear se debe habilitar
+Al completar los tres campos los cuatro botones deben habilitarse
+-->
+<HTML>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+	<title>js18_FromABM.html</title>
+
+
+<style>
+
+* {
+	margin:0;
+	box-sizing: border-box;
+}
+
+div#contenedor {
+	opacity: 0.5;
+}
+
+div#contenedorModal {
+	position:fixed;
+	z-index:20;
+	top:20%;
+	left:20%;
+	opacity:1;
+	margin:auto;
+	width:50%;
+	background-color:aquamarine;
+}
+
+form {
+	
+	width:50%;
+	background-color:lightblue;
+	padding:10px;
+	box-sizing:border-box;
+	height:200px;
+}
+
+ul {
+	list-style-type:none;
+}
+
+li {
+	display:block;
+
+}
+
+label {
+	display:block;
+	width:40%;
+}
+
+input {
+	dislay:block;
+	width:40%;
+}
+
+div.botonera {
+	margin:auto;
+	display:block;
+	width:100%;
+	height:100px;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; /*Permite centrar al medio en y el contenido*/
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<div id="contenedorModal">
+	<form id="miform" action="" target="_blank" Method="get">
+		<h1>FORMULARIO ABM</h1>
+		<ul>
+		<li>
+		<label for="apellido"> Apellido: </label> 
+		<input type="text" id="apellido" name="apellido" required /> 
+		</li>
+		<li>
+		<label for="nombres">Nombres: </label>
+		<input type="text" id="nombres" name="nombres"required /> 
+		</li>
+		<li>
+		<label for="saldo" title="saldo entre 100 y 1000">Saldo: </label>
+		<input type="number" id="saldo" max="1000" min= "100" name="saldo" required />
+		</li>
+		</ul>
+	</form>
+
+	<div class="botonera">
+		<button  id="btReset" class="botones">Blanquear</button>
+		<button  id="btAlta" class="botones">Alta</button>
+		<button  id="btModi" class="botones">Modi</button>
+		<button  id="btBaja" class="botones">Baja</button>
+	</div><!--cierra botonera-->
+
+</div> <!--cierra contenedorModal-->
+
+<div id="contenedor">
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+	<p>
+	adfad fad dfd adf adf adsf asdf asdf asdf asdf asdf asdf asd fasd fasd fasdf asdf asdf asdf sfdg fg sdfg sdfg sdfg sdf gsdfg sdf gsdfg sdf gsdf gsfd gsdf gsdf gsdf gsdf gsdf gsdf gsdf g aa a fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd
+	asd fasdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asd fasd fasdf asd fasd fads fasdf asdf asdf adsf adsf adsf ad
+	ads fadsf asdf asdf asdf asdf asdf asdf asdf asdf adsf asdf adsf adsf adsf asdf asdf asdf adsf asdf asdf asdf adsf asdf asdf asdf adsf 
+	</p>
+
+
+</div> <!--cierra contenedor-->
+
+</body>
+
+<script>
+
+
+/*Objetos*/
+var objApellido = document.getElementById("apellido");
+var objNombres = document.getElementById("nombres");
+var objSaldo = document.getElementById("saldo");
+var objBtBaja = document.getElementById('btBaja');
+var objBtAlta = document.getElementById('btAlta');
+var objBtModi = document.getElementById('btModi');
+var objBtReset = document.getElementById('btReset');
+var objMiForm = document.getElementById('miform');
+
+/*Funciones*/
+function cargaInicial() {
+	//alert("Carga inicial");
+	objApellido.value="";
+	objNombres.value="";
+	objSaldo.value="";
+	objBtBaja.disabled=true;
+	objBtAlta.disabled=true;
+	objBtModi.disabled=true;
+	objBtReset.disabled=true;
+	objApellido.select();
+}
+
+function todoListo() { //Todos los botones deben habilitarse
+	//alert("apellido: "+objNombres.value+"\n"+"nombres: "+objNombres.value+"\n"+"saldo: "+objNombres.value+"\n");
+	//A diferencia del ejercicio anterior, en este no hay ventana de alerta y en consecuencia no aplicará a cada entrada sino
+	//a todo el formulario, habilitando o deshabilitando botones de envío y/o reset del mismo.
+	if (document.getElementById("miform").checkValidity()){
+		objBtBaja.disabled=false;
+		objBtAlta.disabled=false;
+		objBtModi.disabled=false;
+		objBtReset.disabled=false;
+	}
+
+	else { //deshabilito los de alta, baja y modificacion pero dejo a el de reset si al menos una entrada tiene valor asignado.
+		objBtBaja.disabled=true;
+		objBtAlta.disabled=true;
+		objBtModi.disabled=true;
+		if((objApellido.value!="")||(objNombres.value!="")||(objSaldo.value!="")){
+		  //alert("apellido2: "+objApellido.value+"\n"+"nombres: "+objNombres.value+"\n"+"saldo: "+objSaldo.value+"\n");
+		  objBtReset.disabled=false;
+		}
+		else{
+		  objBtReset.disabled=true;
+		}
+	}
+}
+ 
+
+/*Eventos*/
+window.onload=function() {
+	cargaInicial();
+}
+objBtReset.onclick=function() {
+	objMiForm.reset();
+	cargaInicial();
+}
+objBtModi.onclick=function() {
+	objMiForm.action='modi.html';objMiForm.submit();
+}
+objBtAlta.onclick=function() {
+	objMiForm.action='alta.html';
+	objMiForm.submit();
+}
+objBtBaja.onclick=function() {
+	objMiForm.action='baja.html';
+	objMiForm.submit();
+}
+objApellido.onkeyup=function() {
+	todoListo();
+}
+objNombres.onkeyup=function() {
+	todoListo();
+}
+objSaldo.onkeyup=function() {
+	todoListo();
+}
+objApellido.onfocus=function() {
+	todoListo();
+}
+objNombres.onfocus=function() {
+	todoListo();
+}
+objSaldo.onfocus=function() {
+	todoListo();
+}
+
+</script>
+
+
+</HTML>

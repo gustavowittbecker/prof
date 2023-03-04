@@ -1,0 +1,25 @@
+<!--ejer08Autenticacion/index.html -->
+<html>
+<head>
+<title>
+formulario para autenticación de ejercicio previo
+</title>
+<link href='./miestilo.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body onLoad="document.getElementById('idLogin').focus()">
+<center>
+<div class='divFormIngreso'>
+<h1> Formulario de ingreso al sistema</h1>
+<form name='formingreso' action='./autenticacion.php' method='get'>
+<table>
+<tr>
+<tr><td><b>login: </b></td><td> <input type='text' id='idLogin' name='login'></td></tr>
+<tr><td><b>clave: </b></td><td> <input type='password' name='clave'></td></tr>
+</table>
+<br><input type='submit' name='ingreso'><br><br>
+</div>
+</center>
+</body>
+</html>
+

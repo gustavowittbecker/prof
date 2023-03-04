@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!-- css46ColocaDivsEnPosiciones -->
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+
+
+<style>
+
+html {
+	height:100%;
+
+}
+
+body {
+	height:100%;
+	margin:0;
+
+}
+
+header{
+	margin:0;
+	height:10%;
+	background-color: lightblue;
+	box-sizing: border-box;
+	overflow: hidden;
+	}
+
+footer{
+	margin:0;
+	height:10%;
+	background-color: lightblue;
+	box-sizing: border-box;
+	}
+
+div.tercio {
+	margin:0;
+	width:33%;
+	height: 50%;
+	float:left;
+	box-sizing: border-box;
+	overflow:auto;
+}
+
+
+#contenedor {
+margin:0;
+float:left;
+margin-bottom: 0;
+width:80%;
+height:80%;
+background-color:gray;
+box-sizing: border-box;
+overflow: auto;
+}
+
+
+div#botonera {
+margin:0;
+float:left;
+width:20%;
+height:80%;
+background-color: beige;
+box-sizing: border-box;
+}
+
+.limpia {
+	clear:both;
+}
+
+
+table {
+border-collapse:collapse;
+width:100%;
+height:100%;
+table-layout: fixed;
+}
+div.celda {
+border-style:solid;
+border-width:1px;
+width:90%;height:90%;
+overflow:auto;
+background-color:lightyellow;
+box-sizing: border-box;
+}
+
+div.claseDestino {
+background-color:lightblue;
+border-style:solid;
+width:20%;
+height:20%;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<header>
+<p>Ubicacion de objetos<p>
+<div class="tercio">Apellido</div><div class="tercio">Nombres</div><div class="tercio">Matricula</div><div class="limpia">
+</header>
+
+<div id="contenedor">
+
+<table>
+<tr>
+<td>
+<div id="supIzq" class="celda"></div>
+</td>
+<td >
+<div id="supDer" class="celda"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div id="infIzq" class="celda"></div>
+</td>
+<td>
+<div id="infDer" class="celda"></div>
+</td>
+</tr>
+</table>
+
+</div>
+
+<div id="botonera">
+Recurso: <input id="entrada" type="text" >
+<br /><br /><br /><br />
+
+
+<br /><br /><button id="isi">Agrega recurso en area Superior izquierda</button>
+<br /><br /><button id="esi">Elimina superior izquierda</button>
+
+<br /><br /><button id="isd">Agrega recurso en area Superior derecha</button>
+<br /><br /><button id="esd">Elimina Superior derecha</button>
+
+<br /><br /><button id="iii">Agrega recurso en area Inferior izquierda</button>
+<br /><br /><button id="eii">Elimina Inferior izquierda</button>
+
+<br /><br /><button id="iid">Agrega recurso en area Inferior derecha</button>
+<br /><br /><button id="eid">Elimina Inferior derecha</button>
+
+
+</div>
+
+<div class="limpia"></div>
+
+<footer>
+	<div class="tercio">Pie parte izquierda</div>
+	<div class="tercio">Pie parte central</div>
+	<div class="tercio">Pie parte derecha</div>
+	<div class="limpia"></div>
+</footer>
+
+
+
+
+</body>
+
+<script>
+/*RESUMEN FINAL
+var objNuevoDiv = document.createElement("div");
+objNuevoDiv.innerHTML="";
+objNuevoDiv.setAttribute("class","opcion");
+objNuevoDiv.setAttribute("id","div1");
+objNuevoDiv.setAttribute("onclick","location.href=''");
+objContenedor.appendChild(objNuevoDiv);
+objContenedor.childNodes[0].innerHTML="";
+alert(objContenedor.childNodes.lenght);
+objContenedor.hasChildNodes() --> para aplicar como expresion condicional por ejemplo en un while()
+objContenedor.removeChild(objContenedor.firstChild) --> Elimina el primer child
+*/
+
+function insertaTexto(argUbicacion,argRecurso) {
+//argUbicacion indica el objeto div donde se posicionara el recurso
+//argRecurso indica el recurso (texto)
+
+oDiv = document.createElement("div");
+oDiv.id="miDiv";
+oDiv.setAttribute("class","claseDestino");
+oDiv.innerHTML="<h1>"+argRecurso.value+"</h1>";
+argUbicacion.appendChild(oDiv);
+}
+
+function elimina(argUbicacion) {
+//argUbicacion indica el objeto div donde se posicionara el recurso
+//argRecurso indica el recurso (texto)
+while (argUbicacion.hasChildNodes()) { //el metodo hasChildNodes devuelve verdadero si existe un child dentro de ese objeto
+argUbicacion.removeChild(argUbicacion.firstChild); 
+}
+}
+
+</script>
+
+
+
+<script>
+/*Eventos*/
+
+document.getElementById("isi").onclick = function() {
+insertaTexto(document.getElementById("supIzq"),document.getElementById("entrada"));
+}
+
+document.getElementById("esi").onclick = function() {
+elimina(document.getElementById("supIzq"));
+}
+
+document.getElementById("isd").onclick = function() {
+insertaTexto(document.getElementById('supDer'),document.getElementById('entrada'));
+}
+
+
+document.getElementById("esd").onclick = function() {
+elimina(document.getElementById('supDer'));
+}
+
+
+document.getElementById("iii").onclick = function() {
+insertaTexto(document.getElementById('infIzq'),document.getElementById('entrada'));
+}
+
+
+document.getElementById("eii").onclick = function() {
+elimina(document.getElementById('infIzq'));
+}
+
+document.getElementById("iid").onclick = function() {
+insertaTexto(document.getElementById('infDer'),document.getElementById('entrada'));
+}
+
+
+document.getElementById("eid").onclick = function() {
+elimina(document.getElementById('infDer'));
+}
+
+</script>
+
+</html>
+

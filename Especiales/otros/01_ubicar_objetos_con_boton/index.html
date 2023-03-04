@@ -1,0 +1,142 @@
+﻿<!DOCTYPE HTML>
+<!--01_ubicar_objetos_con_boton-->
+
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Ubicar objetos con boton</title>
+<script src="../jquery.js"></script>	
+<style>
+
+html {
+	height:100%;
+	margin:0;
+}
+
+body {
+	height:100%;
+	margin:0;
+}
+
+div#contenedorGlobal {
+	background-color:lightblue;
+	margin:auto;
+	width:80%;
+	padding:10px;
+	box-sizing: border-box;
+}
+
+header {
+height:10%;
+margin:0;
+background-color: lightgray;
+overflow: auto;
+}
+
+footer {
+height:10%;
+margin: 0;
+background-color: lightgray;
+overflow: auto;
+}
+
+main {
+height: 80%;
+margin:0;
+}
+
+table {
+margin:auto;
+border-collapse:collapse;
+}
+td {
+border: solid 1px;
+width:200px;
+height:150px;
+}
+
+div.claseObjetoDinamico {
+	background-color: lightyellow;
+	width:50%;
+}
+
+</style>
+
+</head>
+
+<body>
+<header>
+<h4>Datos del alumno</h4>
+</header>
+<main>
+<div id="contenedorGlobal">
+<h1>Ubicar un recurso en una posición</h1>
+<table>
+<tr>
+<td id="supIzq"></td>
+<td id="supDer"></td>
+</tr>
+<tr>
+<td id="infIzq"></td>
+<td id="infDer"></td>
+</tr>
+</table>
+
+<br />
+
+<label>Recurso: </label>
+<input type="text" id="recurso" name="texto">
+
+<br />
+
+<label>Ubicación: </label>
+<select id="ubicacion">
+<option value="supIzq">Superior Izquierda</option>
+<option value="supDer">Superior Derecha</option>
+<option value="infIzq">Inferior Izquierda</option>
+<option value="infDer">Inferior Derecha</option>
+</select>
+
+<div>
+<button id="btAccion">Ubicar</button>
+</div>
+
+
+</div>
+</main>
+<footer>
+	<h4>Apellido, nombre y matrícula del alumno</h4>
+</footer>
+</body>
+
+<script>
+/*
+Resumen
+Una cosa es la informacion de posicion que se elige como opcion en el select y otra cosa es el objeto que corresponde
+verdaderamente a la posicion.
+
+*/
+/*Funciones*/
+function ubicar(argRecurso,argUbicacion) { //los argumentos son solo strings
+//alert(argRecurso);
+//alert(argUbicacion)
+$("#"+argUbicacion).empty();
+var objNuevo = document.createElement("div");
+objNuevo.innerHTML = "<h1>"+argRecurso+"</h1>";
+//objNuevo.className = "claseObjetoDinamico";
+objNuevo.setAttribute("className","claseObjetoDinamico");
+$("#"+argUbicacion).append(objNuevo);
+
+}
+
+/*Eventos*/
+$("#btAccion").click(function() {
+//Paso los valores de las entradas completadas por el usuario.
+	ubicar($("#recurso").val(),$("#ubicacion").val());
+});
+
+</script>
+
+
+</html>
+

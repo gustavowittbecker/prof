@@ -1,0 +1,8 @@
+Eajercicio
+Crear cuatro estilos diferentes para un objeto elemento tipo Lista
+Crear un objeto elemento Lista
+Crear cuatro botones para cambiar los estilos de la lista.
+objeto sensible al evento : boton
+objeto que modifica sus propiedades es la lista con identificativo miLista
+ La propiedad modificada es className
+ La funcion que hace el proceso es CambiaLista  

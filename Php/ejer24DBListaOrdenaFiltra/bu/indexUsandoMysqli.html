@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+
+<style id="estiloGlobal">
+
+/*Estilo global*/
+* {
+	margin:0;
+	box-sizing: border-box;
+	padding:0;
+}
+html {
+	height:100%;
+	width:100%;
+}
+
+body {
+	height:100%;
+	width:100%;
+	font-size: 12;
+}
+/*
+h1 {
+	font-size: 3vw;
+}
+
+
+h2 {
+	font-size: 2.5vw;
+}
+
+h3 {
+	font-size: 2vw;
+}
+
+h4 {
+	font-size: 1.5vw;
+}
+
+p {
+	font-size:1vw;
+}
+
+*/
+</style>
+
+
+<style id="estiloTabla">
+div.contenedorTabla {
+	width:100%;
+	height:100%;
+	background-color: gray;
+	/*overflow: auto;*/
+}
+
+
+
+div.contenedorTabla button {
+	height:80%;
+	width:20%;
+	margin-right:0;
+}
+
+div.contenedorTabla button.btCelda {
+	width:100%;
+	height:90%;
+	color:black;
+	box-sizing: border-box;
+}
+
+div.contenedorTabla h1 {
+	width:100%;
+	text-align: center;
+	padding:1%;
+}
+
+div.contenedorTabla input {
+	height:100%;
+	width:100%;
+}
+
+div.contenedorTabla td.titulosColumnas {
+	font-size: 1.1em;
+	cursor:pointer;
+	font-weight: bold;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+}
+
+
+div.contenedorTabla td.totalizador {
+	font-weight: bold;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+}
+
+
+
+div.contenedorTabla header {
+	display:flex;
+	width:100%;
+	height:10%;
+	background-color: beige;
+	overflow-y:hidden;
+	display: flex; 
+	justify-content:center;
+	align-items: center;
+	padding:0;
+}
+
+div.contenedorTabla footer {
+	display:block;
+	width:100%;
+	height:10%;
+	background-color: beige;
+}
+
+div.contenedorTabla footer div.totalRegistros {
+	font-size:1.5em;
+	height:100%;
+	width:20%;
+	float:left;
+}
+
+
+div.contenedorTabla footer div.textoPie {
+	font-size:2em;
+	height:100%;
+	width:70%;
+	display: flex; 
+	justify-content:center;
+	align-items: center;
+}
+
+
+
+div.contenedorTabla table {
+  width:100%;
+  height:80%;
+  border-collapse: collapse;
+  
+}
+
+div.contenedorTabla thead {
+  display: block; /*todos los elementos que contendrá se renderizaran en este grupo de lineas */
+  background-color: #FF7361;
+  text-align: center;
+  height: 20%;
+  overflow-y: scroll;
+}
+
+
+div.contenedorTabla tfoot {
+  display: block; /*todos los elementos que contendrá se renderizaran en este grupo de lineas */
+  background-color: #FF7361;
+  height: 10%;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+
+div.contenedorTabla tbody { /*todos los elementos que contendrá se renderizaran en este grupo de lineas */
+  display: block;
+  overflow-y: scroll;
+  color: #000;
+  height:70%;
+}
+
+
+div.contenedorTabla tr {
+  display: block; /*todos los elementos que contendrá se renderizaran en esta linea */
+  overflow: hidden;
+  height:60px;
+}
+
+
+div.contenedorTabla tbody tr:nth-child(odd) {
+  background: rgba(0,0,0,.2);
+  color: white;
+}
+
+
+div.contenedorTabla tbody tr:nth-child(even) {
+  background: rgba(0,0,0,.3);
+  color: white;
+}
+
+div.contenedorTabla th, td {
+  float:left; /*todos flotan respetando sus anchos pero dentro de los limites el contenedor
+                que debera presentarse como display:block;*/
+  width:100%;
+  height:100%;
+}
+
+
+
+
+/*Estilo para tabla de articulos*/
+
+[campo-dato="articulos_codArt"] {
+  width: 10%;
+  height:100%;
+}
+[campo-dato="articulos_familia"] {
+  width: 10%;
+  height:100%;
+}
+[campo-dato="articulos_descripcion"] {
+  width: 20%;
+  height:100%;
+}
+[campo-dato="articulos_um"] {
+  width: 10%;
+  height:100%;
+}
+[campo-dato="articulos_fechaAlta"] {
+  width: 10%;
+  height:100%;
+}
+[campo-dato="articulos_saldoStock"] {
+  width: 10%;
+  height:100%;
+  text-align:right;
+}
+
+
+</style>
+
+
+
+<script src="../jquery.js"></script>
+
+<script id="codigoTabla">
+
+
+/*Evento de carga inicial*/
+
+$(document).ready(function() {
+		objTbDatos=document.getElementById("tbDatos");//Para usar con java script
+		$("#orden").val("codArt"); //suponiendo que de entrada quisiera este orden
+
+});
+
+
+
+/*Eventos de Tablas*/
+
+
+$(document).ready(function() {
+	$("#btAccionCarga").click(function() {
+		cargaTabla();
+	});
+});
+
+
+
+$(document).ready(function() {
+	$("#btAccionVacia").click(function() {
+		$("#tbDatos").empty();
+	});
+});
+
+
+
+
+$(document).ready(function() {
+	$("#th_articulos_codArt" ).click(function() {
+		$("#orden").val("codArt"); //solo cargo esta variable orden
+		//cargaTabla();
+	});	//cierro click
+}); //cierro ready
+
+
+$(document).ready(function() {
+	$("#th_articulos_familia" ).click(function() {
+		$("#orden").val("familia"); //solo cargo esta variable orden
+		//cargaTabla();
+	});	//cierro click
+}); //cierro ready
+
+
+$(document).ready(function() {
+	$("#th_articulos_descripcion" ).click(function() {
+		$("#orden").val("descripcion"); //solo cargo esta variable orden
+		//cargaTabla();
+	});	//cierro click
+}); //cierro ready
+
+$(document).ready(function() {
+	$("#th_articulos_um" ).click(function() {
+		$("#orden").val("um"); //solo cargo esta variable orden
+		//cargaTabla();
+	});	//cierro click
+}); //cierro ready
+
+$(document).ready(function() {
+	$("#th_articulos_fechaAlta" ).click(function() {
+		$("#orden").val("fechaAlta"); //solo cargo esta variable orden
+		//cargaTabla();
+	});	//cierro click
+}); //cierro ready
+
+$(document).ready(function() {
+	$("#th_articulos_saldoStock" ).click(function() {
+		$("#orden").val("saldoStock"); //solo cargo esta variable orden
+		//cargaTabla();
+	});	//cierro click
+}); //cierro ready
+
+
+
+
+/*Funciones*/
+
+function cargaTabla() {
+	//alert($("#orden").val());
+	$("#tbDatos").empty();
+	$("#tbDatos").html("<p>Eserando respuesta ..</p>");
+	var objAjax = $.ajax({
+		type:"get", 
+		//url: "<?php echo $respuestaUsuarios ?>",
+		url:"salidaJsonArticulosConPrepare.php",
+		data: { 
+			orden: $("#orden").val(),
+			f_articulos_codArt: $("#f_articulos_codArt").val(),
+			f_articulos_familia: $("#f_articulos_familia").val(),
+			f_articulos_descripcion: $("#f_articulos_descripcion").val(),
+			f_articulos_um: $("#f_articulos_um").val(),
+			f_articulos_fechaAlta:$("#f_articulos_fechaAlta").val()
+		},
+		success: function(respuestaDelServer,estado) {//La funcion de callback que se ejecutara cuando el req. sea completado.
+					alert(respuestaDelServer);
+					
+					$("#tbDatos").empty();
+					//$("#tbDatos").html(respuestaDelServer)//para ver el json recibido dentro de tbDatos;
+					
+					objJson=JSON.parse(respuestaDelServer);
+					//Luego barre el objeto de datos leyendo sus datos copiandolos al cuerpo de la tabla.
+					objJson.articulos.forEach(function(argValor,argIndice) { 
+					var objTr= document.createElement("tr");
+					var objTd=document.createElement("td");
+					//objTd.setAttribute("classname","")
+					objTd.setAttribute("campo-dato","articulos_codArt");
+					objTd.innerHTML=argValor.codArt;
+					objTr.appendChild(objTd);
+
+					var objTd=document.createElement("td");
+					objTd.setAttribute("campo-dato","articulos_familia");
+					objTd.innerHTML=argValor.familia;
+					objTr.appendChild(objTd);
+
+					var objTd=document.createElement("td");
+					objTd.setAttribute("campo-dato","articulos_um");
+					objTd.innerHTML=argValor.um;
+					objTr.appendChild(objTd);
+
+
+					var objTd=document.createElement("td");
+					objTd.setAttribute("campo-dato","articulos_descripcion");
+					objTd.innerHTML=argValor.descripcion;
+					objTr.appendChild(objTd);
+
+					var objTd=document.createElement("td");
+					objTd.setAttribute("campo-dato","articulos_fechaAlta");
+					objTd.innerHTML=argValor.fechaAlta;
+					objTr.appendChild(objTd);
+
+					var objTd=document.createElement("td");
+					objTd.setAttribute("campo-dato","articulos_saldoStock");
+					objTd.innerHTML=argValor.saldoStock;
+					objTr.appendChild(objTd);
+
+
+					objTbDatos.appendChild(objTr);
+				
+					});//cierra el forEach
+
+					$("#totalRegistros").html("Nro de registros: " + objJson.articulos.length);
+					
+				}//cierra funcion asignada al success
+			}); //cierra objeto de parametros y funcion ajax
+
+}//cierra funcion cargaTabla
+
+
+</script>
+
+
+</head>
+<body>
+	<div id="contenedorTablaArticulos" class="contenedorTabla">
+		<header >
+			<h1>Articulos</h1>
+
+			<div  >
+			<label >Orden:</label>
+			<input type="text" name="orden" id="orden" readonly value="" >
+			</div>
+
+			<button id="btAccionCarga">Cargar datos</button>
+			<button id="btAccionVacia">Vaciar datos</button>
+
+		</header>
+
+
+		<table >
+			<thead >
+				<tr style="height:50%">
+				<td class="titulosColumnas" campo-dato="articulos_codArt" id="th_articulos_codArt">CodArt</td>
+				<td class="titulosColumnas" campo-dato="articulos_familia" id="th_articulos_familia">familia</td>
+				<td class="titulosColumnas" campo-dato="articulos_um" id="th_articulos_um">um</td>
+				<td class="titulosColumnas" campo-dato="articulos_descripcion" id="th_articulos_descripcion">descripción</td>
+				<td class="titulosColumnas" campo-dato="articulos_fechaAlta" id="th_articulos_fechaAlta">fecha Alta</td>
+				<td class="titulosColumnas" campo-dato="articulos_saldoStock" id="th_articulos_saldoStock">saldoStock</td>
+
+				</tr>
+
+				<tr style="height:50%">
+				<td campo-dato="articulos_codArt"><input id="f_articulos_codArt"></input></td>
+				<td campo-dato="articulos_familia"><input id="f_articulos_familia"></input></td>
+				<td campo-dato="articulos_um" ><input id="f_articulos_um"></input></td>
+				<td campo-dato="articulos_descripcion"><input id="f_articulos_descripcion"></input></td>
+				<td campo-dato="articulos_fechaAlta"><input id="f_articulos_fechaAlta"></input></td>
+				<td campo-dato="articulos_saldoStock"></td>
+				</tr>
+			</thead>
+
+			<tbody id="tbDatos">
+			</tbody>
+
+			<tfoot>
+				<tr>
+				<td class="totalizador" campo-dato="articulos_codArt" id="tf_articulos_codArt">T codArt</td>
+				<td class="totalizador" campo-dato="articulos_familia" id="tf_articulos_familia">T familia</td>
+				<td class="totalizador" campo-dato="articulos_um" id="tf_articulos_um">T um</td>
+				<td class="totalizador" campo-dato="articulos_descripcion" id="tf_articulos_descripcion">T descripcion</td>
+				<td class="totalizador" campo-dato="articulos_fechaAlta" id="tf_articulos_fechaAlta">T fecha alta</td>
+				<td class="totalizador" campo-dato="articulos_saldoStock" id="tf_articulos_saldoStock">T saldoStock</td>
+
+				</tr>
+			</tfoot>
+
+		</table>
+
+
+		<footer>
+			<div id="totalRegistros" class="totalRegistros">
+			</div>
+			<div id="textoPie" class="textoPie"><h1>Pie</h1>
+			</div>
+		</footer>
+	</div> <!-- cierra contenedorTablaArticulos -->
+
+</body>
+</html>

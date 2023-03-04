@@ -1,0 +1,85 @@
+<!--css39ConmutacionDinamicaDeClase-->
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+	<title>js18_FromABM.html</title>
+
+
+
+<TITLE>Cascade Style Sheets</TITLE>
+<style>
+
+	* {
+		margin:0;
+		box-sizing: border-box;
+	}
+
+ul {
+	width:300px;height:300px;
+}
+
+.claseLista1 {
+	list-style-type:square;color:black;border-style:solid;border-color:black;
+	background-color:aquamarine;padding:30px;
+}
+.claseLista2 {list-style-type:circle;color:blue;border-style:solid;border-color:blue;
+	background-color:lightblue;padding:30px;
+}
+.claseLista3 {list-style-type:lower-alpha;color:white;border-style:solid;border-color:red;
+	background-color: #999966;padding:20px;
+}
+.claseLista4 {list-style-type:disc;color:green;border-style:solid;border-color:green;
+	background-color:lightgreen;padding:30px;
+}
+
+div#control {
+	margin:20px;
+}
+
+</style> 
+
+
+</head>
+<body>
+
+
+<h1>Ejemplo de cambios de estilo dinamicamente</h1>
+
+<ul id="milista">
+<h2>Lista con estilo</h2>
+	<li> Texto1 </LI>
+	<li> Texto2 </LI>
+	<li> Texto3 </LI>
+</ul>
+
+
+<div id="control">
+<button id="aplicaLista1"> Tipo 1 </button>
+<button id="aplicaLista2"> Tipo 2 </button>
+<button id="aplicaLista3"> Tipo 3 </button>
+<button id="aplicaLista4"> Tipo 4 </button>
+</div>
+
+<script>
+/*EVENTOS*/
+
+document.getElementById("aplicaLista1").onclick= function() {
+document.getElementById('milista').className="claseLista1";
+}
+
+document.getElementById("aplicaLista2").onclick= function() {
+document.getElementById('milista').className="claseLista2";
+}
+
+document.getElementById("aplicaLista3").onclick= function() {
+document.getElementById('milista').className="claseLista3";
+}
+document.getElementById("aplicaLista4").onclick= function() {
+document.getElementById('milista').className="claseLista4";
+}
+</script>
+
+</body>
+</html>

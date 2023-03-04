@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+	<title>Guardar como pdf</title>
+
+<script src="./jsPDF-master/dist/jspdf.min.js"></script>
+
+<script src="./jspdf-autotable.js"></script>
+
+<script src="./jquery.js"></script>
+
+
+</head>
+
+<body>
+
+
+<div id="contenido">
+
+<style>
+div#contenido * {
+margin:0;
+box-sizing: border-box;
+}
+
+div#contenido table {
+    margin:1%;
+    border-collapse: collapse;
+    border: 1px solid rgba(0,0,0,1);
+}
+div#contenido td {
+    padding:0.5em;
+    border:solid 1px;
+}
+table tr:nth-child(odd) {
+  background: rgba(0,0,0,.2);
+}
+</style>
+
+<h1>Tabla de articulos preexistente en html</h1>
+
+<table id="tablaArticulos" >
+
+<tr>
+<th>CodProducto</th><th>Descripcion</th><th>UM</th>
+</tr>
+<tr>
+    <td>adsfads</td><td>adfasd dff adf adsf </td><td>KG</td>
+</tr>
+
+<tr>
+    <td>adsfads</td><td>adfasd dff adf adsf </td><td>KG</td>
+</tr>
+<tr>
+    <td>adsfads</td><td>adfasd dff adf adsf </td><td>KG</td>
+</tr>
+<tr>
+    <td>adsfads</td><td>adfasd dff adf adsf </td><td>KG</td>
+</tr>
+<tr>
+    <td>adsfads</td><td>adfasd dff adf adsf </td><td>KG</td>
+</tr>
+
+
+</table>
+
+<div id="divVerJson" style="margin:1%">
+</div>
+
+</div>
+
+<div style="margin:1%">
+<button id="btVerJson">Ver texto JSON</button>
+<button id="btCreaJsonTablahtmlPdf">Crea PDF a partir de JSON</button>
+<button id="btCreaTablahtmlPdf">crea PDF a partir de Tabla HTML preexistente</button>
+</div>
+
+
+
+
+<script>
+
+/*Globales*/
+/*Lo siguiente es texto json (no una variable de tipo objeto de jscript)  
+puede alternativamente ser requerido a un servicio JSON a traves de un
+requerimiento ajax*/
+var texto ='[{"nombre":"Gonzalo", "apellido":"Martin"},{"nombre":"Mauricio", "apellido":"Medina"},{"nombre":"Gustavo","apellido":"Witt"}]';
+
+
+/*Funciones*/
+function jsonTablahtmlPdf(arregloTextoJson) {
+
+	/*Antes de ejecutar esta función crear un div contenido en algun lado*/
+    //alert(arregloTextoJson.length);
+
+    arreglo=JSON.parse(arregloTextoJson);
+    
+    var objTabla= document.createElement("table");
+    objTabla.setAttribute("id","miTabla");
+
+    /*Encabezado*/
+    objTr= document.createElement("tr");
+    Object.keys(arreglo[0]).forEach(function(atributo,i) {
+        objTh= document.createElement("th");
+        atributo=atributo.toUpperCase();
+        objTh.innerHTML=atributo;
+        objTr.appendChild(objTh); 
+    });
+    objTabla.appendChild(objTr);
+
+    /*Cuerpo*/
+    arreglo.forEach(function(elementoTextoJson, i){
+    objTr= document.createElement("tr");
+    Object.keys(elementoTextoJson).forEach(function(atributo,i) {
+        objTd= document.createElement("td");
+        objTd.innerHTML=elementoTextoJson[atributo];
+        objTr.appendChild(objTd);   
+    });
+    objTabla.appendChild(objTr);
+    });
+
+    document.getElementById("contenido").appendChild(objTabla);//sumo tabla al contenido html
+    var doc = new jsPDF(); 
+    doc.autoTable({ html: '#miTabla' })
+    doc.save('table.pdf');
+    document.getElementById("contenido").removeChild(objTabla);//elimino tabla de contenido html
+}
+
+
+function tablahtmlPdf() {
+    var doc = new jsPDF();   
+    doc.autoTable({ html: '#tablaArticulos' })
+    doc.save('table.pdf');
+}
+
+/*EVENTOS*/
+
+$(document).ready(function() {
+    $("#btVerJson").click(function(){
+        $("#divVerJson").html(texto);
+    });
+});
+
+
+$(document).ready(function() {
+    $("#btCreaJsonTablahtmlPdf").click(function(){
+        jsonTablahtmlPdf(texto);
+    });
+});
+
+$(document).ready(function() {
+    $("#btCreaTablahtmlPdf").click(function(){
+        tablahtmlPdf();
+    });
+});
+
+</script>

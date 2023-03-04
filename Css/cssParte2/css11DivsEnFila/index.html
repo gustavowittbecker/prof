@@ -1,0 +1,124 @@
+<!Doctype html>
+
+<html>
+<head>
+
+<TITLE>css11divsEnFila</TITLE>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" />
+
+<style>
+
+* {
+	/*Lo siguiente es basico para el defalult */	
+	padding:0; /*ningun bloque deja espacios hacia adentro*/
+	margin:0; /*Ningun elemento presentará margenes hacia afuera*/
+	box-sizing: border-box; /*Todo borde o padding que se aplica a un contenedor no modificará las dimensiones del mismo*/
+	font-size:32px; /*letra de base para el documento*/
+}
+
+
+img {
+	/*Para que todas las imagenes ocupen el 100% en ancho o el 100% del alto disponible 
+	acomodando su relación de aspecto sin deformación*/
+		max-width:100%;  /*La imagen no puede ser mas ancha que el 100% del contenedor pero si puede ser mas angosta*/
+		max-height:100%; /*La imagen no puede ser mas alta que el 100% del contenedor pero si puede ser mas reducida respecto al mismo*/
+	/*Las imagenes contraen en ancho o en alto cuando achico el viewport pero siempre ocuparan el
+	el 100% en alguna de las dos dimensiones*/
+}
+
+
+/*Estilo para todos los divs*/
+div#contenedor {
+margin:auto;
+/*
+El bloque crece con el crecimiento de su nodo de texto
+y queda centrado respecto al objeto contenedor
+otros prametros son margin-left:auto (en cuyo caso el bloque se alinea a la derecha)
+y margin-right:auto (queda a la izquierda)
+con margin-right y margin-left ambos en auto el contenedor quedará centrado
+*/
+width:80%;
+background-color:lightblue;
+}
+
+
+/*Estilos particulares, para este ejemplo no trabajaré con estilos particulares para un elemento*/
+/*Solo definiré estilos a clases que podrán ser aplicados multiples elementos en todo el documento.*/
+
+div.claseTexto1, div.claseTexto2, div.claseImagen { /*Para todas las clases el tamaño de la caja será fijo en pixeles
+													y flotaran a la izquierda*/
+	float:left;
+	margin:10px;
+	width:200px;
+	height:100px;
+	border-style:solid;
+	border-width:1px;
+	border-color:.333333;
+	border-radius: 10px;
+	box-shadow: 16px 8px 2px rgba(0,0,0,0.3); 
+}
+
+
+div.claseTexto1 {	
+	background: linear-gradient(orange,white,pink);	
+	font-size: 1em; /*Esta medida corresponde con el tamaño de letra default para el documento*/
+	padding:1%;
+	text-align: left;
+	/*En ningun caso las letras cambiarán su tamaño en relación el view port */
+}
+
+div.claseTexto2 {
+	background: radial-gradient(orange,white,pink);
+	font-size: 1.2em; /*Esta medida corresponde con el doble del tamaño de letra default para el documento.*/
+	/*En ningun caso las letras cambiarán su tamaño en relación el view port */
+	text-align: center;
+	padding: 0;
+}
+
+
+div.claseImagen {
+	background: radial-gradient(orange,white,pink);
+	text-align: center;
+}
+
+div.rompeFloat {
+clear:both;
+}
+
+</style>
+</head>
+<body>
+
+<div id="contenedor">
+<div class="claseTexto1" title="claseTexto1">
+	Texto en caja 1
+</div>
+
+<div class="claseTexto2" title="claseTexto2">
+	Texto en caja 2
+</div>
+
+<div class="claseImagen" title="claseImagen">
+	<img src="./volcan.jpg" />
+</div>
+
+<div class="claseImagen" title="claseImagen">
+	<img src="./imagen.jpg" />
+</div>
+
+<div class="claseTexto1" title="claseTexto1">
+	Texto en caja 4 
+</div>
+
+
+<div class="claseTexto2" title="claseTexto2">
+	Texto en caja 5 
+</div>
+
+
+<!--IMPORTANTISIMO!!!! para que el contenedor se extienda hasta el final:-->
+<div class="rompeFloat"></div>
+</div>
+</body>
+</html>

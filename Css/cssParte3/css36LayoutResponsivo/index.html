@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<title>css26layoutAdaptivo</title>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<!--
+Conceptos básicos
+Hay tres características técnicas que deben tomarse en cuenta como el eje de un diseño web con capacidad de adaptación RWD
+(ResponsiveWebDesign):
+
+
+1) Un diseño de página flexible, basado en cuadrícula, que utilice tamaños relativos.
+2) Una diseño de pagina con solo HTML y CSS
+3) Cuando un diseño obliga al usuario a escalar su navegador o a scrolear horizontalmente, este no es adaptivo o responsive.
+4) Consultas de medios CSS
+
+-->
+
+
+<style>
+/*En este ejercicio no me preocupo por el alto de los objetos, porque al no ser un tablero todo crecerá dinamicamente hacia abajo*/
+
+
+* {
+	margin:0;
+	padding:0; 
+	border: 0 none; 
+	box-sizing: border-box;
+	/*width:100%;*/
+	font-family:verdana;
+	font-size:24px;
+}
+
+
+
+html, body {
+	height:100%;
+}
+
+
+img {
+	max-width:100%;
+}
+
+h1 {
+	/*margin inherit permite heredar el valor del padre para ese atributo.*/
+	/*La medida del font 2em significa el doble del tamaño de letra definido al principio*/
+	font-size:1.3em;
+	border-style:solid;
+}
+
+#contenedor {
+	/*El margin en auto permite centrar el objeto respecto al body*/
+	width:90%;
+	height:100%;
+	margin:auto;
+	border-style:solid;
+	border-width:thin;
+}
+
+
+main {
+	display:block;/*permite ubicar todo el contenido en un conjunto de lineas rompiendo cualquier float*/
+	height:75%;
+	width:100%;
+	background-color: #FF7F50;
+	overflow: auto;
+}
+
+header {
+	/*El margen en cero me da seguridad de que no existan espacios intermedios con otros objetos.*/
+	background-color:#FF4500;
+	text-align:center;
+	box-sizing:border-box;
+	padding:1%;
+	width:100%;
+	height:10%;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 	
+}
+
+footer {
+	/*El clear es para eliminar todo resto de float*/
+	padding:1%;
+	width:100%;
+	height:10%;
+	background-color:#FF4500;
+	box-sizing:border-box;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+}
+
+nav {
+	display:block;
+	height:5%;
+	background-color:#FFA500;
+}
+
+
+
+
+ul {
+	height:100%; /*Para que extienda al total de su contenedor que sera "nav" */
+	width:100%;
+	margin:auto;
+	list-style-type: none;
+}
+
+li {
+	background-color:#FFA500;
+	height:100%;
+	width:25%;
+	float:left;
+	color:#555555;
+	cursor:pointer;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+	font-size: 1.5em;
+}
+
+ul a {
+	text-decoration: none;
+}
+
+li:hover{
+	background-color:#555555;
+	color:#BBBBBB;
+}
+
+
+
+.columna {
+	text-align:left;
+	background-color:silver;
+	float:left;
+	padding:1%;
+	font-size:1vw;
+	box-sizing:border-box;
+	
+}
+
+
+
+@media (orientation:portrait){ /*Para dispositivos chicos*/
+	#contenedor {
+		width:100%;
+	}
+	nav {
+		height:20%;
+		overflow: auto;
+	}
+
+
+	nav ul {
+		height:100%;
+	}
+
+	nav li {
+		float:none;
+		width:100%;
+		height:auto;
+		overflow:auto;
+		font-size: 2em;
+	}
+
+	main {
+		height:60%;
+		width: 100%;
+	}
+
+}
+
+
+
+
+
+
+
+
+
+/*Consulta de medios*/
+@media (min-width:1200px){ /*Para dispositivos grandes, mayores a 100 pixeles*/
+		.columna {
+		width:20%;
+		font-size:1em;
+	}
+}
+
+
+
+
+@media (min-width:1000px) and (max-width:1200px){ /*Si el dispositivo tiene un ancho mayor a A y menor que B, entonces .. */
+	.columna {
+		width:25%;
+		font-size:1em;
+	}
+}
+
+@media (min-width:800px) and (max-width:1000px){
+	.columna {
+		width:33.3%;
+		font-size:1em;
+	}
+}
+
+
+@media (min-width:600px) and (max-width:800px){
+	.columna {
+		width:50%;
+		font-size:1.2em;
+	
+	}
+}
+
+@media (max-width:600px){ /*Para dispositivos pequeños menores a 600px*/
+	.columna {
+		width:100%;
+		font-size:1.2em;
+	}
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div id="contenedor">
+<!--Dentro de este contenedor los divs que no tienen ancho fijado, ocupan todo el ancho-->
+
+<header>
+<h1>Titulo principal de la página</h1>
+</header>
+
+
+
+<nav>
+<ul>
+<a href="../../../Html"><li>HTML</li></a>
+<a href="../../../Css"><li>CSS</li></a>
+<a href="../../../Jscript"><li>JSCRIPT</li></a>
+<a href="../../../Php"><li>PHP</li></a>
+</ul>
+</nav>
+
+
+<main>
+
+<div class="columna">
+11 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+11 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+11 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+11 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+</div>
+
+<div class="columna"> 
+12 <br />
+adfad adf asdf asdf asdf asdf ad
+fasdf asdfadsf adsf daf adsf asdf adsf adsf adf 
+ asdfasdf asdf asdf asdf asdf adsf adsf adsf adsf adsf asdf 
+ asdasd fasdf asdf  adsf adf asdf asdf asdf asdf asdf asdf asdf 
+f asd ads asdf asdf asdf asdf asdf asdf asdf asdfasdf asdf asdfasdf asdf asdf
+f asdf asdf asdf asdf asdf asdf asdf asd fasdf asd fasd fasd fasdf asdf asdf asdf asdf asd
+<img src="./imagen.jpg" style="transform: rotateZ(15deg);" /> 
+12 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+12 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+</div>
+
+
+<div class="columna">
+13 adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf
+adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf
+13 adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf
+adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf
+13 adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf
+adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf
+13 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+
+</div>
+
+
+
+<div class="columna">
+14 <br /> adfasd adf asdf asdf asdf asdf 
+asdf asdf asdf adf asdf asdf asdfasdf asdf asdfasd fasdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf asdf 
+asdf asdf asdf asdf asdf asdf asdf asdf asd adsf asdf asdf asdf asdf 
+asdf asdf asdf adsf adsf asdf asdf asdf asd fadsf 
+14 adfadsfa adsadf adfasd fadf asdf adf asdf adf adsf adsf ad fadsf asd fadf adf a fadf ads fad 
+asdf asdf asdf adsf adfaf adfadf a fadf ad faf asdf ad fad fads fadsf ad fadfd zdtgsrtrt sfdfs gf 
+14 adfadsfa adsadf adfasd fadf asdf adf asdf adf adsf adsf ad fadsf asd fadf adf a fadf ads fad 
+14 adfadsfa adsadf adfasd fadf asdf adf asdf adf adsf adsf ad fadsf asd fadf adf a fadf ads fad 
+asdf asdf asdf adsf adfaf adfadf a fadf ad faf asdf ad fad fads fadsf ad fadfd zdtgsrtrt sfdfs gf 
+14 adfadsfa adsadf adfasd fadf asdf adf asdf adf adsf adsf ad fadsf asd fadf adf a fadf ads fad 
+14 adfadsfa adsadf adfasd fadf asdf adf asdf adf adsf adsf ad fadsf asd fadf adf a fadf ads fad 
+asdf asdf asdf adsf adfaf adfadf a fadf ad faf asdf ad fad fads fadsf ad fadfd zdtgsrtrt sfdfs gf 
+14 adfadsfa adsadf adfasd fadf asdf adf asdf adf adsf adsf ad fadsf asd fadf adf a fadf ads fad 
+</div>
+
+
+
+<div class="columna">
+15 adfadsfa adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf adsadf adsf adsf asdf asdf adsf adsf adsf adsf adsf adsf adsf ad fadf adsf adf adf adf adf adf 
+adf ad fadf adf adf adf adf adf adf adf ad fadf adf ad fadf adf adf adsf adf adf ad fadsf adsf adsf
+<img src="globosFT.png" style="transform: translateX(-50%);" />
+<h2>FIN</h2>
+</div>
+
+
+</main>
+
+<footer>
+<h1>Pie de página</h1>
+</footer>
+
+</div>  <!--Cierra contenedor -->
+ 
+</body>
+</html>

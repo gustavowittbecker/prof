@@ -1,0 +1,73 @@
+<!doctype html> 
+<html lang="es">
+<HEAD>
+<title>css08centrado.html</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<style>
+
+body {
+	font-size: 32px
+}
+
+div.elementoCentrado {
+	margin:auto; /*El elemento centrado va al centro*/
+	width:50%; /*El elemento centrado tendrá un ancho de 50% de la ventana del navegador*/
+	/*height:150px; Si le fijo un alto, el div NO crecera en función del contenido*/
+	/*En ese caso para que el contenido no exceda los limites abra que darle valores al*/
+	/*parametro overflow*/
+	background-color:lightblue;
+}
+
+div.elementoCentradoConPadding {
+	margin:auto;
+	width:50%; 
+	/*La suma del ancho + los paddings derecho e izquierdo debe ser igual al ancho deseado para el elemento*/
+	/*height:150px; Si le fijo un alto, el div NO crecera en función del contenido*/
+	background-color:lightgreen;
+	padding-left:10%;
+	padding-right:10%;
+}
+
+div.elementoCentradoConPaddingConBoxSizing {
+	margin:auto; 
+	width:50%; 
+	/*El elemento centrado tendrá un ancho de 50% de la ventana del navegador*/
+	/*height:150px; Si le fijo un alto, el div NO crecera en función del contenido*/
+	padding-left:10%;
+	padding-right:10%;
+	background-color:beige;
+	box-sizing:border-box; /*permitira que el padding no agrande al objeto*/ 
+}
+
+
+</style>
+</HEAD>
+<body>
+<h1>Los siguientes elementos tienen un ancho del 50 % de la ventana</h1>
+
+<div class="elementoCentrado">
+	Texto en interior<br />
+	Texto en interior<br />
+	Texto en interior<br />
+	Texto en interior<br />
+	Texto en interior<br />
+	Texto en interior<br />
+</div>
+<div class="elementoCentradoConPadding">
+	Texto en interior con padding y sin box_sizing<br />
+	Texto en interior con padding y sin box_sizing<br />
+	Texto en interior con padding y sin box_sizing<br />
+	Texto en interior con padding y sin box_sizing<br />
+	Texto en interior con padding y sin box_sizing<br />
+</div>
+<div class="elementoCentradoConPaddingConBoxSizing">
+	Texto en interior con padding y con box-sizing<br /> 
+	Texto en interior con padding y con box-sizing<br />
+	Texto en interior con padding y con box-sizing<br />
+	Texto en interior con padding y con box-sizing<br />
+	Texto en interior con padding y con box-sizing<br />
+</div>
+
+
+</body>
+</HTML>

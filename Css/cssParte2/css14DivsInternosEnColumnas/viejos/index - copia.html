@@ -1,0 +1,101 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+	
+	<title>css14DivsEncolumnados</title>
+<style>
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+	font-size:1vw; /*letra de base para el documento*/
+}
+
+
+img {
+	max-width:100%;
+	max-height:100%;
+	margin:1%;
+	/*La imagen se vera al 100% y se separara
+	de cualquier otro elemento un 1% del tamaño del padre*/
+}
+
+
+div#contenedor {
+	margin:auto;
+	width:80%;
+	background-color:lightyellow;
+}
+
+div.columna {
+	padding:6%;
+	margin:0.5%; 
+	float:left;
+	width:30%; /*Si quiero tres columnas considerare 33% pero debo considerar el margin definido antes*/
+	background-color:lightblue;
+	box-sizing:border-box; 
+}
+
+div.nuevaFila {
+	clear:both;
+}
+
+
+</style>
+
+
+</head>
+<body>
+<div id="contenedor">
+<h1>Encolumnado sin tablas</h1>
+
+
+<div class="columna">
+	1 Datos para incluir en esta columna, Datos para incluir en esta columna 
+	Datos para incluir en esta columna 
+	Datos para incluir en esta columna 
+	Datos para incluir en esta columna 
+	La siguiente imagen queda marginada automaticamente y ocupa el maximo ancho posible dentro 
+	de la columna independientemente del ancho real de la foto. Obviamente el tamaño real 
+	debería ser mayor que el maximo posible previsto en el mejor de los casos (monitor de alta resolucion)
+	<img src="./imagen.jpg" />
+</div>
+
+
+
+<div class="columna">
+	2 Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+</div>
+
+<div class="columna">
+	3 Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+</div>
+
+
+
+<div class="columna">
+	4 Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+</div>
+
+<div class="columna">
+	5 Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+</div>
+
+<div class="columna">
+	6 Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna Datos para incluir en esta columna 
+	<img src="./flores.jpg" />
+</div>
+
+
+<!--IMPORTANTISIMO para que el contenedor general se extienda hasta contener todo!! -->
+<div class="nuevaFila"></div> 
+
+
+</div> <!--Cierra contenedor -->
+
+</body>
+</html>

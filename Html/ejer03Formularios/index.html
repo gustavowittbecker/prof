@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<title>Formulario ejer03Formularios</title>
+</head>
+
+
+
+<body>
+<form action="./respuestaFormulario.html" target="_blank" method="get">
+
+
+<h1>Formulario para entradas sin validación</h1>
+
+
+<ul>
+
+
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;" for="apellido" >Apellido:</label><br />
+<input type="text" id="apellido" name="apellido" value="" autofocus="autofocus" 
+title="Ingrese aqui nombres completos" />
+</li>
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;" for="clave">Contraseña:</label><br />
+<input type="password" id="clave" name="clave" autofocus >
+</li>
+
+
+<li style="margin-top:10px"> 
+<label style="font-weight: bold;" for="campoOculto">Oculto:</label><br />
+<input type="hidden"  name="campoOculto" title="Invisible pero enviando dato" value="valorOculto" >
+</li>
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="cdes" >Campo deshabilitado:</label><br />
+<input type="text" disabled="disabled" title="No envia dato" id="cdes" name="campodeshabilitado" value="valor deshabilitado" >
+</li>
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="sl" >Campo de solo lectura</label><br />
+<input type="text" readOnly="readOnly" title="Solo lectura pero enviando dato" id="sl" name="campoSoloLectura" value="valorSoloLectura" >
+</li>
+
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="deportes" >Practica deportes</label><br />
+<input type="checkbox" id="deportes" name="deportes" value="aceptado" >
+</li>
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="musica" >Practica musical</label><br />
+<input type="checkbox" id="musica" name="musica" value="aceptado" >
+</li>
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="pintura" >Practica de pintura artistica</label><br />
+<input type="checkbox" id="pintura" name="pintura" value="aceptado" >
+</li>
+
+
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  >Sexo</label><br />
+Masculino <input type="radio" id="masculino" name="sexo" value="masc" checked="checked" >
+Femenino <input type="radio" id="femenino" name="sexo" value="fem" >
+</li>
+
+
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="estudios" >Estudios cursados</label><br />
+
+<select id="estudios" name="Estudios">
+ <option value="pri" selected="selected" >Primarios</option>
+ <option value="sec">Secundarios</option>
+ <option value="ter">Terciarios</option>
+ <option value="uni">Universitarios</option>
+ <option value="pos">Postgrado</option>
+</select>
+</li>
+
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="fecha" >Fecha y Hora</label><br />
+<input type="date" name="fecha" id="fecha" >
+<input type="time" name="hora" id="hora" />
+</li>
+
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;"  for="color" >Color</label><br />
+<input type="color" id="color" name="color" />
+</li>
+
+
+<li style="margin-top:10px">
+<input type="submit" name="enviar" value="Enviar Formulario sin validacion" />
+</li>
+
+<li style="margin-top:10px">
+<input type="reset"  name="borrar" value="Reset a valores predeterminados" />
+</li>
+
+</ul>
+
+</form>
+
+
+
+
+<form action="./respuestaFormulario.html" target="_blank" method="get">
+
+<h1>Formulario para entradas con validacion</h1>
+
+<ul>
+
+<!--required realiza una Validacion del lado del cliente o validacion restringida
+Se valida que el campo no viaje vacío o con valor nulo:-->
+<li style="margin-top:10px">
+<label style="font-weight: bold;" >Comentario (validacion por requerido):</label><br />
+<input id="Comentario" name="Comentario" type="text" required=required />
+</li>
+
+<!--Un placeholder solo es una ayuda, si no se incluye nada en el campo este llevara un null
+Esto implica que deberá validarse la no existencia de vacío utiizando required=required, 
+porque si el usuario no pone nada el campo viajará vacío en el envio (o sea que el vacio es validado-->
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;" >Email con doble validacion (x@x y required): </label><br />
+<input type="email" id="user-email" name="user-email" placeholder="texto@texto" required=required />
+<!-- Recordemos que el navegador enviará los caracteres reservados como el @, codificados con un % adelante
+	y luego el codigo en hexa correspondiente. En este caso el @ viajará como %40 -->
+</li>
+
+
+<!--En este proximo caso como no hay required, el navegador validara el tipo y el rango correcto pero 
+un valor vacio pasara sin ser validado.-->
+<li style="margin-top:10px">
+<label style="font-weight: bold;" >Número entero limitado (validacion por tipo numerico y cotas):</label>
+<br />
+<input type="number" min="1" max="5" name="numeroEntero" /> 
+</li>
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;" >Número decimal:</label><br />
+<input type="number" min="0" max="9" name="numeroReal" step="0.1"/ required> 
+</li>
+
+<!--El siguiente ejemplo validara la existencia del string http://-->
+<li style="margin-top:10px">
+<label style="font-weight: bold;" >URL(validacion por requerido, escribir http://):</label><br />
+<input id="sitio" name="sitio" type="url" placeholder="http://xxx" required=required />
+</li>
+
+<!--En el siguiente caso solo pasara un valor vacío o un valor que coinsida con la expresión regular
+declarada en el pattern. Para evitar el vacio es que se usa el required -->
+<li style="margin-top:10px">
+<label style="font-weight: bold;" >Pattern de validación:</label><br />
+<input type="text" name="varMascara" pattern="[a-z]{3}[1-2]{2}" required name="mascara" title="3 letras y dos numeros que sean 1 o 2 solamente"/>
+
+</li>
+
+
+<li style="margin-top:10px">
+<label style="font-weight: bold;" >Pattern de validación:</label><br />
+<input type="text" name="tel" pattern="[(][+][0-9][0-9][)][ ][0-9]{2}[ ][0-9]{8}" required placeholder="(+54) 11 44445555" title="(+54) 11 xxxxxxxx"  />
+</li>
+
+<li style="margin-top:10px">
+<input type="submit" name="enviar" />
+</li>
+
+<li style="margin-top:10px">
+<input type="reset"  name="blanquear" />
+</li>
+
+</ul>
+
+
+</form>
+
+</BODY>
+</HTML>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+
+
+<TITLE>css23layoutBasico</TITLE>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+
+<style>
+
+* {
+	margin:0;
+	padding:0; 
+	border: 0 none;
+	box-sizing: border-box;
+ }
+
+
+html, body {
+	height:100%;
+	width:100%;
+	font-family:verdana;
+	font-size:24;
+}
+
+h1 {
+	font-size:1.5em;
+}
+
+
+a {
+	text-decoration: none;
+}
+
+
+	
+div#contenedor { /*Contiene todos los objetos del documento y no tendra alto fijo*/
+	width:90%; /*Ocupa el 80% del ancho de la ventana del navegador*/
+	height:100%;
+	margin:auto; /*asi queda centrado*/
+	background-color:yellow; /*Deberia quedar oculto detras de todos los elementos 
+								que lo componen. Lo pongo para detectar errores*/
+}
+
+header {
+	height:15%;
+	padding:10px; /*No poner nunca porcientos en los padding.*/
+	background-color:gray;
+	box-sizing:border-box;
+}
+
+div#cuerpo { /*Es un contenedor y por ende no lleva padding*/
+	display:block;
+	width:100%;
+	height:75%;
+	background-color:blue; /*Para que se vea azul si existe error en el dimensionamiento*/
+}
+
+footer {
+	height:10%;
+	background-color:gray;
+	overflow:auto; /*por si sobra contenido*/ 
+	display: flex; 
+  	justify-content: center; 
+  	align-items: center; 
+}
+
+nav {
+	text-align:center;
+	background-color:#FA8072;
+	height:100%; /*Para que extienda al total de su contenedor que sera "cuerpo" */
+	width:16%;
+	float:left;
+	overflow:auto;/*Para que si se extiende demasiado no sobre y deforme el div*/
+}
+
+#encabezadoNav {
+	width:100%;
+	height:20%;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+}
+
+ul {
+	/*border-style:solid;*/
+	padding:0;
+	height:80%; /*Para que extienda al total de su contenedor que sera "nav" */
+	width:80%;
+	margin:auto;
+	/*background-color: white;*/
+}
+
+li {
+background-color:#BBBBBB;
+	height:10%;
+	margin:0;
+	color:#555555;
+	cursor:pointer;
+	list-style-type:none;
+	display: flex; 
+	justify-content: center; 
+	align-items: center; 
+}
+
+li:hover{
+	background-color:#555555;
+	color:#BBBBBB;
+}
+
+#contenido {
+	background-color:#EEEEEE; /*gris claro*/
+	width:84%;
+	height:100%; /*Para que el div se extienda hasta cubrir la altura total del contenedor*/
+	float:left;
+	padding:10px;
+	/*box-sizing:border-box;*/
+	overflow:auto; /*Por las dudas de que el texto supere el alto y deforme el div*/
+}
+
+
+
+
+@media(orientation:portrait) {
+
+div#contenedor { /*Contiene todos los objetos del documento y no tendra alto fijo*/
+	width:100%; /*Ocupa el 80% del ancho de la ventana del navegador*/
+	height:100%;
+	margin:auto; /*asi queda centrado*/
+	background-color:yellow; /*Deberia quedar oculto detras de todos los elementos 
+								que lo componen. Lo pongo para detectar errores*/
+}
+
+ul {
+	/*border-style:solid;*/
+	padding:0;
+	height:80%; /*Para que extienda al total de su contenedor que sera "nav" */
+	width:100%;
+	margin:auto;
+	/*background-color: white;*/
+}
+
+}
+
+
+
+
+</style>
+
+
+<body>
+
+<div id="contenedor">
+<!--Dentro de este contenedor todo div que no tenga width definido ocupa todo el ancho-->
+
+<header>
+<!-- Dentro de este contenedor los objetos internos si no tienen ancho ocupan todo el ancho-->
+<!-- Los padding definidos no lo estiran si son asignados a un div interior -->
+
+<h1>Titulos principal de página 1 </h1>
+<!-- Este objeto h1 debe llevar el margin en cero para que todo otro objeto externo no se separe del mismo-->
+
+</header>
+
+<div id="cuerpo">
+
+
+<nav>
+<div id="encabezadoNav">
+<h2>Menu</h2>
+</div>
+<ul>
+<a href="../../../Html"><li>HTML</li></a>
+<a href="../../../Css"><li>CSS</li></a>
+<a href="../../../Jscript"><li>JSCRIPT</li></a>
+<a href="../../../Php"><li>PHP</li></a>
+</ul>
+</nav>
+
+
+<div id="contenido">
+
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div y superando el alto del mismo aaaaaabbbbbcccccccdddddddeeeeeee
+ffffffffffgggggggggggghhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkk
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br /><br /><br /><br /><br /><br />
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div y superando el alto del mismo aaaaaabbbbbcccccccdddddddeeeeeee
+ffffffffffgggggggggggghhhhhhhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiijjjjjjjjjjjjjjjjjjjkkkkkkkkkkkkkkkkkkkk
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+<br />El contenido puede crecer indefinidamente agrandando el div
+</div> 
+
+
+
+</div> <!--cierra cuerpo-->
+
+
+<footer>
+<h1>Pie de página</h1>
+</footer>
+
+
+</div> <!--Cierra contenedor-->
+ 
+</body>
+</html> 

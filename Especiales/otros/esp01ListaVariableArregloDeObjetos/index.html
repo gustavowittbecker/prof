@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!-- 10_ListavariableArregloDeObjetos-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<style>
+
+html {
+	height:100%;
+	margin:0;
+}
+body {
+	height:100%;
+	margin:0;
+}
+
+div#contenedor {
+	width:80%;
+	margin:auto;
+	height:100%;
+	margin-top:0;
+	background-color: #DDDDDD;
+}
+
+
+div#panelIzq {
+	width:50%;
+	float:left;
+}
+
+div#panelDer {
+	width:50%;
+	float:left;
+}
+
+div.limpia {
+	clear:both;
+}
+
+ul  {
+	list-style-type: none;
+	height: 20%;
+	margin:auto;
+	margin-top:10%;
+	width:80%;
+	overflow:auto;
+	background-color: beige;
+}
+
+
+li.claseLinea {
+	width: 90%;
+	height:10%;
+	margin:1%;
+	clear:both;
+}
+
+div.claseCampoAlfaNum {
+	width:20%;
+	float:left;
+	background-color: #CCCCCC;
+}
+
+div.claseCampoNum {
+	width:20%;
+	text-align: right;
+	float:left;
+	background-color: #AAAAAA;
+}
+
+button {
+	cursor:pointer;
+}
+
+
+</style>
+
+
+</head>
+
+<body>
+
+	<div id="contenedor">
+
+		<div id="panelIzq">
+
+
+<!-- Botones de evento -->	
+<button id="btAccionCargaLista">Mostrar LISTA</button>
+<button id="btAccionVaciaLista">Vacía LISTA</button>
+</div>
+
+<div id="panelDer">
+
+
+<!-- Lista de objetos -->
+<ul id="lista">
+</ul>
+
+</div>
+
+<div class="limpia"></div>
+
+</div>
+</body> 
+<!-- Aquí termina el cuerpo del documento  -->
+
+<script src="../jquery.js"></script>	
+
+
+
+<!-- En un .js se almacena un JSON que contine la info de un conjunto de objetos -->
+<script src="./arregloDeObjetos.js" type="text/javascript"></script>
+
+<script>
+
+
+//Creo los objetos necesarios
+var objJson=JSON.parse(jsonUsuarios); // con la funcion de jscript JSON.parse() se crea el 
+//objeto que representará al json definido en la variable jsonUsuarios.
+//var objLista=document.getElementById("lista"); //objeto objlista pertenceciente al documento.
+
+//var objBtCargaLista=document.getElementById("btAccionCargaLista");
+
+//var objBtVaciaLista=document.getElementById("btAccionVaciaLista");
+
+
+function cargaLista() {
+	//alert();
+		$("#lista").empty();
+	objLista=$("#lista");
+	objJson.usuarios.forEach(function(value,index) { //Barre elementos del vector
+			var objLi= document.createElement("li");
+			objLi.setAttribute("class","claseLinea");
+			//objLi.className="claseLinea";//linea valida igual a la anterior
+			objLi.innerHTML = "<div class='claseCampoAlfaNum'>"+value.nombre+"</div>";
+			objLi.innerHTML = objLi.innerHTML+"<div class='claseCampoAlfaNum'>"+value.añoNacimiento+"</div>";
+			objLi.innerHTML = objLi.innerHTML+"<div class='claseCampoNum'>"+value.saldoCuenta+"</div>";
+
+			objLista.append(objLi);
+
+			var objBtEnvio = document.createElement("button"); //crea boton de envio
+			objBtEnvio.innerHTML="Enviar datos";
+			objBtEnvio.onclick=function(){
+				var cadenaDePaso="";
+				cadenaDePaso=cadenaDePaso+"nombre="+value.nombre;
+				cadenaDePaso=cadenaDePaso+"&añoNacimiento="+value.añoNacimiento;
+				cadenaDePaso=cadenaDePaso+"&saldoCuenta="+value.saldoCuenta;
+				location.href="./respuesta.html?"+cadenaDePaso;
+						
+			} //cierra onclick del boton de envio
+			
+			objLi.append(objBtEnvio);
+
+		}); //cierra el forEach
+//	} //cierra if
+	
+} //cierra funcion creaLista
+
+
+
+//EVENTOS
+
+$("#btAccionCargaLista").click(function() {
+cargaLista();
+});
+
+$("#btAccionVaciaLista").click(function() {
+	$("#lista").empty();
+});
+
+</script>
+
+</html>

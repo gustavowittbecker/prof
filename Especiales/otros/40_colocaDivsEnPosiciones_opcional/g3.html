@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<!-- css46ColocaDivsEnPosiciones -->
+<HTML>
+<HEAD>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+<!--Crear un documento con los siguientes elementos:
+4 cuadrantes de tabla con id
+Un textbox como recurso
+4 botones para ubicar elementos en cada uno de los 4 cuadrantes
+4 botones para eliminar elementos en cada uno de los 4 cuadrates.
+-->
+
+<style>
+
+body {
+background-color:#222222;
+}
+
+#contenedor {
+margin:auto;
+width:80%;
+height:600px;
+background-color:gray;
+}
+
+div#areaBotones {
+width:40%;
+float:left;
+box-sizing:border-box;
+}
+
+table {
+border-collapse:collapse;width:40%;
+box-sizing:border-box;
+}
+div.celda {
+border-style:solid;border-width:1px;
+width:200px;height:200px;
+overflow:auto;background-color:lightyellow;
+}
+
+div.claseDestino {
+background-color:lightblue;
+border-style:solid;
+}
+</style>
+
+<script>
+/*RESUMEN FINAL
+var objNuevoDiv = document.createElement("div");
+objNuevoDiv.innerHTML="";
+objNuevoDiv.setAttribute("class","opcion");
+objNuevoDiv.setAttribute("id","div1");
+objNuevoDiv.setAttribute("onclick","location.href=''");
+objContenedor.appendChild(objNuevoDiv);
+objContenedor.childNodes[0].innerHTML="";
+alert(objContenedor.childNodes.lenght);
+objContenedor.hasChildNodes() --> para aplicar como expresion condicional por ejemplo en un while()
+objContenedor.removeChild(objContenedor.firstChild) --> Elimina el primer child
+*/
+
+function insertaTexto(argUbicacion,argRecurso) {
+//argUbicacion indica el objeto div donde se posicionara el recurso
+//argRecurso indica el recurso (texto)
+
+oDiv = document.createElement("div");
+oDiv.id="miDiv";
+oDiv.setAttribute("class","claseDestino");
+oDiv.innerHTML="<h1>"+argRecurso.value+"</h1>";
+argUbicacion.appendChild(oDiv);
+}
+
+function elimina(argUbicacion) {
+//argUbicacion indica el objeto div donde se posicionara el recurso
+//argRecurso indica el recurso (texto)
+while (argUbicacion.hasChildNodes()) { //el metodo hasChildNodes devuelve verdadero si existe un child dentro de ese objeto
+argUbicacion.removeChild(argUbicacion.firstChild); 
+}
+}
+
+</script>
+
+</head>
+<body>
+<div id="contenedor">
+<header>
+<h1>Ubicacion de objetos</h1>
+</header>
+<div id="areaBotones">
+<br />
+Recurso: <input id="entrada" type="text" />
+<br /><br /><br /><br />
+
+<br /><br /><button id="isi">Agrega recurso en area Superior izquierdaa</button>
+<!--<button id="esi">Elimina superior izquierda</button>-->
+
+<br /><br /><button id="isd">Agrega recurso en area Superior derecha</button>
+<!--<button id="esd">Elimina Superior derecha</button>-->
+
+<br /><br /><button id="iii">Agrega recurso en area Inferior izquierda</button>
+<!--<button id="eii">Elimina Inferior izquierda</button>-->
+
+<br /><br /><button id="iid">Agrega recurso en area Inferior derecha</button>
+<!--<button id="eid">Elimina Inferior derecha</button>-->
+</div>
+<table>
+<tr>
+<td>
+<div id="supIzq" class="celda"></div>
+</td>
+<td >
+<div id="supDer" class="celda"></div>
+</td>
+</tr>
+<tr>
+<td>
+<div id="infIzq" class="celda"></div>
+</td>
+<td>
+<div id="infDer" class="celda"></div>
+</td>
+</tr>
+</table>
+
+</div>
+<script>
+/*Eventos*/
+
+document.getElementById("isi").onclick = function() {
+insertaTexto(document.getElementById("supIzq"),document.getElementById("entrada"));
+}
+/*
+document.getElementById("esi").onclick = function() {
+elimina(document.getElementById("supIzq"));
+}
+*/
+document.getElementById("isd").onclick = function() {
+insertaTexto(document.getElementById('supDer'),document.getElementById('entrada'));
+}
+
+/*
+document.getElementById("esd").onclick = function() {
+elimina(document.getElementById('supDer'));
+}
+*/
+
+document.getElementById("iii").onclick = function() {
+insertaTexto(document.getElementById('infIzq'),document.getElementById('entrada'));
+}
+
+/*
+document.getElementById("eii").onclick = function() {
+elimina(document.getElementById('infIzq'));
+}
+*/
+document.getElementById("iid").onclick = function() {
+insertaTexto(document.getElementById('infDer'),document.getElementById('entrada'));
+}
+
+/*
+document.getElementById("eid").onclick = function() {
+elimina(document.getElementById('infDer'));
+}
+*/
+</script>
+</body>
+</html>
+

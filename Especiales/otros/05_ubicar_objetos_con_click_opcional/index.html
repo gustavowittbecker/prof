@@ -1,0 +1,152 @@
+﻿<!--05_ubicarObjetosConClick.html-->
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Ubicar objetos con click</title>
+
+<script src="../jquery.js"></script>	
+<style>
+
+div.columna {
+padding:1%;
+width:50%;
+height:100%;
+background-color: beige;
+float:left;
+border-style:solid;
+border-width: 1px;
+border-color: gray;
+box-sizing:border-box;
+}
+
+
+div.claseEspacio {
+background-color: lightblue;
+width:300px;
+height:200px;
+cursor:pointer;
+float:left;
+border-style:solid;
+overflow:auto;
+}
+
+div.claseObjeto {
+	background-color:lightyellow;
+}
+
+
+div.limpiaFloat {
+	clear:both;
+}
+
+div#botones {
+	border-style:solid;
+	border-width:1px;
+	padding:1%;
+	box-sizing: border-box;
+}
+</style>
+
+</head>
+<body>
+
+<div class="columna">
+	<h1>Apellido, nombres y matricula del alumno</h1>
+</div>
+
+<div class="columna">
+
+<div id="supIzq" class="claseEspacio"></div>
+<div id="supDer" class="claseEspacio"></div>
+
+<div class="limpiaFloat"></div>
+<div id="infIzq" class="claseEspacio"></div>
+<div id="infDer" class="claseEspacio"></div>
+
+<div class="limpiaFloat"></div>
+
+<br /><br />
+<h1>Click sobre el area para agregar y operar con recursos</h1>
+
+
+<br />Recurso a ser ubicado: <input type="text" id="recurso" name="recurso">
+
+<!-- Botones de opcion -->
+<!--Los siguientes radios no tienen value porque no intervienen en ningun formulario -->
+<!--Los siguientes radios tienen igual atributo name para que sean excluyentes -->
+<!--Los siguientes radios llevan su propio id cada uno para verificar en la expresion condicional si 
+tiene la propiedad checked con valor true -->
+
+
+<br /><br />
+
+
+
+<div id="botones">
+<h2>Opciones excluyentes</h2>
+<br />Adicionar <input id="radioAdicionar" name="accion" type="radio" checked />
+<br />Vaciar <input id="radioVaciar" name="accion" type="radio"  />
+<br />Informa nro de nodos <input id="radioInformarNro" name="accion" type="radio" />
+</div>
+
+
+<div class="limpiaFloat"></div>
+
+
+<script>
+
+
+function ubicar(recurso,posicion) { 
+/*al programar esta funcion debemos imaginar que tanto recurso como posicion son objetos*/
+/*Dependiendo del la opcion elegida en el grupo radio: */
+
+
+$("#radio").is(':checked')
+
+if ($("#radioAdicionar").is(':checked')) {
+	alert("adici");
+	var objNuevo = document.createElement("div");
+	objNuevo.innerHTML="<h1>"+recurso+"</h1>";
+	objNuevo.className="claseObjeto";
+	$("#"+posicion).append(objNuevo);
+}
+else if($("#radioVaciar").is(':checked')) {
+	alert("vaciar");
+	$("#"+posicion).empty();
+}
+
+else if($("#radioInformarNro").is(':checked')) {
+	alert($("#"+posicion).children().length);
+}
+
+
+}
+
+/*Objetos
+
+objSupIzq = document.getElementById('supIzq');
+objSupDer = document.getElementById('supDer');
+objInfIzq = document.getElementById('infIzq');
+objInfDer = document.getElementById('infDer');
+objRecurso = document.getElementById('recurso');
+objUbicacion = document.getElementById('ubicacion');
+*/
+/*MANEJADORES DE EVENTO*/
+
+$("#supIzq").click(function(){
+	//alert($("#recurso").val());
+	ubicar($("#recurso").val(),$("#supIzq").attr("id"));
+});
+/*
+objSupIzq.onclick = function(){ubicar(objRecurso,this)}
+objSupDer.onclick = function(){ubicar(objRecurso,this)}
+objInfIzq.onclick = function(){ubicar(objRecurso,this)}
+objInfDer.onclick = function(){ubicar(objRecurso,this)}
+*/
+</script>
+
+
+
+</body>
+</html>
+

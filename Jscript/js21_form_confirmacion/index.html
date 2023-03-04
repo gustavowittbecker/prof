@@ -1,0 +1,111 @@
+﻿<!doctype html>
+
+<HTML>
+<HEAD>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+<title>JS21_Form_Confirmacion.html</title>
+
+
+<style>
+
+* {
+	margin:0;
+	padding:0;
+	box-sizing: border-box;
+}
+	
+form {
+	
+	width:50%;
+	background-color:lightblue;
+	padding:10px;
+	box-sizing:border-box;
+	height:200px;
+}
+
+ul {
+	list-style-type:none;
+}
+
+li {
+	display:block;
+
+}
+
+label {
+	display:block;
+	width:20%;
+}
+
+input {
+	dislay:block;
+	width:20%;
+}
+
+main {
+	margin:auto;
+	width:80%;
+	background-color:lightblue;
+}
+
+div.barraControl {
+	/*background-color: yellow;*/
+	height:80px;
+	width:100%;
+	display: flex; /*Permite flexibilizar el contenido*/
+	justify-content: center; /*Permite centrar al medio en x el contenido*/
+	align-items: center; /*Permite centrar al medio en y el contenido*/
+}
+
+</style>
+
+
+</HEAD>
+
+<body>
+<!-- ojo con el nombre de los objetos. Java script es case sensitive-->
+
+<main>
+	<h2>Confirmación de envío y de reset</h2>
+<form action="" id="miform" method="">
+<ul>
+<li><label for="nombre">Nombre</label><input type="text" id="nombre" name="nombre" /></li>
+<li><label for="apellido">Apellido</label><input type="text" id="apellido" name="apellido" /></li> 
+</ul>
+</form>
+
+<div id="barraCotrol" class="barraControl">
+<button id="blanquear">Blanquear</button>
+<button id="enviar">Enviar</button>
+</div>
+<!--Atencion: si usara etiqueta button en lugar de input type button entonces los botones los debo sacar del formulario-->
+
+</main>
+
+</body>
+
+<script>
+/*ojo con los nombres de los objetos. Java script es case sensitive.*/
+
+/*Eventos*/
+document.getElementById("blanquear").onclick = function(){
+	varGenerica = confirm("Esta seguro de blanquear?");
+	 if (varGenerica) {
+ 		document.getElementById("miform").reset();
+ 	}
+}
+
+document.getElementById("enviar").onclick = function() {
+	varGenerica = confirm("Esta seguro de enviarr"); 
+	if (varGenerica) {
+		document.getElementById("miform").method ="get";
+		document.getElementById("miform").action ="./respuestaFormulario.html";
+		document.getElementById("miform").submit();
+	}
+}
+</script>
+
+
+
+</html>

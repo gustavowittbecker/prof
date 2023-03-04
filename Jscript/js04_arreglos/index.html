@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="ISO-8859-1" /> 
+<title>JS03_arreglos.html</title>
+
+</head>
+
+<body>
+
+<script>
+
+document.write("<h2>Variables Multidimensionales</h2>");
+
+document.write("<h2>Array de indice numerico</h2>");
+
+var arregloFrutas = [];
+
+document.write("<h4>Tipo para arregloFrutas: " + typeof arregloFrutas +"</h4>")
+
+arregloFrutas= ["banana","manzana"];
+
+
+arregloFrutas.push(prompt ("El arregloFrutas ya tiene dos elemntos asignados por programa (banana y manzana), agregue el tercer elemento con indice numerico"));
+
+document.write("<H4>Primer elemento cargado desde programa: "+arregloFrutas[0]+"</H4>");
+document.write("<H4>Segundo elemento cargado desde programa: "+arregloFrutas[1]+"</H4>");
+document.write("<H4>Tercer elemento cargado desde teclado: " +arregloFrutas[2]+"</H4>");
+
+document.write("<h4> Cantidad de elementos: " +arregloFrutas.length+ "</h4>");
+
+</script>
+
+</body>
+</html>
+

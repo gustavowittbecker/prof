@@ -1,0 +1,124 @@
+<!doctype  html>
+<HTML lang="es">
+
+<title>css04BackgroundFijo.html-</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<style>
+
+
+* {
+	font-size: 32px;
+	padding:0;
+	box-sizing: border-box;
+	margin:0;
+
+}
+
+
+
+div#contenedor {
+	border-style:solid;
+	border-width:thin;
+	background-color:lightblue;
+	width:50%;
+	padding:2%; /*separo la caja del borde del contenedor*/
+	margin:auto; /*contenedor queda centrado respecto a su contenedor*/
+}
+
+div#caja {
+	width:80%;
+	height:600px;/* Le fijo el alto para que el texto scrolee en ese espacio y el div no crezca */
+	background-color:lightgray; /*Elegido de acuerdo al fondo de la imagen*/
+	overflow:auto;
+	/*Una forma de fijar una imagen a un contenedor es la siguiente:*/;
+	background-image:url('./imagen.webp'); /*En este caso usamos un formato de imagen webp (tecnologia de Google*/
+	background-repeat:no-repeat; /*Para que la imagen chica no repetida*/
+	/*background-position:center top;*/
+	background-position:center center;
+	background-size:contain; /*Hace que la imagen entre completa sin recorte. recordar que tendré que usar un background-color compatible
+							con el fondo de la imagen para que no se distinga el borde*/
+	/*background-size:cover; /*Hace que la imagen cubra todo el background del contendor pero quedara recortada por algun lado.*/
+	/*el background-position puede tomar tambien valores negativos, sacando a la imagen fuera del elemento*/
+	/*El background-attachment en fixed hace que la imagen se ubique respecto a la ventana del navegador. No se usa*/
+	border-style:solid;border-color:#FF0000;
+	border-top-left-radius:20px;
+	padding:2%;
+}
+
+
+
+</style>
+
+<BODY >
+
+	<div id="contenedor">
+	
+		<div id="caja">
+
+			<p >El padding es importante para que el texto no quede pegado al borde</p>
+			<p >No olvidar usar el box-sizing:border-box para que la dimension de la caja sea exactamente la definida en el width</p>
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+
+			<br  />
+
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			<br  />
+
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+			Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.Texto. Texto.
+
+
+			</div> <!-- cierra caja -->
+	</div> <!-- cierra contenedor -->
+</body>
+</html>

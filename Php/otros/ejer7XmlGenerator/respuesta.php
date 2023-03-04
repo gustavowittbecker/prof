@@ -1,0 +1,93 @@
+<?php
+echo "Respuesta";
+$id=$_GET['id'];
+$nuevoNroContador=intval($id);
+$nuevoNroContador=$nuevoNroContador+1;
+//echo "<br />El nuevo numero de contador es: " . $nuevoNroContador;
+if($puntcontador = fopen("./contador.txt","w")) {;//crea un puntero al file contador pero en modo write
+fputs($puntcontador, $nuevoNroContador);//escribe en el file contador el nuevo numero incremetado
+fclose($puntcontador); 
+}
+else {
+	echo "Error en la escritura del contador";
+}
+$id=$_GET['id'];
+$tipoDeRecurso=$_GET['tipoDeRecurso'];
+$categoriaRecurso=$_GET['categoriaRecurso'];
+$titulo=$_GET['titulo'];
+$nombreDocumento=$_GET['nombreDocumento'];
+$subseccion=$_GET['subseccion'];
+$autor=$_GET['autor'];
+$curador=$_GET['curador'];
+$fechaDeCreacion=$_GET['fechaDeCreacion'];
+$fuente=$_GET['fuente'];
+$lugarFuente=$_GET['lugarFuente'];
+$abstract=$_GET['abstract'];
+$categoriaContenido=$_GET['categoriaContenido'];
+$categoriaPublicacion=$_GET['categoriaPublicacion'];
+$comentarioAdm=$_GET['comentarioAdm'];
+$path = "./" . $subseccion . "/archivos/";
+$url="http://" . $subseccion . "/archivos/". $nombreDocumento .".pdf";
+header("Expires: 0");
+header("Content-Description: File Transfer");
+header("Content-Type: application/force-download");
+header("Content-Disposition: attachment; filename=$nombreDocumento.xml");
+header("Content-Transfer-Encoding: binary");	
+$salida = "<?xml version='1.0' encoding='UTF-8'?>\n";
+$salida = $salida . "<documento>\n";
+$salida = $salida . "<id>\n";
+$salida = $salida . $id . "\n";
+$salida = $salida . "</id>\n";
+$salida = $salida . "<tipoDeRecurso>\n";
+$salida = $salida . $tipoDeRecurso . "\n";
+$salida = $salida . "</tipoDeRecurso>\n";
+$salida = $salida . "<categoriaRecurso>\n";
+$salida = $salida . $categoriaRecurso . "\n";
+$salida = $salida . "</categoriaRecurso>\n";
+$salida = $salida . "<titulo>\n";
+$salida = $salida . $titulo . "\n";
+$salida = $salida . "</titulo>\n";
+$salida = $salida . "<nombreDocumento>\n";
+$salida = $salida . $nombreDocumento . ".pdf\n";
+$salida = $salida . "</nombreDocumento>\n";
+$salida = $salida . "<url>\n";
+$salida = $salida . $url . "\n";
+$salida = $salida . "</url>\n";
+$salida = $salida . "<path>\n";
+$salida = $salida . $path . "\n";
+$salida = $salida . "</path>\n";
+$salida = $salida . "<subseccion>\n";
+$salida = $salida . $subseccion . "\n";
+$salida = $salida . "</subseccion>\n";
+$salida = $salida . "<autor>\n";
+$salida = $salida . $autor . "\n";
+$salida = $salida . "</autor>\n";
+$salida = $salida . "<curador>\n";
+$salida = $salida . $curador . "\n";
+$salida = $salida . "</curador>\n";
+$salida = $salida . "<fechaDeCreacion>\n";
+$salida = $salida . $fechaDeCreacion . "\n";
+$salida = $salida . "</fechaDeCreacion>\n";
+$salida = $salida . "<fuente>\n";
+$salida = $salida . $fuente . "\n";
+$salida = $salida . "</fuente>\n";
+$salida = $salida . "<lugarFuente>\n";
+$salida = $salida . $lugarFuente . "\n";
+$salida = $salida . "</lugarFuente>\n";
+$salida = $salida . "<abstract>\n";
+$salida = $salida . $abstract . "\n";
+$salida = $salida . "</abstract>\n";
+$salida = $salida . "<categoriaContenido>\n";
+$salida = $salida . $categoriaContenido . "\n";
+$salida = $salida . "</categoriaContenido>\n";
+$salida = $salida . "<categoriaPublicacion>\n";
+$salida = $salida . $categoriaPublicacion . "\n";
+$salida = $salida . "</categoriaPublicacion>\n";
+$salida = $salida . "<comentarioAdm>\n";
+$salida = $salida . $comentarioAdm . "\n";
+$salida = $salida . "</comentarioAdm>\n";
+
+$salida = $salida . "</documento>\n";
+echo $salida;
+flush;
+?>

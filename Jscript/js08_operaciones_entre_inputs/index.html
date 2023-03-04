@@ -1,0 +1,126 @@
+﻿<!DOCTYPE HTML>
+
+<html lang="es">
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+<title>JS08_operacionesSobreVariosInputs.html</title>
+
+<style>
+h3 {
+	text-align: center;
+}
+
+label {
+	width:200px;
+	float:left;
+}
+input {
+	float:left;
+}
+
+ul {
+	list-style-type: none;
+	background-color: lightblue;
+}
+li {
+	clear:both;
+}
+
+
+div#control {
+	display:block;
+}
+
+</style>
+
+
+<script>
+
+function promedio(arg1,arg2,arg3) {
+	var promedio = (arg1+arg2+arg3)/3;
+	return promedio;
+}
+
+function suma(arg1,arg2,arg3) {
+	var suma = arg1+arg2+arg3;
+	return suma;
+}
+
+function mayor(arg1,arg2,arg3) {
+	if ((arg1 >= arg2)&&(arg1 >= arg3)) {
+		return arg1;
+	}
+	else if(arg2 >= arg3) {
+		return arg2;	
+	}
+	else {
+		return arg3;
+	}	
+}
+
+
+</script>
+
+
+
+</head>
+<body>
+<h3>Introducir un valor en los cuadros de texto y luego pulsar el boton para ejecutar la función
+correspondiente.</h3>
+
+<ul>
+
+<li><label>Entrada 1:</label> <input type="text" id="x" value="0"></li>
+
+<li><label>Entrada 2: </label><input type="text" id="y" value="0"></li>
+
+<li><label>Entrada 3: </label><input type="text" id="z" value="0"></li>
+
+<li><label>Resultado: </label><input type="text" id="resultado"></li>
+
+<li></li>
+
+</ul>
+
+
+<div id="control">
+<button id="bt_suma">Suma</button>
+<button id="bt_prom">Promedia</button>
+<button id="bt_mayor">Mayor</button>
+</div>
+<!--El siguiente script define los objetos que representan los controles
+Esto se hace para no tener que estar escribiendo document.getElementById("id")
+Este script también define los manejadores de eventos-->
+
+<script>
+var objx=document.getElementById("x");
+var objy=document.getElementById("y");
+var objz=document.getElementById("z");
+var objBtSuma = document.getElementById('bt_suma');
+var objBtProm = document.getElementById('bt_prom');
+var objBtMayor = document.getElementById('bt_mayor');
+var objResultado=document.getElementById("resultado");
+
+
+/*Eventos como propiedades de los objetos del navegador*/
+
+window.onload = function() {
+	objx.focus();
+}
+
+objBtSuma.onclick = function() {
+	objResultado.value=suma(parseInt(objx.value),parseInt(objy.value),parseInt(objz.value));
+}
+
+objBtProm.onclick = function() {
+	objResultado.value=promedio(parseInt(objx.value),parseInt(objy.value),parseInt(objz.value));
+}
+
+objBtMayor.onclick = function() {
+	objResultado.value=mayor(parseInt(objx.value),parseInt(objy.value),parseInt(objz.value));
+}
+</script>
+
+</body>
+</html>

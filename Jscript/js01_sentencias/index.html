@@ -1,0 +1,53 @@
+﻿<!DOCTYPE HTML>
+<!--Java script lenguaje interpretado, 
+con compilacion JIT (Just in time) o con codigo intermedio codebyte dependiendo del navegador
+orientado a objetos pero sin posibilidad de crear o modificar clases,
+con tipado dinamico (las variables pueden cambiar su tipo en tiempo de ejecución)
+con tipado debil (se permiten operaciones o expresiones usando como operandos variables de distinto tipo
+por ejemplo sumar una variable de tipo entero con una de tipo string da como resultado la concatenación 
+de 2 strings)
+-->
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+<title>Sentencias simples en java script JS01_sentencias.html</title>
+
+</head>
+<body>
+
+
+<h1>
+Texto1 escrito directamente en HTML. 
+</h1>
+
+<SCRIPT>
+
+
+document.write("<h1>Texto2. Mensaje escrito desde java script");
+document.write("<h1>No pisa al documento porque aún no termino el flujo de escritura del navegador</h1>");
+</script>
+
+<h1>Texto 3 escrito en HTML</h1>
+
+<script>
+document.write("<h1>Texto4. Escrito desde java script.</h1>");
+document.write("<h1>No pisa al documento porque aún no termino el flujo de escritura del navegador</h1>");
+
+
+alert("Este mensaje de alerta es escrito desde un script del documento. " +
+"Esta ventana de alerta es modal lo que significa que el flujo de escritura" +
+" del documento se interrumpe hasta el evento de aceptación."+
+"El navegador muestra este tipo de ventana con anterioridad a la interpretación o renderización del documento"
+);
+
+
+
+</script>
+</BODY>
+
+</HTML>
+
+
+
+
