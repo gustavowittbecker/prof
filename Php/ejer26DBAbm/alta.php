@@ -14,8 +14,9 @@ $respuesta_estado = "";
 
 
 try {
-	$dsn = "mysql:host=$host;dbname=$dbname";
-	$dbh = new PDO($dsn, $user, $password);	/*Database Handle*/
+	$dsn = "mysql:host=$host;dbname=$dbname"; /*dsn es una variable de tipo texto que contiene toda la información necesaria para conectarse a una 
+                                             	fuente de datos  */
+	$dbh = new PDO($dsn, $user, $password);	/*el metodo constructor PDO crea una instancia de conexión a una fuente de datos tambien llamada Database Handle*/
 	$respuesta_estado = $respuesta_estado .  "\nconexion exitosa";
 } catch (PDOException $e) {
 	$respuesta_estado = $respuesta_estado . "\n" . $e->getMessage();
