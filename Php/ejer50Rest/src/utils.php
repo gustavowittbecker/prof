@@ -9,11 +9,15 @@
          $conn = new PDO("mysql:host={$db['host']};dbname={$db['db']}", $db['username'], $db['password']);
 
         // set the PDO error mode to exception
+         //con esto el objeto $conn pasa al modo de exception
          $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
           return $conn;
       } catch (PDOException $exception) {
-          exit($exception->getMessage());
+          exit($exception->getMessage()); //la función exit termina la ejecución del script 
+                                          //pero antes imprime el mensaje 
+                                          //pasado como argumento o el estado en que se encuentra la ejecucion
+                                          //pero no devuelve nada
       }
   }
 

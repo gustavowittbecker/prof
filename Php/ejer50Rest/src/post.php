@@ -2,7 +2,6 @@
 include "configConexion.php";
 include "utils.php";
 //header("HTTP/1.1 200 todo bien!");
-//echo "Hola";
 
 /*
 if ($_SERVER['REQUEST_METHOD'] == 'GET'){
@@ -19,11 +18,12 @@ else {
 }
 */
 
-
+$respuesta="";
 
 $dbConn =  connect($db);
-
-
+$respuesta=$respuesta . "La conexion a la base fue lograda exitosamente </br>";
+echo $respuesta;
+/*
  // listar todos los posts o solo uno
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -106,5 +106,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT')
 
 //En caso de que ninguna de las opciones anteriores se haya ejecutado
 header("HTTP/1.1 400 Bad Request");
-
+*/
 ?>
