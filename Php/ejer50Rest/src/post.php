@@ -23,7 +23,7 @@ $respuesta="";
 $dbConn =  connect($db);
 $respuesta=$respuesta . "La conexion a la base fue lograda exitosamente </br>";
 echo $respuesta;
-/*
+
  // listar todos los posts o solo uno
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 	}
 }
 
+
 // Crear un nuevo post pasando parametros por el body del requerimiento http
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
@@ -70,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 	 }
 }
 
+/*
 //Borrar un post pasando como parametro el id dentro del url
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
