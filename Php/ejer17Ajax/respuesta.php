@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <?php
 sleep(1); /* Un segundo de delay */
+echo $_SERVER['REQUEST_METHOD'] . "</br>";
 echo "Clave:  ";
 echo  $_POST['clave'];
+
 echo "<h4>Clave encriptada en md5 (128 bits o 16 pares hexadecimales): </h4>";
 $claveEncriptada = md5($_POST['clave']);
 echo $claveEncriptada;

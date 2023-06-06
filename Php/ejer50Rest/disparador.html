@@ -20,10 +20,9 @@
 			$("#estado").empty();
 			$("#estado").append("<h2>Esperando Respuesta .. ");
 			$.ajax({
-			type: "POST",
-			method: "POST",
+			type: $("#verbo").val(),
 			url: "http://" + $("#host").val() + $("#uri").val(),
-			data: {},
+			data: {uri: $("#uri").val()},
 			success: function(respuestaDelServer,estado) {
 				//la funcion de callback lleva 3 argumentos opcionales en ese orden
 				//En el evento success se aplica una funci�n
@@ -40,6 +39,8 @@
 		}); //cierra click
 
 	}); //cierra ready
+
+
 
 
 
@@ -137,10 +138,10 @@ div.limpiaFloats {
 		<div id="entradaVerbo">
 			<h1>Ingrese el verbo a aplicar en el requerimiento:</h1>
 			<select id="verbo" name="verbo" type="text">
-				<option value="GET">GET</option>
-				<option value="POST">POST</option>
-				<option value="DELETE">DELETE</option>
-				<option value="PUT">PUT</option>
+				<option value="get">GET</option>
+				<option value="post">POST</option>
+				<option value="delete">DELETE</option>
+				<option value="put">PUT</option>
 			</select>
 
 <!--

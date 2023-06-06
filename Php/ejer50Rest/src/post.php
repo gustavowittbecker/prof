@@ -3,26 +3,9 @@ include "configConexion.php";
 include "utils.php";
 //header("HTTP/1.1 200 todo bien!");
 
-/*
-if ($_SERVER['REQUEST_METHOD'] == 'GET'){
-    header('respuesta:valor1');
-    echo $_GET['auto'] . "<br />";
-	echo $_GET['modelo'] . "<br />"; 
-    exit();
-	 }
-else {
-	header('respuesta:valor2');
-	echo $_GET['auto'] . "<br />";
-	echo $_GET['modelo'] . "<br />"; 
-	exit();
-}
-*/
-$respuesta="";
-
 $dbConn =  connect($db);
+$respuesta = $_SERVER['REQUEST_METHOD'] . "<br /";
 $respuesta=$respuesta . "La conexion a la base fue lograda exitosamente </br>";
-//echo $respuesta;
-
  // listar todos los posts o solo uno
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
@@ -37,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
       header("HTTP/1.1 200 OK");
       echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
       //exit();
-	  }
+    }
     else {
       //Mostrar lista de posteos en formato json
       $sql = $dbConn->prepare("SELECT * FROM posts");
@@ -46,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
       header("HTTP/1.1 200 OK");
       echo json_encode( $sql->fetchAll()  );
       //exit();
-	}
+  }
 }
 
 
@@ -71,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       header("HTTP/1.1 200 OK TODO BIEN");
       echo json_encode($input);
       exit();
-	 }
+   }
    */
 }
 
@@ -79,12 +62,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
 //Borrar un post pasando como parametro el id dentro del url
 if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
 {
-	$id = $_GET['id'];
+  $id = $_GET['id'];
   $statement = $dbConn->prepare("DELETE FROM posts where id=:id");
   $statement->bindValue(':id', $id);
   $statement->execute();
-	header("HTTP/1.1 200 OK");
-	exit();
+  header("HTTP/1.1 200 OK");
+  exit();
 }
 
 //Actualizar un post pasando los paramentros incluido el id dentro del url
@@ -115,6 +98,10 @@ header("HTTP/1.1 400 Bad Request");
 */
 
 
-  echo $respuesta;
-  echo "_SERVER:" . $_SERVER['REQUEST_METHOD'];
+echo $respuesta;
+
+
+
+
+
 ?>
