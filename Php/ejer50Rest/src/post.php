@@ -17,17 +17,17 @@ else {
 	exit();
 }
 */
-
 $respuesta="";
 
 $dbConn =  connect($db);
 $respuesta=$respuesta . "La conexion a la base fue lograda exitosamente </br>";
-echo $respuesta;
+//echo $respuesta;
 
  // listar todos los posts o solo uno
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
+    $respuesta=$respuesta . "<br />El verbo usado en el requerimiento fue GET";
     if (isset($_GET['id']))
     {
       //Mostrar un post en formato json
@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
       $sql->execute();
       header("HTTP/1.1 200 OK");
       echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
-      exit();
+      //exit();
 	  }
     else {
       //Mostrar lista de posteos en formato json
@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
       echo json_encode( $sql->fetchAll()  );
-      exit();
+      //exit();
 	}
 }
 
@@ -53,6 +53,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
 // Crear un nuevo post pasando parametros por el body del requerimiento http
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
+  $respuesta=$respuesta . "<br />El verbo usado en el requerimiento fue POST";
+
+  /*
     $input = $_POST;
     $sql = "INSERT INTO posts
           (title, status, content, user_id)
@@ -69,6 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       echo json_encode($input);
       exit();
 	 }
+   */
 }
 
 /*
@@ -109,4 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'PUT')
 //En caso de que ninguna de las opciones anteriores se haya ejecutado
 header("HTTP/1.1 400 Bad Request");
 */
+
+
+  echo $respuesta;
+  echo "_SERVER:" . $_SERVER['REQUEST_METHOD'];
 ?>

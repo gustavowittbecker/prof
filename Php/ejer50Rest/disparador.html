@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!--ejer de encriptación hecho con ajax-->
+<!--ejer de llamadas a una API Rest-->
 <html lang="es">
 <head>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -11,15 +11,19 @@
 	/*El metodo click() registra un event handler cuando el evento click ocurre */
 	$(document).ready(function() {
 		$("#trigger" ).click(function() {
+			alert("http://" + $("#host").val() + $("#uri").val());
+			alert($("#verbo").val());
+			
 			$("#resultado").empty(); //vacia el cuadro de resultado.
 			$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
 			$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
 			$("#estado").empty();
 			$("#estado").append("<h2>Esperando Respuesta .. ");
 			$.ajax({
-			type:"post", 
-			url: "./respuesta.php", 
-			data: { clave: $("#clave").val()},
+			type: "POST",
+			method: "POST",
+			url: "http://" + $("#host").val() + $("#uri").val(),
+			data: {},
 			success: function(respuestaDelServer,estado) {
 				//la funcion de callback lleva 3 argumentos opcionales en ese orden
 				//En el evento success se aplica una funci�n
@@ -28,11 +32,18 @@
 				$("#resultado").html("<h1>Resultado: </h1><h4>"+respuestaDelServer+"</h4>"); //adiciona data al contenido del div
 				$("#estado").empty();
 				$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
-			}
+			
+				} //cierra funcion asociada al success
 	
 			}); //cierra ajax
+
 		}); //cierra click
+
 	}); //cierra ready
+
+
+
+
 	
 </script>
 
@@ -113,13 +124,40 @@ div.limpiaFloats {
 <body>
 	<div id="contenedor">
 	
-		<div id="entrada">
-			<h1>Dato de entrada:</h1>
-			<input id="clave" name="clave" type="text">
+		<div id="entradaHost">
+			<p>Ingrese el nombre de host que atiende el requerimiento:</p>
+			<input id="host" name="host" type="text">
 		</div>
-	
+
+		<div id="entradaUri">
+			<p>Ingrese el nombre del recurso (URI):</p>
+			<input id="uri" name="uri" type="text">
+		</div>
+
+		<div id="entradaVerbo">
+			<h1>Ingrese el verbo a aplicar en el requerimiento:</h1>
+			<select id="verbo" name="verbo" type="text">
+				<option value="GET">GET</option>
+				<option value="POST">POST</option>
+				<option value="DELETE">DELETE</option>
+				<option value="PUT">PUT</option>
+			</select>
+
+<!--
+		<div id="stringReq" nombre de recurso:</h1>
+			<input id="stringReq" name="stringReq" type="text">
+		</div>
+-->
+
+
+		</div>
+
+
+
+
+
 		<div id="trigger">
-			<h1>Encriptar</h1>
+			<h1>Ejecutar</h1>
 		</div>
 		<div id="resultado">
 			<h1>Resultado:</h1>
