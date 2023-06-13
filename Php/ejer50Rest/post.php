@@ -3,14 +3,18 @@ include "configConexion.php";
 include "utils.php";
 //header("HTTP/1.1 200 todo bien!");
 
+$respuesta = "<h4>Respuesta:</h4>";
+
+$respuesta = $respuesta . "Request method: " . $_SERVER['REQUEST_METHOD'] . "<br />";
+$respuesta = $respuesta . "Request URI: " . $_SERVER['REQUEST_URI'] . "<br />";
+
 $dbConn =  connect($db);
-$respuesta = $_SERVER['REQUEST_METHOD'] . "<br /";
-$respuesta=$respuesta . "La conexion a la base fue lograda exitosamente </br>";
+
+$respuesta = $respuesta . "La conexion a la base fue lograda exitosamente </br>";
  // listar todos los posts o solo uno
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET')
 {
-    $respuesta=$respuesta . "<br />El verbo usado en el requerimiento fue GET";
     if (isset($_GET['id']))
     {
       //Mostrar un post en formato json
@@ -18,8 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
       $sql->bindValue(':id', $_GET['id']);
       $sql->execute();
       header("HTTP/1.1 200 OK");
-      echo json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
-      //exit();
+      echo $respuesta;
+      echo "<br />" . json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
+      exit();
     }
     else {
       //Mostrar lista de posteos en formato json
@@ -27,8 +32,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET')
       $sql->execute();
       $sql->setFetchMode(PDO::FETCH_ASSOC);
       header("HTTP/1.1 200 OK");
+      echo "va...! " . $respuesta;
       echo json_encode( $sql->fetchAll()  );
-      //exit();
+      exit();
   }
 }
 
@@ -98,7 +104,7 @@ header("HTTP/1.1 400 Bad Request");
 */
 
 
-echo $respuesta;
+//echo $respuesta;
 
 
 
