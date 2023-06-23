@@ -52,6 +52,9 @@ $stmt->execute();
 
 //Si viene documento! Sigue abajo
 
+	$codArt = $dbh->lastInsertId(); //Para el caso de una tabla de movimientos donde la clave primaria sea autoincremental.
+
+
 	if (empty($_FILES['documentoPdf']['name'])) {
 		$respuesta_estado = $respuesta_estado . "<br />No ha sido seleccionado ningun file para enviar!";		
 	}

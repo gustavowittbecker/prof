@@ -1156,7 +1156,8 @@ function modi() {
 				saldoStock:$("#formArticulosEntSaldoStockModi").val()
 			},
 */
-			var data = new FormData($("#formArticulosModi")[0]);
+			/*var data = new FormData($("#formArticulosModi")[0]); Para usar con jquery*/
+			var data = new FormData(document.getElementById("formArticulosModi"));/*valido para java script*/
 			var objAjax = $.ajax({
 			type: 'post',
 			method: 'post',
