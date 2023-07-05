@@ -1,6 +1,6 @@
 <?php
 ?>
-
+<!--Este index es un tablero que permite generar requerimientos rest con el verbo y el recurso necesario para obtener un resultado-->
 <html lang="es">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
@@ -74,6 +74,10 @@
 			height:50px;
 		}
 
+		input.armadoURL {
+			width:70%;
+		}
+
 		select {
 				width:33%;
 				height:50px;
@@ -92,13 +96,13 @@
 		div#contenedorSuperior {
 			display:block;
 			width:100%;
-			height:80%;
+			height:60%;
 		}
 
 		div#contenedorInferior {
 			display:block;
 			width: 100%;
-			height:20%;
+			height:40%;
 		}
 
 		div#contenedorParams {
@@ -192,11 +196,11 @@
 				</div>
 				<div class="divEntrada">
 					<h4>Ingrese el nombre del recurso (URI parte recurso):</h4>
-					<input class="inputEntrada" id="uriParte1" name="uriParte1" type="text" value="/prof/Php/ejer50Rest/post.php">
+					<input class="inputEntrada" id="uriParte1" name="uriParte1" type="text" value="/prof/Php/ejer50Rest/tangoTips.php">
 					</div>
 				<div class="divEntrada">
 					<h4>Ingrese recurso REST (URI parte Ruta):</h4>
-					<input class="inputEntrada" id="uriParte2" name="uriParte2" type="text" value="?posts/post">
+					<input class="inputEntrada" id="uriParte2" name="uriParte2" type="text" value="?tips/tip">
 				</div>
 					<div  class="divEntrada">
 						<h4>Ingrese el verbo a aplicar en el requerimiento:</h4>
@@ -209,12 +213,43 @@
 					</div>
 					<div class="divEntrada">
 						<h4>URL - Nombre de recurso completo:</h4>
-						<input id="stringReq" name="stringReq" type="text" value="inicio" disabled>
+						<input class="armadoURL" id="stringReq" name="stringReq" type="text" value="inicio" disabled>
 					</div>
 
 			</div> <!--cierra contenedorParams-->
 			<div id="contenedorDatos">
+				<h2>Datos a enviar</h2>
+			
+				<div class="divEntrada">
+					<h4>Ingrese el id del tip</h4>
+					<input class="inputEntrada" id="id" name="id" type="text">
+				</div>
+
+				<div class="divEntrada">
+					<h4>Ingrese el titulo del tip</h4>
+					<input class="inputEntrada" id="titulo" name="titulo" type="text">
+				</div>
+
+				<div class="divEntrada">
+					<h4>Ingrese contenido</h4>
+					<input class="inputEntrada" id="contenido" name="contenido" type="text">
+				</div>
+
+					<div class="divEntrada">
+						<h4>Ingrese fecha de creación o modificación</h4>
+					<input class="inputEntrada" id="fechaModi" name="fechaModi" type="date">
+				</div>
+				<div class="divEntrada">
+					<h4>Usuario/Autor</h4>
+					<input class="inputEntrada" id="usuario" name="usuario" type="text">
+				</div>
+
+
+
 			</div>	<!--cierra contenedorDatos-->
+
+
+
 		</div> <!--cierra contenedor superior-->
 
 		<div id="contenedorInferior">
