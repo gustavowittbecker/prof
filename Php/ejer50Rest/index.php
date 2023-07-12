@@ -200,7 +200,7 @@
 					</div>
 				<div class="divEntrada">
 					<h4>Ingrese recurso REST (URI parte Ruta):</h4>
-					<input class="inputEntrada" id="uriParte2" name="uriParte2" type="text" value="?tips/tip">
+					<input class="inputEntrada" id="uriParte2" name="uriParte2" type="text" value="/tips/tipId">
 				</div>
 					<div  class="divEntrada">
 						<h4>Ingrese el verbo a aplicar en el requerimiento:</h4>

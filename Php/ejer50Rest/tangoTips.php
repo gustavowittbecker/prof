@@ -13,19 +13,58 @@ $dbConn =  connect($db);
 $respuesta = $respuesta . "La conexion a la base fue lograda exitosamente </br>";
  // listar todos los posts o solo uno
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') //los datos van por el URI
- 
-{
 
-  $palabra = explode("?",$_SERVER['REQUEST_URI']);
-  $respuesta = $respuesta . "<br />Parte Derecha: " . $palabra[1];
+$palabra = explode("/",$_SERVER['REQUEST_URI']);
+  $respuesta = $respuesta . "<br />Parte 0: " . $palabra[0];
+  $respuesta = $respuesta . "<br />Parte 1: " . $palabra[1];
+  $respuesta = $respuesta . "<br />Parte 2: " . $palabra[2];
+  $respuesta = $respuesta . "<br />Parte 3: " . $palabra[3];
+  $respuesta = $respuesta . "<br />Parte 4: " . $palabra[4];
+  $respuesta = $respuesta . "<br />Parte 5: " . $palabra[5];  
+  $respuesta = $respuesta . "<br />Parte 6: " . $palabra[6]; 
 
-  if ($palabra[1]==="tips"){
-      $respuesta = $respuesta . "<br />bien tips ";
-  }
-  if (substr($palabra[1],0,4) == "tip/"){
-      $respuesta = $respuesta . "<br />bien tip/";
-  }
+  $recurso = $palabra[count($palabra)-1];
+
+  $respuesta = $respuesta . "<br />Recurso: " . $recurso; 
+
+
+
+
+
+
+if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "lista")) {
+  
+  
+  $respuesta = $respuesta . "<br /> Devuelve lista";
+  
+  $sql = $dbConn->prepare("SELECT * FROM posts");
+  $sql->execute();
+  $sql->setFetchMode(PDO::FETCH_ASSOC);
+  header("HTTP/1.1 200 OK");
+      
+  $respuesta = $respuesta . "<br />" . json_encode( $sql->fetchAll()  );
+  echo $respuesta;
+  
+  exit();
+
+}
+
+
+
+elseif (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso <> "lista")) {
+
+  $respuesta = $respuesta . "<br /> Devuelve tip nro $recurso";
+  $sql = $dbConn->prepare("SELECT * FROM posts where id=:id");
+  $sql->bindValue(':id', $recurso);
+  $sql->execute();
+  header("HTTP/1.1 200 OK");
+  $respuesta = $respuesta . "<br />" . json_encode(  $sql->fetch(PDO::FETCH_ASSOC) );
+  echo  $respuesta;
+  exit();
+}
+
+
+
 
 /*
 
@@ -59,11 +98,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') //los datos van por el URI
      }
 
 */
-     echo $respuesta;
-}
+
+
 
 
 // Crear un nuevo post pasando parametros por el body del requerimiento http
+
+
+/*
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 
@@ -98,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
       exit();
    }
    */
-}
+
 
 /*
 //Borrar un post pasando como parametro el id dentro del url
@@ -140,8 +182,11 @@ header("HTTP/1.1 400 Bad Request");
 */
 
 
-//echo $respuesta;
+else {
+$respuesta = $respuesta . "<br />Fin";
 
+echo $respuesta;
+}
 
 
 
