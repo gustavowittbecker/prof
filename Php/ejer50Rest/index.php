@@ -14,29 +14,64 @@
 			$(document).ready(function() {
 				
 				$("#trigger" ).click(function() {
-					$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
-					//alert("Recurso: "+$("#stringReq").val());
 					//alert($("#verbo").val());
-					$("#resultado").empty(); //vacia el cuadro de resultado.
-					$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
-					$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
-					$("#estado").empty();
-					$("#estado").append("<h2>Esperando Respuesta .. ");
-					$.ajax({
-					type: $("#verbo").val(),
-					url: $("#stringReq").val(),
-					success: function(respuestaDelServer,estado) {
-						//la funcion de callback lleva 3 argumentos opcionales en ese orden
-						//En el evento success se aplica una funci�n
-						//de call back que ser� ejecutada cuando el requerimiento ajax se halla completado.
-						$("#resultado").removeClass("estiloRecibiendo");
-						$("#resultado").html("<h1>Resultado: </h1><h4>"+respuestaDelServer+"</h4>"); //adiciona data al contenido del div
+
+					if($("#verbo").val()=="post") {
+						$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
+						//alert("Recurso: "+$("#stringReq").val());
+						//alert($("#verbo").val());
+						$("#resultado").empty(); //vacia el cuadro de resultado.
+						$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
+						$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
 						$("#estado").empty();
-						$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
-					
-						} //cierra funcion asociada al success
-			
-					}); //cierra ajax
+						$("#estado").append("<h2>Esperando Respuesta .. ");
+						$.ajax({
+						type: $("#verbo").val(),
+						url: $("#stringReq").val(),
+						data: { titulo: $("#titulo").val(), estado: $("#estado").val(), contenido: $("#contenido").val(),
+						fechaModi: $("#fechaModi").val(), usuario: $("#usuario").val()},
+						success: function(respuestaDelServer,estado) {
+							//la funcion de callback lleva 3 argumentos opcionales en ese orden
+							//En el evento success se aplica una funci�n
+							//de call back que ser� ejecutada cuando el requerimiento ajax se halla completado.
+							$("#resultado").removeClass("estiloRecibiendo");
+							$("#resultado").html("<h1>Resultado: </h1><h4>"+respuestaDelServer+"</h4>"); //adiciona data al contenido del div
+							$("#estado").empty();
+							$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
+						
+							} //cierra funcion asociada al success
+				
+						}); //cierra ajax
+					}
+					else {
+						$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
+						alert("Recurso: "+$("#stringReq").val());
+						//alert($("#verbo").val());
+						$("#resultado").empty(); //vacia el cuadro de resultado.
+						$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
+						$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
+						$("#estado").empty();
+						$("#estado").append("<h2>Esperando Respuesta .. ");
+						$.ajax({
+						type: $("#verbo").val(),
+						url: $("#stringReq").val(),
+						success: function(respuestaDelServer,estado) {
+							//la funcion de callback lleva 3 argumentos opcionales en ese orden
+							//En el evento success se aplica una funci�n
+							//de call back que ser� ejecutada cuando el requerimiento ajax se halla completado.
+							$("#resultado").removeClass("estiloRecibiendo");
+							$("#resultado").html("<h1>Resultado: </h1><h4>"+respuestaDelServer+"</h4>"); //adiciona data al contenido del div
+							$("#estado").empty();
+							$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
+						
+							} //cierra funcion asociada al success
+				
+						}); //cierra ajax
+
+					}
+
+
+
 
 				}); //cierra click
 
@@ -70,7 +105,7 @@
 		}
 		
 		input {
-			width:33%;
+			width:38%;
 			height:50px;
 		}
 
@@ -111,6 +146,7 @@
 			background-color:gray; 
 			/*border: 1px solid #000;*/
 			float:left;
+			overflow: scroll;
 		}
 
 		div#contenedorDatos {
@@ -119,6 +155,7 @@
 			background-color:lightblue; 
 			/*border: 1px solid #000;*/
 			float:left;
+			overflow: scroll;
 		}
 
 		div.divEntrada {
@@ -217,18 +254,27 @@
 					</div>
 
 			</div> <!--cierra contenedorParams-->
+
+
+
 			<div id="contenedorDatos">
 				<h2>Datos a enviar</h2>
 			
 				<div class="divEntrada">
 					<h4>Ingrese el id del tip</h4>
-					<input class="inputEntrada" id="id" name="id" type="text">
+					<input class="inputEntrada" id="tipId" name="tipId" type="text">
 				</div>
 
 				<div class="divEntrada">
 					<h4>Ingrese el titulo del tip</h4>
 					<input class="inputEntrada" id="titulo" name="titulo" type="text">
 				</div>
+
+				<div class="divEntrada">
+				<h4>Ingrese el estado del tip</h4>
+				<input class="inputEntrada" id="estado" name="estado" type="text">
+				</div>
+
 
 				<div class="divEntrada">
 					<h4>Ingrese contenido</h4>

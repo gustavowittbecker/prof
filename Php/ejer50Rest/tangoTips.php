@@ -29,10 +29,7 @@ $palabra = explode("/",$_SERVER['REQUEST_URI']);
 
 
 
-
-
-
-if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "lista")) {
+if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "")) {
   
   
   $respuesta = $respuesta . "<br /> Devuelve lista";
@@ -51,135 +48,55 @@ if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "lista")) {
 
 
 
-elseif (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso <> "lista")) {
+
+
+elseif (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso <> "")) {
 
   $respuesta = $respuesta . "<br /> Devuelve tip nro $recurso";
   $sql = $dbConn->prepare("SELECT * FROM posts where id=:id");
   $sql->bindValue(':id', $recurso);
+  
   $sql->execute();
-  header("HTTP/1.1 200 OK");
-  $respuesta = $respuesta . "<br />" . json_encode(  $sql->fetch(PDO::FETCH_ASSOC) );
-  echo  $respuesta;
-  exit();
-}
-
-
-
-
-/*
-
-    if (isset($_GET['id']))
-    {
-
-      //Mostrar un post en formato json
-      $sql = $dbConn->prepare("SELECT * FROM posts where id=:id");
-      $sql->bindValue(':id', $_GET['id']);
-      $sql->execute();
-      header("HTTP/1.1 200 OK");
-
-      $respuesta = $respuesta . "<br />viene con id";
-      $respuesta = $respuesta . "<br />Parametro id pasado: " . $_GET['id'];
-      echo $respuesta;
-      echo "<br />" . json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
-      exit();
-    }
-    else 
-    {
-      //Mostrar lista de posteos en formato json
-      $respuesta = $respuesta . "<br />viene sin id";
-
-      $sql = $dbConn->prepare("SELECT * FROM posts");
-      $sql->execute();
-      $sql->setFetchMode(PDO::FETCH_ASSOC);
-      header("HTTP/1.1 200 OK");
-      echo $respuesta;
-      echo json_encode( $sql->fetchAll()  );
-      exit();
-     }
-
-*/
-
-
-
-
-// Crear un nuevo post pasando parametros por el body del requerimiento http
-
-
-/*
-if ($_SERVER['REQUEST_METHOD'] == 'POST')
-{
-
-  if (isset($_POST['id']))
-    {
-      //Mostrar un post en formato json
-      $sql = $dbConn->prepare("SELECT * FROM posts where id=:id");
-      $sql->bindValue(':id', $_GET['id']);
-      $sql->execute();
-      header("HTTP/1.1 200 OK");
-      echo $respuesta;
-      echo "<br />" . json_encode(  $sql->fetch(PDO::FETCH_ASSOC)  );
-      exit();
-    }
-  $respuesta=$respuesta . "<br />El verbo usado en el requerimiento fue POST y va con id";
-  echo $respuesta;
-  /*
-    $input = $_POST;
-    $sql = "INSERT INTO posts
-          (title, status, content, user_id)
-          VALUES
-          (:title, :status, :content, :user_id)";
-    $statement = $dbConn->prepare($sql);
-    bindAllValues($statement, $input);
-    $statement->execute();
-    $postId = $dbConn->lastInsertId();
-    if($postId)
-    {
-      $input['id'] = $postId;
-      header("HTTP/1.1 200 OK TODO BIEN");
-      echo json_encode($input);
-      exit();
-   }
-   */
-
-
-/*
-//Borrar un post pasando como parametro el id dentro del url
-if ($_SERVER['REQUEST_METHOD'] == 'DELETE')
-{
-  $id = $_GET['id'];
-  $statement = $dbConn->prepare("DELETE FROM posts where id=:id");
-  $statement->bindValue(':id', $id);
-  $statement->execute();
-  header("HTTP/1.1 200 OK");
-  exit();
-}
-
-//Actualizar un post pasando los paramentros incluido el id dentro del url
-if ($_SERVER['REQUEST_METHOD'] == 'PUT')
-{
-    $input = $_GET;
-    $postId = $input['id'];
-    $fields = getParams($input);
-    echo $fields;
-
-    $sql = "
-          UPDATE posts
-          SET $fields
-          WHERE id='$postId'
-           ";
-
-    $statement = $dbConn->prepare($sql);
-    bindAllValues($statement, $input);
-
-    $statement->execute();
+  $fila = $sql->fetch(PDO::FETCH_ASSOC);
+  if ($fila == "") {
+    $respuesta = $respuesta . "<br />Fila vacia";
+    echo  $respuesta;
+  }
+  else {
     header("HTTP/1.1 200 OK");
+    $respuesta = $respuesta . "<br />" . json_encode($fila);
+    echo  $respuesta;
     exit();
+  }
+}
+
+elseif (($_SERVER['REQUEST_METHOD'] == 'POST') && ($recurso == "")) {
+
+  $input = $_POST;
+  $respuesta = $respuesta . "<br />Entra por POST para realizar un alta";
+  $respuesta = $respuesta . "<br />titulo recibido:  " . $input["titulo"];
+  $respuesta = $respuesta . "<br />estado recibido:  " . $input["estado"];
+  $respuesta = $respuesta . "<br /> Contenido recibido: " . $input["contenido"];
+  $respuesta = $respuesta . "<br />fecha modi recibido:  " . $input["fechaModi"];
+  $respuesta = $respuesta . "<br />usuario recibido:  " . $input["usuario"];
+
+  $sql = "INSERT INTO posts (title, status, content, fechaModi, user_id) VALUES (:titulo, :estado, :contenido, :fechaModi, :usuario);";
+  $statement = $dbConn->prepare($sql);
+  $statement->bindValue(':titulo', $input["titulo"]);
+  $statement->bindValue(':estado', $input["estado"]);
+  $statement->bindValue(':contenido', $input["contenido"]);
+  $statement->bindValue(':fechaModi', $input["fechaModi"]);
+  $statement->bindValue(':usuario', $input["usuario"]);
+  //bindAllValues($statement, $input);
+
+    
+
+  $statement->execute();
+  echo $respuesta;
+
 }
 
 
-//En caso de que ninguna de las opciones anteriores se haya ejecutado
-header("HTTP/1.1 400 Bad Request");
-*/
 
 
 else {
