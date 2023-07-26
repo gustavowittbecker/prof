@@ -22,160 +22,104 @@ Hay que tener en cuenta que el navegador tomará prioridad por los headers http.
 
 
 <!--Otras etiquetas meta son variables usadas para mejorar nuestra posicion en los motores de busqueda,
-Aunque actualmente la mayoría de estos indexan sobre el contenido
+Aunque actualmente la mayoría de estos indexan sobre el contenido en si mismo
 --> 
 
 <meta name="description" content="Esta es una descripcipon de la pagina que algunos buscadores utilizan 
 para indexar contenido" />
 <meta name="keywords" content="protocolo web, http, https" />
-<meta name="author" content="nombre del autor" />
+<meta name="author" content="Programación web" />
 
 </head>
 
 <body>
 
 <header>
-<!--Elementos de cabecera en 6 niveles distintos -->
-<h1>Preguntas referencias sobre protocolo HTTP</h1>
+<!--Prestar atención en el uso de etiquetas semanticas para mejorar el posicionamiento en los motores de búsqueda -->
+<h1>Preguntas referencias sobre protocolo HTTP (Ubicar este título anidado en una etiqueta semantica header /header).</h1>
 </header>
 
 
-<nav>
-<h2>Grupo de elementos de navegación</h2>
+<hr />
+<section>
+<nav> 
+<h2>Sección de referencias de interes, anidar todas estas referencias dentro de una etiqueta semantica de navegación nav /nav</h2>
+<h3>Abrir enlaces en nuevas pestañas</h3>
 <ul>
-<li><a href="http://www.yahoo.com.ar" title="texto de ayuda para este elemento" target="_blank">Yahoo</a></li>
-<li><a href="http://www.google.com" title="texto de ayuda para este elemento" target="_blank">Google</a></li>
-<li><a href="http://www.youtube.com" title="texto de ayuda para este elemento" target="_blank">You tube</a></li>
+<li><a href="https://www.cloudflare.com/es-es/learning/ddos/glossary/hypertext-transfer-protocol-http/" title="Claudflare resumen" target="_blank">Cloudflare</a></li>
+<li><a href="https://developer.mozilla.org/es/docs/Web/HTTP/Overview" title="Mozilla resumen" target="_blank">Mozilla</a></li>
 </ul>
 
 <br /> <br />
-<hr />
-
-<a href="./ejer01OtraPaginaEnMismaPestaña.html" >Enlace a otra pagina dentro de la misma pestaña</a> &nbsp;&nbsp;
-<a href="./ejer01OtraPaginaEnNuevaPestaña.html" target="_blank">Enlace a otra pagina en nueva pestaña</a> &nbsp;&nbsp;
-<!--Para abrir nueva pagina en nueva ventana se empleará java script -->
-<a href="#otroLugarDentro">Ancla a otro punto de esta página </a>
-
-<br /> <br />
-<hr />
-
 </nav>
 
 
-<main> 
-<h1>Cuerpo principal del contenido</h1>
-
-<p>
-La etiqueta main es en HTML5 una etiqueta semantica. Esto quiere decir que tiene que ver con el significado 
-de lo contenido dentro de ella. Define el contenido principal de la pagina. Unicamente puede haber una sola etiqueta
- como esta en todo el documento.<br />
-El contenido escrito aqui dentro no se repite en el el resto del sitio (todo lo contrario a 
-los encabezados de pagina, los menues de navegacion y los pie de pagina).
-Es usado por buscadores para indexar.<br />
-Conviene usar aqui textos que ayuden a encontrar la pagina luego de procesos de indexación de los buscadores.
-</p>
-
-<section>
-<h2>Sección etiquetas semánticas estructurales mas importantes: </h2>
-<ul>
-<li>HEADER</li>
-<li>FOOTER</li>
-<li>SECTION</li>
-<li>ARTICLE</li>
-<li>NAV</li>
-<li>ADDRESS</li>
-</ul>
-
-<p>
-Las etiquetas semanticas estructurales estan relacionadas directamente con el significado del contenido y no 
-con los estilos ni las posiciones dentro del documento.
-</p>
-
-
-<h2>Reglas para etiquetas semánticas: </h2>
-
-<ul>
-<li>Los distintos tipos de contenido se pueden asociar a las etiquetas SECTION </li>
-<li>Las unidades de contenido se asocian a las etiquetas ARTICLE. O sea que un SECTION anida 
-multiples ARTICLES.</li>
-<li>Las etiquetas HEADER Y FOOTER pueden ser anidadas dentro de otras HEADER o FOOTER. 
-Osea un FOOTER podría anidar
-otro HEADER y FOOTER.
-</li>
-<li>La etiqueta NAV debe ser unica en el documento y corresponde a los elementos de navegación del documento
-</li>
-
-<li>Reservar etiqueta h1 para usar dentro de equiquetas top level como main, header o footer.<p>
-
-</ul>
 </section>
 
+<hr />
 
+<main> 
+
+
+<section>
+<h1>Sección de Preguntas sobre HTTP</h1>
+<ul>
+
+  <hr />
+<li>
+  <p style="font-weight: bold;">Pregunta nro 1</p>
+  <br />
+  Respuesta
+</li>
+
+
+<li>
+  <p style="font-weight: bold;">Pregunta nro 2</p>
+  <br />
+  Respuesta
+</li>
+
+
+</ul>
+
+
+</section>
+
+</main>
 
 <br />
 
 
 <section>
-<h3> Section de imagenes</h3>
+<h2> Sección de imagenes representativas del protocolo</h3>
 
-<p>En esta sección mostraremos imagenes identificativas de nuestro sitio.</p>
+<p>En esta sección mostraremos imagenes representativas del protocolo HTTP.</p>
 
-<p>La siguiente imagen esta insertada en tamaño natural</p>
+<img alt="computer-http" src="computer-network-http.png" />
+<!-- Si redimensionamos prestemos atención a no fijar ancho y alto al mismo tiempo para no perder la relacion de aspecto
+  y a la vez no superemos la dimensión original de la misma para evitar el pixelado. -->
 
-<img alt="Foto de el greco" src="greco.gif" />
+<br />
 
-
-
-<p>La misma imagen, cuadro del El Greco (220px x 268px), con distintos parametros de estilo width: <br />
-<p>De acuerdo a la dimension de a imagen, solo la primera no pixelará.</p>
-<p>Cada elemento img se ubica al lado de la anterior hasta completar el ancho de la ventana activa (view port)</p>
-<p>Todas las siguientes imagenes se verán deformadas por haber definido doble parametro de estilo (ancho y alto)</p>
-
-
-<img alt="Foto de el greco" style="width:100px;height:500px" src="greco.gif" />
-
-<img alt="Foto de el greco" style="width:200px;height:500px"  src="greco.gif" />
-
-<img alt="Foto de el greco" style="width:300px;height:500px"  src="greco.gif" />
-
-<img alt="Foto de el greco" style="width:400px;height:500px"  src="greco.gif" />
-
-<img alt="Foto de el greco" style="width:500px;height:500px"  src="greco.gif" />
 
 </section>
 
 
-<br /> <br /><br /> <br /><br /> <br />
+<br /> <br />
 <hr />
 
 <section>
-<h3>Section de video</h3>
+<h3>Sección de videos representativos del protocolo</h3>
 <video width="600px"  controls>
-  <source src="./Wildlife.mp4" type="video/mp4">
+  <source src="./http.mp4" type="video/mp4">
 </video>
 
 
-
-
-
-
 </section>
-
-
-
-<section>
-<h2>Anclajes</h2>
-<a id="otroLugarDentro">Punto de anclado</a> <!--punto de anclaje-->
-</section>
-
-
-</main>
-
 
 <footer>
 
 <h1>Datos del alumno</h1>
-
 
 <address> <!--Otra etiqueta semantica para la informacion de contacto-->
 <p>Gustavo W
