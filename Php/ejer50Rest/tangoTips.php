@@ -14,25 +14,30 @@ $respuesta = $respuesta . "La conexion a la base fue lograda exitosamente </br>"
  // listar todos los posts o solo uno
 
 
-$palabra = explode("/",$_SERVER['REQUEST_URI']);
-  $respuesta = $respuesta . "<br />Parte 0: " . $palabra[0];
-  $respuesta = $respuesta . "<br />Parte 1: " . $palabra[1];
-  $respuesta = $respuesta . "<br />Parte 2: " . $palabra[2];
-  $respuesta = $respuesta . "<br />Parte 3: " . $palabra[3];
-  $respuesta = $respuesta . "<br />Parte 4: " . $palabra[4];
-  $respuesta = $respuesta . "<br />Parte 5: " . $palabra[5];  
-  $respuesta = $respuesta . "<br />Parte 6: " . $palabra[6]; 
+$partes = explode("/",$_SERVER['REQUEST_URI']); //convierte toda la cadena URI en un array separado por "/"
+  $respuesta = $respuesta . "<br />Parte 0: " . $partes[0];
+  $respuesta = $respuesta . "<br />Parte 1: " . $partes[1];
+  $respuesta = $respuesta . "<br />Parte 2: " . $partes[2];
+  $respuesta = $respuesta . "<br />Parte 3: " . $partes[3];
+  $respuesta = $respuesta . "<br />Parte 4: " . $partes[4];
+  $respuesta = $respuesta . "<br />Parte 5: " . $partes[5];  
+  $respuesta = $respuesta . "<br />Parte 6: " . $partes[6]; 
 
-  $recurso = $palabra[count($palabra)-1];
+  $recurso = $partes[count($partes)-1]; //El recurso sería $partes[6] cuyo valor es el id buscado
 
   $respuesta = $respuesta . "<br />Recurso: " . $recurso; 
 
 
 
-if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "")) {
+echo $respuesta;
+$respuesta ="";
+
+if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "")) { //Si el metodo es get 
+                                                                 //y el recurso esta vacio entonces
+                                                                  //implica un listado de registros.
   
   
-  $respuesta = $respuesta . "<br /> Devuelve lista";
+  $respuesta = "<br /> Devuelve lista";
   
   $sql = $dbConn->prepare("SELECT * FROM posts");
   $sql->execute();
@@ -50,7 +55,9 @@ if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "")) {
 
 
 
-elseif (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso <> "")) {
+elseif (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso <> "")) { //si el metodo es get
+                                                                     //y el recurso es distinto de vacio entonces
+                                                                    //se pide que muestre el recurso.
 
   $respuesta = $respuesta . "<br /> Devuelve tip nro $recurso";
   $sql = $dbConn->prepare("SELECT * FROM posts where id=:id");
@@ -70,13 +77,16 @@ elseif (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso <> "")) {
   }
 }
 
-elseif (($_SERVER['REQUEST_METHOD'] == 'POST') && ($recurso == "")) {
+elseif (($_SERVER['REQUEST_METHOD'] == 'POST') && ($recurso == "")) {  //si el metodo es post
+                                                                     //y el recurso es igual a vacio entonces
+                                                                    //corresponde a una alta
+
 
   $input = $_POST;
   $respuesta = $respuesta . "<br />Entra por POST para realizar un alta";
   $respuesta = $respuesta . "<br />titulo recibido:  " . $input["titulo"];
   $respuesta = $respuesta . "<br />estado recibido:  " . $input["estado"];
-  $respuesta = $respuesta . "<br /> Contenido recibido: " . $input["contenido"];
+  $respuesta = $respuesta . "<br />Contenido recibido: " . $input["contenido"];
   $respuesta = $respuesta . "<br />fecha modi recibido:  " . $input["fechaModi"];
   $respuesta = $respuesta . "<br />usuario recibido:  " . $input["usuario"];
 
@@ -89,18 +99,73 @@ elseif (($_SERVER['REQUEST_METHOD'] == 'POST') && ($recurso == "")) {
   $statement->bindValue(':usuario', $input["usuario"]);
   //bindAllValues($statement, $input);
 
-    
-
   $statement->execute();
-  echo $respuesta;
+
+  //Verificación:
+
+  $sql = "SELECT * from posts ORDER BY id DESC LIMIT 1;";
+  $statement = $dbConn->prepare($sql);
+
+ 
+  $statement->execute();
+
+  $fila = $statement->fetch(PDO::FETCH_ASSOC);
+  if ($fila == "") {
+    $respuesta = $respuesta . "<br />Fila vacia";
+    echo  $respuesta;
+  }
+  else {
+    header("HTTP/1.1 200 OK");
+    $respuesta = $respuesta . "<br />" . json_encode($fila);
+    echo  $respuesta;
+    exit();
+  }
+
+
+}
+
+
+elseif (($_SERVER['REQUEST_METHOD'] == 'PUT') && ($recurso <> "")) {  //si el metodo es put y el recurso es distinto de "" 
+                                                                      //entonces correponde a un update o una modi
+  
+  /*
+
+  Recordar que en php $_PUT no existe
+  Buscar solucion ..
+  $input = $_PUT;
+  $respuesta = $respuesta . "<br />Entra por POST para realizar un alta";
+  $respuesta = $respuesta . "<br />titulo recibido:  " . $input["titulo"];
+  $respuesta = $respuesta . "<br />estado recibido:  " . $input["estado"];
+  $respuesta = $respuesta . "<br />Contenido recibido: " . $input["contenido"];
+  $respuesta = $respuesta . "<br />fecha modi recibido:  " . $input["fechaModi"];
+  $respuesta = $respuesta . "<br />usuario recibido:  " . $input["usuario"];
+  */
 
 }
 
 
 
 
+elseif (($_SERVER['REQUEST_METHOD'] == 'DELETE') && ($recurso <> "")) {  //si el metodo es delete y el recurso es distinto de "" 
+                                                                      //entonces correponde a un delete  o una baja.
+  
+
+ $respuesta = $respuesta . "<br /> Borra tip nro: " . $recurso;
+  $sql = $dbConn->prepare("DELETE FROM posts where id=:id");
+  $sql->bindValue(':id', $recurso);
+  
+  $sql->execute();
+  $respuesta = $respuesta . "<br />Fila borrada: " . $recurso;
+  echo $respuesta;
+}
+
+
+
+
+
+
 else {
-$respuesta = $respuesta . "<br />Fin";
+$respuesta = $respuesta . "<br />Salida sin convergencia. Fin";
 
 echo $respuesta;
 }

@@ -22,18 +22,24 @@
   }
 
 
- //Obtener parametros para updates
- function getParams($input)
+//Obtener parametros para updates
+//Esta siguiente función recibe un array asociativo como argumento y devuelve sus elementos como una 
+//cadena nombre=:nombre, apellido=:apellido, edad=:edad
+
+ function getParams($input) 
  {
     $filterParams = [];
-    foreach($input as $param => $value)
+    foreach($input as $param => $value)  //Construye un nuevo arreglo de nombre filterParams[]
+                                          //cuyos elementos son nombre=:nombre apellido=:apellido
     {
             $filterParams[] = "$param=:$param";
     }
-    return implode(", ", $filterParams);
+    return implode(", ", $filterParams); 
 	}
 
+  //
   //Asociar todos los parametros a un sql
+
 	function bindAllValues($statement, $params)
   {
 		foreach($params as $param => $value)

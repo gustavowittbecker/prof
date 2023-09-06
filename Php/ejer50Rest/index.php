@@ -229,7 +229,7 @@
 				<h2>Parametros de la consulta</h2>
 				<div class="divEntrada">
 					<h4>Ingrese el nombre de host que atiende el requerimiento:</h4>
-					<input class="inputEntrada" id="host" name="host" type="text">
+					<input class="inputEntrada" id="host" name="host" type="text" value="localhost">
 				</div>
 				<div class="divEntrada">
 					<h4>Ingrese el nombre del recurso (URI parte recurso):</h4>
@@ -237,7 +237,7 @@
 					</div>
 				<div class="divEntrada">
 					<h4>Ingrese recurso REST (URI parte Ruta):</h4>
-					<input class="inputEntrada" id="uriParte2" name="uriParte2" type="text" value="/tips/tipId">
+					<input class="inputEntrada" id="uriParte2" name="uriParte2" type="text" value="/tips/">
 				</div>
 					<div  class="divEntrada">
 						<h4>Ingrese el verbo a aplicar en el requerimiento:</h4>
@@ -258,12 +258,14 @@
 
 
 			<div id="contenedorDatos">
-				<h2>Datos a enviar</h2>
+				<h2>Datos a enviar solo en caso de modificación o alta</h2>
 			
+				<!--
 				<div class="divEntrada">
 					<h4>Ingrese el id del tip</h4>
 					<input class="inputEntrada" id="tipId" name="tipId" type="text">
 				</div>
+				-->
 
 				<div class="divEntrada">
 					<h4>Ingrese el titulo del tip</h4>
