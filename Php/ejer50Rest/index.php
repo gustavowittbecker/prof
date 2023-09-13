@@ -43,9 +43,11 @@
 				
 						}); //cierra ajax
 					}
-					else {
+
+					else if($("#verbo").val()=="get") {
 						$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
 						alert("Recurso: "+$("#stringReq").val());
+						alert("Verbo: "+$("#verbo").val());
 						//alert($("#verbo").val());
 						$("#resultado").empty(); //vacia el cuadro de resultado.
 						$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
@@ -55,6 +57,7 @@
 						$.ajax({
 						type: $("#verbo").val(),
 						url: $("#stringReq").val(),
+						
 						success: function(respuestaDelServer,estado) {
 							//la funcion de callback lleva 3 argumentos opcionales en ese orden
 							//En el evento success se aplica una funci�n
@@ -69,6 +72,43 @@
 						}); //cierra ajax
 
 					}
+
+
+					else if($("#verbo").val()=="put") {
+						$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
+						alert("Recurso: "+$("#stringReq").val());
+						alert("Verbo: "+$("#verbo").val());
+						//alert($("#verbo").val());
+						$("#resultado").empty(); //vacia el cuadro de resultado.
+						$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
+						$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
+						$("#estado").empty();
+						$("#estado").append("<h2>Esperando Respuesta .. ");
+						$.ajax({
+						type: $("#verbo").val(),
+						url: $("#stringReq").val(),
+						data: { titulo: $("#titulo").val(), estado: $("#estado").val(), contenido: $("#contenido").val(),
+						fechaModi: $("#fechaModi").val(), usuario: $("#usuario").val()},
+						success: function(respuestaDelServer,estado) {
+							//la funcion de callback lleva 3 argumentos opcionales en ese orden
+							//En el evento success se aplica una funci�n
+							//de call back que ser� ejecutada cuando el requerimiento ajax se halla completado.
+							$("#resultado").removeClass("estiloRecibiendo");
+							$("#resultado").html("<h1>Resultado: </h1><h4>"+respuestaDelServer+"</h4>"); //adiciona data al contenido del div
+							$("#estado").empty();
+							$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
+						
+							} //cierra funcion asociada al success
+				
+						}); //cierra ajax
+
+					}
+
+
+					else {
+
+					}
+
 
 
 
