@@ -1,20 +1,20 @@
 <?php
 include "configConexion.php";
 include "utils.php";
-//header("HTTP/1.1 200 todo bien!");
 
 $respuesta = "<h4>Respuesta:</h4>";
 
 $respuesta = $respuesta . "Request method: " . $_SERVER['REQUEST_METHOD'] . "<br />";
 $respuesta = $respuesta . "Request URI: " . $_SERVER['REQUEST_URI'] . "<br />";
 
-$dbConn =  connect($db);
+$dbConn =  connect($db); //Funcion definida en utils.php. Devuelve el objeto conexion o 
+                         //aborta la ejecucion del programa en caso de error.
 
 $respuesta = $respuesta . "La conexion a la base fue lograda exitosamente </br>";
- // listar todos los posts o solo uno
 
 
-$partes = explode("/",$_SERVER['REQUEST_URI']); //convierte toda la cadena URI en un array separado por "/"
+$partes = explode("/",$_SERVER['REQUEST_URI']); //convierte toda la cadena URI en un array usando "/" como 
+                                                //separador de elementos.
   $respuesta = $respuesta . "<br />Parte 0: " . $partes[0];
   $respuesta = $respuesta . "<br />Parte 1: " . $partes[1];
   $respuesta = $respuesta . "<br />Parte 2: " . $partes[2];
@@ -23,13 +23,13 @@ $partes = explode("/",$_SERVER['REQUEST_URI']); //convierte toda la cadena URI e
   $respuesta = $respuesta . "<br />Parte 5: " . $partes[5];  
   $respuesta = $respuesta . "<br />Parte 6: " . $partes[6]; 
 
-  $recurso = $partes[count($partes)-1]; //El recurso sería $partes[6] cuyo valor es el id buscado
+  $recurso = $partes[count($partes)-1]; //El recurso sería el último elemento: $partes[6] cuyo valor es el id buscado.
 
   $respuesta = $respuesta . "<br />Recurso: " . $recurso; 
 
 
 
-echo $respuesta;
+echo $respuesta; //hasta aqui emprime todo lo que ha recibido
 $respuesta ="";
 
 //Proceso:
@@ -39,7 +39,7 @@ if (($_SERVER['REQUEST_METHOD'] == 'GET') && ($recurso == "")) { //Si el metodo 
                                                                  //y el recurso esta vacio entonces
                                                                   //implica un listado de registros.
   
-  $respuesta = "<br /> Devuelve lista";
+  $respuesta = "<br /> Devuelve lista en formato JSON: ";
   
   $sql = $dbConn->prepare("SELECT * FROM posts");
   $sql->execute();
@@ -94,8 +94,7 @@ elseif (($_SERVER['REQUEST_METHOD'] == 'POST') && ($recurso == "")) {  //si el m
   $statement->bindValue(':contenido', $input["contenido"]);
   $statement->bindValue(':fechaModi', $input["fechaModi"]);
   $statement->bindValue(':usuario', $input["usuario"]);
-  //bindAllValues($statement, $input);
-
+ 
   $statement->execute();
 
   //Verificación:
@@ -107,25 +106,18 @@ elseif (($_SERVER['REQUEST_METHOD'] == 'POST') && ($recurso == "")) {  //si el m
   $statement->execute();
 
   $fila = $statement->fetch(PDO::FETCH_ASSOC);
-  if ($fila == "") {
-    $respuesta = $respuesta . "<br />Fila vacia";
-    echo  $respuesta;
-  }
-  else {
+  
     header("HTTP/1.1 200 OK");
-    $respuesta = $respuesta . "<br />" . json_encode($fila);
+    $respuesta = $respuesta . "<br />Registro adicionado: < br/>" . json_encode($fila);
     echo  $respuesta;
     exit();
-  }
-
+  
 
 }
 
 
 elseif (($_SERVER['REQUEST_METHOD'] == 'PUT') && ($recurso <> "")) {  //si el metodo es put y el recurso es distinto de "" 
-                                                                      //entonces correponde a un update o una modi
-  
-  
+                                                                      //entonces correponde a un update o una modi  
 
   //Recordar que en php $_PUT no existe
  
@@ -163,7 +155,7 @@ elseif (($_SERVER['REQUEST_METHOD'] == 'PUT') && ($recurso <> "")) {  //si el me
 
   $sql="UPDATE posts set title=:titulo,status=:estado,content=:contenido,fechaModi=:fechaModi,user_id=:usuario where id=:id;";
 
-  $respuesta = $respuesta . "sql: " . $sql;
+  $respuesta = $respuesta . "<br />sql: " . $sql;
 
   $statement = $dbConn->prepare($sql);
   $statement->bindValue(':titulo', $titulo_valor);
@@ -185,17 +177,14 @@ elseif (($_SERVER['REQUEST_METHOD'] == 'DELETE') && ($recurso <> "")) {  //si el
                                                                       //entonces correponde a un delete  o una baja.
   
 
- $respuesta = $respuesta . "<br /> Borra tip nro: " . $recurso;
+ $respuesta = $respuesta . "<br /> Será borrado el tip nro: " . $recurso;
   $sql = $dbConn->prepare("DELETE FROM posts where id=:id");
   $sql->bindValue(':id', $recurso);
   
   $sql->execute();
-  $respuesta = $respuesta . "<br />Fila borrada: " . $recurso;
+
   echo $respuesta;
 }
-
-
-
 
 
 
@@ -204,8 +193,6 @@ $respuesta = $respuesta . "<br />Salida sin convergencia. Fin";
 
 echo $respuesta;
 }
-
-
 
 
 ?>

@@ -16,8 +16,8 @@
 				$("#trigger" ).click(function() {
 					//alert($("#verbo").val());
 
-					if($("#verbo").val()=="post") {
-						$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
+					if(($("#verbo").val()=="post")||($("#verbo").val()=="put")) {
+						$("#stringReq").val("http://" + $("#host").val() + $("#uriParteRecurso").val() + $("#uriParteRuta").val()) ;
 						//alert("Recurso: "+$("#stringReq").val());
 						//alert($("#verbo").val());
 						$("#resultado").empty(); //vacia el cuadro de resultado.
@@ -44,8 +44,8 @@
 						}); //cierra ajax
 					}
 
-					else if($("#verbo").val()=="get") {
-						$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
+					else { //No pasa data
+						$("#stringReq").val("http://" + $("#host").val() + $("#uriParteRecurso").val() + $("#uriParteRuta").val()) ;
 						alert("Recurso: "+$("#stringReq").val());
 						alert("Verbo: "+$("#verbo").val());
 						//alert($("#verbo").val());
@@ -72,46 +72,6 @@
 						}); //cierra ajax
 
 					}
-
-
-					else if($("#verbo").val()=="put") {
-						$("#stringReq").val("http://" + $("#host").val() + $("#uriParte1").val() + $("#uriParte2").val()) ;
-						alert("Recurso: "+$("#stringReq").val());
-						alert("Verbo: "+$("#verbo").val());
-						//alert($("#verbo").val());
-						$("#resultado").empty(); //vacia el cuadro de resultado.
-						$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
-						$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
-						$("#estado").empty();
-						$("#estado").append("<h2>Esperando Respuesta .. ");
-						$.ajax({
-						type: $("#verbo").val(),
-						url: $("#stringReq").val(),
-						data: { titulo: $("#titulo").val(), estado: $("#estado").val(), contenido: $("#contenido").val(),
-						fechaModi: $("#fechaModi").val(), usuario: $("#usuario").val()},
-						success: function(respuestaDelServer,estado) {
-							//la funcion de callback lleva 3 argumentos opcionales en ese orden
-							//En el evento success se aplica una funci�n
-							//de call back que ser� ejecutada cuando el requerimiento ajax se halla completado.
-							$("#resultado").removeClass("estiloRecibiendo");
-							$("#resultado").html("<h1>Resultado: </h1><h4>"+respuestaDelServer+"</h4>"); //adiciona data al contenido del div
-							$("#estado").empty();
-							$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
-						
-							} //cierra funcion asociada al success
-				
-						}); //cierra ajax
-
-					}
-
-
-					else {
-
-					}
-
-
-
-
 
 				}); //cierra click
 
@@ -120,8 +80,22 @@
 
 			$(document).ready(function() {
 
-
+				$("#uriParteRecurso").on("keyup", function(){
+					$("#stringReq").val("http://" + $("#host").val() + $("#uriParteRecurso").val() + $("#uriParteRuta").val()) ;
+				});
+				
 			});
+
+
+			$(document).ready(function() {
+
+				$("#uriParteRuta").on("keyup", function(){
+					$("#stringReq").val("http://" + $("#host").val() + $("#uriParteRecurso").val() + $("#uriParteRuta").val()) ;
+				});
+				
+			});
+
+
 
 		</script>
 
@@ -150,7 +124,9 @@
 		}
 
 		input.armadoURL {
-			width:70%;
+			font-size: 18px;
+			font-weight: bold;
+			width:100%;
 		}
 
 		select {
@@ -186,7 +162,9 @@
 			background-color:gray; 
 			/*border: 1px solid #000;*/
 			float:left;
-			overflow: scroll;
+			overflow: auto;
+			padding:1%;
+			box-sizing: border-box;
 		}
 
 		div#contenedorDatos {
@@ -195,16 +173,20 @@
 			background-color:lightblue; 
 			/*border: 1px solid #000;*/
 			float:left;
-			overflow: scroll;
+			overflow: auto;
+			padding:1%;
+			box-sizing: border-box;
 		}
 
 		div.divEntrada {
-			margin:15px;
-			display:block;
+			width:50%;
+			float:left;
+			/*display:block;*/
 		}
 
 		input.inputEntrada {
 			/*float:left;*/
+			width:80%;
 			margin:auto;
 			padding:5px;
 			box-sizing:border-box;
@@ -267,31 +249,39 @@
 		<div id="contenedorSuperior">
 			<div id="contenedorParams">
 				<h2>Parametros de la consulta</h2>
+				
 				<div class="divEntrada">
 					<h4>Ingrese el nombre de host que atiende el requerimiento:</h4>
-					<input class="inputEntrada" id="host" name="host" type="text" value="localhost">
+					<input class="inputEntrada" id="host" name="host" type="text" value="localhost" />
 				</div>
+
 				<div class="divEntrada">
-					<h4>Ingrese el nombre del recurso (URI parte recurso):</h4>
-					<input class="inputEntrada" id="uriParte1" name="uriParte1" type="text" value="/prof/Php/ejer50Rest/tangoTips.php">
-					</div>
+					<h4>Ingrese el nombre del recurso<br />(URI parte recurso):</h4>
+					<input class="inputEntrada" id="uriParteRecurso" name="uriParteRecurso" type="text" value="/prof/Php/ejer50Rest/tangoTips.php" />
+				</div>
+
 				<div class="divEntrada">
 					<h4>Ingrese recurso REST (URI parte Ruta):</h4>
-					<input class="inputEntrada" id="uriParte2" name="uriParte2" type="text" value="/tips/">
+					<input class="inputEntrada" id="uriParteRuta" name="uriParteRuta" type="text" value="/tips/" />
 				</div>
-					<div  class="divEntrada">
-						<h4>Ingrese el verbo a aplicar en el requerimiento:</h4>
-						<select id="verbo" name="verbo" type="text">
-							<option value="get">GET</option>
-							<option value="post">POST</option>
-							<option value="delete">DELETE</option>
-							<option value="put">PUT</option>
-						</select>
-					</div>
-					<div class="divEntrada">
-						<h4>URL - Nombre de recurso completo:</h4>
-						<input class="armadoURL" id="stringReq" name="stringReq" type="text" value="inicio" disabled>
-					</div>
+
+				<div  class="divEntrada">
+					<h4>Ingrese el verbo a aplicar en el requerimiento:</h4>
+					<select id="verbo" name="verbo" type="text">
+						<option value="get">GET</option>
+						<option value="post">POST</option>
+						<option value="delete">DELETE</option>
+						<option value="put">PUT</option>
+					</select>
+				</div>
+
+				<div style="clear:both;"></div>
+				<br /><br/>
+				<div style="display:block">
+					<h4>URL - Nombre del recurso completo:</h4>
+					<br /><br />
+					<input class="armadoURL" id="stringReq" name="stringReq" type="text" value="inicio" disabled>
+				</div>
 
 			</div> <!--cierra contenedorParams-->
 
@@ -314,7 +304,7 @@
 
 				<div class="divEntrada">
 				<h4>Ingrese el estado del tip</h4>
-				<input class="inputEntrada" id="estado" name="estado" type="text">
+				<input class="inputEntrada" id="estado" name="estado" type="text" maxlength="10">
 				</div>
 
 
@@ -329,7 +319,7 @@
 				</div>
 				<div class="divEntrada">
 					<h4>Usuario/Autor</h4>
-					<input class="inputEntrada" id="usuario" name="usuario" type="text">
+					<input class="inputEntrada" id="usuario" name="usuario" type="text" maxlength="10">
 				</div>
 
 
