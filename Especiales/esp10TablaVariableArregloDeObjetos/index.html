@@ -22,7 +22,7 @@ body {
 }
 
 
-div.contenedorTabla {
+div.contenedorTabla { /*Contiene todo el tablero*/
 	width:100%;
 	height:100%;
 	background-color: lightgray;
@@ -63,6 +63,7 @@ footer {
 }
 
 table {
+	display:block;
   width:100%;
   height:80%;
   border-collapse: collapse;
@@ -74,7 +75,8 @@ thead {
   background-color: #FF7361;
   text-align: center;
   height: 10%;
-  overflow-y: scroll;
+  overflow-y: scroll; /*es para reservar el lugar que ocuparia la barra de scroll en 
+  										el tbody*/
 }
 
 
@@ -82,7 +84,8 @@ tfoot {
   display: block; /*todos los elementos que contendrá se renderizaran en este grupo de lineas */
   background-color: #FF7361;
   height: 10%;
-  overflow-y: scroll;
+  overflow-y: scroll; /*es para reservar el lugar que ocuparia la barra de scroll en 
+  										el tbody*/
   text-align: center;
 }
 
@@ -97,7 +100,7 @@ tbody { /*todos los elementos que contendrá se renderizaran en este grupo de li
 
 tr {
   display: block; /*todos los elementos que contendrá se renderizaran en esta linea */
-  overflow: hidden;
+  overflow: hidden; /*Lo que sobre sera ocultado*/
   height:60px;
 }
 
@@ -114,7 +117,7 @@ tbody tr:nth-child(even) {
 th, td {
   float:left; /*todos flotan respetando sus anchos pero dentro de los limites el contenedor
                 que debera presentarse como display:block;*/
-  	width:100%;
+  	/*width:100%;*/
   	height:100%;
 }
 
@@ -122,10 +125,8 @@ th, td {
 
 th {
   border-right: 1px solid rgba(0,0,0,.2);
-  height:100%;
   font-weight: normal;
   font-variant: small-caps;
-  box-sizing:border-box;
   display: flex; 
   justify-content: center; 
   align-items: center; 
@@ -134,7 +135,7 @@ th {
 
 
 
-[campo-dato="articulos_codArt"] {
+[campo-dato="articulos_codArt"] { /*selector condicional*/
   width: 10%;
 }
 [campo-dato="articulos_familia"] {
@@ -153,28 +154,6 @@ th {
   width: 10%;
 }
 
-
-@media(max-width:800px) {
-	div.contenedorForm li {
-		width:100%;
-		font-size: 12px;
-		background-color: yellow;
-	}
-	#tbDatos {
-		font-size: 12px;
-		background-color: yellow;
-	}
-}
-
-@media(min-width:800px) {
-	div.contenedorForm li {
-		width:100%;
-		font-size: 1vw;
-	}
-	#tbDatos {
-		font-size: 1vw;
-	}
-}
 
 
 
@@ -313,12 +292,12 @@ function vaciaTabla() {
 
 <tfoot>
 <tr>
-<td campo-dato="articulos_codArt" id="tf_articulos_codArt">s codArt</td>
-<td campo-dato="articulos_familia" id="tf_articulos_familia">s familia</td>
-<td campo-dato="articulos_um" id="tf_articulos_um">s um</td>
-<td campo-dato="articulos_descripcion" id="tf_articulos_descripcion">s descripcion</td>
-<td campo-dato="articulos_fechaAlta" id="tf_articulos_fechaAlta">s fecha alta</td>
-<td campo-dato="articulos_saldoStock" id="tf_articulos_saldoStock">s saldo Stock</td>
+<td campo-dato="articulos_codArt" id="tf_articulos_codArt">sum codArt</td>
+<td campo-dato="articulos_familia" id="tf_articulos_familia">sum familia</td>
+<td campo-dato="articulos_um" id="tf_articulos_um">sum um</td>
+<td campo-dato="articulos_descripcion" id="tf_articulos_descripcion">sum descripcion</td>
+<td campo-dato="articulos_fechaAlta" id="tf_articulos_fechaAlta">sum fecha alta</td>
+<td campo-dato="articulos_saldoStock" id="tf_articulos_saldoStock">sum saldo Stock</td>
 </tr>
 </tfoot>
 
