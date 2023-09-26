@@ -15,10 +15,11 @@ $saldoStock = $_POST['saldoStock'];
 $respuesta_estado = "Parte Modificacion simple de datos <br />\n";
 
 
+
 $sql="update articulos set codArt=:codArt,familia=:familia,descripcion=:descripcion,um=:um,fechaAlta=:fechaAlta,saldoStock=:saldoStock where codArt=:codArt;";
 
 
-try { //Se usa el try porque la creación de un objeto PDO puede generar excepciones
+try {
 	$dsn = "mysql:host=$host;dbname=$dbname";
 	$dbh = new PDO($dsn, $user, $password);	/*Database Handle*/
 	$respuesta_estado = $respuesta_estado .  "\n<br />conexion exitosa";
@@ -27,10 +28,15 @@ try { //Se usa el try porque la creación de un objeto PDO puede generar excepci
 }
 
 
-
+try {
 	$stmt = $dbh->prepare($sql);	
 	$respuesta_estado = $respuesta_estado .  "\n<br />preparacion exitosa";
+} catch (PDOException $e) {
+	$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
+}
 
+
+try {
 	$stmt->bindParam(':codArt', $codArt);
 	$stmt->bindParam(':familia', $familia);
 	$stmt->bindParam(':descripcion', $descripcion);
@@ -38,10 +44,18 @@ try { //Se usa el try porque la creación de un objeto PDO puede generar excepci
 	$stmt->bindParam(':fechaAlta', $fechaAlta);
 	$stmt->bindParam(':saldoStock', $saldoStock);	
 	$respuesta_estado = $respuesta_estado .  "\n<br /> bind exitosa";
+} catch (PDOException $e) {
+	$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
+}
 
 
+
+try {
 	$stmt->execute();	
 	$respuesta_estado = $respuesta_estado .  "\n<br /> ejecucion exitosa";
+} catch (PDOException $e) {
+	$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
+}
 
 
 //Si viene documento! Sigue abajo"
@@ -71,19 +85,31 @@ else {
 
 	$sql="update articulos set documentoPdf=:contenidoPdf where codArt=:codArt;";
 	
-
+	try {
 		$stmt = $dbh->prepare($sql);	
 		$respuesta_estado = $respuesta_estado .  "\n<br />preparacion exitosa";
+	} catch (PDOException $e) {
+		$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
+	}
 
 
-$stmt->bindParam(':codArt', $codArt);
-$stmt->bindParam(':contenidoPdf', $contenidoPdf);	
+	try {
+		$stmt->bindParam(':codArt', $codArt);
+		$stmt->bindParam(':contenidoPdf', $contenidoPdf);	
 
-$respuesta_estado = $respuesta_estado .  "\n<br /> bind exitosa";
+		$respuesta_estado = $respuesta_estado .  "\n<br /> bind exitosa";
+	} catch (PDOException $e) {
+		$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
+	}
 
 
-$stmt->execute();	
-$respuesta_estado = $respuesta_estado .  "\n<br /> ejecucion exitosa";
+
+	try {
+		$stmt->execute();	
+		$respuesta_estado = $respuesta_estado .  "\n<br /> ejecucion exitosa";
+	} catch (PDOException $e) {
+		$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
+	}
 
 }
 

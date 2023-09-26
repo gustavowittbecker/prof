@@ -80,7 +80,7 @@
 
 			$(document).ready(function() {
 
-				$("#uriParteRecurso").on("keyup", function(){
+				$("#uriParteRecurso").on("keyup", function(){  //cualquier pulsacion en este campo
 					$("#stringReq").val("http://" + $("#host").val() + $("#uriParteRecurso").val() + $("#uriParteRuta").val()) ;
 				});
 				
@@ -89,7 +89,7 @@
 
 			$(document).ready(function() {
 
-				$("#uriParteRuta").on("keyup", function(){
+				$("#uriParteRuta").on("keyup", function(){ //cualquier pulsacion en este campo
 					$("#stringReq").val("http://" + $("#host").val() + $("#uriParteRecurso").val() + $("#uriParteRuta").val()) ;
 				});
 				

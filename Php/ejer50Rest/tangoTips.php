@@ -119,12 +119,13 @@ elseif (($_SERVER['REQUEST_METHOD'] == 'POST') && ($recurso == "")) {  //si el m
 elseif (($_SERVER['REQUEST_METHOD'] == 'PUT') && ($recurso <> "")) {  //si el metodo es put y el recurso es distinto de "" 
                                                                       //entonces correponde a un update o una modi  
 
-  //Recordar que en php $_PUT no existe
+  //Recordar que en php $_PUT no existe. Los datos de entrada se deben recuperar del string contenido en 
+  //el body del requerimiento. (titulo=valor&estado=valor&contenido=valor..)
  
   $input = file_get_contents("php://input");
-  $input = explode("&",$input);
+  $input = explode("&",$input); //$input pasa a ser del tipo array
 
-  $titulo = explode("=",$input[0]);
+  $titulo = explode("=",$input[0]);  //$titulo es del tipo array de 2 elementos (el 1ro es el indice y el 2do el valor)
   $titulo_indice = $titulo[0];
   $titulo_valor = $titulo[1];
 

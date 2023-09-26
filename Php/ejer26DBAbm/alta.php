@@ -13,18 +13,6 @@ $saldoStock = $_POST['saldoStock'];
 $respuesta_estado = "";
 
 
-try {
-	$dsn = "mysql:host=$host;dbname=$dbname"; /*dsn es una variable de tipo texto que contiene toda la información necesaria para conectarse a una 
-                                             	fuente de datos  */
-	$dbh = new PDO($dsn, $user, $password);	/*el metodo constructor PDO crea una instancia de conexión a una fuente de datos tambien llamada Database Handle*/
-	$respuesta_estado = $respuesta_estado .  "\nconexion exitosa";
-} catch (PDOException $e) {
-	$respuesta_estado = $respuesta_estado . "\n" . $e->getMessage();
-}
-
-
-
-
 $respuesta_estado=$respuesta_estado . "\nRespuesta del servidor al alta. Entradas recibidas en el req http:";
 $respuesta_estado=$respuesta_estado . "\ncodArt: " . $codArt;
 $respuesta_estado=$respuesta_estado . "\nfamilia: " . $familia;
@@ -34,10 +22,22 @@ $respuesta_estado=$respuesta_estado . "\nfechaAlta: " . $fechaAlta;
 $respuesta_estado=$respuesta_estado . "\nsaldoStock: " . $saldoStock;
 
 
+
+try { //El metodo constructor PDO() puede generar excepciones (por eso usamos try)
+	$dsn = "mysql:host=$host;dbname=$dbname"; /*dsn es una variable de tipo texto que contiene toda la información necesaria para conectarse a una fuente de datos  */
+
+	$dbh = new PDO($dsn, $user, $password);	/*el metodo constructor PDO crea una instancia de conexión a una fuente de datos tambien llamada Database Handle*/
+
+	$respuesta_estado = $respuesta_estado .  "\nconexion exitosa";
+} catch (PDOException $e) {
+	$respuesta_estado = $respuesta_estado . "\n" . $e->getMessage();
+}
+
+
 $sql="insert into articulos (codArt,familia,descripcion,um,fechaAlta,saldoStock) values (:codArt,:familia,:descripcion,:um,:fechaAlta,:saldoStock);";
 
 
-$stmt = $dbh->prepare($sql);
+$stmt = $dbh->prepare($sql); //El metodo prepare() devuelve un objeto que en este caso llamo sentencia
 
 $stmt->bindParam(':codArt', $codArt);
 $stmt->bindParam(':familia', $familia);
@@ -71,36 +71,17 @@ $stmt->execute();
 
 		$sql="update articulos set documentoPdf=:contenidoPdf where codArt=:codArt;";
 
-		try {
-			$stmt = $dbh->prepare($sql);	
-			$respuesta_estado = $respuesta_estado .  "\n<br />preparacion exitosa";
-		} 
-		catch (PDOException $e) {
-			$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
-		}
 
+		$stmt = $dbh->prepare($sql);	
+		$respuesta_estado = $respuesta_estado .  "\n<br />preparacion exitosa";
 
-
-		try {
 			$stmt->bindParam(':codArt', $codArt);
 			$stmt->bindParam(':contenidoPdf', $contenidoPdf);
 	
 			$respuesta_estado = $respuesta_estado .  "\n<br /> bind exitosa";
-		} catch (PDOException $e) {
-			$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
-		}
 
-
-
-		try {
 			$stmt->execute();	
 			$respuesta_estado = $respuesta_estado .  "\n<br /> ejecucion exitosa";
-		} catch (PDOException $e) {
-			$respuesta_estado = $respuesta_estado . "\n<br />" . $e->getMessage();
-		}
-
-
-		//$fila=$stmt->fetch();
 
 	}
 

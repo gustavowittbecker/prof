@@ -14,39 +14,16 @@ try {
 	$respuesta_estado = $respuesta_estado . "\n" . $e->getMessage();
 }
 
-
-
-
 $sql = "delete from articulos where codArt=:codArt;";
 
+$stmt = $dbh->prepare($sql);
+$respuesta_estado = $respuesta_estado . "\nPreparacion exitosa!";
 
-try {
-	$stmt = $dbh->prepare($sql);
-	$respuesta_estado = $respuesta_estado . "\nPreparacion exitosa!";
-	try {
-		$stmt->bindParam(':codArt', $bindCodArt);
-		$respuesta_estado = $respuesta_estado . "\nBinding exitoso!";
-		try {
-			$stmt->execute();
-			$respuesta_estado = $respuesta_estado . "\nEjecucion exitosa!";
-		} catch (PDOException $e) {
-			$respuesta_estado = $respuesta_estado . "\n" . $e->getMessage();
-		}
+$stmt->bindParam(':codArt', $bindCodArt);
+$respuesta_estado = $respuesta_estado . "\nBinding exitoso!";
 
-	} catch (PDOException $e) {
-		$respuesta_estado = $respuesta_estado . "\n" . $e->getMessage();
-	}
-
-} catch (PDOException $e) {
-	$respuesta_estado = $respuesta_estado . "\n" . $e->getMessage();
-}
-
-
-
-
-
-
-
+$stmt->execute();
+$respuesta_estado = $respuesta_estado . "\nEjecucion exitosa!";
 
 $puntero = fopen("./errores.log","a");
 fwrite($puntero, $respuesta_estado);
@@ -57,9 +34,7 @@ fclose($puntero);
 
 $dbh = null; /*para cerrar la conexion*/
 
-
 echo $respuesta_estado;
-
 
 ?>
 
