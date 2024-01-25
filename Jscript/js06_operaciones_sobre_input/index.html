@@ -4,7 +4,7 @@
 <!--Escribir un script que defina y utilice tres procedimientos
 Un procedimiento debe mostrar el valor de un input, el otro debe sumar en 1 el valor del cuadro de texto y
 el otro debe elevarlo al cuadrado-->
-<!--tip: En mozilla solo funcionan las referencias cuando se identifican con el id y no con el name-->
+
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html" />
@@ -26,24 +26,25 @@ el otro debe elevarlo al cuadrado-->
 <script>
 /*Eventos (los eventos van al final para que ya esten cargados todos los elementos de la página*/
 
-document.getElementById("mvalor").onclick= function() { 
+document.getElementById("mvalor").addEventListener("click" , function() { 
 	alert(document.getElementById("x").value); 
-}
-document.getElementById("suma1").onclick= function() {
+});
+document.getElementById("suma1").addEventListener("click" , function() {
 	document.getElementById("x").value=parseInt(document.getElementById("x").value)+1;
-}
+});
 
-document.getElementById("x2").onclick= function() { 
+document.getElementById("x2").addEventListener("click" ,function() { 
 	document.getElementById("x").value=parseInt(document.getElementById('x').value)*2;
-}
+});
 
-document.getElementById("cuadrado").onclick= function() { 
+document.getElementById("cuadrado").addEventListener("click" ,function() { 
 	document.getElementById("x").value=parseInt(document.getElementById('x').value)*parseInt(document.getElementById('x').value);
-}
+});
 
-document.getElementById("2**x").onclick= function() { 
+document.getElementById("2**x").addEventListener("click" ,function() { 
 	document.getElementById("x").value=2**parseInt(document.getElementById("x").value);
-}
+});
+
 </script>
 
 

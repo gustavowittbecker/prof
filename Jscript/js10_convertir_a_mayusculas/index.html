@@ -49,7 +49,7 @@ display:block;
 <INPUT type="text" id="nombre" name="nombre">
 </li>
 <li>
-<label for="apellido">Ingrese el apellido: </label>
+<label for="apellido">Ingrese el apellidossss: </label>
 <INPUT type="text" id="apellido" name="apellido"> 
 </li>
 </ul>
@@ -58,12 +58,12 @@ display:block;
 /*Eventos*/
 /*observar que definimos funciones anonimas para cada input*/
 
-document.getElementById("nombre").onchange= function(){
+document.getElementById("nombre").addEventListener("focusout", function(){
 this.value = this.value.toUpperCase();
-};
-document.getElementById("apellido").onchange= function(){
+});
+document.getElementById("apellido").addEventListener("focusout", function(){
 this.value = this.value.toUpperCase();
-};
+});
 </script>
 
 
