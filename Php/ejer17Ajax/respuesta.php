@@ -1,6 +1,6 @@
-<!DOCTYPE html>
 <?php
 sleep(1); /* Un segundo de delay */
+echo "Request_method: ";
 echo $_SERVER['REQUEST_METHOD'] . "</br>";
 echo "Clave:  ";
 echo  $_POST['clave'];

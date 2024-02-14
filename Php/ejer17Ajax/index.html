@@ -8,31 +8,46 @@
 
 <script>
 
-	/*El metodo click() registra un event handler cuando el evento click ocurre */
-	$(document).ready(function() {
-		$("#trigger" ).click(function() {
-			$("#resultado").empty(); //vacia el cuadro de resultado.
-			$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
-			$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
-			$("#estado").empty();
-			$("#estado").append("<h2>Esperando Respuesta .. ");
-			$.ajax({
-			type:"post", 
-			url: "./respuesta.php", 
-			data: { clave: $("#clave").val()},
-			success: function(respuestaDelServer,estado) {
-				//la funcion de callback lleva 3 argumentos opcionales en ese orden
-				//En el evento success se aplica una funci�n
-				//de call back que ser� ejecutada cuando el requerimiento ajax se halla completado.
-				$("#resultado").removeClass("estiloRecibiendo");
-				$("#resultado").html("<h1>Resultado: </h1><h4>"+respuestaDelServer+"</h4>"); //adiciona data al contenido del div
-				$("#estado").empty();
-				$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
-			}
-	
-			}); //cierra ajax
-		}); //cierra click
-	}); //cierra ready
+/*El metodo click() registra un event handler cuando el evento click ocurre */
+$(document).ready(function() {
+	$("#trigger" ).click(function() {
+		$("#resultado").empty(); //vacia el cuadro de resultado.
+		$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
+		$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
+		$("#estado").empty();
+		$("#estado").append("<h2>Esperando Respuesta .. ");
+		
+		//Se creara un objeto de paramentros a pasar en la consulta.	
+		const data = new URLSearchParams(); //objeto que permite a travez del metodo append() adicionar atributos al mismo
+					//Pero estos quedan almacenados como un string de tipo paramentros url (nombre=gus&apellido=Witt)
+		data.append('clave',$("#clave").val() );
+		data.append('otro attributo', 'otro valor');
+		alert('Esto viajara en el body del requerimiento: '+ data);
+
+		const options = {
+			method: "POST",
+			headers: {
+  				'Content-Type': 'application/x-www-form-urlencoded' }, //debo avisar al server que lo que viana es un //urlencoded
+    			//"Content-Type": "application/json"  }, -> en este caso debo avisar al server que lo que viaja es json
+
+			body: data //en el body del requerimiento mando el string
+		}; //
+
+
+		fetch("http://localhost/prof/Php/ejer17Ajax/respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
+   		.then(response => response.text())  	//Al objeto le aplico un metodo "then" que a su vez lleva   															//como argumento un script para cuando llegue la respuesta
+		.then(data => {			//Al objeto le aplico un metodo "then" para cuando llegue la respuesta.										//Este metodo lleva como argumento un script para ejecutar luego de que la respuesta
+							//este procesada		
+			$("#resultado").removeClass("estiloRecibiendo");
+			$("#resultado").html("<h1>Resultado: </h1><h4>"+data+"</h4>"); //adiciona data al contenido del div
+			//$("#estado").empty();
+			//$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
+				
+			})										
+    	.catch(error => alert('Errorrrr:', error)); // Al objeto le aplico un metodo catch() para procesar los posibles errores.
+   				
+	}); //cierra click
+}); //cierra ready
 	
 </script>
 
@@ -83,6 +98,7 @@ div#resultado {
 	height:300px;
 	padding:1%;
 	box-sizing:border-box;
+	overflow: auto;
 }
 
 
@@ -135,10 +151,6 @@ div.limpiaFloats {
 		<div class="limpiaFloats"></div>
 	
 	</div><!--cierra contenedor-->
-	
-	
-	
-	
 	
 	</body>
 
