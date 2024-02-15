@@ -35,7 +35,7 @@ $(document).ready(function() {
 
 
 		fetch("http://localhost/prof/Php/ejer17Ajax/respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
-   		.then(response => response.text())  	//Al objeto le aplico un metodo "then" que a su vez lleva   															//como argumento un script para cuando llegue la respuesta
+   		.then(data => data.text())  	//Al objeto le aplico un metodo "then" que a su vez lleva   															//como argumento un script para cuando llegue la respuesta
 		.then(data => {			//Al objeto le aplico un metodo "then" para cuando llegue la respuesta.										//Este metodo lleva como argumento un script para ejecutar luego de que la respuesta
 							//este procesada		
 			$("#resultado").removeClass("estiloRecibiendo");
