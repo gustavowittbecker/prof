@@ -10,41 +10,49 @@
 
 /*El metodo click() registra un event handler cuando el evento click ocurre */
 $(document).ready(function() {
-	$("#trigger" ).click(function() {
+	$("#trigger" ).click(function() {  //Esta funcion anonima prepara la pantalla para el lapso de espera de la
+										//respuesta
 		$("#resultado").empty(); //vacia el cuadro de resultado.
 		$("#resultado").addClass("estiloRecibiendo"); //le cambia provisoriamente el estilo al cuadro de resultado
 		$("#resultado").html("<h2>Esperando respuesta ..</h2>");//Escribe mensaje provisorio
 		$("#estado").empty();
 		$("#estado").append("<h2>Esperando Respuesta .. ");
+
+		/*Aqui empieza el envio de datos al servidor por requerimiento http asincrónico.		 */
 		
 		//Se creara un objeto de paramentros a pasar en la consulta.	
 		const data = new URLSearchParams(); //objeto que permite a travez del metodo append() adicionar atributos al mismo
 					//Pero estos quedan almacenados como un string de tipo paramentros url (nombre=gus&apellido=Witt)
 		data.append('clave',$("#clave").val() );
-		data.append('otro attributo', 'otro valor');
+		data.append('otraVariable', 'otroValor');
 		alert('Esto viajara en el body del requerimiento: '+ data);
 
+		
+		//Se crea una variable
 		const options = {
 			method: "POST",
 			headers: {
-  				'Content-Type': 'application/x-www-form-urlencoded' }, //debo avisar al server que lo que viana es un //urlencoded
+  				'Content-Type': 'application/x-www-form-urlencoded' }, //debo avisar al server que lo que viaja es un 															//urlencoded
     			//"Content-Type": "application/json"  }, -> en este caso debo avisar al server que lo que viaja es json
 
 			body: data //en el body del requerimiento mando el string
-		}; //
+		}; 
 
-
+		//Una vez preparada la pantalla, preparados los parametros a enviar y preparadas las opciones se dispara el Req.
 		fetch("http://localhost/prof/Php/ejer17Ajax/respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
-   		.then(data => data.text())  	//Al objeto le aplico un metodo "then" que a su vez lleva   															//como argumento un script para cuando llegue la respuesta
-		.then(data => {			//Al objeto le aplico un metodo "then" para cuando llegue la respuesta.										//Este metodo lleva como argumento un script para ejecutar luego de que la respuesta
-							//este procesada		
+   		.then(respuesta => respuesta.text())  	//Cuando la promesa se cumple, el metodo "then" pasa como argumento
+   												//una funcion flecha que llamo respuesta y que ejecuta 					//un script definido del lado derecho de la flecha devolviendo un
+   												//nuevo objeto promesa (en este caso una simple transformacion a texto.
+   		.then(muestraDatos => {		//Cuando la promesa se cumple, el metodo "then" pasa como argumento										//una funcion flecha que llamo muestraDatos y que hace todo lo definido a la
+							//derecha de =>
 			$("#resultado").removeClass("estiloRecibiendo");
-			$("#resultado").html("<h1>Resultado: </h1><h4>"+data+"</h4>"); //adiciona data al contenido del div
-			//$("#estado").empty();
-			//$("#estado").append("<h4>Estado del requerimiento: "+estado+"</h4>");
+
+			$("#resultado").html("<h1>Resultado: </h1><h4>"+muestraDatos+"</h4>"); //adiciona data al contenido del div
+			$("#estado").empty();
+			$("#estado").append("<h4>Estado del requerimiento: CUMPLIDO</h4>");
 				
 			})										
-    	.catch(error => alert('Errorrrr:', error)); // Al objeto le aplico un metodo catch() para procesar los posibles errores.
+    	.catch(error => alert('Error producido:', error)); // cuando la promesa no se cumple se aplica un metodo catch() para procesar los posibles errores a travez de la funcion error que realiza lo que esta a la derecha de =>
    				
 	}); //cierra click
 }); //cierra ready
