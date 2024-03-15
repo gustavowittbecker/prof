@@ -20,29 +20,29 @@ $(document).ready(function() {
 
 		/*Aqui empieza el envio de datos al servidor por requerimiento http asincrónico.		 */
 		
-		//Se creara un objeto de paramentros a pasar en la consulta.	
+		//Se creara un objeto de paramentros para pasar en la consulta.	
 		const data = new URLSearchParams(); //objeto que permite a travez del metodo append() adicionar atributos al mismo
 					//Pero estos quedan almacenados como un string de tipo paramentros url (nombre=gus&apellido=Witt)
 		data.append('clave',$("#clave").val() );
 		data.append('otraVariable', 'otroValor');
-		alert('Esto viajara en el body del requerimiento: '+ data);
+		alert('Como pienso usar el metodo POST en el requerimiento HTTP, esto viajara en el body del mismo: '+ data);
 
 		
-		//Se crea una variable
+		//Se crea una variable de tipo objeto para definir opciones propias del requerimiento.
 		const options = {
 			method: "POST",
 			headers: {
   				'Content-Type': 'application/x-www-form-urlencoded' }, //debo avisar al server que lo que viaja es un 															//urlencoded
     			//"Content-Type": "application/json"  }, -> en este caso debo avisar al server que lo que viaja es json
 
-			body: data //en el body del requerimiento mando el string
+			body: data //en el body del requerimiento mando el string almacenado en data
 		}; 
 
 		//Una vez preparada la pantalla, preparados los parametros a enviar y preparadas las opciones se dispara el Req.
 		fetch("http://localhost/prof/Php/ejer17Ajax/respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
    		.then(respuesta => respuesta.text())  	//Cuando la promesa se cumple, el metodo "then" pasa como argumento
-   												//una funcion flecha que llamo respuesta y que ejecuta 					//un script definido del lado derecho de la flecha devolviendo un
-   												//nuevo objeto promesa (en este caso una simple transformacion a texto.
+   												//algo que representa la data entregada por el servidor en su respuesta.
+   												//Se representa como una funcion flecha que en este caso llamo respuesta y //que ejecuta un script definido del lado derecho de la flecha devolviendo //un nuevo objeto promesa (en este caso una simple transformacion a texto).
    		.then(muestraDatos => {		//Cuando la promesa se cumple, el metodo "then" pasa como argumento										//una funcion flecha que llamo muestraDatos y que hace todo lo definido a la
 							//derecha de =>
 			$("#resultado").removeClass("estiloRecibiendo");
