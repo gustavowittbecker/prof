@@ -1169,7 +1169,7 @@ function modi() {
 			data: data,
 
 			success:function(respuestaDelServer) {
-				//alert(respuestaDelServer);
+				alert(respuestaDelServer);
 				
 				$("#ventanaModalRespuesta").css("visibility","visible");
 				$("#contenidoModalRespuesta").empty();
