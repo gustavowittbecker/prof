@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--ejer de encriptación hecho con ajax. En este caso usando jquery-->
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+
+</head>
+<body>
+
+ 
+	  	<ul >
+	  		<!--
+		    <li >
+		        <label for="idUsuario">idUsuario</label><br />
+		        <input id="idUsuario" name="idUsuario" required />
+		    </li>
+
+
+		    <li>
+		        <label for="loginDeUsuario">Login</label><br />
+		        <input type="text" id="loginDeUsuario" name="loginDeUsuario" value="" placeholder="Login" required />
+		    </li>
+
+		    <li>
+		    	<label for="apellido">Apellido</label><br />
+		        <input type="text" id="apellido" name="apellido"  value="" placeholder="Apellido" required />
+		    </li>
+
+		    <li>
+		    	<label for="nombres">Nombres</label><br />
+		    	<input type="text" id="nombres" name="nombres"  value="" placeholder="Nombres" required />
+		    </li>
+
+		    <li>
+		    	<label for="fechaNac">Fecha de nacimiento</label><br />
+		        <input type="date" id="fechaNac" name="fechaNac"  value="" placeholder="Fecha de nacimiento" required />
+		    </li>
+-->	 
+	    	</ul>
+
+			</form>
+
+<button id="disparo"> Disparo</button>
+
+
+
+</body>
+
+<script>
+
+			function funcionDisparo() {
+				
+       fetch("http://localhost/prof/Php/ejer21APIfetchJSON/respuesta.php?ejer21APIfetchJSON?&idUsuario=ggw&loginDeUsuario=gwitt&apellido=Witt")
+            .then(response=>response.json())
+            .then(datos=>alert(datos.loginDeUsuario));
+          }
+
+
+        document.getElementById("disparo").addEventListener("click",funcionDisparo);
+
+
+</script>
