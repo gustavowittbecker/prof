@@ -1289,7 +1289,7 @@ $(document).ready(function() {
 	<div id="contenedorTablaArticulos" class="contenedorTabla">
 		
 		<header >
-			<h1 style="width:30%">Articulos</h1>
+			<h1 style="width:30%">Articulos.</h1>
 
 			<label >Orden:</label>
 			<input type="text" name="orden" id="orden" readonly value="" >
