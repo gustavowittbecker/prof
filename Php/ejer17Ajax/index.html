@@ -42,7 +42,7 @@ $(document).ready(function() {
 		}; 
 
 		//Una vez preparada la pantalla, preparados los parametros a enviar y preparadas las opciones se dispara el Req.
-		fetch("http://localhost/prof/Php/ejer17Ajax/respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
+		fetch("./respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
    		.then(respuesta => respuesta.text())  	//Cuando la promesa se cumple, el metodo "then" pasa como argumento
    												//una funcion que su vez lleva como argumento la data entregada por el servidor en su respuesta.
    												//Se representa como una funcion flecha que en este caso llamo respuesta y //que ejecuta un script definido del lado derecho de la flecha devolviendo //un nuevo objeto promesa (en este caso una simple transformacion a texto).
