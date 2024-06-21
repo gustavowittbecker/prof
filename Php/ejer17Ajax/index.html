@@ -18,14 +18,17 @@ $(document).ready(function() {
 		$("#estado").empty();
 		$("#estado").append("<h2>Esperando Respuesta .. ");
 
-		/*Aqui empieza el envio de datos al servidor por requerimiento http asincrónico.		 */
+		/*Aqui empieza el envio de datos al servidor por requerimiento http asincrónico.
+		en este caso usare el metodo POST con lo cual los datos viajaran en el body del req http.
+		con el formato de string por URL que todos conocemos &var1=valor1&var2=valor2&....		 */
 		
 		//Se creara un objeto de paramentros para pasar en la consulta.	
 		const data = new URLSearchParams(); //objeto que permite a travez del metodo append() adicionar atributos al mismo
 					//Pero estos quedan almacenados como un string de tipo paramentros url (nombre=gus&apellido=Witt)
 		data.append('clave',$("#clave").val() );
 		data.append('otraVariable', 'otroValor');
-		alert('Como pienso usar el metodo POST en el requerimiento HTTP, esto viajara en el body del mismo: '+ data);
+		alert('Como pienso usar el metodo POST en el req HTTP, esto viajara en el body del mismo con: ' +
+			'el formato clasico: '+ data);
 
 		
 		//Se crea una variable de tipo objeto para definir opciones propias del requerimiento.
@@ -39,9 +42,9 @@ $(document).ready(function() {
 		}; 
 
 		//Una vez preparada la pantalla, preparados los parametros a enviar y preparadas las opciones se dispara el Req.
-		fetch("http://localhost/prof/Php/ejer17Ajax/respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
+		fetch("./respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
    		.then(respuesta => respuesta.text())  	//Cuando la promesa se cumple, el metodo "then" pasa como argumento
-   												//algo que representa la data entregada por el servidor en su respuesta.
+   												//una funcion que su vez lleva como argumento la data entregada por el servidor en su respuesta.
    												//Se representa como una funcion flecha que en este caso llamo respuesta y //que ejecuta un script definido del lado derecho de la flecha devolviendo //un nuevo objeto promesa (en este caso una simple transformacion a texto).
    		.then(muestraDatos => {		//Cuando la promesa se cumple, el metodo "then" pasa como argumento										//una funcion flecha que llamo muestraDatos y que hace todo lo definido a la
 							//derecha de =>
@@ -137,7 +140,7 @@ div.limpiaFloats {
 	<div id="contenedor">
 	
 		<div id="entrada">
-			<h1>Dato de entrada:</h1>
+			<h1>Ingrese dato de entrada:</h1>
 			<input id="clave" name="clave" type="text">
 		</div>
 	

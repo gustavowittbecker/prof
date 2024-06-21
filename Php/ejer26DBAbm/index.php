@@ -790,14 +790,14 @@ $(document).ready(function() {
 		});
 }); //cierro ready
 
-
+/*
 $(document).ready(function() {
 	$("#btCierraSesion").click(function() {
 		location.href="../destruirsesion.php";
 	});
 });
 
-
+*/
 
 
 /*Funciones*/
@@ -1156,8 +1156,7 @@ function modi() {
 				saldoStock:$("#formArticulosEntSaldoStockModi").val()
 			},
 */
-			/*var data = new FormData($("#formArticulosModi")[0]); Para usar con jquery*/
-			var data = new FormData(document.getElementById("formArticulosModi"));/*valido para java script*/
+			var data = new FormData($("#formArticulosModi")[0]);
 			var objAjax = $.ajax({
 			type: 'post',
 			method: 'post',
@@ -1169,7 +1168,7 @@ function modi() {
 			data: data,
 
 			success:function(respuestaDelServer) {
-				alert(respuestaDelServer);
+				//alert(respuestaDelServer);
 				
 				$("#ventanaModalRespuesta").css("visibility","visible");
 				$("#contenidoModalRespuesta").empty();
@@ -1273,8 +1272,13 @@ cargaTabla();
 
 } 
 
-
-
+/*
+$(document).ready(function() {
+	$("#btCierraSesion").click(function() {
+		location.href="../destruirsesion.php";
+	});
+});
+*/
 </script>
 
 
@@ -1283,8 +1287,9 @@ cargaTabla();
 
 <body>
 	<div id="contenedorTablaArticulos" class="contenedorTabla">
+		
 		<header >
-			<h1 style="width:30%">Articulos</h1>
+			<h1 style="width:30%">Articulos.</h1>
 
 			<label >Orden:</label>
 			<input type="text" name="orden" id="orden" readonly value="" >
@@ -1294,7 +1299,6 @@ cargaTabla();
 			<button id="btLimpiaFiltros">Limpiar filtros</button>
 			<button id="btAlta">Alta registro</button>
 			<!--<button id="btCierraSesion">Cierra Sesión</button>-->
-
 		</header>
 
 
