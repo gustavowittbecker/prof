@@ -6,18 +6,23 @@ function autenticacion($arg1,$arg2) {
 	Comentar todas estas salidas cuando se trate de un sistema en produción.
 	*/
 	
+	/*La clave en el servidor esta encriptada en sha512. O sea que equivale a 64 octetos o 32 pares hexadecimales de 16 bits*/
+
 	$loginDeUsuario = $arg1;
 	$clave = $arg2;
-	$claveEncriptada = sha1(trim($_POST['clave']));
+	$claveEncriptada = hash("sha256",trim($_POST['clave']));
 
 	//echo $claveEncriptada;
 	//die("alla");
 
- 	$salidaParaLog = "***Texto por consola de la función autenticacion()*** \n";   
- 	$salidaParaLog = $salidaParaLog . "Fecha: " . date('dmy') . "\n";
-	$salidaParaLog = $salidaParaLog . "login ingresado por el usuario:" . $loginDeUsuario . "\n";
-	$salidaParaLog = $salidaParaLog . "clave ingresada por el usuario: " . $clave . "\n";
-	$salidaParaLog = $salidaParaLog . "clave ingresada por el usuario encriptada: " . $claveEncriptada . "\n";
+ 	$salidaParaLog = "salida para log desde adentro de función autenticacion()*** <br />";   
+ 	$salidaParaLog = $salidaParaLog . "Fecha: " . date('dmy') . "<br />";
+	$salidaParaLog = $salidaParaLog . "login ingresado por el usuario:" . $loginDeUsuario . "<br />";
+	$salidaParaLog = $salidaParaLog . "clave ingresada por el usuario: " . $clave . "<br />";
+	$salidaParaLog = $salidaParaLog . "clave ingresada por el usuario encriptada: " . $claveEncriptada . "<br />";
+
+
+	
 
 	include("./datosConexionBase.php");
 

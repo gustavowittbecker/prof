@@ -8,7 +8,6 @@ include('./libreria.inc');
 
 echo "<h1>Nombre de la aplicación: Práctica sobre maestro de artículos.</h1>";
 echo "<h2> Nombre del alumno: </h2>";
-echo "<h2>Sus parametros de sesion son los siguientes: </h2>";
 echo infoDeSesion();
 
 ?>

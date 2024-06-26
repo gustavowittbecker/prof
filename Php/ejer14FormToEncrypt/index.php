@@ -3,14 +3,14 @@
 if (isset($_POST['submit'])) {
 echo "<br />Clave:  ";
 echo  $_POST['clave'] . "<br>";
-echo "Clave encriptada en md5 (128 bits o 16 pares hexadecimales): ";
+echo "Clave encriptada en md5 (128 bits o 16 octetos o 16 pares hexadecimales): ";
 $claveEncriptada = md5($_POST['clave']);
 echo "<br />$claveEncriptada";
 
 echo "<br />Clave:  ";
 echo  $_POST['clave'] . "<br>";
-echo "Clave encriptada en sha1 (160 bits o 20 pares hexadecimales): ";
-$claveEncriptada = sha1($_POST['clave']);
+echo "Clave encriptada en sha256 (256 bits o 32 octetos o 32 pares hexadecimales): ";
+$claveEncriptada = hash("sha256",$_POST['clave']);
 echo "<br />$claveEncriptada";
 
 }
