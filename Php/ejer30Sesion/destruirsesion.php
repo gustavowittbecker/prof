@@ -1,7 +1,6 @@
 <?php
 include('./manejoSesion.inc');
-include('./libreria.inc');
-//infoDesesion();
+//include('./libreria.inc');
 session_destroy();
 header('location:./formularioDeLogin.html');
 ?>
