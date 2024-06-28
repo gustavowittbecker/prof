@@ -796,7 +796,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#btCierraSesion").click(function() {
-		location.href="/Php/ejer30Sesion/destruirsesion.php";
+		location.href="./ejer30Sesion/destruirsesion.php";
 	});
 });
 
