@@ -790,14 +790,6 @@ $(document).ready(function() {
 		});
 }); //cierro ready
 
-/*
-$(document).ready(function() {
-	$("#btCierraSesion").click(function() {
-		location.href="../destruirsesion.php";
-	});
-});
-
-*/
 
 
 /*Funciones*/
@@ -853,98 +845,77 @@ function cargaTabla() {
 					objJson=JSON.parse(respuestaDelServer);
 					//Luego barre el objeto de datos leyendo sus datos copiandolos al cuerpo de la tabla.
 					objJson.articulos.forEach(function(argValor,argIndice) { 
-					var objTr= document.createElement("tr");
-					var objTd=document.createElement("td");
-					//objTd.setAttribute("classname","")
-					objTd.setAttribute("campo-dato","articulos_codArt");
-					objTd.innerHTML=argValor.codArt;
-					objTr.appendChild(objTd);
+						var objTr= document.createElement("tr");
+						var objTd=document.createElement("td");
+						//objTd.setAttribute("classname","")
+						objTd.setAttribute("campo-dato","articulos_codArt");
+						objTd.innerHTML=argValor.codArt;
+						objTr.appendChild(objTd);
 
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_familia");
-					objTd.innerHTML=argValor.familia;
-					objTr.appendChild(objTd);
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_familia");
+						objTd.innerHTML=argValor.familia;
+						objTr.appendChild(objTd);
 
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_um");
-					objTd.innerHTML=argValor.um;
-					objTr.appendChild(objTd);
-
-
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_descripcion");
-					objTd.innerHTML=argValor.descripcion;
-					objTr.appendChild(objTd);
-
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_fechaAlta");
-					objTd.innerHTML=argValor.fechaAlta;
-					objTr.appendChild(objTd);
-
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_saldoStock");
-					objTd.innerHTML=argValor.saldoStock;
-					objTr.appendChild(objTd);
-
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_pdf");
-					objTd.innerHTML="<button class='btCelda'>PDF</button>";
-
-					objTd.onclick=function() {
-						$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
-						$("#ventanaModalRespuesta").css("visibility","visible");
-						traeDoc(argValor.codArt);
-					}
-
-					objTr.appendChild(objTd);
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_um");
+						objTd.innerHTML=argValor.um;
+						objTr.appendChild(objTd);
 
 
-					/*Consulta adicional*/
-					/*
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_btC");
-					objTd.innerHTML="<button class='btCelda'>C</button>";
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_descripcion");
+						objTd.innerHTML=argValor.descripcion;
+						objTr.appendChild(objTd);
 
-					objTd.onclick=function() {
-						$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
-						$("#ventanaModalRespuesta").css("visibility","visible");
-						$("#contenidoModalRespuesta").html("<img src='./gifAnimado.gif'>");
-						consultaDatos(argValor.codArt);
-					}
-					objTr.appendChild(objTd);
-					*/
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_fechaAlta");
+						objTd.innerHTML=argValor.fechaAlta;
+						objTr.appendChild(objTd);
 
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_saldoStock");
+						objTd.innerHTML=argValor.saldoStock;
+						objTr.appendChild(objTd);
 
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_pdf");
+						objTd.innerHTML="<button class='btCelda'>PDF</button>";
 
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_btModi");
-					objTd.innerHTML="<button class='btCelda'>Modi</button>";
+						objTd.addEventListener("click", function() {
+							$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
+							$("#ventanaModalRespuesta").css("visibility","visible");
+							traeDoc(argValor.codArt);
+						});
 
-
-
-					objTd.onclick=function() {	
-						$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
-						$("#ventanaModalFormularioModi").css("visibility","visible");
-						//alert();
-						llenaFamiliasModi();
-						CompletaFichaArticulo(argValor.codArt);
-						//alert("din");
-					};
-
-					objTr.appendChild(objTd);
+						objTr.appendChild(objTd);
 
 
-					var objTd=document.createElement("td");
-					objTd.setAttribute("campo-dato","articulos_btBaja");
-					objTd.innerHTML="<button class='btCelda'>Borrar</button>";
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_btModi");
+						objTd.innerHTML="<button class='btCelda'>Modi</button>";
 
-					objTd.onclick=function() {	
-					baja(argValor.codArt);
-					}
+						objTd.addEventListener("click",function() {	
+							$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
+							$("#ventanaModalFormularioModi").css("visibility","visible");
+							//alert();
+							llenaFamiliasModi();
+							CompletaFichaArticulo(argValor.codArt);
+						});
 
-					objTr.appendChild(objTd);
+						objTr.appendChild(objTd);
 
-					objTbDatos.appendChild(objTr);
+
+						var objTd=document.createElement("td");
+						objTd.setAttribute("campo-dato","articulos_btBaja");
+						objTd.innerHTML="<button class='btCelda'>Borrar</button>";
+						objTd.addEventListener("click", function() {	
+						baja(argValor.codArt);
+						});
+
+						objTr.appendChild(objTd);
+
+						objTbDatos.appendChild(objTr);
 				
 					});//cierra el forEach
 					$("#totalRegistros").html("Nro de registros: " + objJson.articulos.length);
@@ -1272,13 +1243,7 @@ cargaTabla();
 
 } 
 
-/*
-$(document).ready(function() {
-	$("#btCierraSesion").click(function() {
-		location.href="../destruirsesion.php";
-	});
-});
-*/
+
 </script>
 
 

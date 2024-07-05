@@ -29,7 +29,7 @@ include('../manejoSesion.inc');
 	margin:0;
 	box-sizing: border-box;
 	padding:0;
-	font-size: 1.5vw;
+	font-size:14px;
 }
 html {
 	height:100%;
@@ -42,24 +42,24 @@ body {
 }
 
 h1 {
-	font-size: 3vw;
+	font-size:2em;
 }
 
 
 h2 {
-	font-size: 2.5vw;
+	font-size:1.5em;
 }
 
 h3 {
-	font-size: 2vw;
+	font-size:1.2em;
 }
 
 h4 {
-	font-size: 1.5vw;
+	font-size:1.1em;
 }
 
 p {
-	font-size:1vw;
+	font-size:1em;
 }
 
 
@@ -82,51 +82,67 @@ div.contenedorTabla header {
 	background-color: beige;
 	overflow:hidden;
 	display: flex; 
-	justify-content:center;
+	justify-content:left;
 	align-items: center;
 }
 
-div.contenedorTabla header input{
-	width:20%;
+
+div.contenedorTabla header label { /*Para el input del orden*/
+	width:9%;
+	height:80%;
+	margin:1%;
+	padding:1%;
+	font-weight:bold;
+	font-size: 1.1em;
+}
+
+
+
+
+div.contenedorTabla header input { /*Para el input del orden*/
+	width:12%;
 	height:80%;
 	margin:1%;
 	padding:1%;
 }
 
-div.contenedorTabla header button {
+
+div.contenedorTabla header button { /*botones de control del tablero (altas o cargar tabla por ejemplo*/
 	height:80%;
-	width:20%;
+	width:10%;
+	cursor:pointer;
 }
 
-div.contenedorTabla button.btCelda {
-	margin:auto;
-	width:90%;
-	height:90%;
-}
-
-div.contenedorTabla h1 {
+div.contenedorTabla table h1 { 
 	width:100%;
 	text-align: center;
 }
 
-div.contenedorTabla input {
+div.contenedorTabla table input { /*Para los filtros*/
 	height:100%;
 	width:100%;
 }
 
+div.contenedorTabla table select { /*Para los filtros*/
+	height:100%;
+	width:100%;
+}
+
+
+
 div.contenedorTabla td.titulosColumnas {
-	font-size: 1.5vw;
+	font-size:1em;
 	cursor:pointer;
 	font-weight: bold;
 	display: flex; 
-	justify-content: center; 
+	justify-content:left; 
 	align-items: center; 
 }
 
 
 div.contenedorTabla td.totalizador {
 	display: flex; 
-	justify-content: center; 
+	justify-content:left; 
 	align-items: center; 
 }
 
@@ -143,7 +159,7 @@ div.contenedorTabla footer {
 }
 
 div.contenedorTabla footer div.totalRegistros {
-	font-size:1.3vw;
+	font-size:1.2em;
 	height:100%;
 	width:20%;
 	float:left;
@@ -152,7 +168,7 @@ div.contenedorTabla footer div.totalRegistros {
 
 
 div.contenedorTabla footer div.textoPie {
-	font-size:1.5vw;
+	font-size:1.2em;
 	height:100%;
 	width:70%;
 	display: flex; 
@@ -229,7 +245,7 @@ div.contenedorTabla th, td {
 /*Ancho y alto de las columnas*/
 
 [campo-dato="articulos_codArt"] {
-  width: 10%;
+  width:10%;
   height:100%;
 }
 [campo-dato="articulos_familia"] {
@@ -237,11 +253,11 @@ div.contenedorTabla th, td {
   height:100%;
 }
 [campo-dato="articulos_descripcion"] {
-  width: 20%;
+  width: 15%;
   height:100%;
 }
 [campo-dato="articulos_um"] {
-  width: 10%;
+  width:5%;
   height:100%;
 }
 [campo-dato="articulos_fechaAlta"] {
@@ -256,13 +272,13 @@ div.contenedorTabla th, td {
 
 
 [campo-dato="articulos_pdf"] {
-  width: 5%;
+  width: 10%;
   height:100%;
   text-align:right;
 }
 
 [campo-dato="articulos_btC"] {
-	width: 5%;
+	width: 10%;
 	height:100%;
 }
 
@@ -348,7 +364,7 @@ div.ventanaModalFormulario header {
 
 
 div.ventanaModalFormulario p {
-	font-size: 1.5vw;
+	font-size: 1.2em;
 	background-color: white;
 	width:90%;height:100%;
 	float: left; /*Asegura que todo lo que siga este pegado a el a la derecha*/
@@ -420,12 +436,12 @@ div.ventanaModalFormulario div.contenidoModal li {
 @media(max-width:600px) {
 	div.ventanaModalFormulario div.contenidoModal li {
 		width:100%;
-		font-size: 2vw;
+		font-size:1.2em;
 	}
 }
 
 div.ventanaModalFormulario div.contenidoModal label {
-	font-size: 1.4vw;
+	font-size:1.4em;
 	width:80%;
 	height:50%;
 	display: flex; /*Permite flexibilizar el contenido*/
@@ -436,19 +452,19 @@ div.ventanaModalFormulario div.contenidoModal label {
 div.ventanaModalFormulario div.contenidoModal input {
 	width:80%;
 	height:50%;
-	font-size: 1vw;
+	font-size:1em;
 }
 
 div.ventanaModalFormulario div.contenidoModal select {
 	width:80%;
 	height:50%;
-	font-size: 1vw;
+	font-size: 1em;
 }
 
 
 div.ventanaModalFormulario option.elementoOptionSelect {
 	background-color:beige;
-	font-size: 1vw;
+	font-size: 1em;
 }
 
 
@@ -483,7 +499,7 @@ div.ventanaModalRespuesta header {
 
 
 div.ventanaModalRespuesta header p {
-	font-size: 1.5vw;
+	font-size:1.5em;
 	background-color: #EEEEEE;
 	width:90%;height:100%;
 	float: left; /*Asegura que todo lo que siga este pegado a el a la derecha, ej bt cruz*/
@@ -519,7 +535,7 @@ div.ventanaModalRespuesta div.contenidoModal {
 
 div.ventanaModalRespuesta div.contenidoModal p {
 	text-align:left;
-	font-size: 1vw;
+	font-size:1.5em;
 }
 
 
@@ -552,6 +568,7 @@ $(document).ready(function() {
 		$("#ventanaModalRespuesta").css("visibility","hidden");
 		$("#btEnvioFormModi").attr("disabled",true);
 		$("#btEnvioFormAlta").attr("disabled",true);
+		llenaFamilias();
 });
 
 
@@ -779,7 +796,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#btCierraSesion").click(function() {
-		location.href="../destruirsesion.php";
+		location.href="./ejer30Sesion/destruirsesion.php";
 	});
 });
 
@@ -788,7 +805,7 @@ $(document).ready(function() {
 
 /*Funciones*/
 
-function todoListoParaAlta() { //Habilita boton de alta
+function todoListoParaAlta() { //Habilita/deshabilita boton de alta
 	//alert("Dentro de todo listo para el alta");
 	if (document.getElementById("formArticulosAlta").checkValidity()) {
 		//alert("aquiTL");
@@ -799,9 +816,9 @@ function todoListoParaAlta() { //Habilita boton de alta
 	}
 }
 
-function todoListoParaModi() { //Habilita boton de modi
+function todoListoParaModi() { //Habilita/deshabilita boton de modi
 	//alert("dentro de todoListo para modi");
-	//if ((objCodArtModi.checkValidity() == true)&&(objDescripcionModi.checkValidity()== true)){
+
 	if (document.getElementById("formArticulosModi").checkValidity()) {
 		$("#btEnvioFormModi").attr("disabled",false);
 	}
@@ -834,7 +851,7 @@ function cargaTabla() {
 		success: function(respuestaDelServer,estado) {  //La funcion de callback que se ejecutara cuando el req. sea completado.
 					//$("#tbDatos").html(respuestaDelServer)//para ver el json recibido dentro de tbDatos;
 					$("#tbDatos").empty();
-					//alert(respuestaDelServer);
+					alert(respuestaDelServer);
 					
 					objJson=JSON.parse(respuestaDelServer);
 					//Luego barre el objeto de datos leyendo sus datos copiandolos al cuerpo de la tabla.
@@ -909,20 +926,15 @@ function cargaTabla() {
 
 
 					objTd.onclick=function() {	
-					$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
-					$("#ventanaModalFormularioModi").css("visibility","visible");
-					//alert();
-					llenaFamiliasModi();
-					CompletaFichaArticulo(argValor.codArt);
-					//alert("din");
-					//todoListoParaModi();
+						$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
+						$("#ventanaModalFormularioModi").css("visibility","visible");
+						//alert();
+						llenaFamiliasModi();
+						CompletaFichaArticulo(argValor.codArt);
+						//alert("din");
 					};
 
 					objTr.appendChild(objTd);
-
-
-
-
 
 
 					var objTd=document.createElement("td");
@@ -977,6 +989,45 @@ function vaciaFormulario() {
 	$("#formArticulosEntfechaAltaAlta").val("");
 	$("#formArticulosEntSaldoStockAlta").val("");
 }
+
+
+
+
+function llenaFamilias() { //el argumento corresponde al objeto que será llenado
+			$("#f_articulos_familia").empty();
+			var objAjax = $.ajax({
+			type:"get", 
+			url:"./salidaJsonFamilias.php",
+			
+			success: function(respuestaDelServer,estado) {
+						alert(respuestaDelServer);
+						listaDeObjetos = JSON.parse(respuestaDelServer);
+						/*Agrega la opcion vacia*/
+						var objOption= document.createElement("option");
+						/*objOption.setAttribute("class","elementoOptionSelect");*/
+						objOption.setAttribute("value", ""); 
+						objOption.innerHTML="";
+						document.getElementById("f_articulos_familia").appendChild(objOption);
+
+						/*Barre el array de lista de Objetos para agregar opciones*/
+						listaDeObjetos.familias.forEach(function(argValor,argIndice) { 
+												
+							var objOption= document.createElement("option");
+							objOption.setAttribute("value", argValor.codFamilia); 
+							//alert(argValor.codFamilia);
+							objOption.innerHTML=argValor.descripcionFamilia;
+
+							document.getElementById("f_articulos_familia").appendChild(objOption);
+							
+						});//cierra foreach
+						return true;
+			} //cierra el success
+	}); //cierro ajax
+}
+
+
+
+
 
 
 
@@ -1225,6 +1276,11 @@ cargaTabla();
 } 
 
 
+$(document).ready(function() {
+	$("#btCierraSesion").click(function() {
+		location.href="../destruirsesion.php";
+	});
+});
 
 </script>
 
@@ -1234,8 +1290,9 @@ cargaTabla();
 
 <body>
 	<div id="contenedorTablaArticulos" class="contenedorTabla">
+		
 		<header >
-			<h1>Articulos</h1>
+			<h1 style="width:30%">Articulos</h1>
 
 			<label >Orden:</label>
 			<input type="text" name="orden" id="orden" readonly value="" >
@@ -1245,20 +1302,19 @@ cargaTabla();
 			<button id="btLimpiaFiltros">Limpiar filtros</button>
 			<button id="btAlta">Alta registro</button>
 			<button id="btCierraSesion">Cierra Sesión</button>
-
 		</header>
 
 
 
-		<table >
+		<table>
 			<thead >
 			<tr style="height:50%">
-			<td class="titulosColumnas" campo-dato="articulos_codArt" id="th_articulos_codArt">CodArt</td>
+			<td class="titulosColumnas" campo-dato="articulos_codArt" id="th_articulos_codArt">Cod Art</td>
 			<td class="titulosColumnas" campo-dato="articulos_familia" id="th_articulos_familia">familia</td>
 			<td class="titulosColumnas" campo-dato="articulos_um" id="th_articulos_um">um</td>
-			<td class="titulosColumnas" campo-dato="articulos_descripcion" id="th_articulos_descripcion">descripción</td>
+			<td class="titulosColumnas" campo-dato="articulos_descripcion" id="th_articulos_descripcion">descrip</td>
 			<td class="titulosColumnas" campo-dato="articulos_fechaAlta" id="th_articulos_fechaAlta">fecha Alta</td>
-			<td class="titulosColumnas" campo-dato="articulos_saldoStock" id="th_articulos_saldoStock">saldoStock</td>
+			<td class="titulosColumnas" campo-dato="articulos_saldoStock" id="th_articulos_saldoStock">Saldo stock</td>
 			<td class="titulosColumnas" campo-dato="articulos_pdf" id="th_articulos_pdf">PDFs</td>
 			<!--<td class="titulosColumnas" campo-dato="articulos_btC" id="th_articulos_btC">C</td>	-->
 			<td class="titulosColumnas" campo-dato="articulos_btModi">Modis</td>
@@ -1267,13 +1323,16 @@ cargaTabla();
 
 			<tr style="height:50%">
 			<td campo-dato="articulos_codArt"><input id="f_articulos_codArt"></input></td>
-			<td campo-dato="articulos_familia"><input id="f_articulos_familia"></input></td>
-			<td campo-dato="articulos_um" ><input id="f_articulos_um"></input></td>
+			<td campo-dato="articulos_familia">
+				<select id="f_articulos_familia" name="familia"></select> 
+				<!--<input id="f_articulos_familia"></input>-->
+			</td>
+			<td campo-dato="articulos_um"><input id="f_articulos_um"></input></td>
 			<td campo-dato="articulos_descripcion"><input id="f_articulos_descripcion"></input></td>
 			<td campo-dato="articulos_fechaAlta"><input id="f_articulos_fechaAlta"></input></td>
 			<td campo-dato="articulos_saldoStock"></td>
 			<td campo-dato="articulos_pdf"></td>
-			<!--<td campo-dato="articulos_btC"></td>-->
+			<td campo-dato="articulos_btC"></td>
 			<td campo-dato="articulos_btModi"></td>
 			<td campo-dato="articulos_btbaja"></td>
 			</tr>
@@ -1306,6 +1365,14 @@ cargaTabla();
 			</div>
 		</footer>
 	</div> <!-- cierra contenedorTablaArticulos -->
+
+
+
+
+
+
+
+
 
 	<!--Ventana Modal para formulario de alta que debe estar fuera del contenedor-->
 	<div id="ventanaModalFormularioAlta" class="ventanaModalFormulario">
