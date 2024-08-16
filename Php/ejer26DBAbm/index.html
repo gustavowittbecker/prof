@@ -901,7 +901,7 @@ function cargaTabla() {
 							$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
 							$("#ventanaModalFormularioModi").css("visibility","visible");
 							
-							llenaFamiliasModi(argValor); 
+							//llenaFamiliasModi(argValor); 
 							//pasa como argumento el objeto articulo completo
 							//alert(document.getElementById("formArticulosEntFamiliaModi").options.length);
 							
@@ -946,6 +946,48 @@ function CompletaFichaArticulo(argArticulo) {
 	$("#formArticulosEntfechaAltaModi").val(argArticulo.fechaAlta);
 	
 	//alert("long de opciones"+document.getElementById("formArticulosEntFamiliaModi").options.length);
+
+
+	//Input familia (Hay que traer la lista de familias y ubicar el elemento selected:
+
+	$("#formArticulosEntFamiliaModi").empty(); //antes de llenar vacío para no duplicar elementos
+
+	alert("aqui");
+	
+	var objAjax = $.ajax({
+		type:"get", 
+		url:"./salidaJsonFamilias.php",
+		
+		success: function(respuestaDelServer,estado) {
+					
+					listaDeObjetos = JSON.parse(respuestaDelServer);
+					listaDeObjetos.familias.forEach(function(argValorFamilia,argIndice) {  
+					//recibe como argumento el objeto familia completo
+					
+						//alert(argValorFamilia.codFamilia);
+						var objOption= document.createElement("option");
+						objOption.setAttribute("class","elementoOptionSelect");
+						objOption.setAttribute("value", argValorFamilia.codFamilia); 
+
+						//El formulario dispone de todos los datos necesarios para el articulo en el momento en que se
+						//hizo click en el boton de modi del registro apuntado.
+						objOption.innerHTML=argValorFamilia.codFamilia + argValorFamilia.descripcionFamilia;
+						
+						if(objOption.value == argArticulo.familia) { //Para fijar el option seleccionado de acuerdo al articulo
+							objOption.setAttribute("selected","selected");
+						}
+						//En el proceso de armado de la lista desplegable ya ubico el selected que corresponda con el registro
+						//recibido.
+
+
+						document.getElementById("formArticulosEntFamiliaModi").appendChild(objOption);
+													
+					});//cierra foreach
+					return true;
+		} //cierra el success
+}); //cierro ajax
+
+
 
 }
 
@@ -1022,47 +1064,6 @@ function llenaFamiliasAlta() { //el argumento corresponde al objeto que será ll
 
 							document.getElementById("formArticulosEntFamiliaAlta").appendChild(objOption);
 							
-						});//cierra foreach
-						return true;
-			} //cierra el success
-	}); //cierro ajax
-}
-
-
-
-function llenaFamiliasModi(argValorArticulo) { //recibe como argumento la fila u 
-	//objeto articulo completo 
-	//alert(argValorArticulo.familia);
-	$("#formArticulosEntFamiliaModi").empty(); //antes de llenar vacío para no duplicar elementos
-	//alert($("#formArticulosEntFamiliaModi").val());		
-			/*Este objeto del documento es un array de opciones que ya puede estar cargado de antes y hay
-			que vaciarlo si lo deseo recargar.
-			El value del select*/
-
-			var objAjax = $.ajax({
-			type:"get", 
-			url:"./salidaJsonFamilias.php",
-			
-			success: function(respuestaDelServer,estado) {
-						
-						listaDeObjetos = JSON.parse(respuestaDelServer);
-						listaDeObjetos.familias.forEach(function(argValorFamilia,argIndice) {  //recibe como argumento el objeto familia completo
-						
-							//alert(argValorFamilia.codFamilia);
-							var objOption= document.createElement("option");
-							objOption.setAttribute("class","elementoOptionSelect");
-							objOption.setAttribute("value", argValorFamilia.codFamilia); 
-
-							//El formulario dispone de todos los datos necesarios para el articulo en el momento en que se
-							//hizo click en el boton de modi del registro apuntado.
-							objOption.innerHTML=argValorFamilia.codFamilia + argValorFamilia.descripcionFamilia;
-							
-							if(objOption.value == argValorArticulo.familia) { //Para fijar el option seleccionado de acuerdo al articulo
-								objOption.setAttribute("selected","selected");
-							}
-
-							document.getElementById("formArticulosEntFamiliaModi").appendChild(objOption);
-														
 						});//cierra foreach
 						return true;
 			} //cierra el success
