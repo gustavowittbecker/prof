@@ -1,0 +1,97 @@
+/* IMPORTO FONT MONTSERRAT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    background-color: #FFF;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background: 
+    linear-gradient(
+      rgba(52, 93, 155, 0.5), 
+      rgba(52, 93, 155, 0.5)
+    ), 
+    url(./app_modulo/assets/loginBG.jpg) no-repeat center center;
+    background-size: cover !important;
+}
+
+.inicio {
+    height: 60%;
+    width: 60%;
+    padding: 0;
+    background-color: #FFF;
+    border-radius: 20px;
+}
+
+.border {
+    height: 5px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(19,66,136,1) 13%, rgba(52,93,155,1) 30%, rgb(98, 161, 255) 56%, rgba(49,98,172,1) 75%, rgba(52,93,155,1) 79%, rgba(19,66,136,1) 90%);
+}
+
+#titulo {
+    height: 20%;
+    padding: 20px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.internal_container {
+    height: 50%;
+    padding: 20px;
+    gap: 40px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonContainer {
+    width: 100%;
+    height: 28%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.form__boton {
+    height: 50px;
+    width: 200px;
+    border: 2px solid #345D9B;
+    border-radius: 10px;
+    font-size: 20px;
+    color: #345D9B;
+    font-weight: 600;
+    background-color: #FFF;
+    transition: 0.3s all;
+}
+
+.form__boton:hover {
+    cursor: pointer;
+    background-color: #345D9B;
+    color: #FFF;
+    font-size: 22px;
+}

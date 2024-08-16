@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla de Descubrimientos de Dinosaurios</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Tabla de Descubrimientos de Dinosaurios</h1>
+        <div class="botones__orden">
+            <div>
+                <label for="">Orden:</label>
+                <input type="text" id="orden">
+            </div>
+            <div class="botones_nav--container">
+                <button class="boton_nav" id="botonCargar">Cargar Tabla</button>
+                <button class="boton_nav" id="botonVaciar">Vaciar Tabla</button>
+                <button class="boton_nav" id="darAlta">Dar Alta</button>
+            </div>
+            <button class="boton_cerrar" id="cerrarSesion"></button>
+        </div>
+    </header>
+    <div class="border"></div>
+
+    <main>
+        <div class="table-container">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th class="th_titulo" id="tituloId" campo-dato="id">ID</th>
+                        <th class="th_titulo" id="tituloDescripcion" campo-dato="descripcion">Descripción</th>
+                        <th class="th_titulo" id="tituloDinosaurio" campo-dato="tipoDinosaurio">Tipo de Dinosaurio</th>
+                        <th class="th_titulo" id="tituloPeso" campo-dato="pesoAprox">Peso Aprox. (Tn)</th>
+                        <th class="th_titulo" id="tituloFecha" campo-dato="fechaDescubrimiento">Fecha de Descubrimiento</th>
+                        <th class="th_titulo" id="tituloDoc" campo-dato="documentacion">Documentación</th>
+                        <th class="th_titulo" id="tituloModi" campo-dato="modi"></th>
+                        <th class="th_titulo" id="tituloBaja" campo-dato="baja"></th>
+                    </tr>
+                    <tr>
+                        <th class="th_filtro" campo-dato="id"><input id="filtroId" type="text" placeholder="Filtrar por ID"></th>
+                        <th class="th_filtro" campo-dato="descripcion"><input id="filtroDescripcion" type="text" placeholder="Filtrar por Descripción"></th>
+                        <th class="th_filtro" campo-dato="tipoDinosaurio">
+                            <select id="filtroDinosaurio">
+                                <option value="">Filtrar por Tipo</option>
+                                <!-- PARA LLENAR CON LAS OPCIONES -->
+                            </select>
+                        </th>
+                        <th class="th_filtro" campo-dato="pesoAprox"><input id="filtroPeso" type="text" placeholder="Filtrar por Peso"></th>
+                        <th class="th_filtro" campo-dato="fechaDescubrimiento"><input id="filtroFecha" type="text" placeholder="Filtrar por Fecha"></th>
+                        <th class="th_filtro" campo-dato="documentacion"></th>
+                        <th class="th_filtro" campo-dato="modi"></th>
+                        <th class="th_filtro" campo-dato="baja"></th>
+                    </tr>
+                </thead">
+                <tbody id="tableBody">
+                </tbody>
+                
+            </table>
+        </div>
+
+
+        <!-- FORMULARIO DE ALTA -->
+        <div class="formularioInactivo" id="formAlta">
+            <button class="cruz" id="cerrarForm1">X</button>
+            <h2 class="tituloAlta">Alta</h2>
+            <form id="formAlta__form" action="" method="post" enctype="multipart/form-data">
+
+                <div class="cont__formulario">  
+                    <div class="entrada entradaId">
+                        <label for="">1 - ID</label>
+                        <input class="formId" type="text" placeholder="ID" id="formAltaId" required minlength="4" maxlength="6">
+                    </div>
+                    <div class="entrada entradaDescr">
+                        <label for="">2 - Descripcion</label>
+                        <textarea class="formDescr" placeholder="Descripcion Descubrimiento" id="formAltaDescr" required minlength="1" maxlength="254"></textarea>
+                    </div>
+                    <div class="entrada entradaDino">
+                        <label for="">3 - Dinosaurio</label>
+                        <select class="formDino" id="filtroDinosaurioFormAlta" required>
+                            <option value="">Filtrar por Tipo</option>
+                            <!-- PARA LLENAR CON LAS OPCIONES -->
+                        </select>
+                    </div>
+                    <div class="entrada entradaPeso">
+                        <label for="">4 - Peso Aproximado (Tn)</label>
+                        <input class="formPeso" id="formAltaPeso" type="number" placeholder="Peso" required>
+                    </div>
+                    <div class="entrada entradaFecha">
+                        <label for="">5 - Fecha</label>
+                        <input class="formFecha" id="formAltaFecha" type="date" required>
+                    </div>
+                    <div class="entrada entradaImg">
+                        <label for="">6 - Documentacion</label>
+                        <input class="formDoc" id="formAltaDoc" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                    </div>
+                </div>          
+    
+                 
+            </form>
+            <div class="form__botones">
+                <button id="agregar" class="botonInactivo form__boton">Agregar</button>
+                <button id="limpiarFormAlta" class="form__boton">Reiniciar</button>
+            </div>
+        </div>
+
+        <!-- FORMULARIO DE MODIFICACION -->
+        <div class="formularioInactivo" id="formModi">
+            <button class="cruz" id="cerrarForm2">X</button>
+            <h2 class="tituloAlta">Modificación</h2>
+            <form id="formModi__form" action="" method="post" enctype="multipart/form-data">
+                <div class="cont__formulario">  
+                    <div class="entrada entradaId">
+                        <label for="">1 - ID</label>
+                        <input type="text" placeholder="ID" id="formModiId" required minlength="4" maxlength="6">
+                    </div>
+                    <div class="entrada entradaDescr">
+                        <label for="">2 - Descripcion</label>
+                        <textarea placeholder="Descripcion Descubrimiento" id="formModiDescr" required minlength="1" maxlength="254"></textarea>
+                    </div>
+                    <div class="entrada entradaDino">
+                        <label for="">3 - Dinosaurio</label>
+                        <select id="filtroDinosaurioFormModi" required>
+                            <option value="">Filtrar por Tipo</option>
+                            <!-- PARA LLENAR CON LAS OPCIONES -->
+                        </select>
+                    </div>
+                    <div class="entrada entradaPeso">
+                        <label for="">4 - Peso Aproximado (Tn)</label>
+                        <input id="formModiPeso" type="number" placeholder="Peso" required>
+                    </div>
+                    <div class="entrada entradaFecha">
+                        <label for="">5 - Fecha</label>
+                        <input id="formModiFecha" type="date" required>
+                    </div>
+                    <div class="entrada entradaImg">
+                        <label for="">6 - Documentacion</label>
+                        <input id="formModiDoc" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                    </div>
+                    <input type="hidden" name="idViejo" id="idViejo">
+                </div>          
+    
+                 
+            </form>
+            <div class="form__botones">
+                <button id="modificar" class="botonInactivo form__boton">Modificar</button>
+                <button id="limpiarFormModi" class="form__boton">Reiniciar</button>
+            </div>
+        </div>
+
+    </main>
+
+    <div class="border"></div>
+
+    <footer>
+        <!--
+        <table class="campos__footer">
+            <tr>
+                <td campo-dato="id" id="totalEntradas">Total:</td>
+                <td campo-dato="descripcion"><span id="total-descripcion">5</span></td>
+                <td campo-dato="tipoDinosaurio"><span id="total-tipoDinosaurio">5</span></td>
+                <td campo-dato="pesoAprox"><span id="total-pesoAprox">5</span></td>
+                <td campo-dato="fechaDescubrimiento"><span id="total-fechaDescubrimiento">5</span></td>
+                <td campo-dato="documentacion"><span id="total-documentacion">5</span></td>
+            </tr>
+        </table>
+        -->
+        <h3 id="totalEntradas">Total Registros:</h3>
+    </footer>
+
+    <script src="./jquery-3.6.0.js"></script>
+		<script type="text/javascript">
+
+
+    //CERRAR SESION CON MENSAJE
+			$("#cerrarSesion").click(function() {
+				alert("Sesión Cerrada.");
+				location.href="../cerrarSesion.php";
+			});
+
+    //DESHABILITAR BOTONES DE FORMULARIOS --------------------------------------------
+    //PARA ABRIR FORM DE ALTA
+    $("#darAlta").click(function() {
+            limpiarFormAlta();
+            $("#formAlta").removeClass("formularioInactivo");
+            $("#formAlta").addClass("formularioActivo");
+            cargarDinos("filtroDinosaurioFormAlta");
+		});
+
+    //PARA CERRAR FORM ALTA
+    $("#cerrarForm1").click(function() {
+        $("#formAlta").removeClass("formularioActivo");
+        $("#formAlta").addClass("formularioInactivo");
+    });
+
+    //BOTON DE MODIFICACION -----------------------------------------------------------
+    //PARA ABRIR EL FORM DE MODI CON LOS DATOS DEL REGISTRO ACTUAL
+    $(document).ready(function() {
+    $(document).on('click', '.modi', function() {
+        limpiarFormModi();
+        $("#formModi").removeClass("formularioInactivo").addClass("formularioActivo");
+        
+        //OBTENGO LOS VALORES BUSCANDO EN LA ROW MAS CERCANA AL BOTON, USANDO CAMPO-DATO
+        var valor = $(this).closest('tr').find('td[campo-dato]');
+        $("#idViejo").val($(valor[0]).text());
+        $("#formModiId").val($(valor[0]).text());
+        $("#formModiDescr").val($(valor[1]).text());
+        console.log($(valor[2]).text());
+
+        //USO EL CALLBACK DE CARGAR DINOS PARA QUE AL LLENARSE LA LISTA, LA PUEDA RECORRER Y SELECCIONAR LA OPCION CON EL VALUE CORRECTO
+        cargarDinos("filtroDinosaurioFormModi" , function() {
+            //RECORRO CADA OPTION Y VERIFICO SI TIENE EL MISMO VALOR QUE EL DEL REGISTRO
+            //SI LO ENCUENTRO, LE AGREGO ATRIBUTO "SELECTED" = TRUE
+            $('#filtroDinosaurioFormModi option').each(function() {
+                var value = $(this).val();
+                var text = $(this).text();
+                if ( value ==  $(valor[2]).text()){
+                    $(this).prop("selected", true);
+                }
+            });
+        });
+
+        $("#formModiPeso").val($(valor[3]).text());
+        $("#formModiFecha").val($(valor[4]).text());
+
+    });
+
+    //PARA CERRAR FORM MODI
+    $("#cerrarForm2").click(function() {
+        $("#formModi").removeClass("formularioActivo").addClass("formularioInactivo");
+    });
+
+});
+
+    $("#cerrarForm2").click(function() {
+        $("#formModi").removeClass("formularioActivo");
+        $("#formModi").addClass("formularioInactivo");
+    });
+
+    //HABILITAR BOTONES DE FORMULARIO ALTA --------------------------------------------
+
+    //VALIDO EL FORM Y HABILITO BOTON
+    function todoListoParaAlta() {
+
+        if (document.getElementById("formAlta__form").checkValidity()){
+
+            $("#agregar").attr("disabled",false);
+            $("#agregar").removeClass("botonInactivo");
+            }
+            else {
+
+            $("#agregar").attr("disabled",true);
+            $("#agregar").addClass("botonInactivo");
+
+        }
+    }
+
+    $(document).ready(function() {
+        $("#agregar").click(function() {
+            alta();
+        });
+    });
+
+    //Escucha de eventos
+    $(document).ready(function() {
+        $("#formAlta").keyup(function() {
+            todoListoParaAlta();
+        });
+        $("#formAlta").click(function() {
+            todoListoParaAlta();
+        });
+        $("#formAlta").mousemove(function() {
+            todoListoParaAlta();
+        });
+    });
+
+    //HABILITAR BOTONES DE FORMULARIO MODI --------------------------------------------
+
+    //VALIDO EL FORM Y HABILITO BOTON
+    function todoListoParaModi() {
+
+        if (document.getElementById("formModi__form").checkValidity()){
+
+            $("#modificar").attr("disabled",false);
+            $("#modificar").removeClass("botonInactivo");
+        }
+        else {
+
+            $("#modificar").attr("disabled",true);
+            $("#modificar").addClass("botonInactivo");
+
+        }
+
+    }
+
+    $(document).ready(function() {
+        $("#modificar").click(function() {
+            modi();
+        });
+    });
+
+    //Escucha de eventos
+    $(document).ready(function() {
+        $("#formModi").keyup(function() {
+            todoListoParaModi();
+        });
+        $("#formModi").click(function() {
+            todoListoParaModi();
+        });
+        $("#formModi").mousemove(function() {
+            todoListoParaModi();
+        });
+    });
+
+    //FUNCION PARA LIMPIAR FORMS --------------------------------------------------
+    function limpiarFormAlta(){
+        $("#formAltaId").val('');
+        $("#formAltaDescr").val('');
+        $("#filtroDinosaurioFormAlta").val('');
+        $("#formAltaPeso").val('');
+        $("#formAltaFecha").val('');
+        $("#formAltaDoc").val('');
+        todoListoParaAlta();
+    }
+
+    $("#limpiarFormAlta").click(function() {
+			limpiarFormAlta();
+	});
+
+    function limpiarFormModi(){
+        $("#formModiId").val('');
+        $("#formModiDescr").val('');
+        $("#filtroDinosaurioFormModi").val('');
+        $("#formModiPeso").val('');
+        $("#formModiFecha").val('');
+        $("#formModiDoc").val('');
+        todoListoParaModi();
+    }
+
+    $("#limpiarFormModi").click(function() {
+			limpiarFormModi();
+	});
+
+    //Funcion ALTA -------------------------------------------------------
+    function alta() {
+
+        //SE USA FormData() PARA ENVIAR IMAGENES/DOCUMENTO
+        var form = $('#formAlta__form')[0];
+        var formData = new FormData();
+        formData.append('id', $("#formAltaId").val());
+        formData.append('descripcion', $("#formAltaDescr").val());
+        formData.append('dino', $("#filtroDinosaurioFormAlta").val());
+        formData.append('peso', $("#formAltaPeso").val());
+        formData.append('fecha', $("#formAltaFecha").val());
+        formData.append('documentacion', $('#formAltaDoc')[0].files[0]);
+
+				$.ajax({
+					type: "post",
+					url: "./alta.php",
+					data: formData,
+                    processData: false,
+                    contentType: false,
+								
+					success: function(respuestaDelServer) {
+						alert(respuestaDelServer);
+						cargarTabla();
+					}
+		});
+
+        //SE CIERRA EL FORM
+        $("#formAlta").removeClass("formularioActivo");
+        $("#formAlta").addClass("formularioInactivo");
+
+	}
+
+    //Funcion MODI -------------------------------------------------------
+    function modi() {
+
+        console.log( $("#idViejo").val() );
+
+        //SE USA FormData() PARA ENVIAR IMAGENES/DOCUMENTO
+        var form = $('#formModi__form')[0];
+        var formData = new FormData();
+        formData.append('idViejo', $("#idViejo").val());
+        formData.append('id', $("#formModiId").val());
+        formData.append('descripcion', $("#formModiDescr").val());
+        formData.append('dino', $("#filtroDinosaurioFormModi").val());
+        formData.append('peso', $("#formModiPeso").val());
+        formData.append('fecha', $("#formModiFecha").val());
+        formData.append('documentacion', $('#formModiDoc')[0].files[0]);
+
+				$.ajax({
+					type: "post",
+					url: "./modi.php",
+					data: formData,
+					processData: false,
+                    contentType: false,
+                    
+					success: function(respuestaDelServer) {
+						alert(respuestaDelServer);
+						cargarTabla();
+					}
+				});
+
+                //SE CIERRA EL FORM
+                $("#formModi").removeClass("formularioActivo");
+                $("#formModi").addClass("formularioInactivo");
+
+			}
+
+    //Funcion BAJA -------------------------------------------------------
+    function baja(valor) {
+				$.ajax({
+					type: "get",
+					url: "./baja.php",
+					data: {
+						BId: valor,
+					},
+								
+					success: function(respuestaDelServer) {
+						alert(respuestaDelServer);
+						cargarTabla();
+					}
+				});
+			}
+    
+    //Funcion CARGAR DINOS -------------------------------------------------------
+
+    //SE LE PASA EL ID DEL <SELECT> A LLENAR Y UNA FUNCION DE CALLBACK EN CASO DE SER NECESARIO
+    function cargarDinos(selectElementId, callback) {
+        $("#" + selectElementId).empty();
+
+        var objOption = document.createElement("option");
+        objOption.value = "";
+        objOption.innerHTML = "";
+        $("#" + selectElementId).append(objOption);
+
+        $.ajax({
+            type: "get",
+            url: "./cargaListaDinos.php",
+            success: function(respuestaDelServer) {
+                console.log(respuestaDelServer);
+                try {
+                    var objJson = JSON.parse(respuestaDelServer);
+                    console.log(objJson);
+
+                    //SI LO QUE SE RECIBE ES TRUE (NO NULL/VACIO) Y ADEMAS ES UN ARRAY (COMO DEBERIA SER)
+                    if (objJson.dinosaurios && Array.isArray(objJson.dinosaurios)) {
+                        objJson.dinosaurios.forEach(function(valor) {
+                            var objOption = document.createElement("option");
+                            objOption.value = valor.idTipo;
+                            objOption.innerHTML = valor.descripcionTipo;
+
+                            $("#" + selectElementId).append(objOption);
+                        });
+
+                        //USO EL CALLBACK PARA PODER REALIZAR ACCIONES UNA VEZ LA LISTA ESTA CARGADA
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    } else {
+                        console.error("La estructura de la respuesta no es la esperada");
+                    }
+                } catch (e) {
+                    console.error("Error al parsear JSON: " + e.message);
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Error en la solicitud AJAX: " + textStatus + ", " + errorThrown);
+            }
+        });
+    }
+
+    cargarDinos("filtroDinosaurio");
+
+    //Preparacion CARGAR TABLA -----------------------------------------------------------------
+    $("#botonCargar").click(function() {
+        cargarTabla();
+    });
+
+    //BOTON PARA VACIAR LA TABLA
+    $("#botonVaciar").click(function() {
+        $("#tableBody").empty();
+        $("#orden").val('');
+        $("#filtroId").val('');
+        $("#filtroDescripcion").val('');
+        $("#filtroDinosaurio").val('');
+        $("#filtroPeso").val('');
+        $("#filtroFecha").val('');
+
+        var totalEntradas = $("#tableBody tr").length;
+        $("#totalEntradas").text("Total:  " + totalEntradas);
+    })
+
+    //PARA HACER QUE LA TECLA "ENTER" POR DEFAULT CARGUE LA TABLA
+    $(document).keydown(function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        cargarTabla();
+    }
+    });
+
+    //PARA SELECCIONAR EL ORDEN
+    $("#tituloId").click(function() {
+        $("#orden").val("idRegistro");
+    });
+
+    $("#tituloDescripcion").click(function() {
+        $("#orden").val("descripcion");
+    });
+
+    $("#tituloDinosaurio").click(function() {
+        $("#orden").val("tipoDinosaurio");
+    });
+
+    $("#tituloPeso").click(function() {
+        $("#orden").val("pesoAprox");
+    });
+
+    $("#tituloFecha").click(function() {
+        $("#orden").val("fechaDescubrimiento");
+    });
+
+    //Funcion CARGAR TABLA -------------------------------------------------------
+    function cargarTabla() {
+        $("#tableBody").empty();
+        $("#tableBody").html("Cargando...");
+        var objAjax = $.ajax({
+            type:"get",
+            url:"./salidaJsonDatos.php",
+            data: {
+                orden: $("#orden").val(),
+                filtroId: $("#filtroId").val(),
+                filtroDescripcion: $("#filtroDescripcion").val(),
+                filtroDino: $("#filtroDinosaurio").val(),
+                filtroPeso: $("#filtroPeso").val(),
+                filtroFecha: $("#filtroFecha").val(),
+            },
+
+            success: function(respuestaDelServer) {
+                $("#tableBody").empty();
+                objJson = JSON.parse(respuestaDelServer);
+                console.log(objJson);
+                if(objJson.cantidad == 0){
+                    $("#tableBody").html("No hay datos/descubrimientos.");
+                }
+                objJson.descubrimientos.forEach(function(valor) {
+                    var objTr = document.createElement("tr");
+                    var objTd1 = document.createElement("td");
+                    objTd1.setAttribute("campo-dato", "id");
+                    objTd1.innerHTML = valor.idRegistro;
+                    objTr.appendChild(objTd1);
+
+                    var objTd2 = document.createElement("td");
+                    objTd2.setAttribute("campo-dato", "descripcion");
+                    objTd2.innerHTML = valor.Descripcion;
+                    objTr.appendChild(objTd2);
+
+                    var objTd3 = document.createElement("td");
+                    objTd3.setAttribute("campo-dato", "tipoDinosaurio");
+                    objTd3.innerHTML = valor.tipoDinosaurio;
+                    objTr.appendChild(objTd3);
+
+                    var objTd4 = document.createElement("td");
+                    objTd4.setAttribute("campo-dato", "pesoAprox");
+                    objTd4.innerHTML = valor.pesoAprox;
+                    objTr.appendChild(objTd4);
+
+                    var objTd5 = document.createElement("td");
+                    objTd5.setAttribute("campo-dato", "fechaDescubrimiento");
+                    objTd5.innerHTML = valor.fechaDescubrimiento;
+                    objTr.appendChild(objTd5);
+
+                    var objTd6 = document.createElement("td");
+                    if (valor.documentacion){
+                        var img = document.createElement("img");
+                        img.src = "data:image/jpeg;base64," + valor.documentacion;
+                        img.alt = "Imagen del Dinosaurio";
+                        objTd6.appendChild(img);
+                    }
+                    else {
+                        objTd6.innerHTML = "Sin Imagen";
+                    }
+                    objTd6.setAttribute("campo-dato", "documentacion");
+                    objTr.appendChild(objTd6);
+
+                    var objTd7 = document.createElement("td");
+                    objTd7.setAttribute("campo-dato", "modi");
+                    var contModi = document.createElement("div");
+                    var buttonModi = document.createElement("button");
+                    contModi.className = "cont_boton";
+                    buttonModi.className = "boton modi";
+                    contModi.appendChild(buttonModi);
+                    objTd7.appendChild(contModi);
+                    objTr.appendChild(objTd7);
+
+                    var objTd8 = document.createElement("td");
+                    objTd8.setAttribute("campo-dato", "baja");
+                    var contBaja = document.createElement("div");
+                    var buttonBaja = document.createElement("button");
+                    contBaja.className = "cont_boton";
+                    buttonBaja.className = "boton baja";
+                    contBaja.appendChild(buttonBaja);
+                    objTd8.appendChild(contBaja);
+                    objTr.appendChild(objTd8);
+
+                    buttonBaja.onclick = function() {
+                        $("#BId").val(valor.idRegistro);
+                        var borrar = confirm("¿Esta seguro de que desea eliminar este registro?");
+                        if (borrar) {
+                            baja(valor.idRegistro);
+                        } 
+                    }
+
+                    //SE ADJUNTA EL NUEVO ROW A LA TABLA
+                    $("#tableBody").append(objTr);
+                });
+                
+                //PARA CALCULAR EL TOTAL DE REGISTROS
+                var totalEntradas = $("#tableBody tr").length;
+                $("#totalEntradas").text("Total Registros:  " + totalEntradas);
+            }
+        });
+    }
+
+		</script>
+
+</body>
+</html>

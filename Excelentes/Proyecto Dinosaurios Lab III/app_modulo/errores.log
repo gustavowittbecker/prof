@@ -1,0 +1,50 @@
+[04-Jul-2024 06:09:54 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:09:54 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:09:54 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:09:54 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:09:54 Europe/Berlin] [2024-07-04 06:09:54] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 06:11:05 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:11:05 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:11:05 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:11:05 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:11:05 Europe/Berlin] [2024-07-04 06:11:05] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 06:13:35 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:13:35 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:13:35 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:13:35 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:13:35 Europe/Berlin] [2024-07-04 06:13:35] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 06:13:38 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:13:38 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:13:38 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:13:38 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:13:38 Europe/Berlin] [2024-07-04 06:13:38] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 06:16:31 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:16:31 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 06:16:31 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:16:31 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 06:16:31 Europe/Berlin] [2024-07-04 06:16:31] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 08:19:12 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 08:19:12 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 11
+[04-Jul-2024 08:19:12 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 08:19:12 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\cargaListaDinos.php on line 12
+[04-Jul-2024 08:19:12 Europe/Berlin] [2024-07-04 08:19:12] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:15 Europe/Berlin] [2024-07-04 08:19:15] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:15 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:15 Europe/Berlin] [2024-07-04 08:19:15] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:16 Europe/Berlin] [2024-07-04 08:19:16] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $host in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $dbname in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 11
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $user in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:16 Europe/Berlin] PHP Warning:  Undefined variable $password in D:\xampp\htdocs\laboratorioIII\TABLA DINOS V\app_modulo\salidaJsonDatos.php on line 12
+[04-Jul-2024 08:19:16 Europe/Berlin] [2024-07-04 08:19:16] Error en la consulta: SQLSTATE[HY000] [1045] Access denied for user ''@'localhost' (using password: NO)

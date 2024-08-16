@@ -822,8 +822,6 @@ function todoListoParaModi() { //Habilita/deshabilita boton de modi
 
 
 function cargaTabla() {
-
-	if(confirm("Desea recuperar datos??")){
 	
 	$("#tbDatos").empty();
 	$("#tbDatos").html("<p>Eserando respuesta ..</p>");
@@ -839,10 +837,8 @@ function cargaTabla() {
 			f_articulos_um: $("#f_articulos_um").val(),
 			f_articulos_fechaAlta:$("#f_articulos_fechaAlta").val()
 		},
-		success: function(respuestaDelServer,estado) {  
-		//La funcion de callback que se ejecutara cuando el req. sea completado.
-		//$("#tbDatos").html(respuestaDelServer)
-		//para ver el json recibido dentro de tbDatos;
+		success: function(respuestaDelServer,estado) {  //La funcion de callback que se ejecutara cuando el req. sea completado.
+					//$("#tbDatos").html(respuestaDelServer)//para ver el json recibido dentro de tbDatos;
 					$("#tbDatos").empty();
 					alert(respuestaDelServer);
 					
@@ -865,6 +861,7 @@ function cargaTabla() {
 						objTd.setAttribute("campo-dato","articulos_um");
 						objTd.innerHTML=argValor.um;
 						objTr.appendChild(objTd);
+
 
 						var objTd=document.createElement("td");
 						objTd.setAttribute("campo-dato","articulos_descripcion");
@@ -893,6 +890,7 @@ function cargaTabla() {
 
 						objTr.appendChild(objTd);
 
+
 						var objTd=document.createElement("td");
 						objTd.setAttribute("campo-dato","articulos_btModi");
 						objTd.innerHTML="<button class='btCelda'>Modi</button>";
@@ -900,14 +898,9 @@ function cargaTabla() {
 						objTd.addEventListener("click",function() {	
 							$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
 							$("#ventanaModalFormularioModi").css("visibility","visible");
-							
-							llenaFamiliasModi(argValor); 
-							//pasa como argumento el objeto articulo completo
-							//alert(document.getElementById("formArticulosEntFamiliaModi").options.length);
-							
-							CompletaFichaArticulo(argValor);
-							//paso como argumento el objeto articulo completo para que el 
-							//formulario cargue todos los inputs.
+							//alert();
+							llenaFamiliasModi();
+							CompletaFichaArticulo(argValor.codArt);
 						});
 
 						objTr.appendChild(objTd);
@@ -930,23 +923,27 @@ function cargaTabla() {
 				}//cierra funcion asignada al success
 			}); //cierra objeto de parametros y funcion ajax
 
-} //cierra el if de confirmacion de carga de tabla
 }//cierra funcion cargaTabla
 
 
 function CompletaFichaArticulo(argArticulo) {	
-	//completa el formulario de modi para el articulo seleccionado.
-	//solo la familia ya esta determinada.
-
-
-	$("#formArticulosEntCodArtModi").val(argArticulo.codArt);
-	$("#formArticulosEntUmModi").val(argArticulo.um);
-	$("#formArticulosEntDescripcionModi").val(argArticulo.descripcion);
-	$("#formArticulosEntSaldoStockModi").val(argArticulo.saldoStock);
-	$("#formArticulosEntfechaAltaModi").val(argArticulo.fechaAlta);
-	
-	//alert("long de opciones"+document.getElementById("formArticulosEntFamiliaModi").options.length);
-
+	$("#formArticulosEntCodArtModi").val(argArticulo);
+	var objAjax = $.ajax({
+		type:"get", 
+		url:"./salidaJsonArticulo.php",
+		data: { codArt:argArticulo },
+		success: function(respuestaDelServer,estado) {  //La funcion de callback que se ejecutara cuando el req. sea completado.
+			//alert(respuestaDelServer);
+			objetoDato = JSON.parse(respuestaDelServer);
+			$("#formArticulosEntCodArtModi").val(objetoDato.codArt);
+			$("#formArticulosEntFamiliaModi").val(objetoDato.familia);
+			$("#formArticulosEntDescripcionModi").val(objetoDato.descripcion);
+			$("#formArticulosEntUmModi").val(objetoDato.um);						
+			$("#formArticulosEntfechaAltaModi").val(objetoDato.fechaAlta);
+			$("#formArticulosEntSaldoStockModi").val(objetoDato.saldoStock);
+			todoListoParaModi();//habilitacion del boton de enviar modi si todo valida
+		} //cierra el success
+	}); //cierro ajax
 }
 
 
@@ -1030,10 +1027,9 @@ function llenaFamiliasAlta() { //el argumento corresponde al objeto que será ll
 
 
 
-function llenaFamiliasModi(argValorArticulo) { //recibe como argumento la fila u 
-	//objeto articulo completo 
-	//alert(argValorArticulo.familia);
-	$("#formArticulosEntFamiliaModi").empty(); //antes de llenar vacío para no duplicar elementos
+function llenaFamiliasModi() { 
+	//alert($("#formArticulosEntFamiliaModi").val());
+		$("#formArticulosEntFamiliaModi").empty(); //antes de llenar vacío para no duplicar elementos
 	//alert($("#formArticulosEntFamiliaModi").val());		
 			/*Este objeto del documento es un array de opciones que ya puede estar cargado de antes y hay
 			que vaciarlo si lo deseo recargar.
@@ -1046,18 +1042,17 @@ function llenaFamiliasModi(argValorArticulo) { //recibe como argumento la fila u
 			success: function(respuestaDelServer,estado) {
 						
 						listaDeObjetos = JSON.parse(respuestaDelServer);
-						listaDeObjetos.familias.forEach(function(argValorFamilia,argIndice) {  //recibe como argumento el objeto familia completo
+						listaDeObjetos.familias.forEach(function(argValor,argIndice) { 
 						
-							//alert(argValorFamilia.codFamilia);
+							
 							var objOption= document.createElement("option");
 							objOption.setAttribute("class","elementoOptionSelect");
-							objOption.setAttribute("value", argValorFamilia.codFamilia); 
+							objOption.setAttribute("value", argValor.codFamilia); 
 
-							//El formulario dispone de todos los datos necesarios para el articulo en el momento en que se
+							//El formulario ya está cargado con los datos desde el momento en que 
 							//hizo click en el boton de modi del registro apuntado.
-							objOption.innerHTML=argValorFamilia.codFamilia + argValorFamilia.descripcionFamilia;
-							
-							if(objOption.value == argValorArticulo.familia) { //Para fijar el option seleccionado de acuerdo al articulo
+							objOption.innerHTML=argValor.codFamilia + argValor.descripcionFamilia;
+							if(objOption.value == $("#formArticulosEntFamiliaModi").val()) {
 								objOption.setAttribute("selected","selected");
 							}
 

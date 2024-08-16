@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Login</title>
+    <link rel="stylesheet" href="./login.css">
+</head>
+<body>
+
+    <main>
+
+        <div id="contFormIngreso" class="formContainer">
+
+            <h1>Ingreso</h1>
+
+            <div class="border"></div>
+
+            <form id="formIngreso" action="./ingresoAlSistema.php" method="GET">
+
+                <div class="input">
+                    <label for="nombre">Nombre</label>
+                    <input class="inputName" id="usuarioIngreso" name="usuario" type="text" required minlength="1" maxlength="60">
+                </div>
+                
+                <div class="input">
+                    <label for="contraseña">Contraseña</label>
+                    <input class="inputPassword" id="passwordIngreso" name="password" type="password" required minlength="1" maxlength="60">
+                </div>
+
+                <input type="hidden" name="action" value="login">
+                <button id="botonIngresar" class="form__boton botonInactivo">Ingresar</button>
+
+            </form>
+
+            <div class="border"></div>
+
+            <div class="buttonContainer">
+                <p>¿No tienes cuenta? Registrate</p>
+                <button id="botonCambiarRegistro" class="form__boton">Registrarse</button>
+            </div>
+
+        </div>
+
+        <div id="contFormRegistro" class="formContainer formularioInactivo">
+
+            <h1>Registro</h1>
+
+            <div class="border"></div>
+
+            <form id="formRegistro" action="./ingresoAlSistema.php" method="GET">
+
+                <div class="input">
+                    <label for="nombre">Nombre</label>
+                    <input class="inputName" id="usuarioRegistro" name="usuario" type="text" required minlength="1" maxlength="60">
+                </div>
+                
+                <div class="input">
+                    <label for="contraseña">Contraseña</label>
+                    <input class="inputPassword" id="passwordRegistro" name="password" type="password" required minlength="1" maxlength="60">
+                </div>
+
+                <input type="hidden" name="action" value="register">
+                <button id="botonRegistrar" class="form__boton botonInactivo">Registrar</button>
+
+            </form>
+
+            <div class="border"></div>
+
+            <div class="buttonContainer">
+                <p>¿Ya estas Registrado? Inicia Sesion.</p>
+                <button id="botonCambiarIngreso" class="form__boton">Ingresar</button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="./jquery-3.6.0.js"></script>
+    <script type="text/javascript">
+
+    //MOSTRAR MENSAJE DE ERROR DE LOGUEO O REGISTRO EN CASO DE QUE HAYA
+    $(document).ready(function() {
+        //BUSCO EL MENSAJE EN LOS URLPARAMS
+        var urlParams = new URLSearchParams(window.location.search);
+        var error = urlParams.get('error');
+
+        if (error != "" && error != null){
+            alert(error);
+        }
+        
+    });
+
+    //HABILITAR BOTONES DE FORMULARIO INGRESO --------------------------------------------
+    function todoListoParaIngresar() {
+
+    var objNombre = document.getElementById("usuarioIngreso");
+    var objContraseña = document.getElementById("passwordIngreso");
+
+    //VALIDO AMBOS CAMPOS POR SEPARADO, HABILITO BOTON
+    if (objNombre.checkValidity() && objContraseña.checkValidity()){
+            $("#botonIngresar").attr("disabled",false);
+            $("#botonIngresar").removeClass("botonInactivo");
+        }
+        else {
+            $("#botonIngresar").attr("disabled",true);
+            $("#botonIngresar").addClass("botonInactivo");
+        }
+    }
+
+
+    //escucho eventos form ingreso
+    $(document).ready(function() {
+        $("#formIngreso").keyup(function() {
+            todoListoParaIngresar();
+        });
+        $("#formIngreso").click(function() {
+            todoListoParaIngresar();
+        });
+        $("#formIngreso").mousemove(function() {
+            todoListoParaIngresar();
+        });
+    });
+
+    //BOTON PARA CAMBIAR A FORM REGISTRO
+    $("#botonCambiarRegistro").click(function() {
+        limpiarForm();
+        $("#contFormIngreso").addClass("formularioInactivo");
+        $("#contFormRegistro").removeClass("formularioInactivo");
+    });
+
+    //INGRESAR
+    $("#botonIngresar").click(function() {
+                if (!$(this).attr("disabled")) {
+                    $("#formIngreso").submit();
+                }
+            });
+
+    //HABILITAR BOTONES DE FORMULARIO REGISTRO --------------------------------------------
+    function todoListoParaRegistrar() {
+
+    var objNombre = document.getElementById("usuarioRegistro");
+    var objContraseña = document.getElementById("passwordRegistro");
+
+    //VALIDO LOS CAMPOS, HABILITO BOTON
+    if (objNombre.checkValidity() && objContraseña.checkValidity()){
+            $("#botonRegistrar").attr("disabled",false);
+            $("#botonRegistrar").removeClass("botonInactivo");
+        }
+        else {
+            $("#botonRegistrar").attr("disabled",true);
+            $("#botonRegistrar").addClass("botonInactivo");
+        }
+    }
+
+    //BOTON CAMBIAR A FORM INGRESO
+    $("#botonCambiarIngreso").click(function() {
+        limpiarForm();
+        $("#contFormRegistro").addClass("formularioInactivo");
+        $("#contFormIngreso").removeClass("formularioInactivo");
+    });
+
+    //escucho eventos form registro
+    $(document).ready(function() {
+        $("#formRegistro").keyup(function() {
+            todoListoParaRegistrar();
+        });
+        $("#formRegistro").click(function() {
+            todoListoParaRegistrar();
+        });
+        $("#formRegistro").mousemove(function() {
+            todoListoParaRegistrar();
+        });
+    });
+
+    //REGISTRAR
+    $("#botonRegistrar").click(function() {
+                if (!$(this).attr("disabled")) {
+                    $("#formRegistro").submit();
+                }
+            });
+
+    //LIMPIAR FORM
+    function limpiarForm(){
+        $(".inputName").val('');
+        $(".inputPassword").val('');
+    }
+
+    </script>
+
+</body>
+</html>
