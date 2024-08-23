@@ -1,0 +1,50 @@
+							llenaFamiliasModi(argValor.codArt);
+							CompletaFichaArticulo(argValor.codArt);
+$("#formArticulosEntFamiliaModi")
+
+objOption.innerHTML=argValor.codFamilia + argValor.descripcionFamilia;
+							if(objOption.value == $("#formArticulosEntFamiliaModi").val()) {
+								objOption.setAttribute("selected","selected");
+							}
+
+
+function CompletaFichaArticulo(argArticulo) {	
+
+
+
+function llenaFamilias() { //el argumento corresponde al objeto que será llenado
+			$("#f_articulos_familia").empty();
+			var objAjax = $.ajax({
+			type:"get", 
+			url:"./salidaJsonFamilias.php",
+			
+			success: function(respuestaDelServer,estado) {
+						alert(respuestaDelServer);
+						listaDeObjetos = JSON.parse(respuestaDelServer);
+						/*Agrega la opcion vacia*/
+						var objOption= document.createElement("option");
+						/*objOption.setAttribute("class","elementoOptionSelect");*/
+						objOption.setAttribute("value", ""); 
+						objOption.innerHTML="";
+						document.getElementById("f_articulos_familia").appendChild(objOption);
+
+						/*Barre el array de lista de Objetos para agregar opciones*/
+						listaDeObjetos.familias.forEach(function(argValor,argIndice) { 
+												
+							var objOption= document.createElement("option");
+							objOption.setAttribute("value", argValor.codFamilia); 
+							//alert(argValor.codFamilia);
+							objOption.innerHTML=argValor.descripcionFamilia;
+
+							document.getElementById("f_articulos_familia").appendChild(objOption);
+							
+						});//cierra foreach
+						return true;
+			} //cierra el success
+	}); //cierro ajax
+}
+
+
+
+
+<select id="formArticulosEntFamiliaModi" name="familia" required></select> 

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script>
+function done(){
+alert("done");
+}
+function error(){
+alert("error");
+}
+var promise=new Promise((resolve,reject)=>{
+resolve();
+reject();
+});
+promise.then(done).catch(error);
+</script>
+
+</body>
+</html>

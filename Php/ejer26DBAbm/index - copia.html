@@ -829,7 +829,7 @@ function todoListoParaModi() { //Habilita/deshabilita boton de modi
 
 function cargaTabla() {
 
-	if(confirm("Desea recuperar datos?")){
+	//if(confirm("Desea recuperar datos?")){
 	
 	$("#tbDatos").empty();
 	$("#tbDatos").html("<p>Eserando respuesta ..</p>");
@@ -906,14 +906,10 @@ function cargaTabla() {
 						objTd.addEventListener("click",function() {	
 							$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
 							$("#ventanaModalFormularioModi").css("visibility","visible");
-							
-							//llenaFamiliasModi(argValor); 
-							//pasa como argumento el objeto articulo completo
-							//alert(document.getElementById("formArticulosEntFamiliaModi").options.length);
-							
+										
 							CompletaFichaArticulo(argValor);
 							//paso como argumento el objeto articulo completo para que el 
-							//formulario cargue todos los inputs.
+							//formulario de modi cargue todos los inputs.
 						});
 
 						objTr.appendChild(objTd);
@@ -936,7 +932,7 @@ function cargaTabla() {
 				}//cierra funcion asignada al success
 			}); //cierra objeto de parametros y funcion ajax
 
-} //cierra el if de confirmacion de carga de tabla
+//} //cierra el if de confirmacion de carga de tabla
 }//cierra funcion cargaTabla
 
 
@@ -951,49 +947,30 @@ function CompletaFichaArticulo(argArticulo) {
 	$("#formArticulosEntSaldoStockModi").val(argArticulo.saldoStock);
 	$("#formArticulosEntfechaAltaModi").val(argArticulo.fechaAlta);
 	
-	//alert("long de opciones"+document.getElementById("formArticulosEntFamiliaModi").options.length);
-
-
-	//Input familia (Hay que traer la lista de familias y ubicar el elemento selected:
-
+	//Para el campo familia toma la lista de articulos de la global y autoselecciona la opcion con el if
 	$("#formArticulosEntFamiliaModi").empty(); //antes de llenar vacío para no duplicar elementos
 
-	//alert("aqui");
-	
-	var objAjax = $.ajax({
-		type:"get", 
-		url:"./salidaJsonFamilias.php",
-		
-		success: function(respuestaDelServer,estado) {
-					
-					listaDeObjetos = JSON.parse(respuestaDelServer);
-					listaDeObjetos.familias.forEach(function(argValorFamilia,argIndice) {  
-					//recibe como argumento el objeto familia completo
-					
-						//alert(argValorFamilia.codFamilia);
-						var objOption= document.createElement("option");
-						objOption.setAttribute("class","elementoOptionSelect");
-						objOption.setAttribute("value", argValorFamilia.codFamilia); 
+	objGlobalFamilias.familias.forEach(function(argValorFamilia,argIndice) {  
+			//la funcion anonima recibe como argumento el objeto familia completo
+							
+			var objOption= document.createElement("option");
+			objOption.setAttribute("class","elementoOptionSelect");
+			objOption.setAttribute("value", argValorFamilia.codFamilia); 
 
-						//El formulario dispone de todos los datos necesarios para el articulo en el momento en que se
-						//hizo click en el boton de modi del registro apuntado.
-						objOption.innerHTML=argValorFamilia.codFamilia + argValorFamilia.descripcionFamilia;
-						
-						if(objOption.value == argArticulo.familia) { //Para fijar el option seleccionado de acuerdo al articulo
-							objOption.setAttribute("selected","selected");
-						}
-						//En el proceso de armado de la lista desplegable ya ubico el selected que corresponda con el registro
-						//recibido.
+			//El formulario dispone de todos los datos necesarios para el articulo en el momento en que se
+			//hizo click en el boton de modi del registro apuntado.
+			objOption.innerHTML=argValorFamilia.codFamilia + argValorFamilia.descripcionFamilia;
+								
+			if(objOption.value == argArticulo.familia) { //Para fijar el option seleccionado de acuerdo al articulo
+				objOption.setAttribute("selected","selected");
+			}
+			//En el proceso de armado de la lista desplegable ya ubico el selected que corresponda con el registro
+			//recibido.
 
 
-						document.getElementById("formArticulosEntFamiliaModi").appendChild(objOption);
-													
-					});//cierra foreach
-					return true;
-		} //cierra el success
-}); //cierro ajax
-
-
+			document.getElementById("formArticulosEntFamiliaModi").appendChild(objOption);
+															
+	});//cierra foreach
 
 }
 
@@ -1012,7 +989,8 @@ function vaciaFormulario() {
 
 
 
-function llenaFamilias() { //el argumento corresponde al objeto que será llenado
+function llenaFamilias() { //Esta funcion completa las familias del filtro y crea un objeto global para las familias.
+														//que luego podra ser usado para completar los formularios.
 			$("#f_articulos_familia").empty();
 			var objAjax = $.ajax({
 			type:"get", 
@@ -1057,27 +1035,16 @@ function llenaFamilias() { //el argumento corresponde al objeto que será llenad
 
 function llenaFamiliasAlta() { //el argumento corresponde al objeto que será llenado
 			$("#formArticulosEntFamiliaAlta").empty();
-			var objAjax = $.ajax({
-			type:"get", 
-			url:"./salidaJsonFamilias.php",
-			
-			success: function(respuestaDelServer,estado) {
-						//alert(respuestaDelServer);
-						listaDeObjetos = JSON.parse(respuestaDelServer);
-						listaDeObjetos.familias.forEach(function(argValor,argIndice) { 
-												
-							var objOption= document.createElement("option");
-							objOption.setAttribute("class","elementoOptionSelect");
-							objOption.setAttribute("value", argValor.codFamilia); 
-							
-							objOption.innerHTML=argValor.codFamilia + argValor.descripcionFamilia;
 
-							document.getElementById("formArticulosEntFamiliaAlta").appendChild(objOption);
+			objGlobalFamilias.familias.forEach(function(argValor,argIndice) { 
+				var objOption= document.createElement("option");
+				objOption.setAttribute("class","elementoOptionSelect");
+				objOption.setAttribute("value", argValor.codFamilia); 			
+				objOption.innerHTML=argValor.codFamilia + argValor.descripcionFamilia;
+
+				document.getElementById("formArticulosEntFamiliaAlta").appendChild(objOption);
 							
-						});//cierra foreach
-						return true;
-			} //cierra el success
-	}); //cierro ajax
+			});//cierra foreach
 }
 
 

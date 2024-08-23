@@ -551,9 +551,6 @@ div.ventanaModalRespuesta div.contenidoModal p {
 /*Evento de carga inicial*/
 
 
-
-
-
 $(document).ready(function() {
 		objTbDatos=document.getElementById("tbDatos");//Para usar con java script
 		objCodArtAlta=document.getElementById("formArticulosEntCodArtAlta");
@@ -570,8 +567,26 @@ $(document).ready(function() {
 		$("#btEnvioFormModi").attr("disabled",true);
 		$("#btEnvioFormAlta").attr("disabled",true);
 		objGlobalFamilias=""; //reserva de esta variable global para almacenar lista de familias
-		llenaFamilias();
+		
+		//cargaGlobalFamilias();
+		
+		
+		function done(){
+			alert("done");
+		}
+		function error(){
+			alert("error");
+		}
+		var promise=new Promise((cargaGlobalFamilias,reject)=>{
+			cargaGlobalFamilias();
+			reject();
+		});
+
+		promise.then(llenaFamilias).catch(error);
+
+
 });
+
 
 
 /*Eventos Modales*/
@@ -630,6 +645,7 @@ $(document).ready(function() {
 	$("#btAccionVacia").click(function() {
 		//alert(objGlobalFamilias.familias[1].codFamilia);
 		$("#tbDatos").empty();
+		llenaFamilias();
 	});
 });
 
@@ -986,44 +1002,48 @@ function vaciaFormulario() {
 	$("#formArticulosEntSaldoStockAlta").val("");
 }
 
-
-
-
-function llenaFamilias() { //Esta funcion completa las familias del filtro y crea un objeto global para las familias.
-														//que luego podra ser usado para completar los formularios.
-			$("#f_articulos_familia").empty();
-			var objAjax = $.ajax({
+function cargaGlobalFamilias() {
+	var objAjax = $.ajax({
 			type:"get", 
 			url:"./salidaJsonFamilias.php",
 			
 			success: function(respuestaDelServer,estado) {
 						alert(respuestaDelServer);
 						listaDeObjetos = JSON.parse(respuestaDelServer);
-						/*Agrega la opcion vacia*/
-						var objOption= document.createElement("option");
-						/*objOption.setAttribute("class","elementoOptionSelect");*/
-						objOption.setAttribute("value", ""); 
-						objOption.innerHTML="";
-						document.getElementById("f_articulos_familia").appendChild(objOption);
-
-						/*Barre el array de lista de Objetos para agregar opciones*/
-						listaDeObjetos.familias.forEach(function(argValor,argIndice) { 
-												
-							var objOption= document.createElement("option");
-							objOption.setAttribute("value", argValor.codFamilia); 
-							//alert(argValor.codFamilia);
-							objOption.innerHTML=argValor.descripcionFamilia;
-
-							document.getElementById("f_articulos_familia").appendChild(objOption);
-							
-						});//cierra foreach
-						//return true;
-						//alert(listaDeObjetos.familias[2].codFamilia);
-						//return listaDeObjetos;
 						objGlobalFamilias = listaDeObjetos; //Define una variable global para almacenar las familias.
-			} //cierra el success
-	}); //cierro ajax
+			}
+	})//cierra ajax
+}
 
+
+function llenaFamilias() { //Esta funcion completa las familias del filtro y crea un objeto global para las familias.
+														//que luego podra ser usado para completar los formularios.
+			$("#f_articulos_familia").empty();
+			
+			/*Agrega la opcion vacia*/
+			var objOption= document.createElement("option");
+			/*objOption.setAttribute("class","elementoOptionSelect");*/
+			objOption.setAttribute("value", ""); 
+			objOption.innerHTML="";
+			document.getElementById("f_articulos_familia").appendChild(objOption);			
+			/*Barre el array de lista de Objetos para agregar opciones*/
+			objGlobalFamilias.familias.forEach(function(argValor,argIndice) { 		
+		//	objGlobalFamilias.familias.forEach(function(argValor,argIndice) { 									
+				var objOption= document.createElement("option");
+				objOption.setAttribute("class","elementoOptionSelect");
+				objOption.setAttribute("value", argValor.codFamilia); 
+				objOption.innerHTML=argValor.descripcionFamilia;
+				document.getElementById("f_articulos_familia").appendChild(objOption);
+						
+				//var objOption= document.createElement("option");
+				//objOption.setAttribute("class","elementoOptionSelect");
+				//objOption.setAttribute("value", argValor.codFamilia); 			
+				//objOption.innerHTML=argValor.codFamilia + argValor.descripcionFamilia;
+
+				//document.getElementById("formArticulosEntFamiliaAlta").appendChild(objOption);
+
+			});//cierra foreach
+			
 }
 
 
