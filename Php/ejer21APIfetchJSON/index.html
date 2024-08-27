@@ -41,7 +41,7 @@
 
 			</form>
 
-<button id="disparo"> Disparo</button>
+<button id="disparo">Boton Disparo</button>
 
 
 
@@ -49,15 +49,16 @@
 
 <script>
 
-			function funcionDisparo() {
+function funcionDisparo() {
 				
-       fetch("http://localhost/prof/Php/ejer21APIfetchJSON/respuesta.php?ejer21APIfetchJSON?&idUsuario=ggw&loginDeUsuario=gwitt&apellido=Witt")
-            .then(response=>response.json())
-            .then(datos=>alert(datos.loginDeUsuario));
-          }
+     fetch("http://localhost/prof/Php/ejer21APIfetchJSON/respuesta.php?ejer21APIfetchJSON?&idUsuario=ggw&loginDeUsuario=gwitt&apellido=Witt")
+     		//devuelve objeto respuesta
+            .then(respuesta=>{return respuesta.json();})
+            	//el metodo json del objeto respuesta devuelve un objeto json  
+            .then(datos=>{alert(datos.loginDeUsuario);});
+}
 
-
-        document.getElementById("disparo").addEventListener("click",funcionDisparo);
+document.getElementById("disparo").addEventListener("click",funcionDisparo);
 
 
 </script>

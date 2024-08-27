@@ -8,11 +8,11 @@
 
 <body>
     <div>
-        <!--
+        
         <button id="boton1">Aries</button>
         <button id="boton2">Tauro</button>
         <button id="boton3">Geminis</button>
-    -->
+    
     </div>
     <div id="contenido"></div>
 
@@ -20,37 +20,51 @@
 
 
 
-    <script>
+<script>
 
+//Claridad total
 
+document.getElementById("boton1").addEventListener("click",function() {
 
-let promesa1 = fetch('aries.txt'); /*devuelve un objeto promesa1 con el recurso solicitado*/
+    let promesa1 = fetch('aries.txt'); /*devuelve un objeto promesa1 con el recurso solicitado*/
 
-let promesa2 = promesa1.then(function(respuesta){ /*La función anónima pasada en el metodo then() llevara
-                                                     como arg el recurso obtenido en la promesa anterior*/
-    return respuesta.text();
-});
+    let promesa2 = promesa1.then(function(respuesta) { 
 
-let promesa3 = promesa2.then(function(datosContenidos){ /*La funcion anonima pasada en el metodo then() llevara
-                                                        como argumento los datos obtenidos en la promesa2*/
+        /*La función anónima pasada en el metodo then() llevara como arg el recurso obtenido en la promesa anterior*/
+        return respuesta.text();
+    });
+
+    let promesa3 = promesa2.then(function(datosContenidos) { 
+
+        /*La funcion anonima pasada en el metodo then() llevara
+        como argumento los datos obtenidos en la promesa2*/
+            
         alert(datosContenidos);
-});
-
-
-
-/*
-fetch('aries.txt').then(function(response){
-    response.text().then(function(datos){
-        alert(datos);
     });
 });
-*/
+
+
+
+// Claridad anidada
+document.getElementById("boton2").addEventListener("click",function() {
+
+    fetch('tauro.txt').then(function(respuesta){
+        return respuesta.text();
+    }).then(function(datosContenidos){
+        alert(datosContenidos);
+    });
+});
+
+
 
 
 /*version flecha:*/
-        /*fetch('aries.txt').then(response=> response.text()).then(datos => alert(datos));*/
 
- 
+document.getElementById("boton3").addEventListener("click",function() {
+
+    fetch('geminis.txt').then(respuesta=>{return respuesta.text();}).then(datosContenidos => {alert(datosContenidos);});
+
+ });
 
 
 /* 

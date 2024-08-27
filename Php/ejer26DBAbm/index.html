@@ -548,6 +548,8 @@ div.ventanaModalRespuesta div.contenidoModal p {
 <script id="codigoTabla">
 
 
+
+
 /*Evento de carga inicial*/
 
 
@@ -567,25 +569,13 @@ $(document).ready(function() {
 		$("#btEnvioFormModi").attr("disabled",true);
 		$("#btEnvioFormAlta").attr("disabled",true);
 		objGlobalFamilias=""; //reserva de esta variable global para almacenar lista de familias
-		
-		//cargaGlobalFamilias();
-		
-		
-		function done(){
-			alert("done");
-		}
-		function error(){
-			alert("error");
-		}
-		var promise=new Promise((cargaGlobalFamilias,reject)=>{
-			cargaGlobalFamilias();
-			reject();
-		});
+		cargaGlobalFamilias();
+		//setTimeout(() => {
+		//	alert("Familias cargadas");llenaFamilias();
+		//}, 3000);
 
-		promise.then(llenaFamilias).catch(error);
-
-
-});
+		
+}); //cierra el ready
 
 
 
@@ -645,7 +635,6 @@ $(document).ready(function() {
 	$("#btAccionVacia").click(function() {
 		//alert(objGlobalFamilias.familias[1].codFamilia);
 		$("#tbDatos").empty();
-		llenaFamilias();
 	});
 });
 
@@ -1008,15 +997,17 @@ function cargaGlobalFamilias() {
 			url:"./salidaJsonFamilias.php",
 			
 			success: function(respuestaDelServer,estado) {
-						alert(respuestaDelServer);
+						
 						listaDeObjetos = JSON.parse(respuestaDelServer);
 						objGlobalFamilias = listaDeObjetos; //Define una variable global para almacenar las familias.
-			}
+						alert(respuestaDelServer);
+						llenaFiltroFamilias();
+					}
 	})//cierra ajax
 }
 
 
-function llenaFamilias() { //Esta funcion completa las familias del filtro y crea un objeto global para las familias.
+function llenaFiltroFamilias() { //Esta funcion completa las familias del filtro y crea un objeto global para las familias.
 														//que luego podra ser usado para completar los formularios.
 			$("#f_articulos_familia").empty();
 			
