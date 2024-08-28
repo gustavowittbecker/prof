@@ -78,14 +78,14 @@ document.addEventListener("click",function() {
 
 var objFormulario = document.getElementById("formulario");
 
-const datosFormulario = new FormData(objFormulario);
+var datosFormulario = new FormData(objFormulario);
 
 
 objFormulario.addEventListener('submit',evento => {
 	evento.preventDefault();
 	
 	console.log(datosFormulario);
-	console.log(datosFormulario.get('loginDeUsuario'));
+	console.log(datosFormulario.get("loginDeUsuario"));
 
 	fetch('./respuesta.php', {
 		method:'post',
