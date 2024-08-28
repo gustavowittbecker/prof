@@ -7,10 +7,10 @@
 
 </head>
 <body>
-
+	<form id="formulario" method="post">
  
 	  	<ul >
-	  		<!--
+	  		
 		    <li >
 		        <label for="idUsuario">idUsuario</label><br />
 		        <input id="idUsuario" name="idUsuario" required />
@@ -36,12 +36,13 @@
 		    	<label for="fechaNac">Fecha de nacimiento</label><br />
 		        <input type="date" id="fechaNac" name="fechaNac"  value="" placeholder="Fecha de nacimiento" required />
 		    </li>
--->	 
-	    	</ul>
+ 
+	    </ul>
+<input type="submit" value="enviar">
 
-			</form>
+</form>
 
-<button id="disparo">Boton Disparo</button>
+<button id="disparo">Disparador</button>
 
 
 
@@ -49,6 +50,73 @@
 
 <script>
 
+
+
+//const objFormulario = document.querySelector("#formulario");
+//queryselector recibe un selector css como argumento de entrada. Es como usar
+//document.getElementById()
+
+
+/*
+const datosFormulario = new URLSearchParams();
+for (const pair of new FormData(objFormulario)) {
+    datosFormulario.append(pair[0], pair[1]);
+}
+*/
+
+
+
+/*
+document.addEventListener("click",function() {
+	for (const key of datosFormulario.keys()) {
+		alert(value);
+	}
+	
+});
+*/
+
+
+var objFormulario = document.getElementById("formulario");
+
+const datosFormulario = new FormData(objFormulario);
+
+
+objFormulario.addEventListener('submit',evento => {
+	evento.preventDefault();
+	
+	console.log(datosFormulario);
+	console.log(datosFormulario.get('loginDeUsuario'));
+
+	fetch('./respuesta.php', {
+		method:'post',
+		body: datosFormulario,
+		Cache: 'default'
+	})
+	.then(respuesta=>{return respuesta.json();})
+	.then(datos=>{console.log(datos.loginDeUsuario);});
+
+//respuesta=>{return respuesta.json();}
+//datos.loginDeUsuario
+});
+/*
+fetch('url', {
+  Method: 'POST',
+  Headers: {
+    Accept: 'application.json',
+    'Content-Type': 'application/json'
+  },
+  Body: body,
+  Cache: 'default'
+})
+
+*/
+
+
+
+
+
+
+/*
 function funcionDisparo() {
 				
      fetch("http://localhost/prof/Php/ejer21APIfetchJSON/respuesta.php?ejer21APIfetchJSON?&idUsuario=ggw&loginDeUsuario=gwitt&apellido=Witt")
@@ -59,6 +127,6 @@ function funcionDisparo() {
 }
 
 document.getElementById("disparo").addEventListener("click",funcionDisparo);
-
+*/
 
 </script>

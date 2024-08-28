@@ -1,11 +1,11 @@
 <?php
 //sleep(2);
 $objRenglonUsuario = new stdclass; // instanciacion de objeto para que php no arroje un warning
-$objRenglonUsuario->idUsuario = $_GET['idUsuario'];
-$objRenglonUsuario->loginDeUsuario = $_GET['loginDeUsuario'];
-$objRenglonUsuario->apellido = $_GET['apellido'];
-//$objRenglonUsuario->nombres = $_GET['nombres'];
-//$objRenglonUsuario->fechaNac = $_GET['fechaNac'];
+$objRenglonUsuario->idUsuario = $_POST['idUsuario'];
+$objRenglonUsuario->loginDeUsuario = $_POST['loginDeUsuario'];
+$objRenglonUsuario->apellido = $_POST['apellido'];
+//$objRenglonUsuario->nombres = $_POST['nombres'];
+//$objRenglonUsuario->fechaNac = $_POST['fechaNac'];
 
 //echo $objRenglonUsuario->apellido;
 
