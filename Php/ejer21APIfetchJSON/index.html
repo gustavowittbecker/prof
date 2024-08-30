@@ -7,36 +7,26 @@
 
 </head>
 <body>
-	<form id="formulario" method="post">
+	<form id="formulario" method="post" action="./respuesta.php">
  
 	  	<ul >
 	  		
 		    <li >
 		        <label for="idUsuario">idUsuario</label><br />
-		        <input id="idUsuario" name="idUsuario" required />
+		        <input id="idUsuario" name="idUsuario" value="12" />
 		    </li>
 
 
 		    <li>
-		        <label for="loginDeUsuario">Login</label><br />
-		        <input type="text" id="loginDeUsuario" name="loginDeUsuario" value="" placeholder="Login" required />
+		        <label for="loginDeUsuario">Login de Usuario</label><br />
+		        <input type="text" id="loginDeUsuario" name="loginDeUsuario" value="valorggw" placeholder="Login"  />
 		    </li>
 
 		    <li>
 		    	<label for="apellido">Apellido</label><br />
-		        <input type="text" id="apellido" name="apellido"  value="" placeholder="Apellido" required />
+		        <input type="text" id="apellido" name="apellido"  value="Witt" placeholder="Apellido" />
 		    </li>
 
-		    <li>
-		    	<label for="nombres">Nombres</label><br />
-		    	<input type="text" id="nombres" name="nombres"  value="" placeholder="Nombres" required />
-		    </li>
-
-		    <li>
-		    	<label for="fechaNac">Fecha de nacimiento</label><br />
-		        <input type="date" id="fechaNac" name="fechaNac"  value="" placeholder="Fecha de nacimiento" required />
-		    </li>
- 
 	    </ul>
 <input type="submit" value="enviar">
 
@@ -46,11 +36,9 @@
 
 
 
-</body>
+
 
 <script>
-
-
 
 //const objFormulario = document.querySelector("#formulario");
 //queryselector recibe un selector css como argumento de entrada. Es como usar
@@ -74,29 +62,41 @@ document.addEventListener("click",function() {
 	
 });
 */
-
-
 var objFormulario = document.getElementById("formulario");
-
-var datosFormulario = new FormData(objFormulario);
-
-
-objFormulario.addEventListener('submit',evento => {
-	evento.preventDefault();
+document.getElementById("disparo").addEventListener('click',evento => {
 	
-	console.log(datosFormulario);
-	console.log(datosFormulario.get("loginDeUsuario"));
+	//Importante: lo que sigue debe estar aqui adentro para que tome los datos de
+	//los inputs en el momento de pulsar el boton y no los que habia al cargar la 
+	//pagina
+	
+	var datosFormulario = new FormData(objFormulario);
 
-	fetch('./respuesta.php', {
+	console.log(datosFormulario);
+	console.log(datosFormulario.get("idUsuario"));
+	console.log(datosFormulario.get("loginDeUsuario"));
+	console.log(datosFormulario.get("apellido"));
+	
+	objDatos = fetch('./respuesta.php', {
 		method:'post',
+		headers: {
+        //"Content-Type": "application/x-www-form-urlencoded",
+    	//"Content-Type": "multipart/form-data"
+    	//"Content-Type": "application/json",
+		},
 		body: datosFormulario,
 		Cache: 'default'
 	})
+	//.then(respuesta=>{return respuesta.text();})
+	//.then(datos=>{console.log(datos);});
 	.then(respuesta=>{return respuesta.json();})
-	.then(datos=>{console.log(datos.loginDeUsuario);});
-
-//respuesta=>{return respuesta.json();}
-//datos.loginDeUsuario
+	//.then(datos=>{console.log(datos.idUsuario);}); //retorna el objeto de datos
+	//.then(datos=>{console.log(datos.idUsuario);}); //imprime idUsuario	
+	//.then(respuesta=>{return respuesta.json();}) //retorna el objeto de datos
+	//.then(datos=>{console.log(datos.loginDeUsuario);});//imprime logiDeUsuario
+	//.then(respuesta=>{return respuesta.json();}) //retorna el objeto de datos
+	//.then(datos=>{console.log(datos.apellido);}); //imprime apellido
+	console.log(objDatos.loginDeUsuario);
+	console.log(objDatos.apellido);
 });
 /*
 fetch('url', {
@@ -130,3 +130,5 @@ document.getElementById("disparo").addEventListener("click",funcionDisparo);
 */
 
 </script>
+</body>
+</html>
