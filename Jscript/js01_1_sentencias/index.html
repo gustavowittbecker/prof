@@ -26,10 +26,10 @@ Texto1 escrito directamente en HTML.
 document.write("<h1>Texto2. Mensaje escrito desde java script.");
 document.write("<h1>No pisa al documento porque aún no termino el flujo de escritura del navegador</h1>");
 
-alert("Este mensaje de alerta es escrito desde un script del documento. " +
+alert("Alert 1. Este mensaje de alerta es escrito desde un script del documento. " +
 "Esta ventana de alerta es modal lo que significa que el flujo de escritura" +
 " del documento se interrumpe hasta el evento de aceptación."+
-"El navegador muestra este tipo de ventana con anterioridad a la interpretación o renderización del documento"
+"El navegador muestra estas ventana con anterioridad a la interpretación o renderización del documento"
 );
 
 </script>
@@ -37,9 +37,11 @@ alert("Este mensaje de alerta es escrito desde un script del documento. " +
 
 <script>
 document.write("<h1>Texto4. Escrito desde java script despues del alert()</h1>");
-document.write("<h1>No pisa al documento porque aún no termino el flujo de escritura del navegador</h1>");
-document.write("<h1>El flujo de escritura sobre el navegador termina un tiempo determinado despues de la " +
+document.write("<h1>Texto5.No pisa al documento porque aún no termino el flujo de escritura del navegador</h1>");
+document.write("<h1>Texto6.El flujo de escritura sobre el navegador termina un tiempo determinado despues de la " +
 	"lectura de la última linea del documento y de haber cerrado todas las ventanas modales.</h1>");
+
+alert("Alert2. Escrito al final de todo el codigo");
 
 </script>
 

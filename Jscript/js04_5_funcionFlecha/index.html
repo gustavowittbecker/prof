@@ -10,24 +10,34 @@
 <body>
 	<h1>Función Flecha</h1>
 	<h1>const suma =(a,b) => {c= a + b; return c}</h1>
-	<p id="resultado"></p>
+	<input id="i1" />
+	<input id="i2" />
+	<button id="boton">suma</button> <input id="resultado" />
+
 </body>
 
 <script>
 /*Una forma mas de definir una función es la flecha:*/
-	const suma = (a, b) => { 
+var suma = (a, b) => { 
 	c = a + b;
-	return c;
+return c;
 } 
 
+document.getElementById("boton").addEventListener("click", function(){
+	console.log(document.getElementById("i1").value);
+	console.log(document.getElementById("i2").value);
+	let salida = suma(parseInt(document.getElementById("i1").value),parseInt(document.getElementById("i2").value));
+	console.log(salida);
+	document.getElementById("resultado").value=salida;
+});
 
-
+/*
 	var a=2;
 	var b=3;
 
    document.getElementById("resultado").innerHTML="<h1>Resultado de función suma para a=2 y b=3: <span style='color:blue'>"+
    suma(a,b) + "</span></h1>";
-
+*/
 </script>
 
 </html>
