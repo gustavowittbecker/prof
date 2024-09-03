@@ -62,6 +62,7 @@ document.addEventListener("click",function() {
 	
 });
 */
+//var objDatos = "";
 var objFormulario = document.getElementById("formulario");
 document.getElementById("disparo").addEventListener('click',evento => {
 	
@@ -76,7 +77,7 @@ document.getElementById("disparo").addEventListener('click',evento => {
 	console.log(datosFormulario.get("loginDeUsuario"));
 	console.log(datosFormulario.get("apellido"));
 	
-	objDatos = fetch('./respuesta.php', {
+	fetch('./respuesta.php', {
 		method:'post',
 		headers: {
         //"Content-Type": "application/x-www-form-urlencoded",
@@ -88,46 +89,18 @@ document.getElementById("disparo").addEventListener('click',evento => {
 	})
 	//.then(respuesta=>{return respuesta.text();})
 	//.then(datos=>{console.log(datos);});
-	.then(respuesta=>{return respuesta.json();})
-	//.then(datos=>{console.log(datos.idUsuario);}); //retorna el objeto de datos
-	//.then(datos=>{console.log(datos.idUsuario);}); //imprime idUsuario	
-	//.then(respuesta=>{return respuesta.json();}) //retorna el objeto de datos
-	//.then(datos=>{console.log(datos.loginDeUsuario);});//imprime logiDeUsuario
-	//.then(respuesta=>{return respuesta.json();}) //retorna el objeto de datos
-	//.then(datos=>{console.log(datos.apellido);}); //imprime apellido
-	console.log(objDatos.loginDeUsuario);
-	console.log(objDatos.apellido);
+	.then(respuesta=>{
+		return respuesta.json();
+	})
+	.then(datos=>{
+		//objDatos=datos;
+		console.log(datos.idUsuario);//imprime idUsuario
+		console.log(datos.loginDeUsuario);//imprime logiDeUsuario
+		console.log(datos.apellido);//imprime apellido
+	}); //retorna el objeto de datos
+
 });
-/*
-fetch('url', {
-  Method: 'POST',
-  Headers: {
-    Accept: 'application.json',
-    'Content-Type': 'application/json'
-  },
-  Body: body,
-  Cache: 'default'
-})
 
-*/
-
-
-
-
-
-
-/*
-function funcionDisparo() {
-				
-     fetch("http://localhost/prof/Php/ejer21APIfetchJSON/respuesta.php?ejer21APIfetchJSON?&idUsuario=ggw&loginDeUsuario=gwitt&apellido=Witt")
-     		//devuelve objeto respuesta
-            .then(respuesta=>{return respuesta.json();})
-            	//el metodo json del objeto respuesta devuelve un objeto json  
-            .then(datos=>{alert(datos.loginDeUsuario);});
-}
-
-document.getElementById("disparo").addEventListener("click",funcionDisparo);
-*/
 
 </script>
 </body>
