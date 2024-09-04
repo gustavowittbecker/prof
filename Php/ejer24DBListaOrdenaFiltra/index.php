@@ -223,8 +223,9 @@ div.contenedorTabla th, td {
 
 $(document).ready(function() {
 		objTbDatos=document.getElementById("tbDatos");//Para usar con java script
+		objGlobalFamilias="";
 		$("#orden").val("codArt"); //suponiendo que de entrada quisiera este orden
-		llenaFamilias();
+		cargaGlobalFamilias();
 
 });
 
@@ -370,7 +371,56 @@ function cargaTabla() {
 }//cierra funcion cargaTabla
 
 
-function llenaFamilias() { //el argumento corresponde al objeto que será llenado
+
+
+function cargaGlobalFamilias() {
+	var objAjax = $.ajax({
+			type:"get", 
+			url:"./salidaJsonFamilias.php",
+			
+			success: function(respuestaDelServer,estado) {
+						alert(respuestaDelServer);
+						objGlobalFamilias = JSON.parse(respuestaDelServer);
+						//Define una variable global para almacenar las familias.
+						llenaFiltroFamilias();
+					}
+	})//cierra ajax
+}
+
+function llenaFiltroFamilias() { //Esta funcion completa las familias del filtro y crea un objeto global para las familias.
+														//que luego podra ser usado para completar los formularios.
+			$("#f_articulos_familia").empty();
+			
+			/*Agrega la opcion vacia para elegir no filtro*/
+			var objOption= document.createElement("option");
+			objOption.setAttribute("value", ""); 
+			objOption.innerHTML="";
+			document.getElementById("f_articulos_familia").appendChild(objOption);			
+			//A continuacion: barre el array de familias para agregar opciones
+			objGlobalFamilias.familias.forEach(function(argValor,argIndice) { 		 									
+				var objOption= document.createElement("option");
+				objOption.setAttribute("class","elementoOptionSelect");
+				objOption.setAttribute("value", argValor.codFamilia); 
+				objOption.innerHTML=argValor.descripcionFamilia;
+				document.getElementById("f_articulos_familia").appendChild(objOption);
+			
+			});//cierra foreach
+			
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+function llenaFiltroFamilias() { //el argumento corresponde al objeto que será llenado
 			$("#f_articulos_familia").empty();
 			var objAjax = $.ajax({
 			type:"get", 
@@ -379,14 +429,14 @@ function llenaFamilias() { //el argumento corresponde al objeto que será llenad
 			success: function(respuestaDelServer,estado) {
 						alert(respuestaDelServer);
 						listaDeObjetos = JSON.parse(respuestaDelServer);
-						/*Agrega la opcion vacia*/
+						
 						var objOption= document.createElement("option");
-						/*objOption.setAttribute("class","elementoOptionSelect");*/
+						
 						objOption.setAttribute("value", ""); 
 						objOption.innerHTML="";
 						document.getElementById("f_articulos_familia").appendChild(objOption);
 
-						/*Barre el array de lista de Objetos para agregar opciones*/
+						
 						listaDeObjetos.familias.forEach(function(argValor,argIndice) { 
 												
 							var objOption= document.createElement("option");
@@ -401,7 +451,7 @@ function llenaFamilias() { //el argumento corresponde al objeto que será llenad
 	}); //cierro ajax
 }
 
-
+*/
 
 
 </script>
