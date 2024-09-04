@@ -570,9 +570,7 @@ $(document).ready(function() {
 		$("#btEnvioFormAlta").attr("disabled",true);
 		objGlobalFamilias=""; //reserva de esta variable global para almacenar lista de familias
 		cargaGlobalFamilias();
-		//setTimeout(() => {
-		//	alert("Familias cargadas");llenaFamilias();
-		//}, 3000);
+
 
 		
 }); //cierra el ready
@@ -652,7 +650,7 @@ $(document).ready(function() {
 		$("#contenedorTablaArticulos").attr("className","contenedorPasivo");
 		$("#ventanaModalFormularioAlta").css("visibility","visible");
 		vaciaFormulario(); //carga valor vacío en todos los campos del form
-		llenaFamiliasAlta(); //completa familias del cuadro de lista
+		llenaFamiliasAlta(); //completa campo desplegable familias en el form de alta.
 	});
 });
 
@@ -1011,37 +1009,22 @@ function llenaFiltroFamilias() { //Esta funcion completa las familias del filtro
 														//que luego podra ser usado para completar los formularios.
 			$("#f_articulos_familia").empty();
 			
-			/*Agrega la opcion vacia*/
+			/*Agrega la opcion vacia para elegir no filtro*/
 			var objOption= document.createElement("option");
-			/*objOption.setAttribute("class","elementoOptionSelect");*/
 			objOption.setAttribute("value", ""); 
 			objOption.innerHTML="";
 			document.getElementById("f_articulos_familia").appendChild(objOption);			
-			/*Barre el array de lista de Objetos para agregar opciones*/
-			objGlobalFamilias.familias.forEach(function(argValor,argIndice) { 		
-		//	objGlobalFamilias.familias.forEach(function(argValor,argIndice) { 									
+			//A continuacion: barre el array de familias para agregar opciones
+			objGlobalFamilias.familias.forEach(function(argValor,argIndice) { 		 									
 				var objOption= document.createElement("option");
 				objOption.setAttribute("class","elementoOptionSelect");
 				objOption.setAttribute("value", argValor.codFamilia); 
 				objOption.innerHTML=argValor.descripcionFamilia;
 				document.getElementById("f_articulos_familia").appendChild(objOption);
-						
-				//var objOption= document.createElement("option");
-				//objOption.setAttribute("class","elementoOptionSelect");
-				//objOption.setAttribute("value", argValor.codFamilia); 			
-				//objOption.innerHTML=argValor.codFamilia + argValor.descripcionFamilia;
-
-				//document.getElementById("formArticulosEntFamiliaAlta").appendChild(objOption);
-
+			
 			});//cierra foreach
 			
 }
-
-
-
-
-
-
 
 
 function llenaFamiliasAlta() { //el argumento corresponde al objeto que será llenado
@@ -1233,7 +1216,7 @@ function traeDoc(argArticulo) {
 		}); //cierra ajax
 	} //cierra confirm
 
-cargaTabla();
+//cargaTabla();
 
 } 
 
