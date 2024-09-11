@@ -43,19 +43,28 @@ $(document).ready(function() {
 
 		//Una vez preparada la pantalla, preparados los parametros a enviar y preparadas las opciones se dispara el Req.
 		fetch("./respuesta.php",options) // disparo el API fetch que devuelve un obj																		//de tipo promise
-   		.then(respuesta => respuesta.text())  	//Cuando la promesa se cumple, el metodo "then" pasa como argumento
-   												//una funcion que su vez lleva como argumento la data entregada por el servidor en su respuesta.
-   												//Se representa como una funcion flecha que en este caso llamo respuesta y //que ejecuta un script definido del lado derecho de la flecha devolviendo //un nuevo objeto promesa (en este caso una simple transformacion a texto).
-   		.then(muestraDatos => {		//Cuando la promesa se cumple, el metodo "then" pasa como argumento										//una funcion flecha que llamo muestraDatos y que hace todo lo definido a la
-							//derecha de =>
+   		.then(respuesta => {return respuesta.text()})  	
+		//Cuando la promesa se cumple, el metodo "then" pasa como argumento
+   		//una funcion que su vez lleva como argumento la data entregada por el servidor en
+		// su respuesta.
+   		//Se representa como una funcion flecha que en este caso llamo textoDeRespuesta y
+		//que ejecuta un script definido del lado derecho de la flecha devolviendo 
+		//un nuevo objeto promesa (en este caso una simple transformacion a texto).
+   		.then(textoDeRespuesta => {		
+			//Cuando la promesa se cumple, el metodo "then" pasa como argumento										//una funcion flecha que llamo muestraDatos y que hace todo lo definido a la
+			// una funcion a ejecutar en el cumplimiento
+			alert(textoDeRespuesta);
 			$("#resultado").removeClass("estiloRecibiendo");
 
-			$("#resultado").html("<h1>Resultado: </h1><h4>"+muestraDatos+"</h4>"); //adiciona data al contenido del div
+			$("#resultado").html("<h1>Resultado: </h1><h4>"+textoDeRespuesta+"</h4>"); //adiciona data al contenido del div
 			$("#estado").empty();
 			$("#estado").append("<h4>Estado del requerimiento: CUMPLIDO</h4>");
 				
 			})										
-    	.catch(error => alert('Error producido:', error)); // cuando la promesa no se cumple se aplica un metodo catch() para procesar los posibles errores a travez de la funcion error que realiza lo que esta a la derecha de =>
+    	.catch(error => alert('Error producido:'+ error)); 
+		// cuando la promesa no se cumple se aplica un metodo catch() para procesar 
+		//los posibles errores a travez de la funcion error que realiza lo que esta
+		// a la derecha de =>
    				
 	}); //cierra click
 }); //cierra ready

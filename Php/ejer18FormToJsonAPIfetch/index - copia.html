@@ -62,21 +62,26 @@ document.addEventListener("click",function() {
 	
 });
 */
-//var objDatos = "";
+
+//El objeto objFormulario
 var objFormulario = document.getElementById("formulario");
 document.getElementById("disparo").addEventListener('click',evento => {
 	
 	//Importante: lo que sigue debe estar aqui adentro para que tome los datos de
 	//los inputs en el momento de pulsar el boton y no los que habia al cargar la 
 	//pagina
-	
-	var datosFormulario = new FormData(objFormulario);
 
-	console.log(datosFormulario);
-	console.log(datosFormulario.get("idUsuario"));
-	console.log(datosFormulario.get("loginDeUsuario"));
-	console.log(datosFormulario.get("apellido"));
+	//Se define un nuevo objeto que representa los datos del formulario.
+	//Este objeto expone metodos como el get("valor del id") que devuelve el valor del input
+	var objDatosFormulario = new FormData(objFormulario);
+
 	
+	console.log("objDatosFormulario: " + objDatosFormulario);
+	console.log(objDatosFormulario.get("idUsuario"));
+	console.log(objDatosFormulario.get("loginDeUsuario"));
+	console.log(objDatosFormulario.get("apellido"));
+
+	//La funcion fetch() devuelve un objeto promesa
 	fetch('./respuesta.php', {
 		method:'post',
 		headers: {
@@ -84,16 +89,18 @@ document.getElementById("disparo").addEventListener('click',evento => {
     	//"Content-Type": "multipart/form-data"
     	//"Content-Type": "application/json",
 		},
-		body: datosFormulario,
+		body: objDatosFormulario,
 		Cache: 'default'
 	})
+	//Este fetch devuelve un objeto que tiene metodos como text() o como json()
+	//que se corresponden con el texto json y con el objeto json en el nevegador.
 	//.then(respuesta=>{return respuesta.text();})
 	//.then(datos=>{console.log(datos);});
 	.then(respuesta=>{
-		return respuesta.json();
+		//respuesta es el objeto que devolvio la promesa anterior
+		return respuesta.json();//retorna esta nueva promesa que ya es un objeto json
 	})
 	.then(datos=>{
-		//objDatos=datos;
 		console.log(datos.idUsuario);//imprime idUsuario
 		console.log(datos.loginDeUsuario);//imprime logiDeUsuario
 		console.log(datos.apellido);//imprime apellido

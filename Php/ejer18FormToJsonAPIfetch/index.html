@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--ejer de encriptación hecho con ajax. En este caso usando jquery-->
+<html lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+
+
+</head>
+<body>
+	<form id="formulario" method="post" action="./respuesta.php">
+ 
+	  	<ul >
+	  		
+		    <li >
+		        <label for="idUsuario">idUsuario</label><br />
+		        <input id="idUsuario" name="idUsuario" value="12" />
+		    </li>
+
+
+		    <li>
+		        <label for="loginDeUsuario">Login de Usuario</label><br />
+		        <input type="text" id="loginDeUsuario" name="loginDeUsuario" value="valorggw" placeholder="Login"  />
+		    </li>
+
+		    <li>
+		    	<label for="apellido">Apellido</label><br />
+		        <input type="text" id="apellido" name="apellido"  value="Witt" placeholder="Apellido" />
+		    </li>
+
+	    </ul>
+<input type="submit" value="enviar">
+
+</form>
+
+<button id="disparo">Disparador</button>
+
+
+
+
+
+<script>
+
+//const objFormulario = document.querySelector("#formulario");
+//queryselector recibe un selector css como argumento de entrada. Es como usar
+//document.getElementById()
+
+
+/*
+const datosFormulario = new URLSearchParams();
+for (const pair of new FormData(objFormulario)) {
+    datosFormulario.append(pair[0], pair[1]);
+}
+*/
+
+
+
+/*
+document.addEventListener("click",function() {
+	for (const key of datosFormulario.keys()) {
+		alert(value);
+	}
+	
+});
+*/
+
+//El objeto objFormulario
+var objFormulario = document.getElementById("formulario");
+document.getElementById("disparo").addEventListener('click',evento => {
+	
+	//Importante: lo que sigue debe estar aqui adentro para que tome los datos de
+	//los inputs en el momento de pulsar el boton y no los que habia al cargar la 
+	//pagina
+
+	//Se define un nuevo objeto que representa los datos del formulario.
+	//Este objeto expone metodos como el get("valor del id") que devuelve el valor del input
+	var objDatosFormulario = new FormData(objFormulario);
+
+	
+	console.log("objDatosFormulario: " + objDatosFormulario);
+	console.log(objDatosFormulario.get("idUsuario"));
+	console.log(objDatosFormulario.get("loginDeUsuario"));
+	console.log(objDatosFormulario.get("apellido"));
+
+	//La funcion fetch() devuelve un objeto promesa
+	fetch('./respuesta.php', {
+		method:'post',
+		headers: {
+        //"Content-Type": "application/x-www-form-urlencoded",
+    	//"Content-Type": "multipart/form-data"
+    	//"Content-Type": "application/json",
+		},
+		body: objDatosFormulario,
+		Cache: 'default'
+	})
+	//Este fetch devuelve un objeto que tiene metodos como text() o como json()
+	//que se corresponden con el texto json y con el objeto json en el nevegador.
+	//.then(respuesta=>{return respuesta.json();})
+	//.then(datos=>{console.log(datos);});
+	.then(respuesta=>{
+		//respuesta es el objeto que devolvio la promesa anterior
+		return respuesta.text();//retorna el texto de la cadena json
+		//podria retornar el objeto json ya transformado si aplicara el metodo respuesta.json()
+	})
+	.then(datos=>{
+		alert(datos);//imprime la cadena json
+
+
+	}); //retorna el objeto de datos
+
+});
+
+
+</script>
+</body>
+</html>
