@@ -13,14 +13,10 @@
 	padding:0;
 	font-size: 14px;
 }
-html {
+html, body {
 	height:100%;
+	width:100%;
 }
-
-body {
-	height:100%;
-}
-
 
 div.contenedorTabla { /*Contiene todo el tablero*/
 	width:100%;
@@ -64,9 +60,9 @@ footer {
 
 table {
 	display:block;
-  width:100%;
-  height:80%;
-  border-collapse: collapse;
+	width:100%;
+	height:80%;
+	border-collapse: collapse;
   
 }
 
@@ -257,23 +253,16 @@ function cargaTabla() {
 function vaciaTabla() {
 	$("#tbDatos").empty();
 }
-
-
 </script>
-
-
 </head>
-<body>
 
+<body>
 <div id="contenedorTabla" class="contenedorTabla">
 <header>
 <h1>Articulos</h1>
 <button id="btAccionCarga">Cargar datos</button>
 <button id="btAccionVacia">Vaciar datos</button>
-
 </header>
-
-
 
 <table >
 <thead >
