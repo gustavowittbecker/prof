@@ -951,7 +951,8 @@ function CompletaFichaArticulo(argArticulo) {
 	$("#formArticulosEntfechaAltaModi").val(argArticulo.fechaAlta);
 	
 	//Para el campo familia toma la lista de articulos de la global y autoselecciona la opcion con el if
-	$("#formArticulosEntFamiliaModi").empty(); //antes de llenar vacío para no duplicar elementos
+	$("#formArticulosEntFamiliaModi").empty(); //antes de llenar vacío las options
+												// para no duplicar elementos
 
 	objGlobalFamilias.familias.forEach(function(argValorFamilia,argIndice) {  
 			//la funcion anonima recibe como argumento el objeto familia completo
@@ -1206,7 +1207,7 @@ function traeDoc(argArticulo) {
 				codArt:argArticulo
 			},
 			success:function(respuestaDelServer) { //datos es lo que catura ajax
-				//alert("Respuesta del SERVER desde adentro del success:"+ respuestaDelServer);
+				alert("Respuesta del SERVER desde adentro del success:"+ respuestaDelServer);
 				objetoDato = JSON.parse(respuestaDelServer);
 				$("#ventanaModalRespuesta").css("visibility","visible");
 				$("#contenidoModalRespuesta").empty();
