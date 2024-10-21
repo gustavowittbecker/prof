@@ -299,12 +299,12 @@ div.contenedorTabla th, td {
 
 
 
-/*
+
 div.contenedorActivo {
 opacity:1;
+/*permite activar todos los elementos sensibles a eventos:*/
 pointer-events: auto;
 }
-*/
 
 div.contenedorPasivo {
 opacity:0.3;
@@ -562,6 +562,10 @@ $(document).ready(function() {
 		objFamiliaModi=document.getElementById("formArticulosEntFamiliaModi");
 		objDescripcionModi=document.getElementById("formArticulosEntDescripcionModi");
 		$("#orden").val("codArt"); //suponiendo que de entrada quisiera este orden
+		$("#contenedorTablaArticulos").attr("class","contenedorTabla");
+		//alert("pp0");
+		$("#contenedorTablaArticulos").attr("class","contenedorActivo");
+		//alert("pp1");
 		$("#ventanaModalFormularioAlta").css("visibility","hidden");
 		$("#ventanaModalFormularioModi").css("visibility","hidden");
 		$("#ventanaModalRespuesta").css("visibility","hidden");
@@ -580,7 +584,9 @@ $(document).ready(function() {
 
 	$(document).ready(function() {
 		$("#btCruzFormularioAlta").click(function() {
-			$("#contenedorTablaArticulos").removeClass("contenedorPasivo");
+			
+			$("#contenedorTablaArticulos").attr("class","contenedorTabla");
+			$("#contenedorTablaArticulos").attr("class","contenedorActivo");
 			$("#ventanaModalFormularioAlta").css("visibility","hidden");
 		}); 
 	});
@@ -588,7 +594,9 @@ $(document).ready(function() {
 
 	$(document).ready(function() {
 		$("#btCruzFormularioModi").click(function() {
-			$("#contenedorTablaArticulos").removeClass("contenedorPasivo");
+			
+			$("#contenedorTablaArticulos").attr("class","contenedorTabla");
+			$("#contenedorTablaArticulos").attr("class","contenedorActivo");
 			$("#ventanaModalFormularioModi").css("visibility","hidden");
 			
 		}); 
@@ -600,7 +608,7 @@ $(document).ready(function() {
 		$("#btCruzRespuesta").click(function() {
 			
 			$("#contenedorTablaArticulos").attr("class","contenedorTabla");
-			$("#contenedorTablaArticulos").removeClass("contenedorPasivo");
+			$("#contenedorTablaArticulos").attr("class","contenedorActivo");
 			$("#ventanaModalRespuesta").css("visibility","hidden");
 			$("#contenidoModalRespuesta").empty();
 			$("#ventanaModalFormularioModi").css("visibility","hidden");
@@ -642,7 +650,8 @@ $(document).ready(function() {
 
 $(document).ready(function() {
 	$("#btAlta").click(function() {
-		$("#contenedorTablaArticulos").addClass("contenedorPasivo");
+		$("#contenedorTablaArticulos").attr("class","contenedorPasivo");
+		//alert("pp");
 		$("#ventanaModalFormularioAlta").css("visibility","visible");
 		vaciaFormulario(); //carga valor vacío en todos los campos del form
 		llenaFamiliasAlta(); //completa campo desplegable familias en el form de alta.
@@ -855,6 +864,7 @@ function cargaTabla() {
 					objJson.articulos.forEach(function(argValor,argIndice) { 
 						var objTr= document.createElement("tr");
 						var objTd=document.createElement("td");
+						//objTd.setAttribute("class","")
 						objTd.setAttribute("campo-dato","articulos_codArt");
 						objTd.innerHTML=argValor.codArt;
 						objTr.appendChild(objTd);
@@ -889,7 +899,7 @@ function cargaTabla() {
 						objTd.innerHTML="<button class='btCelda'>PDF</button>";
 
 						objTd.addEventListener("click", function() {
-							$("#contenedorTablaArticulos").addClass("contenedorPasivo");
+							$("#contenedorTablaArticulos").attr("class","contenedorPasivo");
 							$("#ventanaModalRespuesta").css("visibility","visible");
 							traeDoc(argValor.codArt);
 						});
@@ -901,7 +911,7 @@ function cargaTabla() {
 						objTd.innerHTML="<button class='btCelda'>Modi</button>";
 
 						objTd.addEventListener("click",function() {	
-							$("#contenedorTablaArticulos").addClass("contenedorPasivo");
+							$("#contenedorTablaArticulos").attr("class","contenedorPasivo");
 							$("#ventanaModalFormularioModi").css("visibility","visible");
 										
 							CompletaFichaArticulo(argValor);
