@@ -53,12 +53,14 @@ div.claseTexto1, div.claseTexto2, div.claseImagen { /*Para todas las clases el t
 	margin:10px;
 	width:200px;
 	height:100px;
+	
 	border-style:solid;
 	border-width:1px;
 	border-color:.333333;
+	
 	border-radius: 10px;
 	box-shadow: 16px 8px 2px rgba(0,0,0,0.3); 
-	overflow: auto;
+	
 }
 
 
@@ -67,6 +69,7 @@ div.claseTexto1 {
 	font-size: 1em; /*Esta medida corresponde con el tamaño de letra default para el documento*/
 	padding:1%;
 	text-align: left;
+	overflow: auto; /*ojo que esto me puede agregar barra de scrolling aunque no haya desbordamiento.*/
 	/*En ningun caso las letras cambiarán su tamaño en relación el view port */
 }
 
@@ -76,14 +79,14 @@ div.claseTexto2 {
 	/*En ningun caso las letras cambiarán su tamaño en relación el view port */
 	text-align: center;
 	padding: 0;
+	overflow: auto; /*ojo que esto me puede agregar barra de scrolling aunque no haya desbordamiento.*/
 }
 
 
 div.claseImagen {
+	border-style: solid;
+	border-width: 1px;
 	background: radial-gradient(orange,white,pink);
-	text-align: center;
-	max-width: 100%;
-	max-height:100%;
 }
 
 div.rompeFloat {

@@ -7,16 +7,18 @@
 <style>
 
 body {
-	font-size: 30px; /*la unidad debe ir pegada al numero*/
+	font-size: 12px; /*la unidad debe ir pegada al numero*/
 }
 
-h1 {
+h1 { 
 	text-align:left;
-	font-size: 1.5em; /*Una vez y medio lo definido para el contenedor padre*/
+	font-size: 2em; /*Una vez y medio lo definido para el contenedor padre*/
 	color:darkblue;
 	text-align:center;
 	background-color: aquamarine;
 }
+
+
 
 p {
 	text-align:left;
@@ -37,16 +39,53 @@ p {
 <body>
 
 <h1>
-	Todos los textos con etiquetas h1 tienen este estilo definido dentro de la etiqueta style.
+Declaraciones en bloque definidas entre etiquetas style	
+</h1>
+
+
+h1 { <br />
+	text-align:left;<br />
+	font-size: 2em; /*Una vez y medio lo definido para el contenedor padre*/<br />
+	color:darkblue;<br />
+	text-align:center;<br />
+	background-color: aquamarine;<br />
+}<br />
+
+
+
+<h1>
+	Todos los textos con etiquetas h1 tienen este estilo.
 </h1>
 
 <h1>
-	La etiqueta h1 ocupa todo el ancho del contenedor (display de bloque)
+	La etiqueta h1 ocupa todo el ancho del contenedor (por default lleva display de bloque)
 </h1>
 
 <h1>
-	El estilo definido para La etiqueta h1 indica que el texto alineará al centro 
+	La etiqueta h1 lleva texto en color azul.
 </h1>
+
+<h1>
+	El  background de un h1 lleva color aquamarine
+</h1>
+
+<h1>
+	El estilo definido para La etiqueta h1 indica que el texto ira centrado.
+</h1>
+
+
+p { <br />
+	text-align:left; <br />
+	font-size: 1em;<br />
+	color:blue;<br />
+	font-style: italic;<br />
+	border-top-style:solid;<br />
+	border-bottom-style:solid;<br />
+	border-width:thin;<br />
+	border-color:blue;<br />
+}<br />
+
+
 
 <p> Todos los textos con etiquetas p tienen este estilo definido dentro de la etiqueta style.</p>
 
