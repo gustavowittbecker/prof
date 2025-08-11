@@ -134,12 +134,12 @@ un valor vacio pasara sin ser validado.-->
 <li style="margin-top:10px">
 <label style="font-weight: bold;" >Número entero limitado (validacion por tipo numerico y cotas):</label>
 <br />
-<input type="number" min="1" max="5" name="numeroEntero" /> 
+<input type="number" min="1" max="5" name="numeroEntero" title="Numero entero entre 1 y 5" /> 
 </li>
 
 <li style="margin-top:10px">
 <label style="font-weight: bold;" >Número decimal:</label><br />
-<input type="number" min="0" max="9" name="numeroReal" step="0.1"/ required> 
+<input type="number" min="0" max="9" name="numeroReal" step="0.1"/ title="Numero real menor o igual a 9" required> 
 </li>
 
 <!--El siguiente ejemplo validara la existencia del string http://-->
@@ -152,7 +152,7 @@ un valor vacio pasara sin ser validado.-->
 declarada en el pattern. Para evitar el vacio es que se usa el required -->
 <li style="margin-top:10px">
 <label style="font-weight: bold;" >Pattern de validación:</label><br />
-<input type="text" name="varMascara" pattern="[a-z]{3}[1-2]{2}" required name="mascara" title="3 letras y dos numeros que sean 1 o 2 solamente"/>
+<input type="text" name="varMascara" pattern="[a-z]{3}[1-2]{2}" required  placeholder="abc32" title="3 letras y dos numeros que sean 1 o 2 solamente"/>
 
 </li>
 
