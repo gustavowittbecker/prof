@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html" />
+	<meta charset="utf-8" /> 
+	
+	<title>css14DivsEncolumnados</title>
+<style>
+
+
+.container {
+    columns:3;
+  /*column-count: 3; /* Inicialmente, 3 columnas */
+  column-width: 250px; /* Ancho mínimo de cada columna */
+}
+
+h2 {
+    column-span: 2;
+}
+
+@media (max-width: 768px) {
+  .container {
+    column-count: 2; /* En pantallas más pequeñas, 2 columnas */
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    column-count: 1; /* En pantallas muy pequeñas, 1 columna (apiladas) */
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+<h2>Esto es el titulo y mucho mas adfa dfas df asdf asd fa sdf asdf asd fa sdf asdf</h2>
+<p>    
+Texto texto texto asdfasdf df asdf asdf asd asdadf asdf asd asd asdf asdf asdf asdf asdf asdf asdf asdf 
+Texto texto texto asdfasdf df asdf asdf asd asdadf asdf asd asd asdf asdf asdf asdf asdf asdf asdf asdf 
+Texto texto texto asdfasdf df asdf asdf asd asdadf asdf asd asd asdf asdf asdf asdf asdf asdf asdf asdf 
+Texto texto texto asdfasdf df asdf asdf asd asdadf asdf asd asd asdf asdf asdf asdf asdf asdf asdf asdf 
+
+aaa  aaa a aaaaa a aaaaa aaaa aaa a aa aaaa 
+a  aaaa aqaaa aaa aaa zcvzcvzxczxc zxcvzxcv zxcv zxc zxc zcvzxcv zxczxcvz xc
+vzxc
+v zxcvzxcv zxcv zxcv zxcv z
+xcvz
+xcv zxcv zxcv zcv zxcv zxcv 
+assdfasd adsf asdf asdfad adsfasd fadf adfa sdfasd asd asd asdfadf asdfadf asdf asdfa sdfasdf asdf asdf asdf asdf asdfaadsf adf
+asdf adf asdf asdf adf qererqqer eqer eqrqwerq eqwerqerqwer qer qwererqwer qer eqerqwer qer qe qwer qer eqe eq erq
+qer qer qwe rqwe qwerqwer erqer e qerqew e qwe qer qwer qwerqer qer qwer rqr 
+qe rqerqwe qwe qwer qwer qwer qwer qer 
+</p>
+
+<h2> Esto es un ejemplo de elemento que ocupa 2 columnas asdf f asd fasdf asd asdf asd asd asdf asdf asd asd asd 
+    asdf asdf asdf asdf asdf asdf </h2>
+
+<h2> Esto es un ejemplo de elemento que ocupa 2 columnas asdf f asd fasdf asd asdf asd asd asdf asdf asd asd asd 
+    asdf asdf asdf asdf asdf asdf </h2>
+
+</div>
+
+
+ </body>
